@@ -1,0 +1,5 @@
+eng:
+  labels:
+    samsys_short_description: Equipment geotracking sensors
+    samsys_long_description:  Samsys provides geotracking sensors for equipment monitoring
+    samsys_url: https://samsys.fr/
