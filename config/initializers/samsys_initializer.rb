@@ -1,5 +1,3 @@
-autoload :Samsys, 'samsys'
-
 Samsys::SamsysIntegration.on_check_success do
   SamsysFetchUpdateCreateJob.perform_later
 end

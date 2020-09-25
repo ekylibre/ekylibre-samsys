@@ -1,0 +1,14 @@
+= main_informations attachment: true do
+  = infos do
+    .med-info
+      %span.title= :started_at.tl
+      %span.value= resource.started_at.l
+    - if resource.sleep_duration
+      .med-info
+        %span.title= :sleep_duration_iso.tl
+        %span.value= resource.sleep_duration_iso
+    .med-info
+      %span.title= :equipment_name.tl
+      %span.value= resource.equipment_name
+
+= render "map"
