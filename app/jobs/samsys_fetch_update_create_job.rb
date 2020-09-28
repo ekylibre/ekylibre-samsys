@@ -83,7 +83,6 @@ class SamsysFetchUpdateCreateJob < ActiveJob::Base
       Samsys::SamsysIntegration.fetch_all_clusters.execute do |c|
         c.success do |list|
           list.map do |cluster|
-            puts cluster.inspect.green
             puts cluster["id"].inspect.yellow
 
             # Store machine's id and uuid at Samsys

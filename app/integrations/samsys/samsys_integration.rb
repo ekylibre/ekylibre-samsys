@@ -62,14 +62,6 @@ module Samsys
         r.success do
           list = JSON(r.body).deep_symbolize_keys
         end
-
-        r.redirect do
-          Rails.logger.info '*sigh*'.yellow
-        end
-
-        r.error do
-          Rails.logger.info 'What the fuck brah?'.red
-        end
       end
     end
 
@@ -94,19 +86,9 @@ module Samsys
           }
       ]
 
-      puts machine.inspect.blue
-
       # post_json("#{BASE_URL}/machines", machine, 'Authorization' => "JWT #{integration.parameters['token']}") do |r|
       #   r.success do
       #     Rails.logger.info 'CREATED MACHINE'.green
-      #   end
-
-      #   r.redirect do
-      #     Rails.logger.info '*sigh*'.yellow
-      #   end
-
-      #   r.error do
-      #     Rails.logger.info 'What the fuck brah?'.red
       #   end
       # end
     end
@@ -132,19 +114,10 @@ module Samsys
           }
       ]
 
-      puts land_parcel.inspect.blue
 
       # post_json("#{BASE_URL}/users/#{user_id}/fields", land_parcel, 'Authorization' => "JWT #{integration.parameters['token']}") do |r|
       #   r.success do
       #     Rails.logger.info 'CREATED FIELD'.green
-      #   end
-
-      #   r.redirect do
-      #     Rails.logger.info '*sigh*'.yellow
-      #   end
-
-      #   r.error do
-      #     Rails.logger.info 'What the fuck brah?'.red
       #   end
       # end
     end
@@ -161,14 +134,6 @@ module Samsys
       get_json("#{BASE_URL}/clusters", 'Authorization' => "JWT #{integration.parameters['token']}") do |r|
         r.success do
           list = JSON(r.body)
-        end
-
-        r.redirect do
-          Rails.logger.info '*sigh*'.yellow
-        end
-
-        r.error do
-          Rails.logger.info 'What the fuck brah?'.red
         end
       end
       
@@ -192,15 +157,6 @@ module Samsys
         r.success do
           list = JSON(r.body).map{|p| p.deep_symbolize_keys}
         end
-
-        r.redirect do
-          Rails.logger.info '*sigh*'.yellow
-        end
-
-        r.error do
-          Rails.logger.info 'What the fuck brah?'.red
-          Rails.logger.info 'Token_missing'.red if token.blank?
-        end
       end
     end
 
@@ -215,14 +171,6 @@ module Samsys
       get_json("#{BASE_URL}/machines", 'Authorization' => "JWT #{integration.parameters['token']}") do |r|
         r.success do
           list = JSON(r.body)
-        end
-
-        r.redirect do
-          Rails.logger.info '*sigh*'.yellow
-        end
-
-        r.error do
-          Rails.logger.info 'What the fuck brah?'.red
         end
       end
 
@@ -244,14 +192,6 @@ module Samsys
         r.success do
           list = JSON(r.body).deep_symbolize_keys
         end
-
-        r.redirect do
-          Rails.logger.info '*sigh*'.yellow
-        end
-
-        r.error do
-          Rails.logger.info 'What the fuck brah?'.red
-        end
       end
     end
 
@@ -271,14 +211,6 @@ module Samsys
         r.success do
           list = JSON(r.body).deep_symbolize_keys
         end
-
-        r.redirect do
-          Rails.logger.info '*sigh*'.yellow
-        end
-
-        r.error do
-          Rails.logger.info 'What the fuck brah?'.red
-        end
       end
     end
 
@@ -294,20 +226,10 @@ module Samsys
       end
       stopped_on = Time.now.strftime("%FT%TZ")
       started_on = (Time.now - 90.days).strftime("%FT%TZ")
-      puts "#{MACHINES_URL}/#{machine_id}/statistics/fields_worked?start_date=#{started_on}&end_date=#{stopped_on}".inspect.green
       # Call API
       get_html("#{MACHINES_URL}/#{machine_id}/statistics/fields_worked?start_date=#{started_on}&end_date=#{stopped_on}", 'Authorization' => "JWT #{integration.parameters['token']}") do |r|
         r.success do
           list = r.body
-        end
-
-        r.redirect do
-          Rails.logger.info '*sigh*'.yellow
-        end
-
-        r.error do
-          puts r.body.inspect
-          list = JSON(r.body).deep_symbolize_keys
         end
       end
     end
@@ -330,15 +252,6 @@ module Samsys
         r.success do
           list = r.body
         end
-
-        r.redirect do
-          Rails.logger.info '*sigh*'.yellow
-        end
-
-        r.error do
-          puts r.body.inspect
-          list = JSON(r.body).deep_symbolize_keys
-        end
       end
     end
 
@@ -357,15 +270,6 @@ module Samsys
       get_html("#{BASE_URL}/meta_works/#{activity_id}", 'Authorization' => "JWT #{integration.parameters['token']}") do |r|
         r.success do
           list = r.body
-        end
-
-        r.redirect do
-          Rails.logger.info '*sigh*'.yellow
-        end
-
-        r.error do
-          puts r.body.inspect
-          list = JSON(r.body).deep_symbolize_keys
         end
       end  
     end
@@ -389,15 +293,6 @@ module Samsys
         r.success do
           list = r.body
         end
-
-        r.redirect do
-          Rails.logger.info '*sigh*'.yellow
-        end
-
-        r.error do
-          puts r.body.inspect
-          list = JSON(r.body).deep_symbolize_keys
-        end
       end
 
     end
@@ -414,21 +309,10 @@ module Samsys
         get_token
       end  
 
-      puts "#{BASE_URL}/works/#{work_id}/geolocations".inspect.yellow
-
       # Call API
        get_html("#{BASE_URL}/works/#{work_id}/geolocations", 'Authorization' => "JWT #{integration.parameters['token']}") do |r|
         r.success do
           list = r.body
-        end
-
-        r.redirect do
-          Rails.logger.info '*sigh*'.yellow
-        end
-
-        r.error do
-          puts r.body.inspect
-          list = JSON(r.body).deep_symbolize_keys
         end
       end
             
@@ -459,14 +343,6 @@ module Samsys
         r.success do
           list = JSON(r.body).deep_symbolize_keys
         end
-
-        r.redirect do
-          Rails.logger.info '*sigh*'.yellow
-        end
-
-        r.error do
-          Rails.logger.info 'What the fuck brah?'.red
-        end
       end
     end
 
@@ -482,14 +358,6 @@ module Samsys
       get_html(FIELDS_URL, 'Authorization' => "JWT #{integration.parameters['token']}") do |r|
         r.success do
           list = r.body
-        end
-
-        r.redirect do
-          Rails.logger.info '*sigh*'.yellow
-        end
-
-        r.error do
-          Rails.logger.info 'What the fuck brah?'.red
         end
       end
     end
