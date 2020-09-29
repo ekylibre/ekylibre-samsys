@@ -1,4 +1,4 @@
-ang:
+eng:
   actions: 
     backend/rides:
       index: "Geolocated Rides"
