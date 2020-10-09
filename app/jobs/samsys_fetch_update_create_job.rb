@@ -205,7 +205,7 @@ class SamsysFetchUpdateCreateJob < ActiveJob::Base
         initial_population: 1,
         initial_owner: owner,
         work_number: "SAMSYS_" + counter[:id].to_s,
-        provider: {vendor: "samsys", name: "samsys_sensor", id: counter[:id], data: { call_id: call_id }}
+        provider: {vendor: "Samsys", name: "samsys_sensor", id: counter[:id], data: { call_id: call_id }}
       )
     end
     sensor_equipment
@@ -259,7 +259,7 @@ class SamsysFetchUpdateCreateJob < ActiveJob::Base
         initial_population: 1,
         initial_owner: owner,
         work_number: "SAMSYS_" + machine[:id].to_s,
-        provider: {vendor: "samsys", name: "samsys_equipment", id: machine[:id], data: { call_id: call_id }}
+        provider: {vendor: "Samsys", name: "samsys_equipment", id: machine[:id], data: { call_id: call_id }}
       )
     end
     cf = CustomField.find_by(column_name: "brand_name")
@@ -344,7 +344,7 @@ class SamsysFetchUpdateCreateJob < ActiveJob::Base
               area_with_overlap: activity["area_with_overlap"],
               area_smart: activity["area_smart"],
               gasoline:activity["gasoline"],
-              provider: {vendor: "samsys", name: "samsys_ride_set", id: activity["id"]}
+              provider: {vendor: "Samsys", name: "samsys_ride_set", id: activity["id"]}
             )
 
             puts ride_set.inspect.green
@@ -385,7 +385,7 @@ class SamsysFetchUpdateCreateJob < ActiveJob::Base
               state: "unaffected",
               nature: work["type"],
               distance_km: work["distance_km"],
-              provider: {vendor: "samsys", name: "samsys_ride", id: work["id"]},
+              provider: {vendor: "Samsys", name: "samsys_ride", id: work["id"]},
               area_without_overlap: work["area_without_overlap"],
               area_with_overlap: work["area_with_overlap"],
               area_smart: work["area_smart"],
@@ -463,7 +463,7 @@ class SamsysFetchUpdateCreateJob < ActiveJob::Base
               geolocation: geolocation_crumb,
               read_at: crumb["properties"]["t"],
               metadata: {'speed' => crumb["properties"]["speed"]},
-              provider: {vendor: "samsys", name: "samsys_crumb", id: crumb["id_data"]},
+              provider: {vendor: "Samsys", name: "samsys_crumb", id: crumb["id_data"]},
               ride_id: ride_id
             )
 
@@ -504,7 +504,7 @@ class SamsysFetchUpdateCreateJob < ActiveJob::Base
           geolocation: geolocation_break,
           read_at: break_c["start_date"],
           metadata: {'duration' => break_c["duration"], 'start_date' => break_c["start_date"], 'end_date' => break_c["end_date"]},
-          provider: {vendor: "samsys", name: "samsys_crumb_break", id: break_c["start_date"]},
+          provider: {vendor: "Samsys", name: "samsys_crumb_break", id: break_c["start_date"]},
           ride_id: ride_id
         )
 

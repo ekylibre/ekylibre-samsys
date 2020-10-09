@@ -1,6 +1,5 @@
 module Backend
-  class RideSetsController < EkylibreSamsys::ApplicationController
-
+  class RideSetsController < Backend::BaseController
     manage_restfully
 
     unroll
@@ -11,8 +10,10 @@ module Backend
       t.column :started_at
       t.column :stopped_at
       t.column :duration_iso
-      t.column :sleep_count
+      t.column :sleep_count, class: 'center'
       t.column :sleep_duration_iso
+      t.column :road, class: 'center'
+      t.column :equipment
       t.column :provider_vendor
     end
 
