@@ -1,4 +1,4 @@
-= main_informations attachment: true do
+= main_informations do
   = infos do
     / .med-info
     /   %span.title= :number.tl
@@ -35,10 +35,10 @@
         %span.title= :area_with_overlap.tl
         %span.value= resource.area_with_overlap.round(2).to_s + " ha"
 
-
 = cobbles do |c|
   - if resource.rides.any?
+    - c.cobble :map do
+      = render 'map'
+
     - c.cobble(:rides) do
       = cobble_list(:rides)
-      
-= render "map"

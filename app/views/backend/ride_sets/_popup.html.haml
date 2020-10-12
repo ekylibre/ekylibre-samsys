@@ -1,0 +1,5 @@
+%div{ style:'display: flex; flex-direction: column; align-items: center'}
+ %span
+  / %i{ class: 'icon icon-battery-alert', style:'color: red;' }
+  = link_to "Numéro: " + crumb.ride.number, backend_ride_path(crumb.ride.id)
+

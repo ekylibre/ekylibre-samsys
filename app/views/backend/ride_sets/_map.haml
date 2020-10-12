@@ -8,10 +8,12 @@
     ride.crumbs.where.not(nature: "pause").each do |crumb|
       geolocation_point = Charta.new_geometry(crumb.geolocation)
       if geolocation_point
+        popup_lines = render(partial: 'popup', locals: { crumb: crumb })
         item = {
           name: crumb.nature,
           shape: geolocation_point,
           read_at: crumb.read_at,
+          popup: { header: "Trajet géolocalisé", content: popup_lines }
         }
 
         ride_data_test << item

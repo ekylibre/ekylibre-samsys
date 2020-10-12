@@ -23,8 +23,9 @@ module Backend
       t.column :started_at
       t.column :stopped_at
       t.column :duration_iso
-      t.column :sleep_count
+      t.column :sleep_count, class: 'center'
       t.column :sleep_duration_iso
+      t.column :equipment_name, url: { controller: 'backend/equipments', id: 'RECORD.product_id'.c }
     end
   end
 end

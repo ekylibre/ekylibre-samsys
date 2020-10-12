@@ -1,4 +1,4 @@
-= main_informations attachment: true do
+= main_informations do
   = infos do
     .med-info
       %span.title= :started_at.tl
@@ -11,4 +11,6 @@
       %span.title= :equipment_name.tl
       %span.value= resource.equipment_name
 
-= render "map"
+= cobbles do |c|
+  - c.cobble :map do
+    = render 'map'
