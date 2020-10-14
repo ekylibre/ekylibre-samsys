@@ -36,12 +36,12 @@
 = visualization do |v|
   - if data.any?
     - v.serie :main, data.sort_by {|h| h[:read_at]}
-    - v.paths "trajet", :main
+    - v.paths "Trajet", :main
     - if data_first
-      - v.serie :data_first, [{name: data_first.nature, shape: data_first.geolocation}]
+      - v.serie :data_first, [{name: data_first.nature.tl, shape: data_first.geolocation}]
       - v.points "", :data_first, colors: ['#7fbf7f']
     - if data_last
-      - v.serie :data_last, [{name: data_last.nature, shape: data_last.geolocation}]
+      - v.serie :data_last, [{name: data_last.nature.tl, shape: data_last.geolocation}]
       - v.points "", :data_last, colors: ['#ff7f7f']
     - if data_pause.any?
       - v.serie :pause, data_pause
@@ -50,4 +50,3 @@
     - v.control :scale
     - v.control :fullscreen
     - v.control :layer_selector
-

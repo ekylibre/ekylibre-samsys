@@ -13,7 +13,8 @@
           name: crumb.nature,
           shape: geolocation_point,
           read_at: crumb.read_at,
-          popup: { header: "Trajet géolocalisé", content: popup_lines }
+          popup: { header: "Trajet géolocalisé", content: popup_lines },
+          Ride: crumb.ride.number
         }
 
         ride_data_test << item
@@ -29,8 +30,8 @@
 = visualization do |v| 
   - if all_data.any?
     - all_data.each_with_index do |data, index|
-      - v.serie "data_#{data[1]}", data[0].sort_by {|h| h[:read_at]}
-      - v.paths data[1], "data_#{data[1]}", colors: [colors[index%colors.length]]
+      - v.serie data[1], data[0].sort_by {|h| h[:read_at]}
+      - v.paths :ride, data[1], colors: [colors[index%colors.length]]
     - v.control :zoom
     - v.control :scale
     - v.control :fullscreen
