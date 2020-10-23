@@ -6,3 +6,5 @@ fra:
     backend/ride_sets:
       index: "Trajets géolocalisés"
       show: "Trajet géolocalisé : %{number}"
+  labels:
+    ride_set_message: "Pour synchroniser vos trajets géolocalisés avec vos capteurs connectés, veuillez configurer votre compte dans Configuration > Connexion partenaire"

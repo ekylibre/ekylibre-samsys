@@ -27,5 +27,19 @@ module Backend
       t.column :sleep_duration_iso
       t.column :equipment_name, url: { controller: 'backend/equipments', id: 'RECORD.product_id'.c }
     end
+
+    def index
+      notify_ride_set_creation_warning
+
+      super
+    end
+
+    private
+
+      def notify_ride_set_creation_warning
+        if RideSet.count.zero?
+          notify_warning_now(helpers.link_to(:ride_set_message.tl, backend_integrations_path))
+        end
+      end
   end
 end
