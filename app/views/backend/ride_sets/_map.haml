@@ -27,7 +27,34 @@
     all_data <<  ride_data
   end
 
-= visualization do |v| 
+  near_parcels = []
+  resource.rides.each do |ride|
+    crumbs_line = ::Charta.make_line(ride.crumbs.sort_by(&:read_at).map(&:geolocation))
+    if LandParcel.initial_shape_near(crumbs_line).any?
+      near_parcels << LandParcel.initial_shape_near(crumbs_line, max_distance_in_meter = 100)
+    end
+  end
+
+  near_uniq_parcels = []
+  near_parcels.flatten.uniq.each do |parcel|
+    popup_parcel = render(partial: 'backend/rides/popup_land_parcel', locals: { parcel: parcel })
+    header_content = content_tag(:span, parcel.name, class: 'sensor-name')
+    item = {
+      id: parcel.id,
+      name: parcel.name,
+      shape: parcel.initial_shape,
+      popup: { header: header_content, content: popup_parcel },
+      net_surface_area: parcel.net_surface_area
+    }
+    near_uniq_parcels << item
+  end
+
+= visualization do |v|
+  - options = {fill_opacity: 0.2, fill_color: "#3171A9", color: '#FFFFFF', weight: 3}
+  - near_uniq_parcels.each do |parcel|
+    - v.serie parcel[:name], [parcel]
+    - v.simple parcel[:name], parcel[:name], options
+
   - if all_data.any?
     - all_data.each_with_index do |data, index|
       - v.serie data[1], data[0].sort_by {|h| h[:read_at]}
@@ -36,7 +63,3 @@
     - v.control :scale
     - v.control :fullscreen
     - v.control :layer_selector
-
-
-
-

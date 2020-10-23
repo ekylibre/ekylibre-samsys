@@ -4,8 +4,8 @@ fra:
     samsys_short_description: Geolocalisation des équipements
     samsys_long_description:  Samsys fournit des capteurs de geolocalisation pour le matériel agricole
     samsys_url: https://samsys.fr/
-    hard_start: "Départ"
-    hard_stop: "Arrêt"
+    hard_start: "Début"
+    hard_stop: "Fin"
     pause: "Pause"
     point: "Point"
     resume: "CV"
