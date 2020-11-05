@@ -19,7 +19,7 @@
     geolocation_point = Charta.new_geometry(crumb.geolocation)
     if geolocation_point
       popup_lines = render(partial: 'popup', locals: { crumb: crumb })
-      header_content = content_tag(:span, 'Pause', class: 'sensor-name')
+      header_content = content_tag(:span, :pause.tl, class: 'sensor-name')
       item = {
         name: crumb.nature,
         shape: geolocation_point,
@@ -29,8 +29,8 @@
     end
   end
 
-  data_first = resource.crumbs.where(nature: "hard_start").first
-  data_last = resource.crumbs.where(nature: "hard_stop").first
+  data_first = resource.crumbs.find_by(nature: "hard_start")
+  data_last = resource.crumbs.find_by(nature: "hard_stop")
 
   near_parcels = []
   crumbs_line = ::Charta.make_line(resource.crumbs.sort_by(&:read_at).map(&:geolocation))
@@ -60,7 +60,7 @@
       - v.simple parcel[:name], parcel[:name], options
 
     - v.serie :main, data.sort_by {|h| h[:read_at]}
-    - v.paths "Trajet", :main
+    - v.paths :ride.tl, :main
     - if data_first
       - v.serie :data_first, [{name: data_first.nature.tl, shape: data_first.geolocation}]
       - v.points "", :data_first, colors: ['#7fbf7f']
@@ -74,8 +74,3 @@
     - v.control :scale
     - v.control :fullscreen
     - v.control :layer_selector
-
-:javascript
-  $(document).ready( function() {
-    console.log("salut")
-  } );

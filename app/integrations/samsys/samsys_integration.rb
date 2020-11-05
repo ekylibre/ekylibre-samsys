@@ -86,11 +86,11 @@ module Samsys
           }
       ]
 
-      # post_json("#{BASE_URL}/machines", machine, 'Authorization' => "JWT #{integration.parameters['token']}") do |r|
-      #   r.success do
-      #     Rails.logger.info 'CREATED MACHINE'.green
-      #   end
-      # end
+      post_json("#{BASE_URL}/machines", machine, 'Authorization' => "JWT #{integration.parameters['token']}") do |r|
+        r.success do
+          Rails.logger.info 'CREATED MACHINE'.green
+        end
+      end
     end
 
 
@@ -114,12 +114,11 @@ module Samsys
           }
       ]
 
-
-      # post_json("#{BASE_URL}/users/#{user_id}/fields", land_parcel, 'Authorization' => "JWT #{integration.parameters['token']}") do |r|
-      #   r.success do
-      #     Rails.logger.info 'CREATED FIELD'.green
-      #   end
-      # end
+      post_json("#{BASE_URL}/users/#{user_id}/fields", land_parcel, 'Authorization' => "JWT #{integration.parameters['token']}") do |r|
+        r.success do
+          Rails.logger.info 'CREATED FIELD'.green
+        end
+      end
     end
 
 

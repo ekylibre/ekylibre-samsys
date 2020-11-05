@@ -9,3 +9,19 @@ eng:
   labels:
     ride_set_message: "
 To synchronize your geolocated trips with your connected sensors, please configure your account in Configuration> Partner connection"
+    samsys_short_description: Equipment geotracking sensors
+    samsys_long_description:  Samsys provides geotracking sensors for equipment monitoring
+    samsys_url: https://samsys.fr/
+    hard_start: "Hard start"
+    hard_stop: "Hard stop"
+    pause: "Pause"
+    point: "Point"
+    resume: "CV"
+    ride: "Ride"
+    scan: "Scan"
+    start: "Start"
+    stop: "Stop"
+    ride_geo: "Geolocated ride"
+    ride_number: "Number"
+    ride_paused_at: "Break at"
+    ride_duration: "Duration"

@@ -8,3 +8,20 @@ fra:
       show: "Trajet géolocalisé : %{number}"
   labels:
     ride_set_message: "Pour synchroniser vos trajets géolocalisés avec vos capteurs connectés, veuillez configurer votre compte dans Configuration > Connexion partenaire"
+    samsys_short_description: Geolocalisation des équipements
+    samsys_long_description:  Samsys fournit des capteurs de geolocalisation pour le matériel agricole
+    samsys_url: https://samsys.fr/
+    hard_start: "Début"
+    hard_stop: "Fin"
+    pause: "Pause"
+    point: "Point"
+    resume: "CV"
+    ride: "Trajet"
+    scan: "Balayage"
+    start: "Démarrer"
+    stop: "Arrêtez"
+    ride_geo: "Trajet géolocalisé"
+    ride_number: "Numéro"
+    ride_paused_at: "Pause à"
+    ride_duration: "Durée"
+

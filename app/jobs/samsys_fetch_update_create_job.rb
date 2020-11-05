@@ -38,76 +38,19 @@ class SamsysFetchUpdateCreateJob < ActiveJob::Base
       Samsys::SamsysIntegration.fetch_fields.execute do |c|
         c.success do |list|
           exclude_parcels = []
-          JSON.parse( list.tr("'", "'")).map do |parcel|
+          JSON.parse(list).map do |parcel|
             parcel_shape_samsys = Charta.new_geometry(parcel)
-            # puts parcel.inspect.yellow
-
-            # if LandParcel Match with Parce at Samsys do not create parcel
-            if LandParcel.shape_matching(parcel_shape_samsys, 0.02).any?
-              exclude_parcels << LandParcel.shape_matching(parcel_shape_samsys, 0.02).first.id
-              puts LandParcel.shape_matching(parcel_shape_samsys, 0.02).inspect.red
-            end
-
-            # TODO LATER
-            # Create or FIND Land Parcel at Ekylibre
-            # If parcel_shape_samsys is not matching with any LandParcel at Ekylibre so Create new LandParcel with Parcel from Samsys
-            # if !LandParcel.shape_matching(parcel_shape_samsys, 0.02).any?
-            #   puts parcel["id"].inspect.green
-            #   puts parcel["users"]["field_name"].inspect.green
-            #   puts parcel["users"]["start_date"].inspect.green
-            #   puts Charta.new_geometry(parcel).inspect.green
-
-            #   land_parcel = LandParcel.create!(
-            #     type: "LandParcel",
-            #     name: parcel["users"]["field_name"],
-            #     initial_shape: Charta.new_geometry(parcel),
-            #     born_at: parcel["users"]["start_date"],
-            #     providers: {'samsys' => parcel["id"]}
-            #   )
-
-            #   puts land_parcel.inspect.green
-            # end
+            # If LandParcel Match with Parcel at Samsys store matching ids
+            exclude_parcels << LandParcel.shape_matching(parcel_shape_samsys, 0.02).ids
           end
 
           # Find or Create PARCEL at SAMSYS
           Samsys::SamsysIntegration.fetch_user_info.execute do |c|
             c.success do |user|
-              find_or_create_parcels_samsys(exclude_parcels, user[:id])
+              find_or_create_parcels_samsys(exclude_parcels.flatten.uniq, user[:id])
             end
           end
 
-        end
-      end
-
-      # Create Machine at Samsys
-      Samsys::SamsysIntegration.fetch_all_clusters.execute do |c|
-        c.success do |list|
-          list.map do |cluster|
-            puts cluster["id"].inspect.yellow
-
-            # Store machine's id and uuid at Samsys
-            machines_samsys = []
-            machines_samsys_uuid = []
-            Samsys::SamsysIntegration.fetch_all_machines.execute do |c|
-              c.success do |list|
-                list.map do |machine|
-                  machines_samsys << machine["id"]
-
-                  if machine["provider"].present? && machine["provider"].has_key?("uuid")
-                    machines_samsys_uuid << machine["provider"]["uuid"]
-                  end
-                end
-              end
-            end
-
-            # Create/Post at Samsys if there are no similar provider[:id] or uuid at Ekylibre
-            tractors_equipments = Equipment.where(variety: "tractor").last(10)
-            tractors_equipments.each do |tractor|
-              unless machines_samsys.include?(tractor.provider[:id]) || machines_samsys_uuid.include?(tractor.uuid)
-                Samsys::SamsysIntegration.post_machines(tractor.name, tractor.born_at, cluster["id"], tractor.uuid).execute
-              end
-            end
-          end
         end
       end
 
@@ -116,8 +59,6 @@ class SamsysFetchUpdateCreateJob < ActiveJob::Base
       Samsys::SamsysIntegration.fetch_all_counters.execute do |c|
         c.success do |list|
           list.map do |counter|
-
-            puts counter.inspect.green
 
             # counter attributes
             # counter[:id]
@@ -148,10 +89,6 @@ class SamsysFetchUpdateCreateJob < ActiveJob::Base
             # link the equipment to sensor
             sensor.update!(product_id: sensor_equipment.id) if sensor_equipment
 
-            # puts counter.inspect.blue
-            # puts counter[:association].any?.inspect.green
-            # puts counter[:association][:machine].present?.inspect.blue
-
             if counter[:association].any? && counter[:association][:machine].present? && sensor_equipment
               counter[:association][:machine].each do |machine|
                 # Find or create an equipement corresponding to the machine
@@ -162,6 +99,32 @@ class SamsysFetchUpdateCreateJob < ActiveJob::Base
           end
         end
       end
+
+      # Create Machine at Samsys
+      # Store machine's id and uuid at Samsys
+      cluster_id = []
+      machines_samsys = []
+      machines_samsys_provider_ekylibre = []
+      Samsys::SamsysIntegration.fetch_all_machines.execute do |c|
+        c.success do |list|
+          list.map do |machine|
+            cluster_id << machine["cluster"]["id"]
+            machines_samsys << machine["id"]
+            if machine["provider"].present? && machine["provider"].has_key?("uuid")
+              machines_samsys_provider_ekylibre << machine["provider"]["uuid"]
+            end
+          end
+        end
+      end
+
+      # Create/Post at Samsys if there are no similar provider[:id] or uuid at Ekylibre
+      tractors_equipments = Equipment.where(variety: "tractor")
+      tractors_equipments.each do |tractor|
+        unless machines_samsys.include?(tractor.provider[:id]) || machines_samsys_provider_ekylibre.include?(tractor.uuid)
+          Samsys::SamsysIntegration.post_machines(tractor.name, tractor.born_at, cluster_id.uniq, tractor.uuid).execute
+        end
+      end
+
     rescue StandardError => error
       Rails.logger.error $!
       Rails.logger.error $!.backtrace.join("\n")
@@ -212,14 +175,6 @@ class SamsysFetchUpdateCreateJob < ActiveJob::Base
   end
 
   def find_or_create_machine_equipment(machine, counter, sensor_equipment, call_id)
-    # machine[:id]
-    # machine[:name]
-    # machine[:brand]
-    # machine[:machine_type]
-    puts machine.inspect.green
-    # puts machine["provider"]["uuid"].present?.inspect.yellow
-
-
     # Find or create the owner
     if counter[:owner][:type_cluster] == "farm"
       owner = Entity.of_company
@@ -250,7 +205,6 @@ class SamsysFetchUpdateCreateJob < ActiveJob::Base
     machine_equipments = Equipment.where("provider ->> 'id' = ?", machine[:id]) || Equipment.where(uuid: machines_samsys_uuid_ekylibre)
     if machine_equipments.any?
       machine_equipment = machine_equipments.first
-      puts machine_equipment.inspect.yellow
     else
       machine_equipment = Equipment.create!(
         variant_id: equipment_variant.id,
@@ -265,26 +219,10 @@ class SamsysFetchUpdateCreateJob < ActiveJob::Base
     cf = CustomField.find_by(column_name: "brand_name")
     machine_equipment.set_custom_value(cf, machine[:brand])
 
-    # Get indicator from J1939 bus for a machine
-    # Samsys::SamsysIntegration.fetch_j1939_bus(machine[:id]).execute do |c|
-    #   c.success do |j1939_indicators|
-    #     if j1939_indicators[:t] != nil
-    #       [:engine_total_hours_of_operation, :fuel_level].each do |j1939_ind|
-    #         transcoded_indicator = MACHINE_INDICATORS[j1939_ind]
-    #         if j1939_indicators[j1939_ind] != nil && machine_equipment.variant.has_indicator?(transcoded_indicator[:indicator])
-    #           puts transcoded_indicator.inspect.yellow
-    #           machine_equipment.read!(transcoded_indicator[:indicator], j1939_indicators[j1939_ind].in(transcoded_indicator[:unit]), at: j1939_indicators[:t], force: true)
-    #         end
-    #       end
-    #     end
-    #   end
-    # end
 
     # Get geolocation for a machine
     Samsys::SamsysIntegration.fetch_geolocation(machine[:id]).execute do |c|
       c.success do |geolocation|
-        puts geolocation.inspect.green
-        puts geolocation[:geometry][:coordinates].inspect.yellow
         # check if a machine geolocation is nil
         if !geolocation[:geometry][:coordinates].nil?
           if machine_equipment.variant.has_indicator?(:geolocation)
@@ -294,16 +232,6 @@ class SamsysFetchUpdateCreateJob < ActiveJob::Base
             machine_equipment.read!(:geolocation, point, at: read_at, force: true) if point && read_at
           end
         end
-      end
-    end
-
-    # Get fields work of a machine
-    Samsys::SamsysIntegration.fetch_fields_worked(machine[:id]).execute do |c|
-      c.success do |fields|
-        puts fields.inspect.green
-      end
-      c.error do |e|
-        puts e.inspect.red
       end
     end
 
@@ -323,7 +251,7 @@ class SamsysFetchUpdateCreateJob < ActiveJob::Base
     # Get all activities of machine, we can have multiple roads and works
     Samsys::SamsysIntegration.fetch_activities_machine(machine[:id]).execute do |c|
       c.success do |list|
-        JSON.parse( list.tr("'", "'")).map do |activity| 
+        JSON.parse(list).map do |activity| 
 
           # Find or create Ride Set (Equivalent of activity at Samsys )
           ride_sets = RideSet.where("provider ->> 'id' = ?", activity["id"])
@@ -347,8 +275,6 @@ class SamsysFetchUpdateCreateJob < ActiveJob::Base
               provider: {vendor: "Samsys", name: "samsys_ride_set", id: activity["id"]}
             )
 
-            puts ride_set.inspect.green
-
             # Create all rides linked to a Ride Set
             create_ride(activity["id"], machine_equipment, ride_set.id)
           end
@@ -363,10 +289,7 @@ class SamsysFetchUpdateCreateJob < ActiveJob::Base
   def create_ride(activity_id, machine_equipment, ride_set_id)
     Samsys::SamsysIntegration.fetch_works_activity(activity_id).execute do |c|
       c.success do |list| 
-        JSON.parse( list.tr("'", "'")).map do |work|
-
-          puts work.inspect.green
-          breaks_c = work["breaks"].any?
+        JSON.parse(list).map do |work|
 
           # Find or create a Ride
           rides = Ride.where("provider ->> 'id' = ?", work["id"])
@@ -394,8 +317,6 @@ class SamsysFetchUpdateCreateJob < ActiveJob::Base
               ride_set_id: ride_set_id
             )
 
-            puts ride.inspect.yellow
-
             # create crumb "point/hard_start/hard_stop" from work geolocations
             create_crumb_for_work_geolocations(work["id"], ride.id)
 
@@ -415,36 +336,19 @@ class SamsysFetchUpdateCreateJob < ActiveJob::Base
       c.success do |list| 
 
         crumbs_all = []
-        JSON.parse( list.tr("'", "'")).map do |crumb| 
+        JSON.parse(list).map do |crumb| 
           crumbs_all.push(crumb)
         end
 
         crumbs_all_sort = crumbs_all.sort_by {|c| c["properties"]["t"]}
-
-
-
-        # puts crumbs.inspect.red
-        # # Get the first and the last point of the road/work
-        # # We need the first and the last point to get "hard_start" and "hard_stop" on the nature Crumb
-        # first_crumb = crumbs.sort_by {|c| c["properties"]["t"]}.first
-        # last_crumb = crumbs.sort_by {|c| c["properties"]["t"]}.last
-
-        # puts first_crumb.inspect.green
-        # puts last_crumb.inspect.yellow
-        # byebug if Ride.where('providers ->> ? = ?', 'samsys', "5f130e961440b925afdd76f0").first
-
         crumbs_all_sort.each_with_index do |crumb, index|
           # Find or create crumb 
-          # crumb = crumb.last
           crumbs = Crumb.where("provider ->> 'id' = ?", crumb["id_data"]).where(ride_id: ride_id)
           if crumbs.any?
             crumbs.first
           else
             lat_lon = crumb["geometry"]["coordinates"]
             geolocation_crumb = Charta.new_point(lat_lon[1], lat_lon[0]).to_rgeo
-
-            puts crumb["id_data"].inspect.green
-            
             nature_crumb = if index == 0 
                             "hard_start"
                           elsif index == (crumbs_all_sort.length - 1)
@@ -452,9 +356,6 @@ class SamsysFetchUpdateCreateJob < ActiveJob::Base
                           else
                             "point"
                           end
-
-            # byebug if Ride.where('providers ->> ? = ?', 'samsys', "5f130e961440b925afdd76f0").first
-            # puts nature_crumb.inspect.green if first_crumb == crumb["properties"]["t"]
 
             crumb = Crumb.create!(
               nature: nature_crumb,
@@ -467,21 +368,9 @@ class SamsysFetchUpdateCreateJob < ActiveJob::Base
               ride_id: ride_id
             )
 
-            puts crumb.inspect.green
           end
         end
       end
-    end
-  end
-
-  def nature_crumbs(crumb, first_crumb, last_crumb)
-    case crumb
-    when first_crumb
-      "hard_start"
-    when last_crumb
-      "hard_stop"
-    else
-      "point"
     end
   end
 
@@ -507,8 +396,6 @@ class SamsysFetchUpdateCreateJob < ActiveJob::Base
           provider: {vendor: "Samsys", name: "samsys_crumb_break", id: break_c["start_date"]},
           ride_id: ride_id
         )
-
-        puts crumb.inspect.blue
 
       end
     end

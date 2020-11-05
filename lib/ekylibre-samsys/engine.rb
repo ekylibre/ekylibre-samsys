@@ -1,7 +1,7 @@
 module EkylibreSamsys
   class Engine < ::Rails::Engine
  
-  	initializer 'planning.assets.precompile' do |app|
+    initializer 'ekylibre-samsys.assets.precompile' do |app|
       app.config.assets.precompile += %w( integrations/samsys.png )
     end
 
