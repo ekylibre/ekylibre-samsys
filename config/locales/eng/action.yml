@@ -7,6 +7,8 @@ eng:
       index: "Geolocated Rides"
       show: "Geolocated Ride: %{number}"
   labels:
+    area_without_overlap: "Area without overlap"
+    area_with_overlap: "Area with overlap"
     ride_set_message: "
 To synchronize your geolocated trips with your connected sensors, please configure your account in Configuration> Partner connection"
     samsys_short_description: Equipment geotracking sensors

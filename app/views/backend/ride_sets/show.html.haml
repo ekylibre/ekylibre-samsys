@@ -10,12 +10,12 @@
 
     .med-info
       %span.title= :duration.tl
-      %span.value= resource.duration_iso
+      %span.value= resource.decorated_duration
 
     - if resource.sleep_duration
       .med-info
         %span.title= :sleep_duration.tl
-        %span.value= resource.sleep_duration_iso
+        %span.value= resource.decorated_sleep_duration
 
     .med-info
       %span.title= :road.tl

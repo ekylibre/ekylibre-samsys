@@ -24,7 +24,6 @@ class SamsysFetchUpdateCreateJob < ActiveJob::Base
                           :fuel_level => {indicator: :fuel_level, unit: :percent}
                           }.freeze
 
-
   def perform
     begin
       # create custom field for all equipement if not exist
@@ -50,7 +49,6 @@ class SamsysFetchUpdateCreateJob < ActiveJob::Base
               find_or_create_parcels_samsys(exclude_parcels.flatten.uniq, user[:id])
             end
           end
-
         end
       end
 
@@ -59,7 +57,6 @@ class SamsysFetchUpdateCreateJob < ActiveJob::Base
       Samsys::SamsysIntegration.fetch_all_counters.execute do |c|
         c.success do |list|
           list.map do |counter|
-
             # counter attributes
             # counter[:id]
             # counter[:v_bat]
@@ -95,7 +92,6 @@ class SamsysFetchUpdateCreateJob < ActiveJob::Base
                 find_or_create_machine_equipment(machine, counter, sensor_equipment, c.id)
               end
             end
-
           end
         end
       end
@@ -124,7 +120,6 @@ class SamsysFetchUpdateCreateJob < ActiveJob::Base
           Samsys::SamsysIntegration.post_machines(tractor.name, tractor.born_at, cluster_id.uniq, tractor.uuid).execute
         end
       end
-
     rescue StandardError => error
       Rails.logger.error $!
       Rails.logger.error $!.backtrace.join("\n")
@@ -140,7 +135,7 @@ class SamsysFetchUpdateCreateJob < ActiveJob::Base
     parcels = LandParcel.where.not(id: exclude_parcels)
     parcels.each do |land_parcel|
       Samsys::SamsysIntegration.post_parcels(user_id, land_parcel.name, land_parcel.born_at, land_parcel.initial_shape.to_rgeo.coordinates.first, land_parcel.uuid).execute
-    end   
+    end
   end
 
   def find_or_create_sensor_equipment(sensor, counter, call_id)
@@ -153,7 +148,7 @@ class SamsysFetchUpdateCreateJob < ActiveJob::Base
 
     # Find the variant corresponding to geolocalisation sensor
     #TODO add sensor to Lexicon and replace electric_pruning by good reference
-    sensor_variant = ProductNatureVariant.import_from_lexicon(:flatbed_trailer)
+    sensor_variant = ProductNatureVariant.import_from_nomenclature(:geolocation_box)
 
     # Find or create an equipment corresponding to the sensor
     # create the equipment
@@ -184,9 +179,9 @@ class SamsysFetchUpdateCreateJob < ActiveJob::Base
 
     variant_to_find = TRANSCODE_MACHINE_TYPE[machine[:machine_type].downcase]
     if variant_to_find
-      equipment_variant = ProductNatureVariant.import_from_lexicon(variant_to_find)
+      equipment_variant = ProductNatureVariant.import_from_nomenclature(variant_to_find)
     else
-      equipment_variant = ProductNatureVariant.import_from_lexicon(:tractor)
+      equipment_variant = ProductNatureVariant.import_from_nomenclature(:tractor)
     end
 
     # Check if machine Ekylibre create at Samsys exist and store machine["provider"]["uuid"]. We check it with the uuid send to se column provider at Samsys
@@ -218,8 +213,6 @@ class SamsysFetchUpdateCreateJob < ActiveJob::Base
     end
     cf = CustomField.find_by(column_name: "brand_name")
     machine_equipment.set_custom_value(cf, machine[:brand])
-
-
     # Get geolocation for a machine
     Samsys::SamsysIntegration.fetch_geolocation(machine[:id]).execute do |c|
       c.success do |geolocation|
@@ -251,8 +244,7 @@ class SamsysFetchUpdateCreateJob < ActiveJob::Base
     # Get all activities of machine, we can have multiple roads and works
     Samsys::SamsysIntegration.fetch_activities_machine(machine[:id]).execute do |c|
       c.success do |list|
-        JSON.parse(list).map do |activity| 
-
+        JSON.parse(list).map do |activity|
           # Find or create Ride Set (Equivalent of activity at Samsys )
           ride_sets = RideSet.where("provider ->> 'id' = ?", activity["id"])
           if ride_sets.any?
@@ -266,8 +258,8 @@ class SamsysFetchUpdateCreateJob < ActiveJob::Base
               road: activity["road"],
               nature: activity["type"],
               sleep_count: activity["sleep_count"],
-              duration: activity["duration"],
-              sleep_duration: activity["sleep_duration"],
+              duration: activity["duration"].to_i.seconds,
+              sleep_duration: activity["sleep_duration"].to_i.seconds,
               area_without_overlap: activity["area_without_overlap"],
               area_with_overlap: activity["area_with_overlap"],
               area_smart: activity["area_smart"],
@@ -278,11 +270,9 @@ class SamsysFetchUpdateCreateJob < ActiveJob::Base
             # Create all rides linked to a Ride Set
             create_ride(activity["id"], machine_equipment, ride_set.id)
           end
-          
         end
       end
     end
-
   end
 
   # Create a ride 
@@ -290,7 +280,6 @@ class SamsysFetchUpdateCreateJob < ActiveJob::Base
     Samsys::SamsysIntegration.fetch_works_activity(activity_id).execute do |c|
       c.success do |list| 
         JSON.parse(list).map do |work|
-
           # Find or create a Ride
           rides = Ride.where("provider ->> 'id' = ?", work["id"])
           if rides.any?
@@ -301,9 +290,9 @@ class SamsysFetchUpdateCreateJob < ActiveJob::Base
             ride = Ride.create!(
               started_at: work["start_date"],
               stopped_at: work["end_date"],
-              duration: work["duration"],
+              duration: work["duration"].to_i.seconds,
               sleep_count: work["sleep_count"],
-              sleep_duration: work["sleep_duration"],
+              sleep_duration: work["sleep_duration"].to_i.seconds,
               equipment_name: machine_equipment.name,
               state: "unaffected",
               nature: work["type"],
@@ -323,10 +312,9 @@ class SamsysFetchUpdateCreateJob < ActiveJob::Base
             # create crumb "pause" work["breaks"]
             create_crumb_for_works_geolocation_break(work["breaks"], ride.id)
           end
-
         end
       end
-    end 
+    end
   end
 
   # Create crumb for work geolocations
@@ -334,9 +322,8 @@ class SamsysFetchUpdateCreateJob < ActiveJob::Base
   def create_crumb_for_work_geolocations(work_id, ride_id)
     Samsys::SamsysIntegration.fetch_work_geolocations(work_id).execute do |c| 
       c.success do |list| 
-
         crumbs_all = []
-        JSON.parse(list).map do |crumb| 
+        JSON.parse(list).map do |crumb|
           crumbs_all.push(crumb)
         end
 
@@ -425,5 +412,4 @@ class SamsysFetchUpdateCreateJob < ActiveJob::Base
       }
     }
   end
-
 end

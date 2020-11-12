@@ -9,9 +9,9 @@ module Backend
       t.column :nature
       t.column :started_at
       t.column :stopped_at
-      t.column :duration, label_method: :duration_iso
+      t.column :duration, label_method: :decorated_duration
       t.column :sleep_count, class: 'center'
-      t.column :sleep_duration, label_method: :sleep_duration_iso
+      t.column :sleep_duration, label_method: :decorated_sleep_duration
       t.column :road, class: 'center'
       t.column :equipment
       t.column :provider_vendor
@@ -22,9 +22,9 @@ module Backend
       t.column :nature
       t.column :started_at
       t.column :stopped_at
-      t.column :duration, label_method: :duration_iso
+      t.column :duration, label_method: :decorated_duration
       t.column :sleep_count, class: 'center'
-      t.column :sleep_duration, label_method: :sleep_duration_iso
+      t.column :sleep_duration, label_method: :decorated_sleep_duration
       t.column :equipment_name, url: { controller: 'backend/equipments', id: 'RECORD.product_id'.c }
     end
 

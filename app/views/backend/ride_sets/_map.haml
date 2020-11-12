@@ -5,10 +5,10 @@
     ride_data = []
     ride_data_test = []
 
+    popup_lines = render(partial: 'popup', locals: { crumb: ride.crumbs.first })
     ride.crumbs.where.not(nature: "pause").each do |crumb|
       geolocation_point = Charta.new_geometry(crumb.geolocation)
       if geolocation_point
-        popup_lines = render(partial: 'popup', locals: { crumb: crumb })
         item = {
           name: crumb.nature,
           shape: geolocation_point,

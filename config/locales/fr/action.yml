@@ -7,6 +7,8 @@ fra:
       index: "Trajets géolocalisés"
       show: "Trajet géolocalisé : %{number}"
   labels:
+    area_without_overlap: "Surface sans recouvrement"
+    area_with_overlap: "Surface avec recouvrement"
     ride_set_message: "Pour synchroniser vos trajets géolocalisés avec vos capteurs connectés, veuillez configurer votre compte dans Configuration > Connexion partenaire"
     samsys_short_description: Geolocalisation des équipements
     samsys_long_description:  Samsys fournit des capteurs de geolocalisation pour le matériel agricole
