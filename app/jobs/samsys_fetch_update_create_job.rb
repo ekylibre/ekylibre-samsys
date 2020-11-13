@@ -25,105 +25,107 @@ class SamsysFetchUpdateCreateJob < ActiveJob::Base
                           }.freeze
 
   def perform
-    begin
-      # create custom field for all equipement if not exist
-      MACHINE_CUSTOM_FIELDS.each do |key, value|
-        unless cf = CustomField.find_by_name(value[:name])
-          create_custom_field_for_machine(value[:name], value[:customized_type], value[:options])
-        end
-      end
-
-      # Get all parcels for a user
-      Samsys::SamsysIntegration.fetch_fields.execute do |c|
-        c.success do |list|
-          exclude_parcels = []
-          JSON.parse(list).map do |parcel|
-            parcel_shape_samsys = Charta.new_geometry(parcel)
-            # If LandParcel Match with Parcel at Samsys store matching ids
-            exclude_parcels << LandParcel.shape_matching(parcel_shape_samsys, 0.02).ids
+    if Integration.find_by(nature: "samsys").present?
+      begin
+        # create custom field for all equipement if not exist
+        MACHINE_CUSTOM_FIELDS.each do |key, value|
+          unless cf = CustomField.find_by_name(value[:name])
+            create_custom_field_for_machine(value[:name], value[:customized_type], value[:options])
           end
+        end
 
-          # Find or Create PARCEL at SAMSYS
-          Samsys::SamsysIntegration.fetch_user_info.execute do |c|
-            c.success do |user|
-              find_or_create_parcels_samsys(exclude_parcels.flatten.uniq, user[:id])
+        # Get all parcels for a user
+        Samsys::SamsysIntegration.fetch_fields.execute do |c|
+          c.success do |list|
+            exclude_parcels = []
+            JSON.parse(list).map do |parcel|
+              parcel_shape_samsys = Charta.new_geometry(parcel)
+              # If LandParcel Match with Parcel at Samsys store matching ids
+              exclude_parcels << LandParcel.shape_matching(parcel_shape_samsys, 0.02).ids
             end
-          end
-        end
-      end
 
-      # Get all counter for a user
-      # https://doc.samsys.io/#api-Counters-Get_all_counters_of_a_user
-      Samsys::SamsysIntegration.fetch_all_counters.execute do |c|
-        c.success do |list|
-          list.map do |counter|
-            # counter attributes
-            # counter[:id]
-            # counter[:v_bat]
-            # counter[:v_ext]
-            # counter[:owner] {}
-            # counter[:association] {} --> machine {}
-
-            # NOTE : in Ekylibre model
-            # sensor has_one sensor_equipment
-            # sensor_equipment has_many localisations (in equipment)
-
-            sensor = Sensor.find_or_create_by(
-              vendor_euid: :samsys,
-              model_euid: :samsys,
-              euid: counter[:id],
-              name: counter[:id],
-              retrieval_mode: :integration
-            )
-            sensor.update!(
-              battery_level: counter[:v_bat],
-              last_transmission_at: Time.now
-            )
-
-            # find_or_create_sensor_equipment
-            sensor_equipment = find_or_create_sensor_equipment(sensor, counter, c.id)
-
-            # link the equipment to sensor
-            sensor.update!(product_id: sensor_equipment.id) if sensor_equipment
-
-            if counter[:association].any? && counter[:association][:machine].present? && sensor_equipment
-              counter[:association][:machine].each do |machine|
-                # Find or create an equipement corresponding to the machine
-                find_or_create_machine_equipment(machine, counter, sensor_equipment, c.id)
+            # Find or Create PARCEL at SAMSYS
+            Samsys::SamsysIntegration.fetch_user_info.execute do |c|
+              c.success do |user|
+                find_or_create_parcels_samsys(exclude_parcels.flatten.uniq, user[:id])
               end
             end
           end
         end
-      end
 
-      # Create Machine at Samsys
-      # Store machine's id and uuid at Samsys
-      cluster_id = []
-      machines_samsys = []
-      machines_samsys_provider_ekylibre = []
-      Samsys::SamsysIntegration.fetch_all_machines.execute do |c|
-        c.success do |list|
-          list.map do |machine|
-            cluster_id << machine["cluster"]["id"]
-            machines_samsys << machine["id"]
-            if machine["provider"].present? && machine["provider"].has_key?("uuid")
-              machines_samsys_provider_ekylibre << machine["provider"]["uuid"]
+        # Get all counter for a user
+        # https://doc.samsys.io/#api-Counters-Get_all_counters_of_a_user
+        Samsys::SamsysIntegration.fetch_all_counters.execute do |c|
+          c.success do |list|
+            list.map do |counter|
+              # counter attributes
+              # counter[:id]
+              # counter[:v_bat]
+              # counter[:v_ext]
+              # counter[:owner] {}
+              # counter[:association] {} --> machine {}
+
+              # NOTE : in Ekylibre model
+              # sensor has_one sensor_equipment
+              # sensor_equipment has_many localisations (in equipment)
+
+              sensor = Sensor.find_or_create_by(
+                vendor_euid: :samsys,
+                model_euid: :samsys,
+                euid: counter[:id],
+                name: counter[:id],
+                retrieval_mode: :integration
+              )
+              sensor.update!(
+                battery_level: counter[:v_bat],
+                last_transmission_at: Time.now
+              )
+
+              # find_or_create_sensor_equipment
+              sensor_equipment = find_or_create_sensor_equipment(sensor, counter, c.id)
+
+              # link the equipment to sensor
+              sensor.update!(product_id: sensor_equipment.id) if sensor_equipment
+
+              if counter[:association].any? && counter[:association][:machine].present? && sensor_equipment
+                counter[:association][:machine].each do |machine|
+                  # Find or create an equipement corresponding to the machine
+                  find_or_create_machine_equipment(machine, counter, sensor_equipment, c.id)
+                end
+              end
             end
           end
         end
-      end
 
-      # Create/Post at Samsys if there are no similar provider[:id] or uuid at Ekylibre
-      tractors_equipments = Equipment.where(variety: "tractor")
-      tractors_equipments.each do |tractor|
-        unless machines_samsys.include?(tractor.provider[:id]) || machines_samsys_provider_ekylibre.include?(tractor.uuid)
-          Samsys::SamsysIntegration.post_machines(tractor.name, tractor.born_at, cluster_id.uniq, tractor.uuid).execute
+        # Create Machine at Samsys
+        # Store machine's id and uuid at Samsys
+        cluster_id = []
+        machines_samsys = []
+        machines_samsys_provider_ekylibre = []
+        Samsys::SamsysIntegration.fetch_all_machines.execute do |c|
+          c.success do |list|
+            list.map do |machine|
+              cluster_id << machine["cluster"]["id"]
+              machines_samsys << machine["id"]
+              if machine["provider"].present? && machine["provider"].has_key?("uuid")
+                machines_samsys_provider_ekylibre << machine["provider"]["uuid"]
+              end
+            end
+          end
         end
+
+        # Create/Post at Samsys if there are no similar provider[:id] or uuid at Ekylibre
+        tractors_equipments = Equipment.where(variety: "tractor")
+        tractors_equipments.each do |tractor|
+          unless machines_samsys.include?(tractor.provider[:id]) || machines_samsys_provider_ekylibre.include?(tractor.uuid)
+            Samsys::SamsysIntegration.post_machines(tractor.name, tractor.born_at, cluster_id.uniq, tractor.uuid).execute
+          end
+        end
+      rescue StandardError => error
+        Rails.logger.error $!
+        Rails.logger.error $!.backtrace.join("\n")
+        ExceptionNotifier.notify_exception($!, data: { message: error })
       end
-    rescue StandardError => error
-      Rails.logger.error $!
-      Rails.logger.error $!.backtrace.join("\n")
-      ExceptionNotifier.notify_exception($!, data: { message: error })
     end
   end
 
