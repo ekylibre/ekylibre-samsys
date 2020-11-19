@@ -1,0 +1,83 @@
+:ruby
+  data = []
+  resource.crumbs.where(nature: "point").order(:read_at).each do |crumb|
+    geolocation_point = Charta.new_geometry(crumb.geolocation)
+    if geolocation_point
+      item = {
+        nature: crumb.nature,
+        name: crumb.nature,
+        shape: geolocation_point,
+        read_at: crumb.read_at,
+        trajet: resource.number
+      }
+      data << item
+    end
+  end
+
+  data_pause = []
+  resource.crumbs.where(nature: "pause").each do |crumb|
+    geolocation_point = Charta.new_geometry(crumb.geolocation)
+    if geolocation_point
+      popup_lines = render(partial: 'popup', locals: { crumb: crumb })
+      header_content = content_tag(:span, :pause.tl, class: 'sensor-name')
+      item = {
+        name: crumb.nature,
+        shape: geolocation_point,
+        popup: { header: header_content, content: popup_lines }
+      }
+      data_pause << item
+    end
+  end
+
+  data_start_end = []
+  resource.crumbs.where(nature: ["hard_start", "hard_stop"]).order(:read_at).each do |crumb|
+    geolocation_point = Charta.new_geometry(crumb.geolocation)
+    if geolocation_point
+      item = {
+        nature: crumb.nature,
+        name: crumb.nature.tl,
+        shape: geolocation_point,
+      }
+      data_start_end << item
+    end
+  end
+
+  near_parcels = []
+  crumbs_line = ::Charta.make_line(resource.crumbs.sort_by(&:read_at).map(&:geolocation))
+  if LandParcel.initial_shape_near(crumbs_line).any?
+    near_parcels << LandParcel.where('dead_at > ? AND born_at < ?', resource.started_at, resource.started_at).initial_shape_near(crumbs_line, max_distance_in_meter = 100)
+  end
+
+  near_uniq_parcels = []
+  near_parcels.flatten.uniq.each do |parcel|
+    popup_parcel = render(partial: 'popup_land_parcel', locals: { parcel: parcel })
+    header_content = content_tag(:span, parcel.name, class: 'sensor-name')
+    item = {
+      id: parcel.id,
+      name: parcel.name,
+      shape: parcel.initial_shape,
+      popup: { header: header_content, content: popup_parcel },
+      net_surface_area: parcel.net_surface_area
+    }
+    near_uniq_parcels << item
+  end
+
+= visualization do |v|
+  - if data.any?
+    - options = {fill_opacity: 0.2, fill_color: "#3171A9", color: '#FFFFFF', weight: 3}
+    - near_uniq_parcels.each do |parcel|
+      - v.serie parcel[:name], [parcel]
+      - v.simple parcel[:name], parcel[:name], options
+
+    - v.serie :main, data
+    - v.paths :ride.tl, :main
+
+    - v.serie :data_start_end, data_start_end
+    - v.points :startend, :data_start_end, colors: ['#7fbf7f', '#ff7f7f']
+    - if data_pause.any?
+      - v.serie :pause, data_pause
+      - v.pause_group :pause.tl, :pause
+    - v.control :zoom
+    - v.control :scale
+    - v.control :fullscreen
+    - v.control :layer_selector

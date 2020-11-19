@@ -1,0 +1,65 @@
+:ruby
+  all_data = []
+  colors = ['#b2b2ff', '#7fbf7f', '#ffff66', '#ff7f7f', '#ff4c4c', '#ffb732', '#b266b2']
+  resource.rides.each do |ride|
+    ride_data = []
+    ride_data_crumb = []
+
+    popup_lines = render(partial: 'popup', locals: { crumb: ride.crumbs.first })
+    ride.crumbs.where.not(nature: "pause").order(:read_at).each do |crumb|
+      geolocation_point = Charta.new_geometry(crumb.geolocation)
+      if geolocation_point
+        item = {
+          name: crumb.nature,
+          shape: geolocation_point,
+          read_at: crumb.read_at,
+          popup: { header: :ride_geo.tl, content: popup_lines },
+          Ride: crumb.ride.number
+        }
+
+        ride_data_crumb << item
+      end
+    end
+
+    ride_data.push(ride_data_crumb)
+    ride_data.push(ride.number)
+
+    all_data <<  ride_data
+  end
+
+  near_parcels = []
+  resource.rides.each do |ride|
+    crumbs_line = ::Charta.make_line(ride.crumbs.sort_by(&:read_at).map(&:geolocation))
+    if LandParcel.initial_shape_near(crumbs_line).any?
+      near_parcels << LandParcel.where('dead_at > ? AND born_at < ?', resource.started_at, resource.started_at).initial_shape_near(crumbs_line, max_distance_in_meter = 100)
+    end
+  end
+
+  near_uniq_parcels = []
+  near_parcels.flatten.uniq.each do |parcel|
+    popup_parcel = render(partial: 'backend/rides/popup_land_parcel', locals: { parcel: parcel })
+    header_content = content_tag(:span, parcel.name, class: 'sensor-name')
+    item = {
+      id: parcel.id,
+      name: parcel.name,
+      shape: parcel.initial_shape,
+      popup: { header: header_content, content: popup_parcel },
+      net_surface_area: parcel.net_surface_area
+    }
+    near_uniq_parcels << item
+  end
+
+= visualization do |v|
+  - options = {fill_opacity: 0.2, fill_color: "#3171A9", color: '#FFFFFF', weight: 3}
+  - near_uniq_parcels.each do |parcel|
+    - v.serie parcel[:name], [parcel]
+    - v.simple parcel[:name], parcel[:name], options
+
+  - if all_data.any?
+    - all_data.each_with_index do |data, index|
+      - v.serie data[1], data[0]
+      - v.paths :ride, data[1], colors: [colors[index%colors.length]]
+    - v.control :zoom
+    - v.control :scale
+    - v.control :fullscreen
+    - v.control :layer_selector
