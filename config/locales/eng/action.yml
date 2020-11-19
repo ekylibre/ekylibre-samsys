@@ -23,6 +23,7 @@ To synchronize your geolocated trips with your connected sensors, please configu
     scan: "Scan"
     start: "Start"
     stop: "Stop"
+    startend: "Start / end"
     ride_geo: "Geolocated ride"
     ride_number: "Number"
     ride_paused_at: "Break at"

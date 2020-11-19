@@ -3,10 +3,10 @@
   colors = ['#b2b2ff', '#7fbf7f', '#ffff66', '#ff7f7f', '#ff4c4c', '#ffb732', '#b266b2']
   resource.rides.each do |ride|
     ride_data = []
-    ride_data_test = []
+    ride_data_crumb = []
 
     popup_lines = render(partial: 'popup', locals: { crumb: ride.crumbs.first })
-    ride.crumbs.where.not(nature: "pause").each do |crumb|
+    ride.crumbs.where.not(nature: "pause").order(:read_at).each do |crumb|
       geolocation_point = Charta.new_geometry(crumb.geolocation)
       if geolocation_point
         item = {
@@ -17,11 +17,11 @@
           Ride: crumb.ride.number
         }
 
-        ride_data_test << item
+        ride_data_crumb << item
       end
     end
 
-    ride_data.push(ride_data_test)
+    ride_data.push(ride_data_crumb)
     ride_data.push(ride.number)
 
     all_data <<  ride_data
@@ -31,7 +31,7 @@
   resource.rides.each do |ride|
     crumbs_line = ::Charta.make_line(ride.crumbs.sort_by(&:read_at).map(&:geolocation))
     if LandParcel.initial_shape_near(crumbs_line).any?
-      near_parcels << LandParcel.initial_shape_near(crumbs_line, max_distance_in_meter = 100)
+      near_parcels << LandParcel.where('dead_at > ? AND born_at < ?', resource.started_at, resource.started_at).initial_shape_near(crumbs_line, max_distance_in_meter = 100)
     end
   end
 
@@ -57,7 +57,7 @@
 
   - if all_data.any?
     - all_data.each_with_index do |data, index|
-      - v.serie data[1], data[0].sort_by {|h| h[:read_at]}
+      - v.serie data[1], data[0]
       - v.paths :ride, data[1], colors: [colors[index%colors.length]]
     - v.control :zoom
     - v.control :scale

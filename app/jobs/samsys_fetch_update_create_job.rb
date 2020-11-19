@@ -14,7 +14,7 @@ class SamsysFetchUpdateCreateJob < ActiveJob::Base
                             }.freeze
 
   MACHINE_CUSTOM_FIELDS = {
-                          "model" => {name: "Modèle", customized_type: "Equipment", options: {column_name: "model_name"}},
+                          "model" => {name: "Modèle", customized_type: "Equipment", options: {column_name: "type_name"}},
                           "brand" => {name: "Marque", customized_type: "Equipment", options: {column_name: "brand_name"}}
                           }.freeze
 

@@ -22,6 +22,7 @@ fra:
     scan: "Balayage"
     start: "Démarrer"
     stop: "Arrêtez"
+    startend: "Début / fin"
     ride_geo: "Trajet géolocalisé"
     ride_number: "Numéro"
     ride_paused_at: "Pause à"
