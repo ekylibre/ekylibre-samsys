@@ -36,7 +36,7 @@ class RideSetMap
   private
 
     def near_parcels
-      crumbs_line = ::Charta.make_line(resource.crumbs.order(:read_at).pluck(:geolocation)).simplify(0.00001)
+      crumbs_line = ::Charta.make_line(resource.crumbs.order(:read_at).pluck(:geolocation)).simplify(0.0001)
       LandParcel.availables(at: resource.started_at).initial_shape_near(crumbs_line, 100)
     end
 end
