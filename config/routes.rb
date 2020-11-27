@@ -23,6 +23,11 @@ Rails.application.routes.draw do
         get :list_rides
       end
     end
+
+    namespace :visualizations do
+      resource :ride_sets_visualizations, only: :show
+      resource :rides_visualizations, only: :show
+    end
   end
 
 end

@@ -13,4 +13,8 @@
 
 = cobbles do |c|
   - c.cobble :map do
-    = render 'map'
+    = visualization(async_url: backend_visualizations_rides_visualizations_path(ride_id: resource.id)) do |v|
+      - v.control :zoom
+      - v.control :scale
+      - v.control :fullscreen
+      - v.control :layer_selector

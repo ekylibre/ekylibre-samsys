@@ -24,7 +24,7 @@ class RideSetMap
   def parcels_near_rides
     @parcels_near_rides ||= near_parcels.map do |parcel|
       popup_parcel = view.render(partial: 'backend/rides/popup_land_parcel', locals: { parcel: parcel })
-      header_content = content_tag(:span, parcel.name, class: 'sensor-name')
+      header_content = view.content_tag(:span, parcel.name, class: 'sensor-name')
       { id: parcel.id,
         name: parcel.name,
         shape: parcel.initial_shape,
@@ -36,7 +36,7 @@ class RideSetMap
   private
 
     def near_parcels
-      crumbs_line = ::Charta.make_line(resource.crumbs.order(:read_at).pluck(:geolocation))
+      crumbs_line = ::Charta.make_line(resource.crumbs.order(:read_at).pluck(:geolocation)).simplify(0.00001)
       LandParcel.availables(at: resource.started_at).initial_shape_near(crumbs_line, 100)
     end
 end
