@@ -4,7 +4,6 @@ module Backend
       respond_to :json
 
       def show
-        colors = ['#b2b2ff', '#7fbf7f', '#ffff66', '#ff7f7f', '#ff4c4c', '#ffb732', '#b266b2']
         ride_set = RideSet.find(params[:ride_set_id])
         ride_set_map = RideSetMap.new(ride_set, view_context)
 
