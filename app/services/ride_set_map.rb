@@ -8,28 +8,24 @@ class RideSetMap
   end
 
   def rides
-    @rides ||= resource.rides.map.with_index do |ride, index|
-      popup_lines = view.render(partial: 'popup', locals: { crumb: ride.crumbs.first })
+    resource.rides.map.with_index do |ride, index|
+      popup_lines = view.render(partial: 'popup', locals: { ride: ride })
       ride_crumbs = ride.crumbs.map do |crumb|
-        { name: crumb.nature,
-          shape: Charta.new_geometry(crumb.geolocation),
-          read_at: crumb.read_at,
-          popup: { header: :ride_geo.tl, content: popup_lines },
-          Ride: crumb.ride.number }
+        { shape: Charta.new_geometry(crumb.geolocation),
+        popup: { header: :ride_geo.tl, content: popup_lines },
+        ride: ride.number }
       end
       OpenStruct.new({ name: ride.number, crumbs: ride_crumbs, colors: [COLORS[index % COLORS.length]] })
     end
   end
 
   def parcels_near_rides
-    @parcels_near_rides ||= near_parcels.map do |parcel|
+    near_parcels.map do |parcel|
       popup_parcel = view.render(partial: 'backend/rides/popup_land_parcel', locals: { parcel: parcel })
       header_content = view.content_tag(:span, parcel.name, class: 'sensor-name')
-      { id: parcel.id,
-        name: parcel.name,
+      { name: parcel.name,
         shape: parcel.initial_shape,
-        popup: { header: header_content, content: popup_parcel },
-        net_surface_area: parcel.net_surface_area }
+        popup: { header: header_content, content: popup_parcel } }
     end
   end
 

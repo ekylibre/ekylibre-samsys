@@ -4,7 +4,6 @@ module Backend
       respond_to :json
 
       def show
-        config = {}
         ride = Ride.find(params[:ride_id])
         ride_map = RideMap.new(ride, view_context)
 
@@ -15,7 +14,7 @@ module Backend
             v.simple parcel[:name], parcel[:name], options
           end
           v.serie :ride, ride_map.crumbs
-          v.paths :ride.tl, :ride
+          v.paths :ride, :ride
           v.serie :data_start_end, ride_map.start_end_crumbs
           v.points :startend, :data_start_end, colors: ['#7fbf7f', '#ff7f7f']
           if ride_map.pause_crumbs.any?
