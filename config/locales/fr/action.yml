@@ -2,7 +2,7 @@ fra:
   actions: 
     backend/rides:
       index: "Trajets géolocalisés"
-      show: "Trajet géolocalisé: %{number}"
+      show: "Section du trajet géolocalisé : %{number}"
     backend/ride_sets:
       index: "Trajets géolocalisés"
       show: "Trajet géolocalisé : %{number}"

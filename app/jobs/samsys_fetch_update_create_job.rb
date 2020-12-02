@@ -246,7 +246,7 @@ class SamsysFetchUpdateCreateJob < ActiveJob::Base
     # Get all activities of machine, we can have multiple roads and works
     Samsys::SamsysIntegration.fetch_activities_machine(machine[:id]).execute do |c|
       c.success do |list|
-        JSON.parse(list).map do |activity|
+        JSON.parse(list).sort_by{|h| h[:start_date]}.reverse.map do |activity|
           # Find or create Ride Set (Equivalent of activity at Samsys )
           ride_sets = RideSet.where("provider ->> 'id' = ?", activity["id"])
           if ride_sets.any?

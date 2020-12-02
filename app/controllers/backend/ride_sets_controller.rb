@@ -4,7 +4,7 @@ module Backend
 
     unroll
 
-    list do |t|
+    list(order: { started_at: :desc }) do |t|
       t.column :number, url: true
       t.column :nature
       t.column :started_at
@@ -17,7 +17,7 @@ module Backend
       t.column :provider_vendor
     end
 
-    list(:rides, model: :ride, conditions: { ride_set_id: 'params[:id]'.c }) do |t|
+    list(:rides, model: :ride, conditions: { ride_set_id: 'params[:id]'.c }, order: 'rides.started_at DESC') do |t|
       t.column :number, url: true
       t.column :nature
       t.column :started_at
@@ -33,7 +33,7 @@ module Backend
 
       super
     end
-
+    
     private
 
       def notify_ride_set_creation_warning

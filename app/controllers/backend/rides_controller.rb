@@ -9,7 +9,7 @@ module Backend
       search_conditions(rides: [:equipment_name])
     end
 
-    list(conditions: rides_conditions) do |t|
+    list(conditions: rides_conditions, order: { started_at: :desc }) do |t|
       t.action :destroy, if: :destroyable?
       t.column :number, url: true
       t.column :started_at
