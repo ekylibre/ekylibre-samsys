@@ -152,7 +152,7 @@ module Samsys
       # counters = JSON.parse(call.body).map{|p| p.deep_symbolize_keys}
 
       # Call API
-      get_json(COUNTERS_URL, 'Authorization' => "JWT #{integration.parameters['token']}") do |r|
+      get_json(COUNTERS_URL, 'Authorization' => "JWT #{integration.reload.parameters['token']}") do |r|
         r.success do
           list = JSON(r.body).map{|p| p.deep_symbolize_keys}
         end
@@ -167,7 +167,7 @@ module Samsys
         get_token
       end
       # Call API
-      get_json("#{BASE_URL}/machines", 'Authorization' => "JWT #{integration.parameters['token']}") do |r|
+      get_json("#{BASE_URL}/machines", 'Authorization' => "JWT #{integration.reload.parameters['token']}") do |r|
         r.success do
           list = JSON(r.body)
         end
@@ -247,9 +247,9 @@ module Samsys
       started_on = (Time.now - 90.days).strftime("%FT%TZ")
 
       # Call API
-      get_html("#{MACHINES_URL}/#{machine_id}/activities?start_date=#{started_on}&end_date=#{stopped_on}", 'Authorization' => "JWT #{integration.parameters['token']}") do |r|
+      get_html("#{MACHINES_URL}/#{machine_id}/activities?start_date=#{started_on}&end_date=#{stopped_on}", 'Authorization' => "JWT #{integration.reload.parameters['token']}") do |r|
         r.success do
-          list = r.body
+          JSON.parse(r.body)
         end
       end
     end
