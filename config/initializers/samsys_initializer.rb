@@ -3,5 +3,7 @@ Samsys::SamsysIntegration.on_check_success do
 end
 
 Samsys::SamsysIntegration.run every: :day do
-  SamsysFetchUpdateCreateJob.perform_now
+  if Integration.find_by(nature: "samsys").present?
+    SamsysFetchUpdateCreateJob.perform_now
+  end
 end
