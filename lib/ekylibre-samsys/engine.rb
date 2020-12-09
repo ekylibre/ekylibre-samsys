@@ -16,17 +16,12 @@ module EkylibreSamsys
       app.config.x.restfully_manageable.view_paths << EkylibreSamsys::Engine.root.join('app', 'views')
     end
 
-    initializer :ekylibre_samsys_extend_controllers do |app|
-      app.config.paths['app/views'].unshift EkylibreSamsys::Engine.root.join('app/views').to_s
-      ::Backend::ProductsController.send(:include, ::EkylibreSamsys::BaseControllerExt)
-      ::Backend::ProductsController.class_eval do
-        prepend_view_path EkylibreSamsys::Engine.root.join('app/views').to_s
-        before_action :prepare_views
+    initializer :ekylibre_ekyviti_extend_controllers do |_app|
+      ::Backend::ProductsController.include EkylibreSamsys::ProductsControllerExt
+    end
 
-        def prepare_views
-          prepend_view_path EkylibreSamsys::Engine.root.join('app/views').to_s
-        end
-      end
+    config.after_initialize do |app|
+      ::Backend::ProductsController.prepend_view_path EkylibreSamsys::Engine.root.join('app/views')
     end
   end
 end

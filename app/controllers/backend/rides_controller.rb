@@ -1,5 +1,5 @@
 module Backend
-  class RidesController < EkylibreSamsys::ApplicationController
+  class RidesController < Backend::BaseController
 
     manage_restfully
 
