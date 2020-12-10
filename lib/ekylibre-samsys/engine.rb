@@ -17,11 +17,7 @@ module EkylibreSamsys
     end
 
     initializer :ekylibre_ekyviti_extend_controllers do |_app|
-      ::Backend::ProductsController.include EkylibreSamsys::ProductsControllerExt
-    end
-
-    config.after_initialize do |app|
-      ::Backend::ProductsController.prepend_view_path EkylibreSamsys::Engine.root.join('app/views')
+      ::Backend::EquipmentsController.include EkylibreSamsys::EquipmentsControllerExt
     end
   end
 end
