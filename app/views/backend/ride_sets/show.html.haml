@@ -15,7 +15,7 @@
 
     .med-info
       %span.title= :road.tl
-      %span.value= resource.road.round(2)
+      %span.value= resource.road.nil? || resource.road.to_i.zero? ? '-' : resource.road.round(2)
 
     - if resource.area_without_overlap
       .med-info
