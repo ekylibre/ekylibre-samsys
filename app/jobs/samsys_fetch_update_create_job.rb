@@ -92,6 +92,7 @@ class SamsysFetchUpdateCreateJob < ActiveJob::Base
                 find_or_create_machine_equipment(machine, counter, sensor_equipment, c.id)
               end
             end
+
           end
         end
       end
@@ -119,6 +120,12 @@ class SamsysFetchUpdateCreateJob < ActiveJob::Base
         unless machines_samsys.include?(tractor.provider[:id]) || machines_samsys_provider_ekylibre.include?(tractor.uuid)
           Samsys::SamsysIntegration.post_machines(tractor.name, tractor.born_at, cluster_id.uniq.first, tractor.uuid).execute
         end
+      end
+
+      # Delete ride set without rides after synchro new parameters from Samsys
+      ride_set_empty = RideSet.select{|c| c.rides.count == 0}
+      if ride_set_empty.any?
+        RideSet.delete(ride_set_empty)
       end
 
     rescue StandardError => error
@@ -285,6 +292,8 @@ class SamsysFetchUpdateCreateJob < ActiveJob::Base
           rides = Ride.where("provider ->> 'id' = ?", work["id"])
           if rides.any?
             ride = rides.first
+            # Update ride's ride_set_id with new id from samsys's update
+            ride.update!(ride_set_id: ride_set_id) if ride.ride_set_id != ride_set_id
             create_crumb_for_work_geolocations(work["id"], ride.id)
             create_crumb_for_works_geolocation_break(work["breaks"], ride.id)
           else
