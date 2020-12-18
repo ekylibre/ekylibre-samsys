@@ -4,7 +4,7 @@ require_relative '../test_helper'
 class SamsysIntegrationTest < ::Ekylibre::Testing::ApplicationTestCase::WithFixtures
   setup do
     VCR.use_cassette("auth") do
-      integration = Integration.create(nature: 'samsys', parameters: { email: 'julien@novagency.eu', password: 'Trully0008!' })
+      integration = Integration.create(nature: 'samsys', parameters: { email: '#', password: '#' })
     end
   end
 
