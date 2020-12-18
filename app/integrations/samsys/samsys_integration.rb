@@ -29,7 +29,7 @@ module Samsys
     authenticate_with :check do
       parameter :email
       parameter :password
-    end
+    end 
 
     calls :get_token, :fetch_all_counters, :fetch_j1939_bus, :fetch_geolocation, :fetch_fields_worked, :fetch_activities_machine, :fetch_works_activity, :fetch_works_machine, :fetch_work_geolocations, :post_machines, :fetch_all_clusters, :fetch_all_machines, :fetch_fields, :post_parcels, :fetch_user_info
 
@@ -152,7 +152,7 @@ module Samsys
       # counters = JSON.parse(call.body).map{|p| p.deep_symbolize_keys}
 
       # Call API
-      get_json(COUNTERS_URL, 'Authorization' => "JWT #{integration.parameters['token']}") do |r|
+      get_json(COUNTERS_URL, 'Authorization' => "JWT #{integration.reload.parameters['token']}") do |r|
         r.success do
           list = JSON(r.body).map{|p| p.deep_symbolize_keys}
         end
@@ -167,7 +167,7 @@ module Samsys
         get_token
       end
       # Call API
-      get_json("#{BASE_URL}/machines", 'Authorization' => "JWT #{integration.parameters['token']}") do |r|
+      get_json("#{BASE_URL}/machines", 'Authorization' => "JWT #{integration.reload.parameters['token']}") do |r|
         r.success do
           list = JSON(r.body)
         end
@@ -236,20 +236,20 @@ module Samsys
     # Get Activities of a machine
     # DCC https://doc.samsys.io/#api-Machines-A_machine_activities
     # https://app.samsys.io/api/v1/machines/:id_machine/activities?start_date=:start_date&end_date=:end_date
-    def fetch_activities_machine(machine_id)
+    def fetch_activities_machine(machine_id, started_on, stopped_on)
       integration = fetch
 
       # Get token
       if integration.parameters['token'].blank?
         get_token
       end
-      stopped_on = Time.now.strftime("%FT%TZ")
-      started_on = (Time.now - 90.days).strftime("%FT%TZ")
+      # stopped_on = Time.now.strftime("%FT%TZ")
+      # started_on = (Time.now - 90.days).strftime("%FT%TZ")
 
       # Call API
-      get_html("#{MACHINES_URL}/#{machine_id}/activities?start_date=#{started_on}&end_date=#{stopped_on}", 'Authorization' => "JWT #{integration.parameters['token']}") do |r|
+      get_html("#{MACHINES_URL}/#{machine_id}/activities?start_date=#{started_on}&end_date=#{stopped_on}", 'Authorization' => "JWT #{integration.reload.parameters['token']}") do |r|
         r.success do
-          list = r.body
+          JSON.parse(r.body)
         end
       end
     end
@@ -266,7 +266,7 @@ module Samsys
       end 
 
             # Call API
-      get_html("#{BASE_URL}/meta_works/#{activity_id}", 'Authorization' => "JWT #{integration.parameters['token']}") do |r|
+      get_html("#{BASE_URL}/meta_works/#{activity_id}", 'Authorization' => "JWT #{integration.reload.parameters['token']}") do |r|
         r.success do
           list = r.body
         end
@@ -288,7 +288,7 @@ module Samsys
 
 
       # Call API
-      get_html("#{MACHINES_URL}/#{machine_id}/works?start_date=#{started_on}&end_date=#{stopped_on}", 'Authorization' => "JWT #{integration.parameters['token']}") do |r|
+      get_html("#{MACHINES_URL}/#{machine_id}/works?start_date=#{started_on}&end_date=#{stopped_on}", 'Authorization' => "JWT #{integration.reload.parameters['token']}") do |r|
         r.success do
           list = r.body
         end
@@ -309,7 +309,7 @@ module Samsys
       end  
 
       # Call API
-       get_html("#{BASE_URL}/works/#{work_id}/geolocations", 'Authorization' => "JWT #{integration.parameters['token']}") do |r|
+       get_html("#{BASE_URL}/works/#{work_id}/geolocations", 'Authorization' => "JWT #{integration.reload.parameters['token']}") do |r|
         r.success do
           list = r.body
         end
