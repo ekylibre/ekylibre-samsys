@@ -1,4 +1,7 @@
 require 'vcr'
+require('dotenv')
+
+Dotenv.load(File.join(EkylibreSamsys::Engine.root, ".env"))
 
 VCR.configure do |config|
   config.allow_http_connections_when_no_cassette = false

@@ -4,7 +4,7 @@ require_relative '../test_helper'
 class SamsysIntegrationTest < ::Ekylibre::Testing::ApplicationTestCase::WithFixtures
   setup do
     VCR.use_cassette("auth") do
-      integration = Integration.create(nature: 'samsys', parameters: { email: '#', password: '#' })
+      Integration.create(nature: 'samsys', parameters: { email: ENV['SAMSYS_TEST_EMAIL'], password: ENV['SAMSYS_TEST_PASSWORD'] })
     end
   end
 
@@ -23,7 +23,7 @@ class SamsysIntegrationTest < ::Ekylibre::Testing::ApplicationTestCase::WithFixt
     VCR.use_cassette("get_machines") do
       Samsys::SamsysIntegration.fetch_all_machines.execute do |call|
         call.success do |response|
-         assert_equal Hash, response.first.class, 'Should return an array of hash machines'
+          assert_equal Hash, response.first.class, 'Should return an array of hash machines'
         end
       end
     end

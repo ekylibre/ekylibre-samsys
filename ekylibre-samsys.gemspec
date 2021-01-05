@@ -18,4 +18,5 @@ Gem::Specification.new do |s|
   s.test_files = Dir["test/**/*"]
   s.add_dependency 'vcr'
   s.add_dependency 'webmock'
+  s.add_dependency 'dotenv'
 end
