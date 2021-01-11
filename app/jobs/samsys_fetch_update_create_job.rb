@@ -250,7 +250,7 @@ class SamsysFetchUpdateCreateJob < ActiveJob::Base
     end
 
     stopped_on = Time.now.strftime("%FT%TZ")
-    started_on = (Time.now - 90.days).strftime("%FT%TZ")
+    started_on = (Time.now - 250.days).strftime("%FT%TZ")
 
     # Get all activities of machine, we can have multiple roads and works
     Samsys::SamsysIntegration.fetch_activities_machine(machine[:id], started_on, stopped_on).execute do |c|
