@@ -37,7 +37,7 @@ class SamsysFetchUpdateCreateJob < ActiveJob::Base
       Samsys::SamsysIntegration.fetch_fields.execute do |c|
         c.success do |list|
           exclude_parcels = []
-          JSON.parse(list).map do |parcel|
+          list.map do |parcel|
             parcel_shape_samsys = Charta.new_geometry(parcel)
             # If LandParcel Match with Parcel at Samsys store matching ids
             exclude_parcels << LandParcel.shape_matching(parcel_shape_samsys, 0.02).ids
@@ -249,10 +249,13 @@ class SamsysFetchUpdateCreateJob < ActiveJob::Base
       )
     end
 
+    stopped_on = Time.now.strftime("%FT%TZ")
+    started_on = (Time.now - 90.days).strftime("%FT%TZ")
+
     # Get all activities of machine, we can have multiple roads and works
-    Samsys::SamsysIntegration.fetch_activities_machine(machine[:id]).execute do |c|
+    Samsys::SamsysIntegration.fetch_activities_machine(machine[:id], started_on, stopped_on).execute do |c|
       c.success do |list|
-        JSON.parse(list).sort_by{|h| h[:start_date]}.reverse.map do |activity|
+        list.sort_by{|h| h[:start_date]}.reverse.map do |activity|
           # Find or create Ride Set (Equivalent of activity at Samsys )
           ride_sets = RideSet.where("provider ->> 'id' = ?", activity["id"])
           if ride_sets.any?
@@ -287,7 +290,7 @@ class SamsysFetchUpdateCreateJob < ActiveJob::Base
   def create_ride(activity_id, machine_equipment, ride_set_id)
     Samsys::SamsysIntegration.fetch_works_activity(activity_id).execute do |c|
       c.success do |list| 
-        JSON.parse(list).map do |work|
+        list.map do |work|
           # Find or create a Ride
           rides = Ride.where("provider ->> 'id' = ?", work["id"])
           if rides.any?
@@ -333,7 +336,7 @@ class SamsysFetchUpdateCreateJob < ActiveJob::Base
     Samsys::SamsysIntegration.fetch_work_geolocations(work_id).execute do |c| 
       c.success do |list| 
         crumbs_all = []
-        JSON.parse(list).map do |crumb|
+        list.map do |crumb|
           crumbs_all.push(crumb)
         end
 
