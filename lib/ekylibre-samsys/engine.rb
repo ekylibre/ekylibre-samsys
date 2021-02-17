@@ -16,8 +16,10 @@ module EkylibreSamsys
       app.config.x.restfully_manageable.view_paths << EkylibreSamsys::Engine.root.join('app', 'views')
     end
 
-    initializer :ekylibre_ekyviti_extend_controllers do |_app|
-      ::Backend::EquipmentsController.include EkylibreSamsys::EquipmentsControllerExt
+    if (::ActiveRecord::Base.connection_pool.with_connection(&:active?) rescue false)
+      initializer :ekylibre_ekyviti_extend_controllers do |_app|
+        ::Backend::EquipmentsController.include EkylibreSamsys::EquipmentsControllerExt
+      end
     end
   end
 end
