@@ -83,7 +83,6 @@ module Samsys
               "provider": {"name": "Ekylibre", "uuid": machine_uuid}
             }
       
-
       post_json("#{BASE_URL}/machines", machine, 'Authorization' => "JWT #{integration.parameters['token']}") do |r|
         r.success do
           Rails.logger.info 'CREATED MACHINE'.green

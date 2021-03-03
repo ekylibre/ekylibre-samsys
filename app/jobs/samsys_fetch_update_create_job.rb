@@ -139,41 +139,10 @@ class SamsysFetchUpdateCreateJob < ActiveJob::Base
       end
 
       # Create Machine at Samsys
-      # Store machine's id and uuid at Samsys
-      cluster_id = []
-      machines_samsys = []
-      machines_samsys_provider_ekylibre = []
-      Samsys::SamsysIntegration.fetch_all_machines.execute do |c|
-        c.success do |list|
-          list.map do |machine|
-            cluster_id << machine["cluster"]["id"]
-            machines_samsys << machine["id"]
-            if machine["provider"].present? && machine["provider"].has_key?("uuid")
-              machines_samsys_provider_ekylibre << machine["provider"]["uuid"]
-            end
-          end
-        end 
-      end
-      
-      variant_name = ["grinder", "silage_distributeur", "forager", "spreader_trailer", "spreader", "hay_rake", "wheel_loader", "baler",
-        "mower", "baler", "bale_collector", "tractor", "harvester", "implanter", "sleve_shaker", "reaper", "arboricultural_cultivator", "harrow",
-      "hoe", "plow", "stubble_cultivator", "soil_loosener", "roll", "vibrocultivator", "employee", "sprayer", "wheel_loader", "trailer",
-      "grape_trailer", "sower", "telescopic_handler", "truck", "water_bowser", "car"]
-
-      # Create/Post at Samsys if there are no similar provider[:id] or uuid at Ekylibre
-      equipments_to_create = Equipment.joins(:variant).merge(ProductNatureVariant.where(reference_name: variant_name))
-      equipments_to_create.each do |equipment|
-        unless machines_samsys.include?(equipment.provider[:id]) || machines_samsys_provider_ekylibre.include?(equipment.uuid)
-          machine_type = SAMSYS_MACHINE_TYPE[equipment.variant.reference_name.downcase]
-          Samsys::SamsysIntegration.post_machines(equipment.name, equipment.born_at, machine_type, cluster_id.uniq.first, equipment.uuid).execute
-        end
-      end
+      find_or_create_equipment_at_samsys
 
       # Delete ride set without rides after synchro new parameters from Samsys
-      ride_set_empty = RideSet.select{|c| c.rides.count == 0}
-      if ride_set_empty.any?
-        RideSet.delete(ride_set_empty)
-      end
+      delete_ride_sets_without_rides
 
     rescue StandardError => error
       Rails.logger.error $!
@@ -183,6 +152,61 @@ class SamsysFetchUpdateCreateJob < ActiveJob::Base
   end
 
   private
+
+  def delete_ride_sets_without_rides
+    ride_set_empty = RideSet.select{|c| c.rides.count == 0}
+    if ride_set_empty.any?
+      RideSet.delete(ride_set_empty)
+    end
+  end
+
+  def find_or_create_machine_equipment_samsys
+    # Store machine's id and uuid at Samsys
+    cluster_id = []
+    machines_samsys = []
+    machines_samsys_provider_ekylibre = []
+    Samsys::SamsysIntegration.fetch_all_machines.execute do |c|
+      c.success do |list|
+        list.map do |machine|
+          cluster_id << machine["cluster"]["id"]
+          machines_samsys << machine["id"]
+          if machine["provider"].present? && machine["provider"].has_key?("uuid")
+            machines_samsys_provider_ekylibre << machine["provider"]["uuid"]
+          end
+        end
+      end 
+    end
+
+    # Create/Post at Samsys if there are no similar provider[:id] or uuid at Ekylibre
+    # Equipment variant name to find or create at Samsys
+    variant_name = [
+                    "grinder", "silage_distributeur", "forager", "spreader_trailer", "spreader", "hay_rake", 
+                    "wheel_loader", "baler", "mower", "baler", "bale_collector", "tractor", "harvester", 
+                    "implanter", "sleve_shaker", "reaper", "arboricultural_cultivator", "harrow",
+                    "hoe", "plow", "stubble_cultivator", "soil_loosener", "roll", "vibrocultivator", 
+                    "employee", "sprayer", "wheel_loader", "trailer", "grape_trailer", "sower", 
+                    "telescopic_handler", "truck", "water_bowser", "car"
+                  ]
+
+    machine_equipments_to_create = Equipment.joins(:variant).merge(ProductNatureVariant.where(reference_name: variant_name))
+
+    machine_equipments_to_create.each do |machine_equipment|
+      unless machines_samsys.include?(machine_equipment.provider[:id]) || machines_samsys_provider_ekylibre.include?(machine_equipment.uuid)
+
+        machine_type = SAMSYS_MACHINE_TYPE[machine_equipment.variant.reference_name.downcase]
+        Samsys::SamsysIntegration.post_machines(machine_equipment.name, machine_equipment.born_at, machine_type, cluster_id.uniq.first, machine_equipment.uuid).execute
+
+        # Once equipment is created at Samsys find it with uuid and update provider column at Ekylibre
+        find_machine_equipment_samsys = Samsys::SamsysIntegration.fetch_all_machines.execute { |c| 
+          c.success { |list| list.reject { |n| n["provider"].nil? }.find { |n| n["provider"]["uuid"] == machine_equipment.uuid 
+        }}}
+        
+        Equipment.find_by(uuid: machine_equipment.uuid ).update!(
+          provider: { vendor: "Samsys", name: "samsys_equipment", id: find_machine_equipment_samsys["id"] }
+        )
+      end
+    end
+  end
 
   # Find or Create parcels at Samsys
   # We got the parcels that exclude all parcels presents at Samsys (Thanks to the ID of Parcel)
