@@ -65,25 +65,24 @@ module Samsys
     end
 
     # POST MACHINE
-    def post_machines(machine_name, machine_born_at, cluster_id, machine_uuid)
+    def post_machines(machine_name, machine_born_at, machine_type, cluster_id, machine_uuid)
       integration = fetch
       # Get token
       if integration.parameters['token'].blank?
         get_token
       end
 
-      machine = [
-          {
+      machine = {
               "name": machine_name,
               "start_date": machine_born_at,
               "cluster": cluster_id,
-              "machine_type": "tracteur agricole",
+              "machine_type": machine_type,
               "brand": machine_name,
               "road_count_policy": "separate",
               "aux_configurations": {},
               "provider": {"name": "Ekylibre", "uuid": machine_uuid}
-          }
-      ]
+            }
+      
 
       post_json("#{BASE_URL}/machines", machine, 'Authorization' => "JWT #{integration.parameters['token']}") do |r|
         r.success do

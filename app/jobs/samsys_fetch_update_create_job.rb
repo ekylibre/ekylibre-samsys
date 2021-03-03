@@ -23,14 +23,13 @@ class SamsysFetchUpdateCreateJob < ActiveJob::Base
                           "groupeurs de balles" => :bale_collector, "matériel de manutention du fourrage" => :baler, "pirouette" => :baler,
                           "presse enrubanneuse" => :baler, "presse moyenne densité" => :baler, "presse à balles rondes" => :baler,
                           "presse haute densité" => :baler, "surélévateur" => :forklift, "toupie" => :hay_rake, 
-                          "presse à balles rondes" => :baler, "retourneuse" => :baler, "souleveuse" => :baler,
-                          "automotrice" => :tractor, "bâchage de tas" => :tractor, "intégrale" => :tractor, 
-                          "aligneuse" => :tractor, "arracheuses de pommes de terre" => :harvester, "broyeur de fanes" => :grinder,
-                          "butteuses" => :tractor, "matériel pommes de terre - autres" => :tractor, "planteuses de pommes de terre" => :implanter,
+                          "retourneuse" => :baler, "souleveuse" => :baler, "automotrice" => :tractor, "bâchage de tas" => :tractor, 
+                          "intégrale" => :tractor, "arracheuses de pommes de terre" => :harvester, "butteuses" => :tractor, 
+                          "matériel pommes de terre - autres" => :tractor, "planteuses de pommes de terre" => :implanter,
                           "tamiseuses" => :sieve_shaker, "moissonneuses batteuses" => :reaper, "moissonneuses batteuses - autre" => :reaper,
-                          "cultivateurs à axe horizontal" => :arboricultural_cultivator, "herses alternatives" => :harrow, "herses rotatives" => :harrow,
-                          "machines à bêcher" => :harrow, "matériel d'épierrage" => :harrow, "bineuses" => :hoe,
-                          "charrues" => :plow, "chisels" => :plow, "combinés de préparation de sol" => :plow,
+                          "cultivateurs à axe horizontal" => :arboricultural_cultivator, "herses alternatives" => :harrow, 
+                          "herses rotatives" => :harrow, "machines à bêcher" => :harrow, "matériel d'épierrage" => :harrow, 
+                          "bineuses" => :hoe, "charrues" => :plow, "chisels" => :plow, "combinés de préparation de sol" => :plow,
                           "cover crops" => :plow, "déchaumeurs" => :stubble_cultivator, "décompacteurs" => :soil_loosener,
                           "herses rigides" => :harrow, "herses étrillesRouleaux" => :harrow, "rouleau" => :roll,
                           "vibroculteurs" => :vibrocultivator, "pieton" => :employee, "pulvérisateur automoteur" => :sprayer,
@@ -38,11 +37,10 @@ class SamsysFetchUpdateCreateJob < ActiveJob::Base
                           "autres remorques agricoles" => :trailer, "benne agricole" => :trailer, "bennes" => :trailer,
                           "bennes TP" => :trailer, "bennes à vendanges" => :grape_trailer, "bétaillères" => :trailer,
                           "plateau fourrager" => :trailer, "combinés de semis" => :sower, "semoir - autre" => :sower,
-                          "semoir monograine" => :sower, "semoirs en ligne conventionnel" => :sower, "semoirs pour semis simplifié" => :sower,
-                          "telescopique" => :telescopic_handler, "bennes" => :trailer, "camions" => :truck,
-                          "citernes" => :water_bowser, "pelles" => :tractor,  "VL" => :car, "VUL" => :car 
+                          "semoir monograine" => :sower, "semoirs en ligne conventionnel" => :sower, 
+                          "semoirs pour semis simplifié" => :sower, "telescopique" => :telescopic_handler, "camions" => :truck,
+                          "citernes" => :water_bowser, "pelles" => :tractor, "VL" => :car, "VUL" => :car 
                         }.freeze
-                            }.freeze
 
   MACHINE_CUSTOM_FIELDS = {
                           "model" => {name: "Modèle", customized_type: "Equipment", options: {column_name: "type_name"}},
@@ -54,6 +52,18 @@ class SamsysFetchUpdateCreateJob < ActiveJob::Base
                           :engine_total_hours_of_operation => {indicator: :hour_counter, unit: :hour},
                           :fuel_level => {indicator: :fuel_level, unit: :percent}
                           }.freeze
+
+  SAMSYS_MACHINE_TYPE = {
+                          "grinder" => "Broyeurs", "silage_distributeur" => "Desileuse", "forager" => "Ensileuses", 
+                          "spreader_trailer" => "Epandeur à fumier", "spreader" => "Distributeur d'engrais", "hay_rake" => "Aligneuse", 
+                          "wheel_loader" => "Autochargeuse", "baler" => "Enrubanneuse", "mower" => "Faucheuse", "bale_collector" => "Groupeurs de balles", 
+                          "tractor" => "Tracteur agricole", "harvester" => "Arracheuses de pommes de terre", "implanter" => "Planteuses de pommes de terre", 
+                          "sleve_shaker" => "Tamiseuses", "reaper" => "Moissonneuses batteuses", "arboricultural_cultivator" => "Cultivateurs à axe horizontal", 
+                          "harrow" => "Machines à bêcher", "hoe" => "Bineuses", "plow" => "Charrues", "stubble_cultivator" => "Déchaumeurs", 
+                          "soil_loosener" => "Décompacteurs", "roll" => "Rouleau", "vibrocultivator" => "Vibroculteurs", "employee" => "pieton", 
+                          "sprayer" => "Pulvérisateur porté", "trailer" => "Bennes", "grape_trailer" => "Bennes à vendanges", "sower" => "Semoir - autre", 
+                          "telescopic_handler" => "Telescopique", "truck" => "Camions", "water_bowser" => "Citernes", "car" => "VL"
+                        }.freeze
 
   def perform
     begin
@@ -142,14 +152,20 @@ class SamsysFetchUpdateCreateJob < ActiveJob::Base
               machines_samsys_provider_ekylibre << machine["provider"]["uuid"]
             end
           end
-        end
+        end 
       end
+      
+      variant_name = ["grinder", "silage_distributeur", "forager", "spreader_trailer", "spreader", "hay_rake", "wheel_loader", "baler",
+        "mower", "baler", "bale_collector", "tractor", "harvester", "implanter", "sleve_shaker", "reaper", "arboricultural_cultivator", "harrow",
+      "hoe", "plow", "stubble_cultivator", "soil_loosener", "roll", "vibrocultivator", "employee", "sprayer", "wheel_loader", "trailer",
+      "grape_trailer", "sower", "telescopic_handler", "truck", "water_bowser", "car"]
 
       # Create/Post at Samsys if there are no similar provider[:id] or uuid at Ekylibre
-      tractors_equipments = Equipment.where(variety: "tractor")
-      tractors_equipments.each do |tractor|
-        unless machines_samsys.include?(tractor.provider[:id]) || machines_samsys_provider_ekylibre.include?(tractor.uuid)
-          Samsys::SamsysIntegration.post_machines(tractor.name, tractor.born_at, cluster_id.uniq.first, tractor.uuid).execute
+      equipments_to_create = Equipment.joins(:variant).merge(ProductNatureVariant.where(reference_name: variant_name))
+      equipments_to_create.each do |equipment|
+        unless machines_samsys.include?(equipment.provider[:id]) || machines_samsys_provider_ekylibre.include?(equipment.uuid)
+          machine_type = SAMSYS_MACHINE_TYPE[equipment.variant.reference_name.downcase]
+          Samsys::SamsysIntegration.post_machines(equipment.name, equipment.born_at, machine_type, cluster_id.uniq.first, equipment.uuid).execute
         end
       end
 
