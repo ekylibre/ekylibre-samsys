@@ -197,9 +197,8 @@ class SamsysFetchUpdateCreateJob < ActiveJob::Base
         Samsys::SamsysIntegration.post_machines(machine_equipment.name, machine_equipment.born_at, machine_type, cluster_id.uniq.first, machine_equipment.uuid).execute
 
         # Once equipment is created at Samsys find it with uuid and update provider column at Ekylibre
-        find_machine_equipment_samsys = Samsys::SamsysIntegration.fetch_all_machines.execute { |c| 
-          c.success { |list| list.reject { |n| n["provider"].nil? }.find { |n| n["provider"]["uuid"] == machine_equipment.uuid 
-        }}}
+        fetch_machine_equipment_provider = Samsys::SamsysIntegration.fetch_all_machines.execute { |c| c.success { |list| list.select { |n| !n["provider"].nil? }}}
+        find_machine_equipment_samsys = fetch_machine_equipment_provider.find { |n| n["provider"]["uuid"] == machine_equipment.uuid }
         
         Equipment.find_by(uuid: machine_equipment.uuid ).update!(
           provider: { vendor: "Samsys", name: "samsys_equipment", id: find_machine_equipment_samsys["id"] }
