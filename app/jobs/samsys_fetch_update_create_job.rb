@@ -139,7 +139,7 @@ class SamsysFetchUpdateCreateJob < ActiveJob::Base
       end
 
       # Create Machine at Samsys
-      find_or_create_equipment_at_samsys
+      find_or_create_machine_equipment_samsys
 
       # Delete ride set without rides after synchro new parameters from Samsys
       delete_ride_sets_without_rides
