@@ -6,7 +6,7 @@ class SamsysFetchUpdateCreateJob < ActiveJob::Base
   DEFAULT_BORN_AT = Time.new(2010, 1, 1, 10, 0, 0, '+00:00')
 
   # transcode Samsys machine type in Ekylibre machine nature
-  TRANSCODE_MACHINE_TYPE = {
+  TO_EKYLIBRE_MACHINE_TYPE = {
                           "micro tracteur" => :tractor, "tracteur agricole" => :tractor,
                           "tracteur de pente" => :tractor, "tracteur enjambeur" => :tractor,
                           "tracteur forestier" => :tractor, "tracteur fruitier" => :tractor,
@@ -53,16 +53,22 @@ class SamsysFetchUpdateCreateJob < ActiveJob::Base
                           :fuel_level => {indicator: :fuel_level, unit: :percent}
                           }.freeze
 
-  SAMSYS_MACHINE_TYPE = {
-                          "grinder" => "Broyeurs", "silage_distributeur" => "Desileuse", "forager" => "Ensileuses", 
-                          "spreader_trailer" => "Epandeur à fumier", "spreader" => "Distributeur d'engrais", "hay_rake" => "Aligneuse", 
-                          "wheel_loader" => "Autochargeuse", "baler" => "Enrubanneuse", "mower" => "Faucheuse", "bale_collector" => "Groupeurs de balles", 
-                          "tractor" => "Tracteur agricole", "harvester" => "Arracheuses de pommes de terre", "implanter" => "Planteuses de pommes de terre", 
-                          "sleve_shaker" => "Tamiseuses", "reaper" => "Moissonneuses batteuses", "arboricultural_cultivator" => "Cultivateurs à axe horizontal", 
-                          "harrow" => "Machines à bêcher", "hoe" => "Bineuses", "plow" => "Charrues", "stubble_cultivator" => "Déchaumeurs", 
-                          "soil_loosener" => "Décompacteurs", "roll" => "Rouleau", "vibrocultivator" => "Vibroculteurs", "employee" => "pieton", 
-                          "sprayer" => "Pulvérisateur porté", "trailer" => "Bennes", "grape_trailer" => "Bennes à vendanges", "sower" => "Semoir - autre", 
-                          "telescopic_handler" => "Telescopique", "truck" => "Camions", "water_bowser" => "Citernes", "car" => "VL"
+  TO_SAMSYS_MACHINE_TYPE = {
+                          "air_compressor" => "Tracteur agricole", "animal_housing_cleaner" => "Tracteur agricole", "bale_collector" => "Matériels manutention du fourrage", 
+                          "baler" => "Matériels manutention du fourrage", "chainsaw" => "Broyeur de branches", "complete_sower" => "Combinés de semis", 
+                          "corn_topper" => "Broyeur à axe horizontal", "cover_implanter" => "Cover crops", "dumper" => "Benne agricole", "ferry" => "Benne agricole", 
+                          "food_distributor" => "Desileuse", "forager" => "Ensileuses", "forklift" => "Surélévateur", "gas_engine" => "Tracteur agricole",
+                          "grape_reaper" => "Tracteur enjambeur", "grape_trailer" => "Bennes à vendanges", "grinder" => "Broyeurs", 
+                          "harrow" => "Herses rotatives", "harvester" => "Tracteur enjambeur", "hay_rake" => "Andaineur", "hedge_cutter" => "Epareuse", 
+                          "hiller" => "Combinés de préparation du sol", "hoe" => "Combinés de préparation du sol", "hoe_weeder" => "Combinés de préparation du sol", 
+                          "implanter" => "Combinés de préparation du sol", 
+                          "mower" => "Matériels manutention du fourrage", "picker" => "Tracteur agricole", "plow" => "Charrues", "plum_reaper" => "Tracteur agricole", 
+                          "pollinator" => "Tracteur agricole", "pruning_platform" => "Tracteur agricole", "reaper" => "Moissonneuses batteuses", "roll" => "Combinés de préparation du sol",
+                          "seedbed_preparator" => "Combinés de préparation du sol", "shell_fruit_reaper" => "Tracteur agricole", "sieve_shaker" => "Tamiseuses", 
+                          "soil_loosener" => "Décompacteurs", "sower" => "Combinés de semis", "sprayer" => "Pulvérisateur porté", "spreader" => "Distributeur d'engrais", 
+                          "spreader_trailer" => "Epandeur à fumier", "steam_engine" => "Tracteur agricole", "superficial_plow" => "Déchaumeurs", "telescopic_handler" => "Telescopique", 
+                          "topper" => "Broyeur de fanes", "tractor" => "Tracteur agricole", "trailer" => "Remorque", "trimmer" => "Broyeur de branches", "truck" => "Camions",
+                          "uncover" => "Tracteur agricole", "weeder" => "Tracteur agricole", "wheel_loader" => "Tracteur agricole"
                         }.freeze
 
   def perform
@@ -179,30 +185,24 @@ class SamsysFetchUpdateCreateJob < ActiveJob::Base
 
     # Create/Post at Samsys if there are no similar provider[:id] or uuid at Ekylibre
     # Equipment variant name to find or create at Samsys
-    variant_name = [
-                    "grinder", "silage_distributeur", "forager", "spreader_trailer", "spreader", "hay_rake", 
-                    "wheel_loader", "baler", "mower", "baler", "bale_collector", "tractor", "harvester", 
-                    "implanter", "sleve_shaker", "reaper", "arboricultural_cultivator", "harrow",
-                    "hoe", "plow", "stubble_cultivator", "soil_loosener", "roll", "vibrocultivator", 
-                    "employee", "sprayer", "wheel_loader", "trailer", "grape_trailer", "sower", 
-                    "telescopic_handler", "truck", "water_bowser", "car"
-                  ]
 
-    machine_equipments_to_create = Equipment.joins(:variant).merge(ProductNatureVariant.where(reference_name: variant_name))
+    machine_equipments_to_create = Equipment.joins(:variant).merge(ProductNatureVariant.where(reference_name: TO_SAMSYS_MACHINE_TYPE.keys))
 
     machine_equipments_to_create.each do |machine_equipment|
       unless machines_samsys.include?(machine_equipment.provider[:id]) || machines_samsys_provider_ekylibre.include?(machine_equipment.uuid)
 
-        machine_type = SAMSYS_MACHINE_TYPE[machine_equipment.variant.reference_name.downcase]
+        machine_type = TO_SAMSYS_MACHINE_TYPE[machine_equipment.variant.reference_name.downcase]
         Samsys::SamsysIntegration.post_machines(machine_equipment.name, machine_equipment.born_at, machine_type, cluster_id.uniq.first, machine_equipment.uuid).execute
 
         # Once equipment is created at Samsys find it with uuid and update provider column at Ekylibre
         fetch_machine_equipment_provider = Samsys::SamsysIntegration.fetch_all_machines.execute { |c| c.success { |list| list.select { |n| !n["provider"].nil? }}}
         find_machine_equipment_samsys = fetch_machine_equipment_provider.find { |n| n["provider"]["uuid"] == machine_equipment.uuid }
-        
-        Equipment.find_by(uuid: machine_equipment.uuid ).update!(
-          provider: { vendor: "Samsys", name: "samsys_equipment", id: find_machine_equipment_samsys["id"] }
-        )
+
+        if find_machine_equipment_samsys.present?
+          Equipment.find_by(uuid: machine_equipment.uuid ).update!(
+            provider: { vendor: "Samsys", name: "samsys_equipment", id: find_machine_equipment_samsys["id"] }
+          )
+        end
       end
     end
   end
@@ -255,7 +255,7 @@ class SamsysFetchUpdateCreateJob < ActiveJob::Base
       #TODO create the entity
     end
 
-    variant_to_find = TRANSCODE_MACHINE_TYPE[machine[:machine_type].downcase]
+    variant_to_find = TO_EKYLIBRE_MACHINE_TYPE[machine[:machine_type].downcase]
     if variant_to_find
       equipment_variant = ProductNatureVariant.import_from_nomenclature(variant_to_find)
     else
