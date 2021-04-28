@@ -27,4 +27,5 @@ fra:
     ride_number: "Numéro"
     ride_paused_at: "Pause à"
     ride_duration: "Durée"
+    ride_set_to_ride_information: "Cliquez sur un trajet géolocalisé pour le visualiser sur une carte, puis sélectionner les différentes sections du trajet à convertir en intervention"
 

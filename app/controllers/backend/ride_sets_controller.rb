@@ -17,7 +17,7 @@ module Backend
       t.column :provider_vendor
     end
 
-    list(:rides, model: :ride, conditions: { ride_set_id: 'params[:id]'.c }, order: 'rides.started_at DESC') do |t|
+    list(:rides, selectable: true, model: :ride, conditions: { ride_set_id: 'params[:id]'.c }, order: 'rides.started_at DESC') do |t|
       t.column :number, url: true
       t.column :nature
       t.column :started_at
@@ -29,16 +29,18 @@ module Backend
     end
 
     def index
-      notify_ride_set_creation_warning
+      notify_ride_set_information
 
       super
     end
     
     private
 
-      def notify_ride_set_creation_warning
+      def notify_ride_set_information
         if RideSet.count.zero?
           notify_warning_now(helpers.link_to(:ride_set_message.tl, backend_integrations_path))
+        else
+          notify_now(:ride_set_to_ride_information.tl)
         end
       end
   end

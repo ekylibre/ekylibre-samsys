@@ -36,6 +36,8 @@
         - v.control :fullscreen
         - v.control :layer_selector
         - v.center resource.crumbs.first.geolocation.coordinates.reverse if resource.crumbs.first.present?
-
+      
     - c.cobble(:rides) do
+      = toolbar do |t|
+        = t.new(nature: :record, label: :add_intervention_record.tl, params: { controller: :interventions })
       = cobble_list(:rides)
