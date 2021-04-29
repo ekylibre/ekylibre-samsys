@@ -74,11 +74,8 @@ class SamsysFetchUpdateCreateJob < ActiveJob::Base
   def perform
     begin
       # create custom field for all equipement if not exist
-      MACHINE_CUSTOM_FIELDS.each do |key, value|
-        unless cf = CustomField.find_by_name(value[:name])
-          create_custom_field_for_machine(value[:name], value[:customized_type], value[:options])
-        end
-      end
+      machine_custom_fields = Integrations::Samsys::Handlers::MachineCustomFields.new(machine_custom_fields: MACHINE_CUSTOM_FIELDS)
+      machine_custom_fields.bulk_find_or_create
 
       # Create CultivableZones at Samsys
       Integrations::Samsys::Handlers::CultivablesZonesAtSamsys.new.create_cultivables_zones_at_samsys
@@ -444,19 +441,6 @@ class SamsysFetchUpdateCreateJob < ActiveJob::Base
           ride_id: ride_id
         )
 
-      end
-    end
-  end
-
-  def create_custom_field_for_machine(name, customized_type, options = {})
-    # create custom field
-    cf = CustomField.create!(name: name, customized_type: customized_type,
-                                   nature: options[:nature] || :text,
-                                   column_name: options[:column_name])
-    # create custom field choice if nature is choice
-    if cf.choice? && options[:choices]
-      options[:choices].each do |value, label|
-        cf.choices.create!(name: label, value: value)
       end
     end
   end
