@@ -85,11 +85,14 @@ class SamsysFetchUpdateCreateJob < ActiveJob::Base
         c.success do |list|
           cultivables_zones_matching_with_samsys = []
           list.map do |parcel|
+            binding.pry
             parcel_shape_samsys = Charta.new_geometry(parcel)
             # If LandParcel Match with Parcel at Samsys store matching ids
+            binding.pry
             cultivables_zones_matching_with_samsys  << CultivableZone.shape_matching(parcel_shape_samsys, 0.02).ids
           end
 
+          binding.pry
           # Find or Create PARCEL at SAMSYS
           Samsys::SamsysIntegration.fetch_user_info.execute do |c|
             c.success do |user|
@@ -101,48 +104,48 @@ class SamsysFetchUpdateCreateJob < ActiveJob::Base
 
       # Get all counter for a user
       # https://doc.samsys.io/#api-Counters-Get_all_counters_of_a_user
-      Samsys::SamsysIntegration.fetch_all_counters.execute do |c|
-        c.success do |list|
-          list.map do |counter|
-            # counter attributes
-            # counter[:id]
-            # counter[:v_bat]
-            # counter[:v_ext]
-            # counter[:owner] {}
-            # counter[:association] {} --> machine {}
+      # Samsys::SamsysIntegration.fetch_all_counters.execute do |c|
+      #   c.success do |list|
+      #     list.map do |counter|
+      #       # counter attributes
+      #       # counter[:id]
+      #       # counter[:v_bat]
+      #       # counter[:v_ext]
+      #       # counter[:owner] {}
+      #       # counter[:association] {} --> machine {}
 
-            # NOTE : in Ekylibre model
-            # sensor has_one sensor_equipment
-            # sensor_equipment has_many localisations (in equipment)
+      #       # NOTE : in Ekylibre model
+      #       # sensor has_one sensor_equipment
+      #       # sensor_equipment has_many localisations (in equipment)
 
-            sensor = Sensor.find_or_create_by(
-              vendor_euid: :samsys,
-              model_euid: :samsys,
-              euid: counter[:id],
-              name: counter[:id],
-              retrieval_mode: :integration
-            )
-            sensor.update!(
-              battery_level: counter[:v_bat],
-              last_transmission_at: Time.now
-            )
+      #       sensor = Sensor.find_or_create_by(
+      #         vendor_euid: :samsys,
+      #         model_euid: :samsys,
+      #         euid: counter[:id],
+      #         name: counter[:id],
+      #         retrieval_mode: :integration
+      #       )
+      #       sensor.update!(
+      #         battery_level: counter[:v_bat],
+      #         last_transmission_at: Time.now
+      #       )
 
-            # find_or_create_sensor_equipment
-            sensor_equipment = find_or_create_sensor_equipment(sensor, counter, c.id)
+      #       # find_or_create_sensor_equipment
+      #       sensor_equipment = find_or_create_sensor_equipment(sensor, counter, c.id)
 
-            # link the equipment to sensor
-            sensor.update!(product_id: sensor_equipment.id) if sensor_equipment
+      #       # link the equipment to sensor
+      #       sensor.update!(product_id: sensor_equipment.id) if sensor_equipment
 
-            if counter[:association].any? && counter[:association][:machine].present? && sensor_equipment
-              counter[:association][:machine].each do |machine|
-                # Find or create an equipement corresponding to the machine
-                find_or_create_machine_equipment(machine, counter, sensor_equipment, c.id)
-              end
-            end
+      #       if counter[:association].any? && counter[:association][:machine].present? && sensor_equipment
+      #         counter[:association][:machine].each do |machine|
+      #           # Find or create an equipement corresponding to the machine
+      #           find_or_create_machine_equipment(machine, counter, sensor_equipment, c.id)
+      #         end
+      #       end
 
-          end
-        end
-      end
+      #     end
+      #   end
+      # end
 
       # Create Machine at Samsys // Disabled method for now
       # find_or_create_machine_equipment_samsys
