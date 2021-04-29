@@ -71,6 +71,8 @@ class SamsysFetchUpdateCreateJob < ActiveJob::Base
                           "uncover" => "Tracteur agricole", "weeder" => "Tracteur agricole", "wheel_loader" => "Tracteur agricole"
                         }.freeze
 
+  VENDOR = 'samsys'.freeze
+
   def perform
     begin
       # create custom field for all equipement if not exist
@@ -80,9 +82,10 @@ class SamsysFetchUpdateCreateJob < ActiveJob::Base
       # Create CultivableZones at Samsys
       Integrations::Samsys::Handlers::CultivablesZonesAtSamsys.new.create_cultivables_zones_at_samsys
 
-
-
       # Get all counter for a user
+      sensors = Integrations::Samsys::Handlers::Sensors.new(vendor: VENDOR)
+      sensors.bulk_find_or_create
+
       # https://doc.samsys.io/#api-Counters-Get_all_counters_of_a_user
       # Samsys::SamsysIntegration.fetch_all_counters.execute do |c|
       #   c.success do |list|

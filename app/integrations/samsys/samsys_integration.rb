@@ -147,7 +147,7 @@ module Samsys
       # Call API
       get_json("#{BASE_URL}/machines", 'Authorization' => "JWT #{integration.reload.parameters['token']}") do |r|
         r.success do
-          list = JSON(r.body)
+          list = JSON(r.body).map{|p| p.deep_symbolize_keys}
         end
       end
     end
