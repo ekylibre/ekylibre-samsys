@@ -5,6 +5,22 @@ module Integrations
     module Handlers
       class CultivablesZonesAtSamsys
 
+        # Create cultivale zones at samsys
+        def create_cultivables_zones_at_samsys
+          cultivables_zones_to_create_at_samsys = CultivableZone.where.not(id: find_matching_fields_at_samsys.flatten.uniq)
+          cultivables_zones_to_create_at_samsys.each do |cultivable_zone|
+            ::Samsys::SamsysIntegration.post_parcels(
+              samsys_current_user_id,
+              cultivable_zone.name,
+              cultivable_zone.created_at,
+              cultivable_zone.shape.to_rgeo.coordinates.first,
+              cultivable_zone.uuid
+            ).execute
+          end
+        end
+
+        private 
+
         # FIND cultivablesZones / Parcel matching beetween Ekylibre and Samsys
         def find_matching_fields_at_samsys
           Integrations::Samsys::Data::Fields.new.result.map do |field|
@@ -14,23 +30,8 @@ module Integrations
         end
 
         # Find Samsys current User ID
-
-        # Create cultivale zones at samsys
-
-
-        private 
-
-        def create_cultivables_zones_at_samsys(cultivables_zones_matching_with_samsys, user_id)
-          cultivables_zones_to_create_at_samsys = CultivableZone.where.not(id: cultivables_zones_matching_with_samsys)
-          cultivables_zones_to_create_at_samsys .each do |cultivable_zone|
-            Samsys::SamsysIntegration.post_parcels(
-              user_id,
-              cultivable_zone.name,
-              cultivable_zone.created_at,
-              cultivable_zone.shape.to_rgeo.coordinates.first,
-              cultivable_zone.uuid
-            ).execute
-          end
+        def samsys_current_user_id
+          Integrations::Samsys::Data::UserInformation.new.result[:id]
         end
 
       end

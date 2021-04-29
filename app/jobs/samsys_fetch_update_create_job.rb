@@ -80,27 +80,10 @@ class SamsysFetchUpdateCreateJob < ActiveJob::Base
         end
       end
 
-      # Get all parcels for a user
-      Samsys::SamsysIntegration.fetch_fields.execute do |c|
-        c.success do |list|
-          cultivables_zones_matching_with_samsys = []
-          list.map do |parcel|
-            binding.pry
-            parcel_shape_samsys = Charta.new_geometry(parcel)
-            # If LandParcel Match with Parcel at Samsys store matching ids
-            binding.pry
-            cultivables_zones_matching_with_samsys  << CultivableZone.shape_matching(parcel_shape_samsys, 0.02).ids
-          end
+      # Create CultivableZones at Samsys
+      Integrations::Samsys::Handlers::CultivablesZonesAtSamsys.new.create_cultivables_zones_at_samsys
 
-          binding.pry
-          # Find or Create PARCEL at SAMSYS
-          Samsys::SamsysIntegration.fetch_user_info.execute do |c|
-            c.success do |user|
-              create_cultivables_zones_at_samsys(cultivables_zones_matching_with_samsys.flatten.uniq, user[:id])
-            end
-          end
-        end
-      end
+
 
       # Get all counter for a user
       # https://doc.samsys.io/#api-Counters-Get_all_counters_of_a_user
@@ -207,21 +190,6 @@ class SamsysFetchUpdateCreateJob < ActiveJob::Base
           )
         end
       end
-    end
-  end
-
-  # Find or Create parcels at Samsys
-  # We got the parcels that exclude all parcels presents at Samsys (Thanks to the ID of Parcel)
-  def create_cultivables_zones_at_samsys(cultivables_zones_matching_with_samsys, user_id)
-    cultivables_zones_to_create_at_samsys = CultivableZone.where.not(id: cultivables_zones_matching_with_samsys)
-    cultivables_zones_to_create_at_samsys .each do |cultivable_zone|
-      Samsys::SamsysIntegration.post_parcels(
-        user_id,
-        cultivable_zone.name,
-        cultivable_zone.created_at,
-        cultivable_zone.shape.to_rgeo.coordinates.first,
-        cultivable_zone.uuid
-      ).execute
     end
   end
 

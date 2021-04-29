@@ -29,7 +29,7 @@ module Integrations
         end
 
         def desired_fields
-          [:id, :type, :geometry, :users, :provider]
+          ["id", "type", "geometry"]
         end
 
       end

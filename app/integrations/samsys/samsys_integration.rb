@@ -239,7 +239,7 @@ module Samsys
       # Call API
       get_html(FIELDS_URL, 'Authorization' => "JWT #{integration.reload.parameters['token']}") do |r|
         r.success do
-          list = JSON(r.body).map{ |p| p.deep_symbolize_keys }
+          list = JSON.parse(r.body)
         end
       end
     end
