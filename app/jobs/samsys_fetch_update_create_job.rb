@@ -83,17 +83,17 @@ class SamsysFetchUpdateCreateJob < ActiveJob::Base
       # Get all parcels for a user
       Samsys::SamsysIntegration.fetch_fields.execute do |c|
         c.success do |list|
-          exclude_parcels = []
+          cultivables_zones_matching_with_samsys = []
           list.map do |parcel|
             parcel_shape_samsys = Charta.new_geometry(parcel)
             # If LandParcel Match with Parcel at Samsys store matching ids
-            exclude_parcels << LandParcel.shape_matching(parcel_shape_samsys, 0.02).ids
+            cultivables_zones_matching_with_samsys  << CultivableZone.shape_matching(parcel_shape_samsys, 0.02).ids
           end
 
           # Find or Create PARCEL at SAMSYS
           Samsys::SamsysIntegration.fetch_user_info.execute do |c|
             c.success do |user|
-              find_or_create_parcels_samsys(exclude_parcels.flatten.uniq, user[:id])
+              create_cultivables_zones_at_samsys(cultivables_zones_matching_with_samsys.flatten.uniq, user[:id])
             end
           end
         end
@@ -144,8 +144,8 @@ class SamsysFetchUpdateCreateJob < ActiveJob::Base
         end
       end
 
-      # Create Machine at Samsys
-      find_or_create_machine_equipment_samsys
+      # Create Machine at Samsys // Disabled method for now
+      # find_or_create_machine_equipment_samsys
 
       # Delete ride set without rides after synchro new parameters from Samsys
       delete_ride_sets_without_rides
@@ -209,10 +209,16 @@ class SamsysFetchUpdateCreateJob < ActiveJob::Base
 
   # Find or Create parcels at Samsys
   # We got the parcels that exclude all parcels presents at Samsys (Thanks to the ID of Parcel)
-  def find_or_create_parcels_samsys(exclude_parcels, user_id)
-    parcels = LandParcel.where.not(id: exclude_parcels)
-    parcels.each do |land_parcel|
-      Samsys::SamsysIntegration.post_parcels(user_id, land_parcel.name, land_parcel.born_at, land_parcel.initial_shape.to_rgeo.coordinates.first, land_parcel.uuid).execute
+  def create_cultivables_zones_at_samsys(cultivables_zones_matching_with_samsys, user_id)
+    cultivables_zones_to_create_at_samsys = CultivableZone.where.not(id: cultivables_zones_matching_with_samsys)
+    cultivables_zones_to_create_at_samsys .each do |cultivable_zone|
+      Samsys::SamsysIntegration.post_parcels(
+        user_id,
+        cultivable_zone.name,
+        cultivable_zone.created_at,
+        cultivable_zone.shape.to_rgeo.coordinates.first,
+        cultivable_zone.uuid
+      ).execute
     end
   end
 

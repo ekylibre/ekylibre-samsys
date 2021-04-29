@@ -109,7 +109,7 @@ module Samsys
               "provider": { "Ekylibre": land_parcel_providers }
           }
       ]
-
+      
       post_json("#{BASE_URL}/users/#{user_id}/fields", land_parcel, 'Authorization' => "JWT #{integration.parameters['token']}") do |r|
         r.success do
           Rails.logger.info 'CREATED FIELD'.green
