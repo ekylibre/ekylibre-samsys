@@ -16,7 +16,7 @@ module Integrations
 
             machine_equipment = find_or_create_machine_equipment(machine)
 
-            find_or_create_ride_set(machine[:id])
+            find_or_create_ride_set(machine[:id], machine_equipment)
           end
         end
 
@@ -44,19 +44,21 @@ module Integrations
           machine_equipment.bulk_find_or_create(machine, sensor_equipment)
         end
 
-        def find_or_create_ride_set(machine_id)
+        def find_or_create_ride_set(machine_id, machine_equipment)
           get_machine_activities(machine_id).each do |machine_activity|
-            next if find_existant_ride_set(machine_activity).present?
+            next if find_existant_ride_set(machine_activity, machine_equipment).present?
 
-            create_ride_set(machine_activity)
+            create_ride_set(machine_activity, machine_equipment)
           end
         end
 
-        def find_existant_ride_set(machine_activity)
+        def find_existant_ride_set(machine_activity, machine_equipment)
           ride_set = RideSet.of_provider_vendor(@vendor).of_provider_data(:id, machine_activity[:id].to_s).first
+
+          ride = Integrations::Samsys::Handlers::Rides.new(ride_set_id: ride_set.id, machine_equipment: machine_equipment, vendor: @vendor)
         end
 
-        def create_ride_set(machine_activity)
+        def create_ride_set(machine_activity, machine_equipment)
           ride_set = RideSet.create!(
             started_at: machine_activity[:start_date],
             stopped_at: machine_activity[:end_date],
@@ -71,6 +73,8 @@ module Integrations
             gasoline: machine_activity[:gasoline],
             provider: { vendor: @vendor, name: "samsys_ride_set", data: { id: machine_activity[:id] } }
           )
+
+          ride = Integrations::Samsys::Handlers::Rides.new(ride_set_id: ride_set.id, machine_equipment: machine_equipment, vendor: @vendor)
         end
 
       end
