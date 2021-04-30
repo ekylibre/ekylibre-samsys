@@ -46,7 +46,7 @@ module Integrations
             initial_population: 1,
             initial_owner: owner,
             work_number: "SAMSYS_#{machine[:id]}",
-            provider: {vendor: @vendor, name: "samsys_equipment", data: { id: machine[:id] } }
+            provider: { vendor: @vendor, name: "samsys_equipment", data: { id: machine[:id] } }
           )
         end
 

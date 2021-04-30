@@ -138,7 +138,7 @@ class SamsysFetchUpdateCreateJob < ActiveJob::Base
       # find_or_create_machine_equipment_samsys
 
       # Delete ride set without rides after synchro new parameters from Samsys
-      delete_ride_sets_without_rides
+      #delete_ride_sets_without_rides
 
     rescue StandardError => error
       Rails.logger.error $!
