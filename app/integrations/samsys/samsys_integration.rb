@@ -185,7 +185,7 @@ module Samsys
       # Call API
       get_html("#{MACHINES_URL}/#{machine_id}/activities?start_date=#{started_on}&end_date=#{stopped_on}", 'Authorization' => "JWT #{integration.reload.parameters['token']}") do |r|
         r.success do
-          list = JSON.parse(r.body)
+          list = JSON(r.body).map{|p| p.deep_symbolize_keys}
         end
       end
     end
