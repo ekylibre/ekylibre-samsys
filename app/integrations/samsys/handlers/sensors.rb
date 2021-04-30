@@ -41,7 +41,7 @@ module Integrations
         private 
 
         def find_or_create_sensor_equipment(sensor, counter)
-          sensor_equipment = Equipment.where("provider ->> 'id' = ?", counter[:id]).first
+          sensor_equipment = Equipment.of_provider_vendor(@vendor).of_provider_data(:id, counter[:id].to_s).first
 
           if sensor_equipment.present?
             sensor_equipment
@@ -66,7 +66,7 @@ module Integrations
             initial_population: 1,
             initial_owner: owner,
             work_number: "SAMSYS_#{counter[:id]}",
-            provider: { vendor: "Samsys", name: "samsys_sensor", data: { id: counter[:id] } }
+            provider: { vendor: @vendor, name: "samsys_sensor", data: { id: counter[:id] } }
           )
         end
 

@@ -18,12 +18,11 @@ module Integrations
 
         # Create Machine Equipment
 
-        def testing
-          fetch_all_machines_id.each do |m|
-            next if get_machine_activites(m).empty?
+        def bulk_find_or_create
+          fetch_all_machines.each do |machine|
+            next if get_machine_activities(machine[:id]).empty?
 
-            machine_activities = get_machine_activites(m)
-            # Create machine equipment
+            machine_equipment = find_or_create_machine_equipment(machine)
 
             # Create associate RideSet
 
@@ -35,12 +34,24 @@ module Integrations
 
         private 
 
-        def fetch_all_machines_id
-          Integrations::Samsys::Data::Machines.new.result.map{|m| m[:id]}
+        def fetch_all_machines
+          Integrations::Samsys::Data::Machines.new.result
         end
 
-        def get_machine_activites(machine_id)
+        def get_machine_activities(machine_id)
           Integrations::Samsys::Data::MachineActivities.new(machine_id: machine_id).result
+        end
+
+        def find_or_create_machine_equipment(machine)
+          sensor_equipment = Equipment.of_provider_vendor(@vendor).of_provider_data(:id, machine[:associations].first[:counter].to_s).first
+
+          # Find or create machine_equipment throught handers/machines_equipments.rb
+          machine_equipment = Integrations::Samsys::Handlers::MachinesEquipments.new(
+            to_ekylibre_machine_type: @to_ekylibre_machine_type, 
+            default_born_at: @default_born_at,
+            vendor: @vendor
+          )
+          machine_equipment.bulk_find_or_create(machine, sensor_equipment)
         end
 
       end

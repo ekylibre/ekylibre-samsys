@@ -86,6 +86,10 @@ class SamsysFetchUpdateCreateJob < ActiveJob::Base
       sensors = Integrations::Samsys::Handlers::Sensors.new(vendor: VENDOR)
       sensors.bulk_find_or_create
 
+      # Create RideSets
+      ride_sets = Integrations::Samsys::Handlers::RideSets.new(to_ekylibre_machine_type: TO_EKYLIBRE_MACHINE_TYPE, default_born_at: DEFAULT_BORN_AT, vendor: VENDOR)
+      ride_sets.bulk_find_or_create
+
       # https://doc.samsys.io/#api-Counters-Get_all_counters_of_a_user
       # Samsys::SamsysIntegration.fetch_all_counters.execute do |c|
       #   c.success do |list|
