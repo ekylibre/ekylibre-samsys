@@ -55,8 +55,10 @@ module Integrations
         def find_existant_ride_set(machine_activity, machine_equipment)
           ride_set = RideSet.of_provider_vendor(@vendor).of_provider_data(:id, machine_activity[:id].to_s).first
 
-          ride = Integrations::Samsys::Handlers::Rides.new(ride_set: ride_set, machine_equipment: machine_equipment, vendor: @vendor)
-          ride.bulk_find_or_create
+          if ride_set.present?
+            ride = Integrations::Samsys::Handlers::Rides.new(ride_set: ride_set, machine_equipment: machine_equipment, vendor: @vendor)
+            ride.bulk_find_or_create
+          end
         end
 
         def create_ride_set(machine_activity, machine_equipment)

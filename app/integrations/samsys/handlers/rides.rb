@@ -30,6 +30,11 @@ module Integrations
           # Update ride's ride_set_id with new id from samsys's update
           ride.update!(ride_set_id: @ride_set.id) if ride.present? && ride.ride_set_id != @ride_set.id
 
+          if ride.present?
+            find_or_create_crumbs(ride.id, meta_work[:id], meta_work[:breaks])
+            find_or_create_crumbs_breaks(ride.id, meta_work[:id], meta_work[:breaks]) if meta_work[:breaks].present?
+          end
+
           ride
         end
 
@@ -52,6 +57,23 @@ module Integrations
             ride_set_id: @ride_set.id,
             provider: { vendor: @vendor, name: "samsys_ride", data: { id: meta_work[:id] } },
           )
+
+          find_or_create_crumbs(ride.id, meta_work[:id], meta_work[:breaks])
+          find_or_create_crumbs_breaks(ride.id, meta_work[:id], meta_work[:breaks]) if meta_work[:breaks].present?
+        end
+
+        def initialize_crumbs(ride_id, meta_work_id, meta_work_breaks)
+          Integrations::Samsys::Handlers::Crumbs.new(ride_id: ride_id, work_id: meta_work_id, work_breaks: meta_work_breaks, vendor: @vendor)
+        end
+
+        def find_or_create_crumbs(ride_id, meta_work_id, meta_work_breaks)
+          crumbs = initialize_crumbs(ride_id, meta_work_id, meta_work_breaks)
+          crumbs.bulk_find_or_create_crumb
+        end
+
+        def find_or_create_crumbs_breaks(ride_id, meta_work_id, meta_work_breaks)
+          crumbs_breaks = initialize_crumbs(ride_id, meta_work_id, meta_work_breaks)
+          crumbs_breaks.bulk_find_or_create_crumb_break
         end
 
       end

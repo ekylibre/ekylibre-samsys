@@ -223,7 +223,7 @@ module Samsys
       # Call API
        get_html("#{BASE_URL}/works/#{work_id}/geolocations", 'Authorization' => "JWT #{integration.reload.parameters['token']}") do |r|
         r.success do
-          list = JSON.parse(r.body, allow_nan: true)
+          list = JSON(r.body , allow_nan: true).map{|p| p.deep_symbolize_keys}
         end
       end       
     end
