@@ -30,7 +30,7 @@ module Integrations
         end
 
         def desired_fields
-          [:id, :type, :start_date, :end_date, :duration, :sleep_count, :sleep_duration, :type, :distance_km, :area_without_overlap, :area_with_overlap, :area_smart, :gasoline]
+          [:id, :type, :start_date, :end_date, :breaks, :duration, :sleep_count, :sleep_duration, :type, :distance_km, :area_without_overlap, :area_with_overlap, :area_smart, :gasoline]
         end
 
       end
