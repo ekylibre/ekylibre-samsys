@@ -4,8 +4,8 @@ module Integrations
   module Samsys
     module Handlers
       class Rides
-        def initialize(ride_set_id:, machine_equipment:, vendor:)
-          @ride_set_id = ride_set_id
+        def initialize(ride_set:, machine_equipment:, vendor:)
+          @ride_set = ride_set
           @machine_equipment = machine_equipment
           @vendor = vendor
         end
@@ -21,11 +21,16 @@ module Integrations
         private 
 
         def fetch_all_machine_activity_meta_works
-          Integrations::Samsys::Data::MetaWorks.new(activity_id: @ride_set_id).result
+          Integrations::Samsys::Data::MetaWorks.new(activity_id: @ride_set.provider[:data]["id"]).result
         end
 
         def find_existant_ride(meta_work)
           ride = Ride.of_provider_vendor(@vendor).of_provider_data(:id, meta_work[:id].to_s).first
+
+          # Update ride's ride_set_id with new id from samsys's update
+          ride.update!(ride_set_id: @ride_set.id) if ride.present? && ride.ride_set_id != @ride_set.id
+
+          ride
         end
 
         def create_ride(meta_work)
@@ -44,8 +49,8 @@ module Integrations
             area_smart: meta_work[:area_smart],
             gasoline: meta_work[:gasoline],
             product_id: @machine_equipment.id,
-            ride_set_id: @ride_set_id,
-            provider: { vendor: @vendor, name: "samsys_ride", id: meta_work["id"] },
+            ride_set_id: @ride_set.id,
+            provider: { vendor: @vendor, name: "samsys_ride", data: { id: meta_work[:id] } },
           )
         end
 

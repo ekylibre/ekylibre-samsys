@@ -21,6 +21,8 @@ module Integrations
       
           # Link the sensor to the machine
           link_sensor_to_machine(sensor_equipment, machine_equipment, machine)
+
+          machine_equipment
         end
   
         private 
