@@ -5,7 +5,6 @@ module Integrations
     module Handlers
       class CultivablesZonesAtSamsys
 
-        # Create cultivale zones at samsys
         def create_cultivables_zones_at_samsys
           cultivables_zones_to_create_at_samsys = CultivableZone.where.not(id: find_matching_fields_at_samsys.flatten.uniq)
           cultivables_zones_to_create_at_samsys.each do |cultivable_zone|
@@ -21,7 +20,6 @@ module Integrations
 
         private 
 
-        # FIND cultivablesZones / Parcel matching beetween Ekylibre and Samsys
         def find_matching_fields_at_samsys
           Integrations::Samsys::Data::Fields.new.result.map do |field|
             field_shape_samsys = Charta.new_geometry(field)
@@ -29,7 +27,6 @@ module Integrations
           end
         end
 
-        # Find Samsys current User ID
         def samsys_current_user_id
           Integrations::Samsys::Data::UserInformation.new.result[:id]
         end

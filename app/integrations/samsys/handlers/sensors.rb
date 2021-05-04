@@ -28,13 +28,6 @@ module Integrations
             
             # link the equipment to sensor
             sensor.update!(product_id: sensor_equipment.id) if sensor_equipment
-
-            # if counter[:association].any? && counter[:association][:machine].present? && sensor_equipment
-            #   counter[:association][:machine].each do |machine|
-            #     # Find or create an equipement corresponding to the machine
-            #     find_or_create_machine_equipment(machine, counter, sensor_equipment, c.id)
-            #   end
-            # end
           end
         end
   

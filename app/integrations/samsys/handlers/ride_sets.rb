@@ -20,6 +20,11 @@ module Integrations
           end
         end
 
+        def delete_ride_sets_without_rides
+          ride_set_empty = RideSet.select{|c| c.rides.count == 0}
+          RideSet.delete(ride_set_empty) if ride_set_empty.any?
+        end
+
         private 
 
         def fetch_all_machines
