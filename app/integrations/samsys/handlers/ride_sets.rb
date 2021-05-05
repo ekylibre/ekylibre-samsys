@@ -4,9 +4,7 @@ module Integrations
   module Samsys
     module Handlers
       class RideSets
-        def initialize(to_ekylibre_machine_type:, default_born_at:, vendor:)
-          @to_ekylibre_machine_type = to_ekylibre_machine_type
-          @default_born_at = default_born_at
+        def initialize(vendor:)
           @vendor = vendor
         end
 
@@ -41,11 +39,7 @@ module Integrations
           sensor_equipment = Equipment.of_provider_vendor(@vendor).of_provider_data(:id, machine[:associations].first[:counter].to_s).first
 
           # Find or create machine_equipment throught handers/machines_equipments.rb
-          machine_equipment = Integrations::Samsys::Handlers::MachinesEquipments.new(
-            to_ekylibre_machine_type: @to_ekylibre_machine_type, 
-            default_born_at: @default_born_at,
-            vendor: @vendor
-          )
+          machine_equipment = Integrations::Samsys::Handlers::MachinesEquipments.new(vendor: @vendor)
           machine_equipment.bulk_find_or_create(machine, sensor_equipment)
         end
 

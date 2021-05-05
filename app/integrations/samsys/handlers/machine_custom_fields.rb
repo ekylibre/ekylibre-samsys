@@ -4,12 +4,14 @@ module Integrations
   module Samsys
     module Handlers
       class MachineCustomFields
-        def initialize(machine_custom_fields:)
-          @machine_custom_fields = machine_custom_fields
-        end
+
+        MACHINE_CUSTOM_FIELDS = {
+          "model" => {name: "Modèle", customized_type: "Equipment", options: {column_name: "type_name"}},
+          "brand" => {name: "Marque", customized_type: "Equipment", options: {column_name: "brand_name"}}
+        }.freeze
 
         def bulk_find_or_create
-          @machine_custom_fields.each do |key, value|
+          MACHINE_CUSTOM_FIELDS.each do |key, value|
             unless cf = CustomField.find_by_name(value[:name])
               create_custom_field_for_machine(value[:name], value[:customized_type], value[:options])
             end
