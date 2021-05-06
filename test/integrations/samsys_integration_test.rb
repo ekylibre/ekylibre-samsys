@@ -10,6 +10,8 @@ class SamsysIntegrationTest < ::Ekylibre::Testing::ApplicationTestCase::WithFixt
 
   def test_get_counters
     VCR.use_cassette("get_counters") do
+      binding.pry
+
       Samsys::SamsysIntegration.fetch_all_counters.execute do |call|
         call.success do |response|
           assert_equal Hash, response.first.class, 'Should return an array of hash counter'
