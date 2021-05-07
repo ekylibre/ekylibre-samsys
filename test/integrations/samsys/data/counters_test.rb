@@ -1,19 +1,18 @@
 require 'test_helper'
 require_relative '../../../test_helper'
 
-class CountersTest < ::Ekylibre::Testing::ApplicationTestCase::WithFixtures
+
+class DataCountersTest < ::Ekylibre::Testing::ApplicationTestCase::WithFixtures
   setup do
     VCR.use_cassette("auth") do
       Integration.create(nature: 'samsys', parameters: { email: ENV['SAMSYS_TEST_EMAIL'], password: ENV['SAMSYS_TEST_PASSWORD'] })
     end
   end
 
-  def test_get_counters
+  def test_data_counters
     VCR.use_cassette("get_counters") do
-      binding.pry
-      data = ::Integrations::Samsys::Data::Counters.new.result
-      binding.pry
+      data = ::Samsys::Data::Counters.new.result
+      assert %i[id v_bat v_ext owner association].all? { |s| data.first.key? s }, 'Should have correct attributes'
     end
   end
 end
-

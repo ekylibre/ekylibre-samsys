@@ -12,7 +12,7 @@ class SamsysFetchUpdateCreateJob < ActiveJob::Base
 
       Integrations::Samsys::Handlers::CultivablesZonesAtSamsys.new.create_cultivables_zones_at_samsys
 
-      sensors = Integrations::Samsys::Handlers::Sensors.new(vendor: VENDOR)
+      sensors = ::Samsys::Handlers::Sensors.new(vendor: VENDOR)
       sensors.bulk_find_or_create
 
       ride_sets = Integrations::Samsys::Handlers::RideSets.new(vendor: VENDOR)
