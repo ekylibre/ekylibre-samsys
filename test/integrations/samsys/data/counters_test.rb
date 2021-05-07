@@ -1,7 +1,6 @@
 require 'test_helper'
 require_relative '../../../test_helper'
 
-
 class DataCountersTest < ::Ekylibre::Testing::ApplicationTestCase::WithFixtures
   setup do
     VCR.use_cassette("auth") do
