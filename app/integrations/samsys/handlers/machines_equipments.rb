@@ -64,7 +64,7 @@ module Samsys
 
       def find_or_create_machine_equipment(machine)
         machine_equipment = Equipment.of_provider_vendor(VENDOR).of_provider_data(:id, machine[:id].to_s).first
-        binding.pry
+        
         if machine_equipment.present?
           machine_equipment
         else
