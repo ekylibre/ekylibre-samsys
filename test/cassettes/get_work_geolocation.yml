@@ -1,0 +1,744 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://app.samsys.io/api/v1/auth
+    body:
+      encoding: UTF-8
+      string: '{"email":"Hello","password":"World"}'
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Host:
+      - app.samsys.io
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Wed, 12 May 2021 14:16:42 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Vary:
+      - Accept-Encoding
+      Access-Control-Allow-Origin:
+      - "*"
+    body:
+      encoding: ASCII-8BIT
+      string: '{"status": "ok", "message": "Connect\u00e9!", "jwt": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE2MjA4MjkwMDIsIm5iZiI6MTYyMDgyOTAwMiwianRpIjoiZjFiNjQ4ZmUtY2Q1MC00OWNlLTg1MTEtYmIwMTlhZGQzM2VkIiwiZXhwIjoxNjUyMzY1MDAyLCJpZGVudGl0eSI6eyJ1c2VyX2lkIjoiNWU3Yzc5NWZmNDI3NTRiMTg2MTA3OTQ4IiwiYXBwIjoiY2xhdWRlIn0sImZyZXNoIjpmYWxzZSwidHlwZSI6ImFjY2VzcyJ9.PE-hVi3-pJDrIoUPCe_XinV8bBx0vr3W3mHViHjohS4"}
+
+'
+  recorded_at: Wed, 12 May 2021 14:16:42 GMT
+- request:
+    method: post
+    uri: https://app.samsys.io/api/v1/auth
+    body:
+      encoding: UTF-8
+      string: '{"email":"Hello","password":"World"}'
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Host:
+      - app.samsys.io
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Wed, 12 May 2021 14:16:43 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Vary:
+      - Accept-Encoding
+      Access-Control-Allow-Origin:
+      - "*"
+    body:
+      encoding: ASCII-8BIT
+      string: '{"status": "ok", "message": "Connect\u00e9!", "jwt": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE2MjA4MjkwMDMsIm5iZiI6MTYyMDgyOTAwMywianRpIjoiZTc1ZDkyNTctMWJmZS00NTVkLWE3OTUtOThhYWI0YjU1YjIzIiwiZXhwIjoxNjUyMzY1MDAzLCJpZGVudGl0eSI6eyJ1c2VyX2lkIjoiNWU3Yzc5NWZmNDI3NTRiMTg2MTA3OTQ4IiwiYXBwIjoiY2xhdWRlIn0sImZyZXNoIjpmYWxzZSwidHlwZSI6ImFjY2VzcyJ9.IsAPeNAopMrcCnwxBfF1Xn6MBmOCvgWdNxDlqAEepS4"}
+
+'
+  recorded_at: Wed, 12 May 2021 14:16:43 GMT
+- request:
+    method: get
+    uri: https://app.samsys.io/api/v1/works/5fa3ab62c493556ea4ec8bfc/geolocations
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Host:
+      - app.samsys.io
+      Authorization:
+      - JWT eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE2MjA4MjkwMDIsIm5iZiI6MTYyMDgyOTAwMiwianRpIjoiZjFiNjQ4ZmUtY2Q1MC00OWNlLTg1MTEtYmIwMTlhZGQzM2VkIiwiZXhwIjoxNjUyMzY1MDAyLCJpZGVudGl0eSI6eyJ1c2VyX2lkIjoiNWU3Yzc5NWZmNDI3NTRiMTg2MTA3OTQ4IiwiYXBwIjoiY2xhdWRlIn0sImZyZXNoIjpmYWxzZSwidHlwZSI6ImFjY2VzcyJ9.PE-hVi3-pJDrIoUPCe_XinV8bBx0vr3W3mHViHjohS4
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Wed, 12 May 2021 14:16:43 GMT
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '4094'
+      Connection:
+      - keep-alive
+      Vary:
+      - Accept-Encoding
+      Access-Control-Allow-Origin:
+      - "*"
+    body:
+      encoding: ASCII-8BIT
+      string: '[{"type": "Feature", "id_data": "5fa3a963817d0c0cf10ec32a", "geometry":
+        {"type": "Point", "coordinates": [-0.2710644, 45.6607074]}, "properties":
+        {"t": "2020-11-05T07:15:13.500000Z", "speed": 0.2, "aux_state": false, "aux_count":
+        0, "aux_state_2": false, "aux_count_2": 0}}, {"type": "Feature", "id_data":
+        "5fa3a965817d0c0cf10ec33b", "geometry": {"type": "Point", "coordinates": [-0.2710665,
+        45.6606901]}, "properties": {"t": "2020-11-05T07:15:17.090000Z", "speed":
+        1.0, "aux_state": false, "aux_count": 0, "aux_state_2": false, "aux_count_2":
+        0}}, {"type": "Feature", "id_data": "5fa3a966817d0c0cf10ec34c", "geometry":
+        {"type": "Point", "coordinates": [-0.2710708, 45.6606745]}, "properties":
+        {"t": "2020-11-05T07:15:18.690000Z", "speed": 1.0, "aux_state": false, "aux_count":
+        0, "aux_state_2": false, "aux_count_2": 0}}, {"type": "Feature", "id_data":
+        "5fa3a967817d0c0cf10ec35d", "geometry": {"type": "Point", "coordinates": [-0.2710803,
+        45.6606768]}, "properties": {"t": "2020-11-05T07:15:21.190000Z", "speed":
+        2.0, "aux_state": false, "aux_count": 0, "aux_state_2": false, "aux_count_2":
+        0}}, {"type": "Feature", "id_data": "5fa3a968817d0c0cf10ec366", "geometry":
+        {"type": "Point", "coordinates": [-0.2710827, 45.6606671]}, "properties":
+        {"t": "2020-11-05T07:15:23.190000Z", "speed": 0.2, "aux_state": false, "aux_count":
+        0, "aux_state_2": false, "aux_count_2": 0}}, {"type": "Feature", "id_data":
+        "5fa3a96b817d0c0cf10ec38f", "geometry": {"type": "Point", "coordinates": [-0.2710687,
+        45.6606562]}, "properties": {"t": "2020-11-05T07:15:29.190000Z", "speed":
+        0.2, "aux_state": false, "aux_count": 0, "aux_state_2": false, "aux_count_2":
+        0}}, {"type": "Feature", "id_data": "5fa3a972817d0c0cf10ec3fb", "geometry":
+        {"type": "Point", "coordinates": [-0.2710648, 45.660645]}, "properties": {"t":
+        "2020-11-05T07:15:39.790000Z", "speed": 2.4, "aux_state": false, "aux_count":
+        0, "aux_state_2": false, "aux_count_2": 0}}, {"type": "Feature", "id_data":
+        "5fa3a974817d0c0cf10ec414", "geometry": {"type": "Point", "coordinates": [-0.2710773,
+        45.6606758]}, "properties": {"t": "2020-11-05T07:15:43.690000Z", "speed":
+        1.8, "aux_state": false, "aux_count": 0, "aux_state_2": false, "aux_count_2":
+        0}}, {"type": "Feature", "id_data": "5fa3a976817d0c0cf10ec425", "geometry":
+        {"type": "Point", "coordinates": [-0.2710858, 45.660671]}, "properties": {"t":
+        "2020-11-05T07:15:46.290000Z", "speed": 3.6, "aux_state": false, "aux_count":
+        0, "aux_state_2": false, "aux_count_2": 0}}, {"type": "Feature", "id_data":
+        "5fa3a978817d0c0cf10ec436", "geometry": {"type": "Point", "coordinates": [-0.2710782,
+        45.6606938]}, "properties": {"t": "2020-11-05T07:15:48.690000Z", "speed":
+        0.6, "aux_state": false, "aux_count": 0, "aux_state_2": false, "aux_count_2":
+        0}}, {"type": "Feature", "id_data": "5fa3a979817d0c0cf10ec447", "geometry":
+        {"type": "Point", "coordinates": [-0.2710784, 45.6606952]}, "properties":
+        {"t": "2020-11-05T07:15:50.590000Z", "speed": 0.4, "aux_state": false, "aux_count":
+        0, "aux_state_2": false, "aux_count_2": 0}}, {"type": "Feature", "id_data":
+        "5fa3a97c817d0c0cf10ec478", "geometry": {"type": "Point", "coordinates": [-0.2710825,
+        45.660717]}, "properties": {"t": "2020-11-05T07:15:56.690000Z", "speed": 0.0,
+        "aux_state": false, "aux_count": 0, "aux_state_2": false, "aux_count_2": 0}},
+        {"type": "Feature", "id_data": "5fa3a97e817d0c0cf10ec489", "geometry": {"type":
+        "Point", "coordinates": [-0.2710839, 45.660721]}, "properties": {"t": "2020-11-05T07:15:58.900000Z",
+        "speed": 0.0, "aux_state": false, "aux_count": 0, "aux_state_2": false, "aux_count_2":
+        0}}, {"type": "Feature", "id_data": "5fa3a983817d0c0cf10ec4c2", "geometry":
+        {"type": "Point", "coordinates": [-0.2710843, 45.6607282]}, "properties":
+        {"t": "2020-11-05T07:16:05Z", "speed": 0.0, "aux_state": false, "aux_count":
+        0, "aux_state_2": false, "aux_count_2": 0}}, {"type": "Feature", "id_data":
+        "5fa3a98a817d0c0cf10ec516", "geometry": {"type": "Point", "coordinates": [-0.2710725,
+        45.6607227]}, "properties": {"t": "2020-11-05T07:16:11.100000Z", "speed":
+        1.4, "aux_state": false, "aux_count": 0, "aux_state_2": false, "aux_count_2":
+        0}}, {"type": "Feature", "id_data": "5fa3a990817d0c0cf10ec558", "geometry":
+        {"type": "Point", "coordinates": [-0.2710764, 45.6607303]}, "properties":
+        {"t": "2020-11-05T07:16:17.200000Z", "speed": 0.4, "aux_state": false, "aux_count":
+        0, "aux_state_2": false, "aux_count_2": 0}}, {"type": "Feature", "id_data":
+        "5fa3a9af817d0c0cf10ec62d", "geometry": {"type": "Point", "coordinates": [-0.271096,
+        45.6607348]}, "properties": {"t": "2020-11-05T07:16:36.900000Z", "speed":
+        1.0, "aux_state": false, "aux_count": 0, "aux_state_2": false, "aux_count_2":
+        0}}, {"type": "Feature", "id_data": "5fa3a9b1817d0c0cf10ec63e", "geometry":
+        {"type": "Point", "coordinates": [-0.2711024, 45.6607326]}, "properties":
+        {"t": "2020-11-05T07:16:38.500000Z", "speed": 4.0, "aux_state": false, "aux_count":
+        0, "aux_state_2": false, "aux_count_2": 0}}, {"type": "Feature", "id_data":
+        "5fa3a9b5817d0c0cf10ec678", "geometry": {"type": "Point", "coordinates": [-0.2710982,
+        45.6607395]}, "properties": {"t": "2020-11-05T07:16:44.600000Z", "speed":
+        0.6, "aux_state": false, "aux_count": 0, "aux_state_2": false, "aux_count_2":
+        0}}, {"type": "Feature", "id_data": "5fa3a9b9817d0c0cf10ec6ba", "geometry":
+        {"type": "Point", "coordinates": [-0.2711174, 45.6607532]}, "properties":
+        {"t": "2020-11-05T07:16:50.700000Z", "speed": 3.8, "aux_state": false, "aux_count":
+        0, "aux_state_2": false, "aux_count_2": 0}}, {"type": "Feature", "id_data":
+        "5fa3a9c2817d0c0cf10ec725", "geometry": {"type": "Point", "coordinates": [-0.2711049,
+        45.6607246]}, "properties": {"t": "2020-11-05T07:17:01.290000Z", "speed":
+        2.8, "aux_state": false, "aux_count": 0, "aux_state_2": false, "aux_count_2":
+        0}}, {"type": "Feature", "id_data": "5fa3a9c9817d0c0cf10ec75e", "geometry":
+        {"type": "Point", "coordinates": [-0.2710989, 45.6607151]}, "properties":
+        {"t": "2020-11-05T07:17:07.390000Z", "speed": 0.2, "aux_state": false, "aux_count":
+        0, "aux_state_2": false, "aux_count_2": 0}}, {"type": "Feature", "id_data":
+        "5fa3a9ca817d0c0cf10ec778", "geometry": {"type": "Point", "coordinates": [-0.2710933,
+        45.6607139]}, "properties": {"t": "2020-11-05T07:17:08.990000Z", "speed":
+        1.0, "aux_state": false, "aux_count": 0, "aux_state_2": false, "aux_count_2":
+        0}}, {"type": "Feature", "id_data": "5fa3a9cc817d0c0cf10ec789", "geometry":
+        {"type": "Point", "coordinates": [-0.2710929, 45.6607158]}, "properties":
+        {"t": "2020-11-05T07:17:10.590000Z", "speed": 0.8, "aux_state": false, "aux_count":
+        0, "aux_state_2": false, "aux_count_2": 0}}, {"type": "Feature", "id_data":
+        "5fa3a9cf817d0c0cf10ec7b2", "geometry": {"type": "Point", "coordinates": [-0.2710739,
+        45.6607131]}, "properties": {"t": "2020-11-05T07:17:15.490000Z", "speed":
+        0.0, "aux_state": false, "aux_count": 0, "aux_state_2": false, "aux_count_2":
+        0}}, {"type": "Feature", "id_data": "5fa3a9d0817d0c0cf10ec7c3", "geometry":
+        {"type": "Point", "coordinates": [-0.2710679, 45.6607092]}, "properties":
+        {"t": "2020-11-05T07:17:17.090000Z", "speed": 1.2, "aux_state": false, "aux_count":
+        0, "aux_state_2": false, "aux_count_2": 0}}, {"type": "Feature", "id_data":
+        "5fa3a9d4817d0c0cf10ec7e5", "geometry": {"type": "Point", "coordinates": [-0.271061,
+        45.6606988]}, "properties": {"t": "2020-11-05T07:17:19.390000Z", "speed":
+        0.4, "aux_state": false, "aux_count": 0, "aux_state_2": false, "aux_count_2":
+        0}}, {"type": "Feature", "id_data": "5fa3a9d7817d0c0cf10ec817", "geometry":
+        {"type": "Point", "coordinates": [-0.2710565, 45.6606968]}, "properties":
+        {"t": "2020-11-05T07:17:22.990000Z", "speed": 0.0, "aux_state": false, "aux_count":
+        0, "aux_state_2": false, "aux_count_2": 0}}, {"type": "Feature", "id_data":
+        "5fa3a9d9817d0c0cf10ec828", "geometry": {"type": "Point", "coordinates": [-0.2710561,
+        45.6606966]}, "properties": {"t": "2020-11-05T07:17:24.590000Z", "speed":
+        0.0, "aux_state": false, "aux_count": 0, "aux_state_2": false, "aux_count_2":
+        0}}, {"type": "Feature", "id_data": "5fa3a9dc817d0c0cf10ec841", "geometry":
+        {"type": "Point", "coordinates": [-0.2710548, 45.6606979]}, "properties":
+        {"t": "2020-11-05T07:17:26.590000Z", "speed": 0.0, "aux_state": false, "aux_count":
+        0, "aux_state_2": false, "aux_count_2": 0}}, {"type": "Feature", "id_data":
+        "5fa3a9de817d0c0cf10ec863", "geometry": {"type": "Point", "coordinates": [-0.2710533,
+        45.6606986]}, "properties": {"t": "2020-11-05T07:17:28.090000Z", "speed":
+        0.0, "aux_state": false, "aux_count": 0, "aux_state_2": false, "aux_count_2":
+        0}}, {"type": "Feature", "id_data": "5fa3a9e1817d0c0cf10ec87b", "geometry":
+        {"type": "Point", "coordinates": [-0.2710525, 45.6606994]}, "properties":
+        {"t": "2020-11-05T07:17:29.790000Z", "speed": 0.0, "aux_state": false, "aux_count":
+        0, "aux_state_2": false, "aux_count_2": 0}}, {"type": "Feature", "id_data":
+        "5fa3a9e1817d0c0cf10ec87c", "geometry": {"type": "Point", "coordinates": [-0.2710523,
+        45.6606998]}, "properties": {"t": "2020-11-05T07:17:31.390000Z", "speed":
+        0.0, "aux_state": false, "aux_count": 0, "aux_state_2": false, "aux_count_2":
+        0}}, {"type": "Feature", "id_data": "5fa3a9e3817d0c0cf10ec89d", "geometry":
+        {"type": "Point", "coordinates": [-0.2710519, 45.6607004]}, "properties":
+        {"t": "2020-11-05T07:17:32.990000Z", "speed": 0.0, "aux_state": false, "aux_count":
+        0, "aux_state_2": false, "aux_count_2": 0}}, {"type": "Feature", "id_data":
+        "5fa3a9e7817d0c0cf10ec8d7", "geometry": {"type": "Point", "coordinates": [-0.2710511,
+        45.6607008]}, "properties": {"t": "2020-11-05T07:17:36.490000Z", "speed":
+        0.0, "aux_state": false, "aux_count": 0, "aux_state_2": false, "aux_count_2":
+        0}}, {"type": "Feature", "id_data": "5fa3a9f3817d0c0cf10ec93b", "geometry":
+        {"type": "Point", "coordinates": [-0.2710501, 45.6607021]}, "properties":
+        {"t": "2020-11-05T07:17:42.190000Z", "speed": 0.0, "aux_state": false, "aux_count":
+        0, "aux_state_2": false, "aux_count_2": 0}}, {"type": "Feature", "id_data":
+        "5fa3a9fe817d0c0cf10ec99f", "geometry": {"type": "Point", "coordinates": [-0.2710476,
+        45.6607006]}, "properties": {"t": "2020-11-05T07:17:48.290000Z", "speed":
+        0.0, "aux_state": false, "aux_count": 0, "aux_state_2": false, "aux_count_2":
+        0}}, {"type": "Feature", "id_data": "5fa3aa01817d0c0cf10ec9c8", "geometry":
+        {"type": "Point", "coordinates": [-0.2710432, 45.6606987]}, "properties":
+        {"t": "2020-11-05T07:17:50.890000Z", "speed": 0.0, "aux_state": false, "aux_count":
+        0, "aux_state_2": false, "aux_count_2": 0}}, {"type": "Feature", "id_data":
+        "5fa3aa04817d0c0cf10ec9e1", "geometry": {"type": "Point", "coordinates": [-0.2710423,
+        45.6606982]}, "properties": {"t": "2020-11-05T07:17:52.490000Z", "speed":
+        0.0, "aux_state": false, "aux_count": 0, "aux_state_2": false, "aux_count_2":
+        0}}, {"type": "Feature", "id_data": "5fa3aa27817d0c0cf10eca42", "geometry":
+        {"type": "Point", "coordinates": [-0.2710408, 45.6606973]}, "properties":
+        {"t": "2020-11-05T07:17:54.090000Z", "speed": 0.0, "aux_state": false, "aux_count":
+        0, "aux_state_2": false, "aux_count_2": 0}}, {"type": "Feature", "id_data":
+        "5fa3aa29817d0c0cf10eca54", "geometry": {"type": "Point", "coordinates": [-0.2710402,
+        45.660697]}, "properties": {"t": "2020-11-05T07:17:55.690000Z", "speed": 0.0,
+        "aux_state": false, "aux_count": 0, "aux_state_2": false, "aux_count_2": 0}},
+        {"type": "Feature", "id_data": "5fa3aa30817d0c0cf10ecaad", "geometry": {"type":
+        "Point", "coordinates": [-0.2710379, 45.6606949]}, "properties": {"t": "2020-11-05T07:18:00.710000Z",
+        "speed": 0.0, "aux_state": false, "aux_count": 0, "aux_state_2": false, "aux_count_2":
+        0}}, {"type": "Feature", "id_data": "5fa3aa32817d0c0cf10ecac6", "geometry":
+        {"type": "Point", "coordinates": [-0.2710381, 45.6606938]}, "properties":
+        {"t": "2020-11-05T07:18:03.590000Z", "speed": 0.0, "aux_state": false, "aux_count":
+        0, "aux_state_2": false, "aux_count_2": 0}}, {"type": "Feature", "id_data":
+        "5fa3aa38817d0c0cf10ecb11", "geometry": {"type": "Point", "coordinates": [-0.2710377,
+        45.660692]}, "properties": {"t": "2020-11-05T07:18:06.390000Z", "speed": 0.0,
+        "aux_state": false, "aux_count": 0, "aux_state_2": false, "aux_count_2": 0}},
+        {"type": "Feature", "id_data": "5fa3aa3a817d0c0cf10ecb29", "geometry": {"type":
+        "Point", "coordinates": [-0.2710375, 45.6606907]}, "properties": {"t": "2020-11-05T07:18:07.990000Z",
+        "speed": 0.0, "aux_state": false, "aux_count": 0, "aux_state_2": false, "aux_count_2":
+        0}}, {"type": "Feature", "id_data": "5fa3aa3a817d0c0cf10ecb2a", "geometry":
+        {"type": "Point", "coordinates": [-0.2710375, 45.6606903]}, "properties":
+        {"t": "2020-11-05T07:18:09.590000Z", "speed": 0.0, "aux_state": false, "aux_count":
+        0, "aux_state_2": false, "aux_count_2": 0}}, {"type": "Feature", "id_data":
+        "5fa3aa3e817d0c0cf10ecb54", "geometry": {"type": "Point", "coordinates": [-0.2710374,
+        45.6606896]}, "properties": {"t": "2020-11-05T07:18:11.190000Z", "speed":
+        0.0, "aux_state": false, "aux_count": 0, "aux_state_2": false, "aux_count_2":
+        0}}, {"type": "Feature", "id_data": "5fa3aa41817d0c0cf10ecb6d", "geometry":
+        {"type": "Point", "coordinates": [-0.2710371, 45.6606891]}, "properties":
+        {"t": "2020-11-05T07:18:13.090000Z", "speed": 0.0, "aux_state": false, "aux_count":
+        0, "aux_state_2": false, "aux_count_2": 0}}, {"type": "Feature", "id_data":
+        "5fa3aa48817d0c0cf10ecbbf", "geometry": {"type": "Point", "coordinates": [-0.2710369,
+        45.660688]}, "properties": {"t": "2020-11-05T07:18:18.290000Z", "speed": 0.0,
+        "aux_state": false, "aux_count": 0, "aux_state_2": false, "aux_count_2": 0}},
+        {"type": "Feature", "id_data": "5fa3aa4a817d0c0cf10ecbde", "geometry": {"type":
+        "Point", "coordinates": [-0.2710368, 45.6606877]}, "properties": {"t": "2020-11-05T07:18:19.890000Z",
+        "speed": 0.0, "aux_state": false, "aux_count": 0, "aux_state_2": false, "aux_count_2":
+        0}}, {"type": "Feature", "id_data": "5fa3aa4a817d0c0cf10ecbdf", "geometry":
+        {"type": "Point", "coordinates": [-0.2710369, 45.6606875]}, "properties":
+        {"t": "2020-11-05T07:18:21.500000Z", "speed": 0.0, "aux_state": false, "aux_count":
+        0, "aux_state_2": false, "aux_count_2": 0}}, {"type": "Feature", "id_data":
+        "5fa3aa4e817d0c0cf10ecc0f", "geometry": {"type": "Point", "coordinates": [-0.2710372,
+        45.6606875]}, "properties": {"t": "2020-11-05T07:18:23.710000Z", "speed":
+        0.0, "aux_state": false, "aux_count": 0, "aux_state_2": false, "aux_count_2":
+        0}}, {"type": "Feature", "id_data": "5fa3aa4e817d0c0cf10ecc10", "geometry":
+        {"type": "Point", "coordinates": [-0.2710372, 45.6606873]}, "properties":
+        {"t": "2020-11-05T07:18:25.290000Z", "speed": 0.0, "aux_state": false, "aux_count":
+        0, "aux_state_2": false, "aux_count_2": 0}}, {"type": "Feature", "id_data":
+        "5fa3aa52817d0c0cf10ecc31", "geometry": {"type": "Point", "coordinates": [-0.2710372,
+        45.6606871]}, "properties": {"t": "2020-11-05T07:18:27.500000Z", "speed":
+        0.0, "aux_state": false, "aux_count": 0, "aux_state_2": false, "aux_count_2":
+        0}}, {"type": "Feature", "id_data": "5fa3aa56817d0c0cf10ecc53", "geometry":
+        {"type": "Point", "coordinates": [-0.2710374, 45.6606868]}, "properties":
+        {"t": "2020-11-05T07:18:29.200000Z", "speed": 0.0, "aux_state": false, "aux_count":
+        0, "aux_state_2": false, "aux_count_2": 0}}, {"type": "Feature", "id_data":
+        "5fa3aa5e817d0c0cf10eccb6", "geometry": {"type": "Point", "coordinates": [-0.2710369,
+        45.6606859]}, "properties": {"t": "2020-11-05T07:18:35.300000Z", "speed":
+        0.0, "aux_state": false, "aux_count": 0, "aux_state_2": false, "aux_count_2":
+        0}}, {"type": "Feature", "id_data": "5fa3aa6a817d0c0cf10ecd10", "geometry":
+        {"type": "Point", "coordinates": [-0.271037, 45.6606856]}, "properties": {"t":
+        "2020-11-05T07:18:41.410000Z", "speed": 0.0, "aux_state": false, "aux_count":
+        0, "aux_state_2": false, "aux_count_2": 0}}, {"type": "Feature", "id_data":
+        "5fa3aa74817d0c0cf10ecd73", "geometry": {"type": "Point", "coordinates": [-0.2710376,
+        45.6606855]}, "properties": {"t": "2020-11-05T07:18:47.500000Z", "speed":
+        0.0, "aux_state": false, "aux_count": 0, "aux_state_2": false, "aux_count_2":
+        0}}, {"type": "Feature", "id_data": "5fa3aa7c817d0c0cf10ecde4", "geometry":
+        {"type": "Point", "coordinates": [-0.2710381, 45.6606851]}, "properties":
+        {"t": "2020-11-05T07:18:53.620000Z", "speed": 0.0, "aux_state": false, "aux_count":
+        0, "aux_state_2": false, "aux_count_2": 0}}, {"type": "Feature", "id_data":
+        "5fa3aa83817d0c0cf10ece3e", "geometry": {"type": "Point", "coordinates": [-0.271038,
+        45.6606844]}, "properties": {"t": "2020-11-05T07:18:59.600000Z", "speed":
+        0.0, "aux_state": false, "aux_count": 0, "aux_state_2": false, "aux_count_2":
+        0}}, {"type": "Feature", "id_data": "5fa3aa8b817d0c0cf10ece8f", "geometry":
+        {"type": "Point", "coordinates": [-0.2710368, 45.6606842]}, "properties":
+        {"t": "2020-11-05T07:19:05.700000Z", "speed": 0.0, "aux_state": false, "aux_count":
+        0, "aux_state_2": false, "aux_count_2": 0}}, {"type": "Feature", "id_data":
+        "5fa3aa92817d0c0cf10ecee0", "geometry": {"type": "Point", "coordinates": [-0.2710366,
+        45.6606839]}, "properties": {"t": "2020-11-05T07:19:11.800000Z", "speed":
+        0.0, "aux_state": false, "aux_count": 0, "aux_state_2": false, "aux_count_2":
+        0}}, {"type": "Feature", "id_data": "5fa3aa98817d0c0cf10ecf32", "geometry":
+        {"type": "Point", "coordinates": [-0.2710366, 45.6606829]}, "properties":
+        {"t": "2020-11-05T07:19:17.900000Z", "speed": 0.0, "aux_state": false, "aux_count":
+        0, "aux_state_2": false, "aux_count_2": 0}}, {"type": "Feature", "id_data":
+        "5fa3aa9e817d0c0cf10ecf74", "geometry": {"type": "Point", "coordinates": [-0.2710384,
+        45.6606818]}, "properties": {"t": "2020-11-05T07:19:23Z", "speed": 0.4, "aux_state":
+        false, "aux_count": 0, "aux_state_2": false, "aux_count_2": 0}}, {"type":
+        "Feature", "id_data": "5fa3aaa8817d0c0cf10ecfe0", "geometry": {"type": "Point",
+        "coordinates": [-0.2710262, 45.6606839]}, "properties": {"t": "2020-11-05T07:19:29Z",
+        "speed": 1.8, "aux_state": false, "aux_count": 0, "aux_state_2": false, "aux_count_2":
+        0}}, {"type": "Feature", "id_data": "5fa3aaae817d0c0cf10ed031", "geometry":
+        {"type": "Point", "coordinates": [-0.2709582, 45.6607042]}, "properties":
+        {"t": "2020-11-05T07:19:35.100000Z", "speed": 4.0, "aux_state": false, "aux_count":
+        0, "aux_state_2": false, "aux_count_2": 0}}, {"type": "Feature", "id_data":
+        "5fa3aab9817d0c0cf10ed08b", "geometry": {"type": "Point", "coordinates": [-0.2709106,
+        45.6607176]}, "properties": {"t": "2020-11-05T07:19:41.200000Z", "speed":
+        2.6, "aux_state": false, "aux_count": 0, "aux_state_2": false, "aux_count_2":
+        0}}, {"type": "Feature", "id_data": "5fa3aac2817d0c0cf10ed0e4", "geometry":
+        {"type": "Point", "coordinates": [-0.2708417, 45.6607307]}, "properties":
+        {"t": "2020-11-05T07:19:47.300000Z", "speed": 3.2, "aux_state": false, "aux_count":
+        0, "aux_state_2": false, "aux_count_2": 0}}, {"type": "Feature", "id_data":
+        "5fa3aacc817d0c0cf10ed13f", "geometry": {"type": "Point", "coordinates": [-0.2708188,
+        45.6607329]}, "properties": {"t": "2020-11-05T07:19:53.400000Z", "speed":
+        0.2, "aux_state": false, "aux_count": 0, "aux_state_2": false, "aux_count_2":
+        0}}, {"type": "Feature", "id_data": "5fa3aad6817d0c0cf10ed1ba", "geometry":
+        {"type": "Point", "coordinates": [-0.2707431, 45.6607599]}, "properties":
+        {"t": "2020-11-05T07:19:59.420000Z", "speed": 5.0, "aux_state": false, "aux_count":
+        0, "aux_state_2": false, "aux_count_2": 0}}, {"type": "Feature", "id_data":
+        "5fa3aaeb817d0c0cf10ed234", "geometry": {"type": "Point", "coordinates": [-0.2707704,
+        45.6607333]}, "properties": {"t": "2020-11-05T07:20:05.500000Z", "speed":
+        4.8, "aux_state": false, "aux_count": 0, "aux_state_2": false, "aux_count_2":
+        0}}, {"type": "Feature", "id_data": "5fa3aaf6817d0c0cf10ed297", "geometry":
+        {"type": "Point", "coordinates": [-0.2707994, 45.6607312]}, "properties":
+        {"t": "2020-11-05T07:20:11.600000Z", "speed": 2.8, "aux_state": false, "aux_count":
+        0, "aux_state_2": false, "aux_count_2": 0}}, {"type": "Feature", "id_data":
+        "5fa3aafe817d0c0cf10ed2f1", "geometry": {"type": "Point", "coordinates": [-0.2708696,
+        45.6607218]}, "properties": {"t": "2020-11-05T07:20:17.700000Z", "speed":
+        1.6, "aux_state": false, "aux_count": 0, "aux_state_2": false, "aux_count_2":
+        0}}, {"type": "Feature", "id_data": "5fa3ab06817d0c0cf10ed342", "geometry":
+        {"type": "Point", "coordinates": [-0.2708724, 45.6607211]}, "properties":
+        {"t": "2020-11-05T07:20:23.800000Z", "speed": 0.0, "aux_state": false, "aux_count":
+        0, "aux_state_2": false, "aux_count_2": 0}}, {"type": "Feature", "id_data":
+        "5fa3ab0d817d0c0cf10ed3a5", "geometry": {"type": "Point", "coordinates": [-0.2708747,
+        45.6607198]}, "properties": {"t": "2020-11-05T07:20:29.790000Z", "speed":
+        0.0, "aux_state": false, "aux_count": 0, "aux_state_2": false, "aux_count_2":
+        0}}, {"type": "Feature", "id_data": "5fa3ab14817d0c0cf10ed3ff", "geometry":
+        {"type": "Point", "coordinates": [-0.2708768, 45.660719]}, "properties": {"t":
+        "2020-11-05T07:20:35.890000Z", "speed": 0.0, "aux_state": false, "aux_count":
+        0, "aux_state_2": false, "aux_count_2": 0}}, {"type": "Feature", "id_data":
+        "5fa3ab1c817d0c0cf10ed450", "geometry": {"type": "Point", "coordinates": [-0.2708791,
+        45.6607184]}, "properties": {"t": "2020-11-05T07:20:41.990000Z", "speed":
+        0.0, "aux_state": false, "aux_count": 0, "aux_state_2": false, "aux_count_2":
+        0}}, {"type": "Feature", "id_data": "5fa3ab31817d0c0cf10ed4de", "geometry":
+        {"type": "Point", "coordinates": [-0.2708812, 45.6607175]}, "properties":
+        {"t": "2020-11-05T07:20:48.090000Z", "speed": 0.0, "aux_state": false, "aux_count":
+        0, "aux_state_2": false, "aux_count_2": 0}}, {"type": "Feature", "id_data":
+        "5fa3ab37817d0c0cf10ed540", "geometry": {"type": "Point", "coordinates": [-0.2708834,
+        45.6607167]}, "properties": {"t": "2020-11-05T07:20:54.190000Z", "speed":
+        0.0, "aux_state": false, "aux_count": 0, "aux_state_2": false, "aux_count_2":
+        0}}, {"type": "Feature", "id_data": "5fa3ab3e817d0c0cf10ed599", "geometry":
+        {"type": "Point", "coordinates": [-0.2708852, 45.6607155]}, "properties":
+        {"t": "2020-11-05T07:21:00.200000Z", "speed": 0.0, "aux_state": false, "aux_count":
+        0, "aux_state_2": false, "aux_count_2": 0}}, {"type": "Feature", "id_data":
+        "5fa3ab45817d0c0cf10ed5f3", "geometry": {"type": "Point", "coordinates": [-0.270887,
+        45.6607144]}, "properties": {"t": "2020-11-05T07:21:06.310000Z", "speed":
+        0.0, "aux_state": false, "aux_count": 0, "aux_state_2": false, "aux_count_2":
+        0}}, {"type": "Feature", "id_data": "5fa3ab4b817d0c0cf10ed635", "geometry":
+        {"type": "Point", "coordinates": [-0.2708874, 45.660714]}, "properties": {"t":
+        "2020-11-05T07:21:09.390000Z", "speed": 0.0, "aux_state": false, "aux_count":
+        0, "aux_state_2": false, "aux_count_2": 0}}, {"type": "Feature", "id_data":
+        "5fa3ab51817d0c0cf10ed686", "geometry": {"type": "Point", "coordinates": [-0.2708883,
+        45.6607133]}, "properties": {"t": "2020-11-05T07:21:15.490000Z", "speed":
+        0.0, "aux_state": false, "aux_count": 0, "aux_state_2": false, "aux_count_2":
+        0}}, {"type": "Feature", "id_data": "5fa3ab58817d0c0cf10ed6d7", "geometry":
+        {"type": "Point", "coordinates": [-0.2708889, 45.6607127]}, "properties":
+        {"t": "2020-11-05T07:21:21.590000Z", "speed": 0.0, "aux_state": false, "aux_count":
+        0, "aux_state_2": false, "aux_count_2": 0}}, {"type": "Feature", "id_data":
+        "5fa3ab60817d0c0cf10ed755", "geometry": {"type": "Point", "coordinates": [-0.2708893,
+        45.6607119]}, "properties": {"t": "2020-11-05T07:21:27.690000Z", "speed":
+        0.0, "aux_state": false, "aux_count": 0, "aux_state_2": false, "aux_count_2":
+        0}}, {"type": "Feature", "id_data": "5fa3ab67817d0c0cf10ed7b7", "geometry":
+        {"type": "Point", "coordinates": [-0.2708898, 45.6607109]}, "properties":
+        {"t": "2020-11-05T07:21:33.690000Z", "speed": 0.0, "aux_state": false, "aux_count":
+        0, "aux_state_2": false, "aux_count_2": 0}}, {"type": "Feature", "id_data":
+        "5fa3ab6f817d0c0cf10ed811", "geometry": {"type": "Point", "coordinates": [-0.2708902,
+        45.6607101]}, "properties": {"t": "2020-11-05T07:21:39.800000Z", "speed":
+        0.0, "aux_state": false, "aux_count": 0, "aux_state_2": false, "aux_count_2":
+        0}}, {"type": "Feature", "id_data": "5fa3ab7b817d0c0cf10ed8fb", "geometry":
+        {"type": "Point", "coordinates": [-0.2708904, 45.6607093]}, "properties":
+        {"t": "2020-11-05T07:21:45.890000Z", "speed": 0.0, "aux_state": false, "aux_count":
+        0, "aux_state_2": false, "aux_count_2": 0}}, {"type": "Feature", "id_data":
+        "5fa3ab83817d0c0cf10ed98a", "geometry": {"type": "Point", "coordinates": [-0.2708899,
+        45.6607086]}, "properties": {"t": "2020-11-05T07:21:51.990000Z", "speed":
+        0.0, "aux_state": false, "aux_count": 0, "aux_state_2": false, "aux_count_2":
+        0}}, {"type": "Feature", "id_data": "5fa3ab8f817d0c0cf10ed9ed", "geometry":
+        {"type": "Point", "coordinates": [-0.2708885, 45.660708]}, "properties": {"t":
+        "2020-11-05T07:21:58Z", "speed": 0.0, "aux_state": false, "aux_count": 0,
+        "aux_state_2": false, "aux_count_2": 0}}, {"type": "Feature", "id_data": "5fa3ab98817d0c0cf10eda58",
+        "geometry": {"type": "Point", "coordinates": [-0.2708863, 45.660707]}, "properties":
+        {"t": "2020-11-05T07:22:04.110000Z", "speed": 0.0, "aux_state": false, "aux_count":
+        0, "aux_state_2": false, "aux_count_2": 0}}, {"type": "Feature", "id_data":
+        "5fa3aba1817d0c0cf10edab2", "geometry": {"type": "Point", "coordinates": [-0.2708844,
+        45.6607062]}, "properties": {"t": "2020-11-05T07:22:10.190000Z", "speed":
+        0.0, "aux_state": false, "aux_count": 0, "aux_state_2": false, "aux_count_2":
+        0}}, {"type": "Feature", "id_data": "5fa3abac817d0c0cf10edb14", "geometry":
+        {"type": "Point", "coordinates": [-0.2708828, 45.6607054]}, "properties":
+        {"t": "2020-11-05T07:22:16.290000Z", "speed": 0.0, "aux_state": false, "aux_count":
+        0, "aux_state_2": false, "aux_count_2": 0}}, {"type": "Feature", "id_data":
+        "5fa3abb6817d0c0cf10edb77", "geometry": {"type": "Point", "coordinates": [-0.2708815,
+        45.6607046]}, "properties": {"t": "2020-11-05T07:22:22.390000Z", "speed":
+        0.0, "aux_state": false, "aux_count": 0, "aux_state_2": false, "aux_count_2":
+        0}}, {"type": "Feature", "id_data": "5fa3abbd817d0c0cf10edbd1", "geometry":
+        {"type": "Point", "coordinates": [-0.270881, 45.6607043]}, "properties": {"t":
+        "2020-11-05T07:22:28.380000Z", "speed": 0.0, "aux_state": false, "aux_count":
+        0, "aux_state_2": false, "aux_count_2": 0}}, {"type": "Feature", "id_data":
+        "5fa3abc6817d0c0cf10edc45", "geometry": {"type": "Point", "coordinates": [-0.2708807,
+        45.6607041]}, "properties": {"t": "2020-11-05T07:22:34.980000Z", "speed":
+        0.0, "aux_state": false, "aux_count": 0, "aux_state_2": false, "aux_count_2":
+        0}}, {"type": "Feature", "id_data": "5fa3abcc817d0c0cf10edc76", "geometry":
+        {"type": "Point", "coordinates": [-0.2708796, 45.6607046]}, "properties":
+        {"t": "2020-11-05T07:22:37.510000Z", "speed": 0.4, "aux_state": false, "aux_count":
+        0, "aux_state_2": false, "aux_count_2": 0}}, {"type": "Feature", "id_data":
+        "5fa3abd6817d0c0cf10edcea", "geometry": {"type": "Point", "coordinates": [-0.2708642,
+        45.6607116]}, "properties": {"t": "2020-11-05T07:22:43.580000Z", "speed":
+        0.0, "aux_state": false, "aux_count": 0, "aux_state_2": false, "aux_count_2":
+        0}}, {"type": "Feature", "id_data": "5fa3abde817d0c0cf10edd3b", "geometry":
+        {"type": "Point", "coordinates": [-0.2708209, 45.6607168]}, "properties":
+        {"t": "2020-11-05T07:22:49.680000Z", "speed": 3.0, "aux_state": false, "aux_count":
+        0, "aux_state_2": false, "aux_count_2": 0}}, {"type": "Feature", "id_data":
+        "5fa3abe6817d0c0cf10eddad", "geometry": {"type": "Point", "coordinates": [-0.2707796,
+        45.6607075]}, "properties": {"t": "2020-11-05T07:22:55.780000Z", "speed":
+        2.4, "aux_state": false, "aux_count": 0, "aux_state_2": false, "aux_count_2":
+        0}}, {"type": "Feature", "id_data": "5fa3abf4817d0c0cf10ede0f", "geometry":
+        {"type": "Point", "coordinates": [-0.2707387, 45.6608034]}, "properties":
+        {"t": "2020-11-05T07:23:02.300000Z", "speed": 7.0, "aux_state": false, "aux_count":
+        0, "aux_state_2": false, "aux_count_2": 0}}, {"type": "Feature", "id_data":
+        "5fa3abfb817d0c0cf10ede71", "geometry": {"type": "Point", "coordinates": [-0.2707967,
+        45.6608688]}, "properties": {"t": "2020-11-05T07:23:08.400000Z", "speed":
+        7.0, "aux_state": false, "aux_count": 0, "aux_state_2": false, "aux_count_2":
+        0}}, {"type": "Feature", "id_data": "5fa3ac04817d0c0cf10eded3", "geometry":
+        {"type": "Point", "coordinates": [-0.2710369, 45.6608935]}, "properties":
+        {"t": "2020-11-05T07:23:14.510000Z", "speed": 13.6, "aux_state": false, "aux_count":
+        0, "aux_state_2": false, "aux_count_2": 0}}, {"type": "Feature", "id_data":
+        "5fa3ac0c817d0c0cf10edf27", "geometry": {"type": "Point", "coordinates": [-0.2712791,
+        45.6609251]}, "properties": {"t": "2020-11-05T07:23:19.600000Z", "speed":
+        13.8, "aux_state": false, "aux_count": 0, "aux_state_2": false, "aux_count_2":
+        0}}, {"type": "Feature", "id_data": "5fa3ac23817d0c0cf10edfaa", "geometry":
+        {"type": "Point", "coordinates": [-0.2715469, 45.6609691]}, "properties":
+        {"t": "2020-11-05T07:23:25.700000Z", "speed": 10.0, "aux_state": false, "aux_count":
+        0, "aux_state_2": false, "aux_count_2": 0}}, {"type": "Feature", "id_data":
+        "5fa3ac2e817d0c0cf10ee00d", "geometry": {"type": "Point", "coordinates": [-0.2717399,
+        45.6610182]}, "properties": {"t": "2020-11-05T07:23:31.700000Z", "speed":
+        10.0, "aux_state": false, "aux_count": 0, "aux_state_2": false, "aux_count_2":
+        0}}, {"type": "Feature", "id_data": "5fa3ac36817d0c0cf10ee06f", "geometry":
+        {"type": "Point", "coordinates": [-0.2719517, 45.6610506]}, "properties":
+        {"t": "2020-11-05T07:23:37Z", "speed": 10.0, "aux_state": false, "aux_count":
+        0, "aux_state_2": false, "aux_count_2": 0}}, {"type": "Feature", "id_data":
+        "5fa3ac3d817d0c0cf10ee0da", "geometry": {"type": "Point", "coordinates": [-0.2722189,
+        45.6611074]}, "properties": {"t": "2020-11-05T07:23:43.100000Z", "speed":
+        13.8, "aux_state": false, "aux_count": 0, "aux_state_2": false, "aux_count_2":
+        0}}, {"type": "Feature", "id_data": "5fa3ac49817d0c0cf10ee156", "geometry":
+        {"type": "Point", "coordinates": [-0.2725483, 45.6611807]}, "properties":
+        {"t": "2020-11-05T07:23:49.200000Z", "speed": 16.2, "aux_state": false, "aux_count":
+        0, "aux_state_2": false, "aux_count_2": 0}}, {"type": "Feature", "id_data":
+        "5fa3ac52817d0c0cf10ee1c2", "geometry": {"type": "Point", "coordinates": [-0.2728822,
+        45.6612514]}, "properties": {"t": "2020-11-05T07:23:55.300000Z", "speed":
+        16.0, "aux_state": false, "aux_count": 0, "aux_state_2": false, "aux_count_2":
+        0}}, {"type": "Feature", "id_data": "5fa3ac57817d0c0cf10ee203", "geometry":
+        {"type": "Point", "coordinates": [-0.2730922, 45.6613018]}, "properties":
+        {"t": "2020-11-05T07:23:58.920000Z", "speed": 15.4, "aux_state": false, "aux_count":
+        0, "aux_state_2": false, "aux_count_2": 0}}, {"type": "Feature", "id_data":
+        "5fa3ac65817d0c0cf10ee288", "geometry": {"type": "Point", "coordinates": [-0.2734414,
+        45.6613855]}, "properties": {"t": "2020-11-05T07:24:04.930000Z", "speed":
+        19.6, "aux_state": false, "aux_count": 0, "aux_state_2": false, "aux_count_2":
+        0}}, {"type": "Feature", "id_data": "5fa3ac6e817d0c0cf10ee303", "geometry":
+        {"type": "Point", "coordinates": [-0.273867, 45.6615086]}, "properties": {"t":
+        "2020-11-05T07:24:11Z", "speed": 21.0, "aux_state": false, "aux_count": 0,
+        "aux_state_2": false, "aux_count_2": 0}}, {"type": "Feature", "id_data": "5fa3ac7f817d0c0cf10ee38f",
+        "geometry": {"type": "Point", "coordinates": [-0.2742897, 45.6616355]}, "properties":
+        {"t": "2020-11-05T07:24:17.100000Z", "speed": 21.0, "aux_state": false, "aux_count":
+        0, "aux_state_2": false, "aux_count_2": 0}}, {"type": "Feature", "id_data":
+        "5fa3ac88817d0c0cf10ee402", "geometry": {"type": "Point", "coordinates": [-0.2747139,
+        45.6617659]}, "properties": {"t": "2020-11-05T07:24:23.200000Z", "speed":
+        22.0, "aux_state": false, "aux_count": 0, "aux_state_2": false, "aux_count_2":
+        0}}, {"type": "Feature", "id_data": "5fa3ac94817d0c0cf10ee474", "geometry":
+        {"type": "Point", "coordinates": [-0.2751506, 45.6618932]}, "properties":
+        {"t": "2020-11-05T07:24:29.200000Z", "speed": 22.0, "aux_state": false, "aux_count":
+        0, "aux_state_2": false, "aux_count_2": 0}}, {"type": "Feature", "id_data":
+        "5fa3aca0817d0c0cf10ee4e7", "geometry": {"type": "Point", "coordinates": [-0.2756005,
+        45.6619927]}, "properties": {"t": "2020-11-05T07:24:35.300000Z", "speed":
+        21.0, "aux_state": false, "aux_count": 0, "aux_state_2": false, "aux_count_2":
+        0}}, {"type": "Feature", "id_data": "5fa3acac817d0c0cf10ee562", "geometry":
+        {"type": "Point", "coordinates": [-0.2760597, 45.6620627]}, "properties":
+        {"t": "2020-11-05T07:24:41.400000Z", "speed": 21.0, "aux_state": false, "aux_count":
+        0, "aux_state_2": false, "aux_count_2": 0}}, {"type": "Feature", "id_data":
+        "5fa3acb5817d0c0cf10ee5d4", "geometry": {"type": "Point", "coordinates": [-0.2765225,
+        45.6621277]}, "properties": {"t": "2020-11-05T07:24:47.500000Z", "speed":
+        21.0, "aux_state": false, "aux_count": 0, "aux_state_2": false, "aux_count_2":
+        0}}, {"type": "Feature", "id_data": "5fa3acd5817d0c0cf10ee68a", "geometry":
+        {"type": "Point", "coordinates": [-0.2769814, 45.6621922]}, "properties":
+        {"t": "2020-11-05T07:24:53.600000Z", "speed": 21.0, "aux_state": false, "aux_count":
+        0, "aux_state_2": false, "aux_count_2": 0}}, {"type": "Feature", "id_data":
+        "5fa3acdf817d0c0cf10ee6fd", "geometry": {"type": "Point", "coordinates": [-0.2774332,
+        45.6622543]}, "properties": {"t": "2020-11-05T07:24:59.600000Z", "speed":
+        21.0, "aux_state": false, "aux_count": 0, "aux_state_2": false, "aux_count_2":
+        0}}, {"type": "Feature", "id_data": "5fa3acf6817d0c0cf10ee7a9", "geometry":
+        {"type": "Point", "coordinates": [-0.2779577, 45.6623262]}, "properties":
+        {"t": "2020-11-05T07:25:05.730000Z", "speed": 21.0, "aux_state": false, "aux_count":
+        0, "aux_state_2": false, "aux_count_2": 0}}, {"type": "Feature", "id_data":
+        "5fa3acff817d0c0cf10ee81c", "geometry": {"type": "Point", "coordinates": [-0.2783326,
+        45.6623787]}, "properties": {"t": "2020-11-05T07:25:10.720000Z", "speed":
+        21.0, "aux_state": false, "aux_count": 0, "aux_state_2": false, "aux_count_2":
+        0}}, {"type": "Feature", "id_data": "5fa3ad0d817d0c0cf10ee8b1", "geometry":
+        {"type": "Point", "coordinates": [-0.278783, 45.6624411]}, "properties": {"t":
+        "2020-11-05T07:25:16.790000Z", "speed": 21.0, "aux_state": false, "aux_count":
+        0, "aux_state_2": false, "aux_count_2": 0}}, {"type": "Feature", "id_data":
+        "5fa3ad29817d0c0cf10ee94d", "geometry": {"type": "Point", "coordinates": [-0.2792356,
+        45.6625033]}, "properties": {"t": "2020-11-05T07:25:22.900000Z", "speed":
+        21.0, "aux_state": false, "aux_count": 0, "aux_state_2": false, "aux_count_2":
+        0}}, {"type": "Feature", "id_data": "5fa3ad3f817d0c0cf10ee9f9", "geometry":
+        {"type": "Point", "coordinates": [-0.2796917, 45.6625643]}, "properties":
+        {"t": "2020-11-05T07:25:28.990000Z", "speed": 21.0, "aux_state": false, "aux_count":
+        0, "aux_state_2": false, "aux_count_2": 0}}, {"type": "Feature", "id_data":
+        "5fa3ad61817d0c0cf10eeaa8", "geometry": {"type": "Point", "coordinates": [-0.2801477,
+        45.6626268]}, "properties": {"t": "2020-11-05T07:25:35Z", "speed": 21.0, "aux_state":
+        false, "aux_count": 0, "aux_state_2": false, "aux_count_2": 0}}, {"type":
+        "Feature", "id_data": "5fa3ad80817d0c0cf10eeb74", "geometry": {"type": "Point",
+        "coordinates": [-0.2805998, 45.6626891]}, "properties": {"t": "2020-11-05T07:25:41.090000Z",
+        "speed": 21.0, "aux_state": false, "aux_count": 0, "aux_state_2": false, "aux_count_2":
+        0}}, {"type": "Feature", "id_data": "5fa3ad8c817d0c0cf10eebdd", "geometry":
+        {"type": "Point", "coordinates": [-0.2810449, 45.6627554]}, "properties":
+        {"t": "2020-11-05T07:25:47.190000Z", "speed": 21.0, "aux_state": false, "aux_count":
+        0, "aux_state_2": false, "aux_count_2": 0}}, {"type": "Feature", "id_data":
+        "5fa3adb9817d0c0cf10eecad", "geometry": {"type": "Point", "coordinates": [-0.2814923,
+        45.6627702]}, "properties": {"t": "2020-11-05T07:25:53.290000Z", "speed":
+        20.0, "aux_state": false, "aux_count": 0, "aux_state_2": false, "aux_count_2":
+        0}}, {"type": "Feature", "id_data": "5fa3adc9817d0c0cf10eed3a", "geometry":
+        {"type": "Point", "coordinates": [-0.2818885, 45.6626309]}, "properties":
+        {"t": "2020-11-05T07:25:59.290000Z", "speed": 21.0, "aux_state": false, "aux_count":
+        0, "aux_state_2": false, "aux_count_2": 0}}, {"type": "Feature", "id_data":
+        "5fa3add7817d0c0cf10eedc4", "geometry": {"type": "Point", "coordinates": [-0.2821942,
+        45.6623261]}, "properties": {"t": "2020-11-05T07:26:05.430000Z", "speed":
+        21.0, "aux_state": false, "aux_count": 0, "aux_state_2": false, "aux_count_2":
+        0}}, {"type": "Feature", "id_data": "5fa3ade5817d0c0cf10eee2e", "geometry":
+        {"type": "Point", "coordinates": [-0.2824002, 45.6620357]}, "properties":
+        {"t": "2020-11-05T07:26:11.530000Z", "speed": 21.0, "aux_state": false, "aux_count":
+        0, "aux_state_2": false, "aux_count_2": 0}}, {"type": "Feature", "id_data":
+        "5fa3adf0817d0c0cf10eee89", "geometry": {"type": "Point", "coordinates": [-0.2825759,
+        45.6617907]}, "properties": {"t": "2020-11-05T07:26:17.090000Z", "speed":
+        21.0, "aux_state": false, "aux_count": 0, "aux_state_2": false, "aux_count_2":
+        0}}, {"type": "Feature", "id_data": "5fa3adfc817d0c0cf10eef04", "geometry":
+        {"type": "Point", "coordinates": [-0.282791, 45.6615005]}, "properties": {"t":
+        "2020-11-05T07:26:23.190000Z", "speed": 21.0, "aux_state": false, "aux_count":
+        0, "aux_state_2": false, "aux_count_2": 0}}, {"type": "Feature", "id_data":
+        "5fa3ae09817d0c0cf10eef7f", "geometry": {"type": "Point", "coordinates": [-0.2830055,
+        45.6612092]}, "properties": {"t": "2020-11-05T07:26:29.190000Z", "speed":
+        21.0, "aux_state": false, "aux_count": 0, "aux_state_2": false, "aux_count_2":
+        0}}, {"type": "Feature", "id_data": "5fa3ae12817d0c0cf10eefe9", "geometry":
+        {"type": "Point", "coordinates": [-0.283218, 45.660918]}, "properties": {"t":
+        "2020-11-05T07:26:35.290000Z", "speed": 21.0, "aux_state": false, "aux_count":
+        0, "aux_state_2": false, "aux_count_2": 0}}, {"type": "Feature", "id_data":
+        "5fa3ae27817d0c0cf10ef084", "geometry": {"type": "Point", "coordinates": [-0.2834622,
+        45.6605822]}, "properties": {"t": "2020-11-05T07:26:41.430000Z", "speed":
+        21.0, "aux_state": false, "aux_count": 0, "aux_state_2": false, "aux_count_2":
+        0}}, {"type": "Feature", "id_data": "5fa3ae32817d0c0cf10ef108", "geometry":
+        {"type": "Point", "coordinates": [-0.2836708, 45.6602944]}, "properties":
+        {"t": "2020-11-05T07:26:47.490000Z", "speed": 21.0, "aux_state": false, "aux_count":
+        0, "aux_state_2": false, "aux_count_2": 0}}, {"type": "Feature", "id_data":
+        "5fa3ae45817d0c0cf10ef228", "geometry": {"type": "Point", "coordinates": [-0.2838813,
+        45.6600068]}, "properties": {"t": "2020-11-05T07:26:53.590000Z", "speed":
+        21.0, "aux_state": false, "aux_count": 0, "aux_state_2": false, "aux_count_2":
+        0}}, {"type": "Feature", "id_data": "5fa3ae4f817d0c0cf10ef2a2", "geometry":
+        {"type": "Point", "coordinates": [-0.2840975, 45.6597194]}, "properties":
+        {"t": "2020-11-05T07:26:59.600000Z", "speed": 21.0, "aux_state": false, "aux_count":
+        0, "aux_state_2": false, "aux_count_2": 0}}, {"type": "Feature", "id_data":
+        "5fa3ae57817d0c0cf10ef31d", "geometry": {"type": "Point", "coordinates": [-0.2843151,
+        45.6594289]}, "properties": {"t": "2020-11-05T07:27:05.710000Z", "speed":
+        22.0, "aux_state": false, "aux_count": 0, "aux_state_2": false, "aux_count_2":
+        0}}, {"type": "Feature", "id_data": "5fa3ae5e817d0c0cf10ef38f", "geometry":
+        {"type": "Point", "coordinates": [-0.2845273, 45.6591334]}, "properties":
+        {"t": "2020-11-05T07:27:11.800000Z", "speed": 22.0, "aux_state": false, "aux_count":
+        0, "aux_state_2": false, "aux_count_2": 0}}, {"type": "Feature", "id_data":
+        "5fa3ae68817d0c0cf10ef413", "geometry": {"type": "Point", "coordinates": [-0.2847459,
+        45.6588401]}, "properties": {"t": "2020-11-05T07:27:17.900000Z", "speed":
+        22.0, "aux_state": false, "aux_count": 0, "aux_state_2": false, "aux_count_2":
+        0}}, {"type": "Feature", "id_data": "5fa3ae72817d0c0cf10ef48b", "geometry":
+        {"type": "Point", "coordinates": [-0.284965, 45.6585483]}, "properties": {"t":
+        "2020-11-05T07:27:24Z", "speed": 21.0, "aux_state": false, "aux_count": 0,
+        "aux_state_2": false, "aux_count_2": 0}}, {"type": "Feature", "id_data": "5fa3ae8c817d0c0cf10ef53b",
+        "geometry": {"type": "Point", "coordinates": [-0.2851802, 45.6582581]}, "properties":
+        {"t": "2020-11-05T07:27:30Z", "speed": 21.0, "aux_state": false, "aux_count":
+        0, "aux_state_2": false, "aux_count_2": 0}}, {"type": "Feature", "id_data":
+        "5fa3ae96817d0c0cf10ef5ad", "geometry": {"type": "Point", "coordinates": [-0.28539,
+        45.6579735]}, "properties": {"t": "2020-11-05T07:27:36.100000Z", "speed":
+        21.0, "aux_state": false, "aux_count": 0, "aux_state_2": false, "aux_count_2":
+        0}}, {"type": "Feature", "id_data": "5fa3ae9c817d0c0cf10ef5ff", "geometry":
+        {"type": "Point", "coordinates": [-0.2855619, 45.6577426]}, "properties":
+        {"t": "2020-11-05T07:27:40.300000Z", "speed": 20.0, "aux_state": false, "aux_count":
+        0, "aux_state_2": false, "aux_count_2": 0}}, {"type": "Feature", "id_data":
+        "5fa3aea6817d0c0cf10ef671", "geometry": {"type": "Point", "coordinates": [-0.2857675,
+        45.6574647]}, "properties": {"t": "2020-11-05T07:27:46.400000Z", "speed":
+        20.0, "aux_state": false, "aux_count": 0, "aux_state_2": false, "aux_count_2":
+        0}}, {"type": "Feature", "id_data": "5fa3aeb0817d0c0cf10ef6cc", "geometry":
+        {"type": "Point", "coordinates": [-0.2859029, 45.6572794]}, "properties":
+        {"t": "2020-11-05T07:27:50.300000Z", "speed": 20.0, "aux_state": false, "aux_count":
+        0, "aux_state_2": false, "aux_count_2": 0}}, {"type": "Feature", "id_data":
+        "5fa3aebd817d0c0cf10ef759", "geometry": {"type": "Point", "coordinates": [-0.2861088,
+        45.6570019]}, "properties": {"t": "2020-11-05T07:27:56.400000Z", "speed":
+        20.0, "aux_state": false, "aux_count": 0, "aux_state_2": false, "aux_count_2":
+        0}}, {"type": "Feature", "id_data": "5fa3aecc817d0c0cf10ef7e6", "geometry":
+        {"type": "Point", "coordinates": [-0.286305, 45.6567232]}, "properties": {"t":
+        "2020-11-05T07:28:02.400000Z", "speed": 20.0, "aux_state": false, "aux_count":
+        0, "aux_state_2": false, "aux_count_2": 0}}, {"type": "Feature", "id_data":
+        "5fa3aed4817d0c0cf10ef838", "geometry": {"type": "Point", "coordinates": [-0.2864023,
+        45.6565892]}, "properties": {"t": "2020-11-05T07:28:05.200000Z", "speed":
+        20.0, "aux_state": false, "aux_count": 0, "aux_state_2": false, "aux_count_2":
+        0}}, {"type": "Feature", "id_data": "5fa3aee9817d0c0cf10ef8ba", "geometry":
+        {"type": "Point", "coordinates": [-0.2865726, 45.656343]}, "properties": {"t":
+        "2020-11-05T07:28:11.300000Z", "speed": 15.8, "aux_state": false, "aux_count":
+        0, "aux_state_2": false, "aux_count_2": 0}}, {"type": "Feature", "id_data":
+        "5fa3aef4817d0c0cf10ef935", "geometry": {"type": "Point", "coordinates": [-0.2866842,
+        45.6561607]}, "properties": {"t": "2020-11-05T07:28:17.400000Z", "speed":
+        11.8, "aux_state": false, "aux_count": 0, "aux_state_2": false, "aux_count_2":
+        0}}, {"type": "Feature", "id_data": "5fa3af00817d0c0cf10ef9a8", "geometry":
+        {"type": "Point", "coordinates": [-0.2867517, 45.6560331]}, "properties":
+        {"t": "2020-11-05T07:28:23.510000Z", "speed": 7.6, "aux_state": false, "aux_count":
+        0, "aux_state_2": false, "aux_count_2": 0}}, {"type": "Feature", "id_data":
+        "5fa3af02817d0c0cf10ef9d2", "geometry": {"type": "Point", "coordinates": [-0.2867286,
+        45.6559791]}, "properties": {"t": "2020-11-05T07:28:26.100000Z", "speed":
+        7.4, "aux_state": false, "aux_count": 0, "aux_state_2": false, "aux_count_2":
+        0}}, {"type": "Feature", "id_data": "5fa3af0b817d0c0cf10efa4d", "geometry":
+        {"type": "Point", "coordinates": [-0.2866193, 45.6559027]}, "properties":
+        {"t": "2020-11-05T07:28:33.060000Z", "speed": 8.2, "aux_state": false, "aux_count":
+        0, "aux_state_2": false, "aux_count_2": 0}}, {"type": "Feature", "id_data":
+        "5fa3af16817d0c0cf10efabf", "geometry": {"type": "Point", "coordinates": [-0.2865003,
+        45.6558137]}, "properties": {"t": "2020-11-05T07:28:39.160000Z", "speed":
+        8.6, "aux_state": false, "aux_count": 0, "aux_state_2": false, "aux_count_2":
+        0}}, {"type": "Feature", "id_data": "5fa3af21817d0c0cf10efb32", "geometry":
+        {"type": "Point", "coordinates": [-0.2863635, 45.6557088]}, "properties":
+        {"t": "2020-11-05T07:28:45.260000Z", "speed": 9.8, "aux_state": false, "aux_count":
+        0, "aux_state_2": false, "aux_count_2": 0}}, {"type": "Feature", "id_data":
+        "5fa3af2f817d0c0cf10efbb6", "geometry": {"type": "Point", "coordinates": [-0.2862161,
+        45.6555898]}, "properties": {"t": "2020-11-05T07:28:51.360000Z", "speed":
+        11.0, "aux_state": false, "aux_count": 0, "aux_state_2": false, "aux_count_2":
+        0}}, {"type": "Feature", "id_data": "5fa3af39817d0c0cf10efc30", "geometry":
+        {"type": "Point", "coordinates": [-0.2860542, 45.6554539]}, "properties":
+        {"t": "2020-11-05T07:28:57.460000Z", "speed": 12.2, "aux_state": false, "aux_count":
+        0, "aux_state_2": false, "aux_count_2": 0}}, {"type": "Feature", "id_data":
+        "5fa3af41817d0c0cf10efcab", "geometry": {"type": "Point", "coordinates": [-0.2858807,
+        45.6553126]}, "properties": {"t": "2020-11-05T07:29:03.500000Z", "speed":
+        12.2, "aux_state": false, "aux_count": 0, "aux_state_2": false, "aux_count_2":
+        0}}, {"type": "Feature", "id_data": "5fa3af5b817d0c0cf10efd40", "geometry":
+        {"type": "Point", "coordinates": [-0.2856943, 45.6551813]}, "properties":
+        {"t": "2020-11-05T07:29:09.600000Z", "speed": 12.0, "aux_state": false, "aux_count":
+        0, "aux_state_2": false, "aux_count_2": 0}}, {"type": "Feature", "id_data":
+        "5fa3af6c817d0c0cf10efddd", "geometry": {"type": "Point", "coordinates": [-0.2855155,
+        45.6550686]}, "properties": {"t": "2020-11-05T07:29:15.700000Z", "speed":
+        10.2, "aux_state": false, "aux_count": 0, "aux_state_2": false, "aux_count_2":
+        0}}, {"type": "Feature", "id_data": "5fa3b378817d0c0cf10f09b5", "geometry":
+        {"type": "Point", "coordinates": [-0.2853434, 45.6549654]}, "properties":
+        {"t": "2020-11-05T07:29:21.800000Z", "speed": 10.4, "aux_state": false, "aux_count":
+        0, "aux_state_2": false, "aux_count_2": 0}}, {"type": "Feature", "id_data":
+        "5fa3b380817d0c0cf10f0a47", "geometry": {"type": "Point", "coordinates": [-0.2851492,
+        45.6548598]}, "properties": {"t": "2020-11-05T07:29:27.930000Z", "speed":
+        7.6, "aux_state": false, "aux_count": 0, "aux_state_2": false, "aux_count_2":
+        0}}, {"type": "Feature", "id_data": "5fa3b386817d0c0cf10f0ac3", "geometry":
+        {"type": "Point", "coordinates": [-0.2850076, 45.6547826]}, "properties":
+        {"t": "2020-11-05T07:29:33.900000Z", "speed": 8.4, "aux_state": false, "aux_count":
+        0, "aux_state_2": false, "aux_count_2": 0}}, {"type": "Feature", "id_data":
+        "5fa3b38d817d0c0cf10f0b2c", "geometry": {"type": "Point", "coordinates": [-0.2848726,
+        45.6547024]}, "properties": {"t": "2020-11-05T07:29:39.990000Z", "speed":
+        8.6, "aux_state": false, "aux_count": 0, "aux_state_2": false, "aux_count_2":
+        0}}, {"type": "Feature", "id_data": "5fa3b394817d0c0cf10f0bc2", "geometry":
+        {"type": "Point", "coordinates": [-0.2847339, 45.6546189]}, "properties":
+        {"t": "2020-11-05T07:29:46.090000Z", "speed": 8.4, "aux_state": false, "aux_count":
+        0, "aux_state_2": false, "aux_count_2": 0}}, {"type": "Feature", "id_data":
+        "5fa3b39b817d0c0cf10f0c34", "geometry": {"type": "Point", "coordinates": [-0.2846041,
+        45.6545339]}, "properties": {"t": "2020-11-05T07:29:52.200000Z", "speed":
+        8.0, "aux_state": false, "aux_count": 0, "aux_state_2": false, "aux_count_2":
+        0}}, {"type": "Feature", "id_data": "5fa3b3a1817d0c0cf10f0ca6", "geometry":
+        {"type": "Point", "coordinates": [-0.2844688, 45.6544534]}, "properties":
+        {"t": "2020-11-05T07:29:58.290000Z", "speed": 8.4, "aux_state": false, "aux_count":
+        0, "aux_state_2": false, "aux_count_2": 0}}, {"type": "Feature", "id_data":
+        "5fa3b3a7817d0c0cf10f0d10", "geometry": {"type": "Point", "coordinates": [-0.2843185,
+        45.6543724]}, "properties": {"t": "2020-11-05T07:30:04.290000Z", "speed":
+        8.8, "aux_state": false, "aux_count": 0, "aux_state_2": false, "aux_count_2":
+        0}}, {"type": "Feature", "id_data": "5fa3b3ae817d0c0cf10f0d9c", "geometry":
+        {"type": "Point", "coordinates": [-0.2841671, 45.6542922]}, "properties":
+        {"t": "2020-11-05T07:30:10.400000Z", "speed": 8.8, "aux_state": false, "aux_count":
+        0, "aux_state_2": false, "aux_count_2": 0}}, {"type": "Feature", "id_data":
+        "5fa3b3b5817d0c0cf10f0e17", "geometry": {"type": "Point", "coordinates": [-0.2840251,
+        45.6542113]}, "properties": {"t": "2020-11-05T07:30:16.490000Z", "speed":
+        8.0, "aux_state": false, "aux_count": 0, "aux_state_2": false, "aux_count_2":
+        0}}, {"type": "Feature", "id_data": "5fa3b3bb817d0c0cf10f0e92", "geometry":
+        {"type": "Point", "coordinates": [-0.2838904, 45.654133]}, "properties": {"t":
+        "2020-11-05T07:30:22.590000Z", "speed": 8.2, "aux_state": false, "aux_count":
+        0, "aux_state_2": false, "aux_count_2": 0}}, {"type": "Feature", "id_data":
+        "5fa3b3c2817d0c0cf10f0f04", "geometry": {"type": "Point", "coordinates": [-0.2838179,
+        45.6540796]}, "properties": {"t": "2020-11-05T07:30:28.720000Z", "speed":
+        3.6, "aux_state": false, "aux_count": 0, "aux_state_2": false, "aux_count_2":
+        0}}]
+
+'
+  recorded_at: Wed, 12 May 2021 14:16:43 GMT
+recorded_with: VCR 6.0.0
