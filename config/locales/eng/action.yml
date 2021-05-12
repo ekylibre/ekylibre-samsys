@@ -7,10 +7,12 @@ eng:
       index: "Geolocated Rides"
       show: "Geolocated Ride: %{number}"
   labels:
+    samsys_incoming_data_exchange: "Equipments, sensors and geolocated rides"
+    samsys_outgoing_data_exchange: "Cultivable zones"
     area_without_overlap: "Area without overlap"
     area_with_overlap: "Area with overlap"
     ride_set_message: "
-To synchronize your geolocated trips with your connected sensors, please configure your account in Configuration> Partner connection"
+To synchronize your geolocated trips with your connected sensors, please configure your account in Tools > Integrations"
     samsys_short_description: Equipment geotracking sensors
     samsys_long_description:  Samsys provides geotracking sensors for equipment monitoring
     samsys_url: https://samsys.fr/
@@ -20,9 +22,12 @@ To synchronize your geolocated trips with your connected sensors, please configu
     point: "Point"
     resume: "CV"
     ride: "Ride"
+    road: "Total distance"
     scan: "Scan"
+    sleep_duration: "Sleep duration"
     start: "Start"
     stop: "Stop"
+    started_at: "Started at"
     startend: "Start / end"
     ride_geo: "Geolocated ride"
     ride_number: "Number"
