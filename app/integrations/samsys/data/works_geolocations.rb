@@ -5,18 +5,11 @@ module Integrations
     module Data 
       class WorksGeolocations
         def initialize(work_id:)
-          @formated_data = nil
           @work_id = work_id
         end
         
         def result
           @formated_data ||= call_api
-        end
-
-        def format_data(list)
-          list.map do |field|
-            field.filter{ |k, v| desired_fields.include?(k) }
-          end
         end
 
         private 
@@ -26,6 +19,12 @@ module Integrations
             c.success do |list|
               format_data(list.sort_by { |c| c[:properties][:t] })
             end
+          end
+        end
+
+        def format_data(list)
+          list.map do |field|
+            field.filter{ |k, v| desired_fields.include?(k) }
           end
         end
 

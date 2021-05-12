@@ -5,7 +5,6 @@ module Integrations
     module Data 
       class MachineGeolocation
         def initialize(machine_id:)
-          @formated_data = nil
           @machine_id = machine_id
         end
         

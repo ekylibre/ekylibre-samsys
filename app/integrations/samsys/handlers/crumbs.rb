@@ -4,11 +4,12 @@ module Integrations
   module Samsys
     module Handlers
       class Crumbs
-        def initialize(ride_id:, work_id:, work_breaks:, vendor:)
+        VENDOR = ::Samsys::Handlers::VENDOR
+
+        def initialize(ride_id:, work_id:, work_breaks:)
           @ride_id = ride_id
           @work_id = work_id
           @work_breaks = work_breaks
-          @vendor = vendor
           @work_geolocations_size = fetch_all_work_geolocations.size
         end
 
@@ -35,7 +36,7 @@ module Integrations
         end
 
         def find_existant_crumb(work_geolocation)
-          Crumb.of_provider_vendor(@vendor).of_provider_data(:id, work_geolocation[:id_data].to_s).where(ride_id: @ride_id).first
+          Crumb.of_provider_vendor(VENDOR).of_provider_data(:id, work_geolocation[:id_data].to_s).where(ride_id: @ride_id).first
         end
 
         def create_crumb(work_geolocation, index)
@@ -56,12 +57,12 @@ module Integrations
             geolocation: geolocation_crumb,
             read_at: work_geolocation[:properties][:t],
             ride_id: @ride_id,
-            provider: { vendor: @vendor, name: "samsys_crumb", data: { id: work_geolocation[:id_data], speed: work_geolocation[:properties][:speed] } },
+            provider: { vendor: VENDOR, name: "samsys_crumb", data: { id: work_geolocation[:id_data], speed: work_geolocation[:properties][:speed] } },
           )
         end
 
         def find_existant_crumb_break(work_break)
-          Crumb.of_provider_name(@vendor, 'samsys_crumb_break').of_provider_data(:start_date, work_break[:start_date].to_s).first
+          Crumb.of_provider_name(VENDOR, 'samsys_crumb_break').of_provider_data(:start_date, work_break[:start_date].to_s).first
         end
 
         def create_crumb_break(work_break)
@@ -76,7 +77,7 @@ module Integrations
             read_at: work_break[:start_date],
             metadata: { 'duration' => work_break[:duration], 'start_date' => work_break[:start_date], 'end_date' => work_break[:end_date] },
             ride_id: @ride_id,
-            provider: { vendor: @vendor, name: "samsys_crumb_break", data: { start_date: work_break[:start_date] } },
+            provider: { vendor: VENDOR, name: "samsys_crumb_break", data: { start_date: work_break[:start_date] } },
           )
         end
 

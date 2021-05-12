@@ -18,11 +18,11 @@ module EkylibreSamsys
 
     initializer :ekylibre_samsys_integration do
       Samsys::SamsysIntegration.on_check_success do
-        SamsysFetchUpdateCreateJob.perform_later
+        SamsysFetchUpdateCreateJob.perform_later(Time.now)
       end
 
       Samsys::SamsysIntegration.run every: :hour do
-        SamsysFetchUpdateCreateJob.perform_now if Integration.find_by(nature: "samsys").present?
+        SamsysFetchUpdateCreateJob.perform_now(Time.now) if Integration.find_by(nature: "samsys").present?
       end
     end
   end

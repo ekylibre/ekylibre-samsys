@@ -4,8 +4,10 @@ module Integrations
   module Samsys
     module Handlers
       class RideSets
-        def initialize(vendor:)
-          @vendor = vendor
+        VENDOR = ::Samsys::Handlers::VENDOR
+
+        def initialize(stopped_on: stopped_on)
+          @stopped_on = stopped_on
         end
 
         def bulk_find_or_create
@@ -31,15 +33,15 @@ module Integrations
 
         def get_machine_activities(machine_id)
           Integrations::Samsys::Data::MachineActivities.new(
-            machine_id: machine_id
+            machine_id: machine_id, stopped_on: @stopped_on
           ).result.sort_by{ |h| h[:start_date] }.reverse
         end
 
         def find_or_create_machine_equipment(machine)
-          sensor_equipment = Equipment.of_provider_vendor(@vendor).of_provider_data(:id, machine[:associations].first[:counter].to_s).first
+          sensor_equipment = Equipment.of_provider_vendor(VENDOR).of_provider_data(:id, machine[:associations].first[:counter].to_s).first
 
           # Find or create machine_equipment throught handers/machines_equipments.rb
-          machine_equipment = Integrations::Samsys::Handlers::MachinesEquipments.new(vendor: @vendor)
+          machine_equipment = Integrations::Samsys::Handlers::MachinesEquipments.new
           machine_equipment.bulk_find_or_create(machine, sensor_equipment)
         end
 
@@ -52,10 +54,10 @@ module Integrations
         end
 
         def find_existant_ride_set(machine_activity, machine_equipment)
-          ride_set = RideSet.of_provider_vendor(@vendor).of_provider_data(:id, machine_activity[:id].to_s).first
+          ride_set = RideSet.of_provider_vendor(VENDOR).of_provider_data(:id, machine_activity[:id].to_s).first
 
           if ride_set.present?
-            ride = Integrations::Samsys::Handlers::Rides.new(ride_set: ride_set, machine_equipment: machine_equipment, vendor: @vendor)
+            ride = Integrations::Samsys::Handlers::Rides.new(ride_set: ride_set, machine_equipment: machine_equipment)
             ride.bulk_find_or_create
           end
         end
@@ -73,10 +75,10 @@ module Integrations
             area_with_overlap: machine_activity[:area_with_overlap],
             area_smart: machine_activity[:area_smart],
             gasoline: machine_activity[:gasoline],
-            provider: { vendor: @vendor, name: "samsys_ride_set", data: { id: machine_activity[:id] } }
+            provider: { vendor: VENDOR, name: "samsys_ride_set", data: { id: machine_activity[:id] } }
           )
 
-          ride = Integrations::Samsys::Handlers::Rides.new(ride_set: ride_set, machine_equipment: machine_equipment, vendor: @vendor)
+          ride = Integrations::Samsys::Handlers::Rides.new(ride_set: ride_set, machine_equipment: machine_equipment)
           ride.bulk_find_or_create
         end
 

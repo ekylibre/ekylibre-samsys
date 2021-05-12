@@ -44,9 +44,7 @@ module Integrations
         # set default creation date older because we have no date for machine
         DEFAULT_BORN_AT = Time.new(2010, 1, 1, 10, 0, 0, '+00:00')
 
-        def initialize(vendor:)
-          @vendor = vendor
-        end
+        VENDOR = ::Samsys::Handlers::VENDOR
         
         def bulk_find_or_create(machine, sensor_equipment)
           machine_equipment = find_or_create_machine_equipment(machine)
@@ -66,7 +64,7 @@ module Integrations
         private 
 
         def find_or_create_machine_equipment(machine)
-          machine_equipment = Equipment.of_provider_vendor(@vendor).of_provider_data(:id, machine[:id].to_s).first
+          machine_equipment = Equipment.of_provider_vendor(VENDOR).of_provider_data(:id, machine[:id].to_s).first
 
           if machine_equipment.present?
             machine_equipment
@@ -86,7 +84,7 @@ module Integrations
             initial_population: 1,
             initial_owner: owner,
             work_number: "SAMSYS_#{machine[:id]}",
-            provider: { vendor: @vendor, name: "samsys_equipment", data: { id: machine[:id] } }
+            provider: { vendor: VENDOR, name: "samsys_equipment", data: { id: machine[:id] } }
           )
         end
 

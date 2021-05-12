@@ -4,10 +4,11 @@ module Integrations
   module Samsys
     module Handlers
       class Rides
-        def initialize(ride_set:, machine_equipment:, vendor:)
+        VENDOR = ::Samsys::Handlers::VENDOR
+
+        def initialize(ride_set:, machine_equipment:)
           @ride_set = ride_set
           @machine_equipment = machine_equipment
-          @vendor = vendor
         end
 
         def bulk_find_or_create
@@ -25,7 +26,7 @@ module Integrations
         end
 
         def find_existant_ride(meta_work)
-          ride = Ride.of_provider_vendor(@vendor).of_provider_data(:id, meta_work[:id].to_s).first
+          ride = Ride.of_provider_vendor(VENDOR).of_provider_data(:id, meta_work[:id].to_s).first
 
           # Update ride's ride_set_id with new id from samsys's update
           ride.update!(ride_set_id: @ride_set.id) if ride.present? && ride.ride_set_id != @ride_set.id
@@ -55,7 +56,7 @@ module Integrations
             gasoline: meta_work[:gasoline],
             product_id: @machine_equipment.id,
             ride_set_id: @ride_set.id,
-            provider: { vendor: @vendor, name: "samsys_ride", data: { id: meta_work[:id] } },
+            provider: { vendor: VENDOR, name: "samsys_ride", data: { id: meta_work[:id] } },
           )
 
           find_or_create_crumbs(ride.id, meta_work[:id], meta_work[:breaks])
@@ -63,7 +64,7 @@ module Integrations
         end
 
         def initialize_crumbs(ride_id, meta_work_id, meta_work_breaks)
-          Integrations::Samsys::Handlers::Crumbs.new(ride_id: ride_id, work_id: meta_work_id, work_breaks: meta_work_breaks, vendor: @vendor)
+          Integrations::Samsys::Handlers::Crumbs.new(ride_id: ride_id, work_id: meta_work_id, work_breaks: meta_work_breaks)
         end
 
         def find_or_create_crumbs(ride_id, meta_work_id, meta_work_breaks)

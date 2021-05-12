@@ -4,18 +4,8 @@ module Integrations
   module Samsys
     module Data 
       class Machines
-        def initialize
-          @formated_data = nil
-        end
-        
         def result
           @formated_data ||= call_api
-        end
-
-        def format_data(list)
-          list.map do |field|
-            field.filter{ |k, v| desired_fields.include?(k) }
-          end
         end
 
         private 
@@ -25,6 +15,12 @@ module Integrations
             c.success do |list|
               format_data(list)
             end
+          end
+        end
+
+        def format_data(list)
+          list.map do |field|
+            field.filter{ |k, v| desired_fields.include?(k) }
           end
         end
 

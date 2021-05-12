@@ -5,7 +5,6 @@ module Integrations
     module Data 
       class MetaWorks
         def initialize(activity_id:)
-          @formated_data = nil
           @activity_id = activity_id
         end
         
