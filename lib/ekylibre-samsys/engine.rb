@@ -22,9 +22,7 @@ module EkylibreSamsys
       end
 
       Samsys::SamsysIntegration.run every: :hour do
-        if Integration.find_by(nature: "samsys").present?
-          SamsysFetchUpdateCreateJob.perform_now
-        end
+        SamsysFetchUpdateCreateJob.perform_now if Integration.find_by(nature: "samsys").present?
       end
     end
   end

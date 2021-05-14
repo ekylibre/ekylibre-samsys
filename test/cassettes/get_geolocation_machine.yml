@@ -1,0 +1,133 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://app.samsys.io/api/v1/auth
+    body:
+      encoding: UTF-8
+      string: '{"email":"Hello","password":"World"}'
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Host:
+      - app.samsys.io
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Wed, 12 May 2021 14:16:30 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Vary:
+      - Accept-Encoding
+      Access-Control-Allow-Origin:
+      - "*"
+    body:
+      encoding: ASCII-8BIT
+      string: '{"status": "ok", "message": "Connect\u00e9!", "jwt": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE2MjA4Mjg5OTAsIm5iZiI6MTYyMDgyODk5MCwianRpIjoiNjdjYjM4NjQtOWQ3OC00NjkyLWFmZDctMzc1ZjczNzdiY2Y5IiwiZXhwIjoxNjUyMzY0OTkwLCJpZGVudGl0eSI6eyJ1c2VyX2lkIjoiNWU3Yzc5NWZmNDI3NTRiMTg2MTA3OTQ4IiwiYXBwIjoiY2xhdWRlIn0sImZyZXNoIjpmYWxzZSwidHlwZSI6ImFjY2VzcyJ9.MpRnQIB1u0Vmj5wMwqHFJneld4KuN6weX4VRCuYuDa8"}
+
+'
+  recorded_at: Wed, 12 May 2021 14:16:30 GMT
+- request:
+    method: post
+    uri: https://app.samsys.io/api/v1/auth
+    body:
+      encoding: UTF-8
+      string: '{"email":"Hello","password":"World"}'
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Host:
+      - app.samsys.io
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Wed, 12 May 2021 14:16:30 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Vary:
+      - Accept-Encoding
+      Access-Control-Allow-Origin:
+      - "*"
+    body:
+      encoding: ASCII-8BIT
+      string: '{"status": "ok", "message": "Connect\u00e9!", "jwt": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE2MjA4Mjg5OTAsIm5iZiI6MTYyMDgyODk5MCwianRpIjoiNmMwZTkxNTAtOThkYi00MzY3LTgyNDMtMzY4YWMyMGU0MDJmIiwiZXhwIjoxNjUyMzY0OTkwLCJpZGVudGl0eSI6eyJ1c2VyX2lkIjoiNWU3Yzc5NWZmNDI3NTRiMTg2MTA3OTQ4IiwiYXBwIjoiY2xhdWRlIn0sImZyZXNoIjpmYWxzZSwidHlwZSI6ImFjY2VzcyJ9.EdcfWFK-X0vU_Ds3T4zZWkjtzvbcBlqQr_hqyCmAaH8"}
+
+'
+  recorded_at: Wed, 12 May 2021 14:16:30 GMT
+- request:
+    method: get
+    uri: https://app.samsys.io/api/v1/machines/5e78eb21e440bbd47cada798/geolocation
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Host:
+      - app.samsys.io
+      Content-Type:
+      - application/json
+      Authorization:
+      - JWT eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE2MjA4Mjg5OTAsIm5iZiI6MTYyMDgyODk5MCwianRpIjoiNjdjYjM4NjQtOWQ3OC00NjkyLWFmZDctMzc1ZjczNzdiY2Y5IiwiZXhwIjoxNjUyMzY0OTkwLCJpZGVudGl0eSI6eyJ1c2VyX2lkIjoiNWU3Yzc5NWZmNDI3NTRiMTg2MTA3OTQ4IiwiYXBwIjoiY2xhdWRlIn0sImZyZXNoIjpmYWxzZSwidHlwZSI6ImFjY2VzcyJ9.MpRnQIB1u0Vmj5wMwqHFJneld4KuN6weX4VRCuYuDa8
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Wed, 12 May 2021 14:16:30 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Vary:
+      - Accept-Encoding
+      Access-Control-Allow-Origin:
+      - "*"
+    body:
+      encoding: ASCII-8BIT
+      string: '{"type": "Feature", "geometry": {"type": "Point", "coordinates": [2.541493,
+        50.398378]}, "properties": {"t": "2020-03-04T14:38:20.350000Z", "v_ext": 138.0,
+        "vibration": 687.0, "speed": 11.2}}
+
+'
+  recorded_at: Wed, 12 May 2021 14:16:30 GMT
+recorded_with: VCR 6.0.0

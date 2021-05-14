@@ -24,7 +24,7 @@ class SamsysIntegrationTest < ::Ekylibre::Testing::ApplicationTestCase::WithFixt
       Samsys::SamsysIntegration.fetch_all_machines.execute do |call|
         call.success do |response|
           assert_equal Hash, response.first.class, 'Should return an array of hash machines'
-          assert %w[id provider cluster].all? { |s| response.first.key? s }, 'Should have correct attributes'
+          assert %i[id provider cluster].all? { |s| response.first.key? s }, 'Should have correct attributes'
         end
       end
     end
@@ -39,7 +39,7 @@ class SamsysIntegrationTest < ::Ekylibre::Testing::ApplicationTestCase::WithFixt
       Samsys::SamsysIntegration.fetch_activities_machine("5f6b41a15fd2a1ddcb5386ea", started_on, stopped_on).execute do |call|
         call.success do |response|
           assert_equal Hash, response.first.class, 'Should return an array of hash activities'
-          assert %w[id start_date end_date road type sleep_count duration sleep_duration area_without_overlap area_with_overlap area_smart gasoline].all? { |s| response.first.key? s }, 'Should have correct attributes'
+          assert %i[id start_date end_date road type sleep_count duration sleep_duration area_without_overlap area_with_overlap area_smart gasoline].all? { |s| response.first.key? s }, 'Should have correct attributes'
         end
       end
     end
@@ -51,19 +51,19 @@ class SamsysIntegrationTest < ::Ekylibre::Testing::ApplicationTestCase::WithFixt
       Samsys::SamsysIntegration.fetch_works_activity("5fa3ab62c493556ea4ec8bfd").execute do |call|
         call.success do |response|
           assert_equal Hash, response.first.class, 'Should return an array of hash works'
-          assert %w[id start_date end_date duration sleep_count sleep_duration type distance_km area_without_overlap area_with_overlap area_smart gasoline].all? { |s| response.first.key? s }, 'Should have correct attributes'
+          assert %i[id start_date end_date duration sleep_count sleep_duration type distance_km area_without_overlap area_with_overlap area_smart gasoline].all? { |s| response.first.key? s }, 'Should have correct attributes'
         end
       end
     end
   end
 
   # Work geolocation equal to crumb at Ekylibre
-  def test_frech_work_geolocation
+  def test_fetch_work_geolocation
     VCR.use_cassette("get_work_geolocation") do
       Samsys::SamsysIntegration.fetch_work_geolocations("5fa3ab62c493556ea4ec8bfc").execute do |call| 
         call.success do |response|
           assert_equal Hash, response.first.class, 'Should return an array of hash geolocations'
-          assert %w[id_data properties geometry].all? { |s| response.first.key? s }, 'Should have correct attributes'
+          assert %i[id_data properties geometry].all? { |s| response.first.key? s }, 'Should have correct attributes'
         end
       end
     end

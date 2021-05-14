@@ -20,7 +20,9 @@ fra:
     resume: "CV"
     ride: "Trajet"
     scan: "Balayage"
+    sleep_duration: "Temps de pause"
     start: "Démarrer"
+    started_at: "Début du trajet"
     stop: "Arrêtez"
     startend: "Début / fin"
     ride_geo: "Trajet géolocalisé"
@@ -28,4 +30,5 @@ fra:
     ride_paused_at: "Pause à"
     ride_duration: "Durée"
     ride_set_to_ride_information: "Cliquez sur un trajet géolocalisé pour le visualiser sur une carte, puis sélectionner les différentes sections du trajet à convertir en intervention"
+    road: "Distance totale en km"
 
