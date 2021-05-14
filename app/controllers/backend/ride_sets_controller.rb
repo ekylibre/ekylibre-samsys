@@ -33,8 +33,18 @@ module Backend
 
       super
     end
+
+    def show
+      notify_ride_set_intervention_information
+
+      super
+    end
     
     private
+
+      def notify_ride_set_intervention_information
+        notify_warning_now(:ride_set_intervention_information.tl)
+      end
 
       def notify_ride_set_information
         if RideSet.count.zero?

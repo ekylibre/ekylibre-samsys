@@ -30,5 +30,6 @@ fra:
     ride_paused_at: "Pause à"
     ride_duration: "Durée"
     ride_set_to_ride_information: "Cliquez sur un trajet géolocalisé pour le visualiser sur une carte, puis sélectionner les différentes sections du trajet à convertir en intervention"
+    ride_set_intervention_information: "La conversion des trajets géolocalisés en intervention est en cours de développement. Vous pourrez y avoir accès prochainement."
     road: "Distance totale en km"
 
