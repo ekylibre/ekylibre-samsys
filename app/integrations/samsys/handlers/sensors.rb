@@ -8,27 +8,25 @@ module Samsys
       def bulk_find_or_create
         ::Samsys::Data::Counters.new.result.each do |counter|
 
-          sensor = Sensor.find_or_create_by(
+          sensor = Sensor.where(
             vendor_euid: :samsys,
             model_euid: :samsys,
             euid: counter[:id],
             name: counter[:id],
             retrieval_mode: :integration
-          )
+          ).first_or_create
 
-          sensor.update!(
-            battery_level: counter[:v_bat],
-            last_transmission_at: Time.now
-          )
-          
+          sensor.reload
+
           sensor_equipment = find_or_create_sensor_equipment(sensor, counter)
-          
+
           # link the equipment to sensor
+          sensor.update!(battery_level: counter[:v_bat], last_transmission_at: Time.now)
           sensor.update!(product_id: sensor_equipment.id) if sensor_equipment
         end
       end
 
-      private 
+      private
 
       def find_or_create_sensor_equipment(sensor, counter)
         sensor_equipment = Equipment.of_provider_vendor(VENDOR).of_provider_data(:id, counter[:id].to_s).first
@@ -37,7 +35,7 @@ module Samsys
           sensor_equipment
         else
           create_sensor_equipment(sensor, counter)
-        end            
+        end
       end
 
       def create_sensor_equipment(sensor, counter)
