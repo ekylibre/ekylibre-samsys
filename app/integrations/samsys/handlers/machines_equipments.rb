@@ -66,7 +66,9 @@ module Samsys
         machine_equipment = Equipment.of_provider_vendor(VENDOR).of_provider_data(:id, machine[:id].to_s).first
         
         if machine_equipment.present?
+          update_machine_equipment_provider(machine_equipment, machine)
           machine_equipment
+          
         else
           create_machine_equipment(machine)
         end    
@@ -83,8 +85,18 @@ module Samsys
           initial_population: 1,
           initial_owner: owner,
           work_number: "SAMSYS_#{machine[:id]}",
-          provider: { vendor: VENDOR, name: "samsys_equipment", data: { id: machine[:id] } }
+          provider: { vendor: VENDOR, name: "samsys_equipment", data: { id: machine[:id], tool_width: machine[:tool_width] } }
         )
+      end
+
+      def update_machine_equipment_provider(machine_equipment, machine)
+        if machine_equipment.provider[:data]["tool_width"] != machine[:tool_width]
+          machine_equipment.update!(provider: { 
+            vendor: VENDOR,
+            name: "samsys_equipment", 
+            data: { id: machine[:id], tool_width: machine[:tool_width] } 
+          }) 
+        end
       end
 
       def owner_entity(machine)

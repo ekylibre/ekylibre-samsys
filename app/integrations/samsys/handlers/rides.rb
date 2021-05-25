@@ -8,6 +8,7 @@ module Samsys
       def initialize(ride_set:, machine_equipment:)
         @ride_set = ride_set
         @machine_equipment = machine_equipment
+        @machine_equipment_tool_width = @machine_equipment.provider[:data]["tool_width"]
       end
 
       def bulk_find_or_create
@@ -55,7 +56,7 @@ module Samsys
           gasoline: meta_work[:gasoline],
           product_id: @machine_equipment.id,
           ride_set_id: @ride_set.id,
-          provider: { vendor: VENDOR, name: "samsys_ride", data: { id: meta_work[:id] } },
+          provider: { vendor: VENDOR, name: "samsys_ride", data: { id: meta_work[:id], machine_equipment_tool_width: @machine_equipment_tool_width } },
         )
 
         find_or_create_crumbs(ride.id, meta_work[:id], meta_work[:breaks])
