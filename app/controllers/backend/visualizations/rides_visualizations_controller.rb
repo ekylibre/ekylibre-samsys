@@ -14,7 +14,7 @@ module Backend
             v.simple parcel[:name], parcel[:name], options
           end
           v.serie :ride, ride_map.crumbs
-          v.paths :ride, :ride
+          v.path :ride, :ride
           v.serie :data_start_end, ride_map.start_end_crumbs
           v.points :startend, :data_start_end, colors: ['#7fbf7f', '#ff7f7f']
           if ride_map.pause_crumbs.any?
