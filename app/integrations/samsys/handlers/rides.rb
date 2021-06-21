@@ -34,14 +34,13 @@ module Samsys
         if ride.present?
           find_or_create_crumbs(ride.id, meta_work[:id], meta_work[:breaks])
           find_or_create_crumbs_breaks(ride.id, meta_work[:id], meta_work[:breaks]) if meta_work[:breaks].present?
+
+          ride_crumbs_coordinates = Charta.make_line(ride.crumbs.order(:read_at).pluck(:geolocation)).simplify(0.00001).to_rgeo.coordinates
+          simple_coordinates_to_point = ride_crumbs_coordinates.map{ |s| "POINT (#{s.join(' ')})"}
+  
+          ride.update!(path_map: simple_coordinates_to_point)
         end
 
-        ride_crumbs_coordinates = Charta.make_line(ride.crumbs.order(:read_at).pluck(:geolocation)).simplify(0.00001).to_rgeo.coordinates
-        simple_coordinates_to_pont = ride_crumbs_coordinates.map{ |s| "POINT (#{s.join(' ')})"}
-
-        #ride_path_crumbs = ride.crumbs.map(&:geolocation)
-        ride.update!(path_map: simple_coordinates_to_pont)
-        
         ride
       end
 
@@ -69,10 +68,9 @@ module Samsys
         find_or_create_crumbs_breaks(ride.id, meta_work[:id], meta_work[:breaks]) if meta_work[:breaks].present?
 
         ride_crumbs_coordinates = Charta.make_line(ride.crumbs.order(:read_at).pluck(:geolocation)).simplify(0.00001).to_rgeo.coordinates
-        simple_coordinates_to_pont = ride_crumbs_coordinates.map{ |s| "POINT (#{s.join(' ')})"}
+        simple_coordinates_to_point = ride_crumbs_coordinates.map{ |s| "POINT (#{s.join(' ')})"}
 
-        #ride_path_crumbs = ride.crumbs.map(&:geolocation)
-        ride.update!(path_map: simple_coordinates_to_pont)
+        ride.update!(path_map: simple_coordinates_to_point)
       end
 
       def initialize_crumbs(ride_id, meta_work_id, meta_work_breaks)

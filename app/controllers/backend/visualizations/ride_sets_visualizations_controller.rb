@@ -14,10 +14,10 @@ module Backend
             v.simple parcel[:name], parcel[:name], options
           end
 
-          # ride_set_map.rides.each do |ride|
-          #   v.serie ride.name, ride.crumbs
-          #   v.paths :ride, ride.name, colors: ride.colors
-          # end
+          ride_set_map.rides.each do |ride|
+            v.serie ride.name, ride.crumbs
+            v.paths :ride, ride.name, colors: ride.colors
+          end
         end
 
         respond_with config

@@ -58,9 +58,9 @@ module Samsys
         if ride_set.present?
           ride = ::Samsys::Handlers::Rides.new(ride_set: ride_set, machine_equipment: machine_equipment)
           ride.bulk_find_or_create
-        end
 
-        ride_set.update!(crumbs_line: ::Charta.make_line(ride_set.crumbs.order(:read_at).pluck(:geolocation)).simplify(0.0001).to_rgeo.buffer(5))
+          ride_set.update!(rides_line: ::Charta.make_line(ride_set.crumbs.order(:read_at).map(&:geolocation)).simplify(0.0001).to_rgeo)
+        end
       end
 
       def create_ride_set(machine_activity, machine_equipment)
@@ -80,9 +80,9 @@ module Samsys
         )
 
         ride = ::Samsys::Handlers::Rides.new(ride_set: ride_set, machine_equipment: machine_equipment)
-        ride.bulk_find_or_create
 
-        ride_set.update!(crumbs_line: ::Charta.make_line(ride_set.crumbs.order(:read_at).pluck(:geolocation)).simplify(0.0001).to_rgeo.buffer(5))
+        ride.bulk_find_or_create
+        ride_set.update!(crumbs_line: ::Charta.make_line(ride_set.crumbs.order(:read_at).map(&:geolocation)).simplify(0.0001).to_rgeo)
       end
 
     end
