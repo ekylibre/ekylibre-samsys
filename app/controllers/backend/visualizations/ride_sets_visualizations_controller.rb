@@ -15,8 +15,9 @@ module Backend
           end
 
           ride_set_map.rides.each do |ride|
+            options = { color: ride.colors }
             v.serie ride.name, ride.crumbs
-            v.paths :ride, ride.name, colors: ride.colors
+            v.path ride.name, ride.name, options
           end
         end
 
