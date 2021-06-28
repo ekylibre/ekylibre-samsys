@@ -35,10 +35,10 @@ module Samsys
           find_or_create_crumbs(ride.id, meta_work[:id], meta_work[:breaks])
           find_or_create_crumbs_breaks(ride.id, meta_work[:id], meta_work[:breaks]) if meta_work[:breaks].present?
 
-          ride_crumbs_coordinates = Charta.make_line(ride.crumbs.order(:read_at).pluck(:geolocation)).simplify(0.00001).to_rgeo.coordinates
-          simple_coordinates_to_point = ride_crumbs_coordinates.map{ |s| "POINT (#{s.join(' ')})"}
+          # ride_crumbs_coordinates = Charta.make_line(ride.crumbs.order(:read_at).pluck(:geolocation)).simplify(0.00001).to_rgeo.coordinates
+          # simple_coordinates_to_point = ride_crumbs_coordinates.map{ |s| "POINT (#{s.join(' ')})"}
   
-          ride.update!(path_map: simple_coordinates_to_point)
+          # ride.update!(path_map: simple_coordinates_to_point)
         end
 
         ride
@@ -67,10 +67,21 @@ module Samsys
         find_or_create_crumbs(ride.id, meta_work[:id], meta_work[:breaks])
         find_or_create_crumbs_breaks(ride.id, meta_work[:id], meta_work[:breaks]) if meta_work[:breaks].present?
 
-        ride_crumbs_coordinates = Charta.make_line(ride.crumbs.order(:read_at).pluck(:geolocation)).simplify(0.00001).to_rgeo.coordinates
-        simple_coordinates_to_point = ride_crumbs_coordinates.map{ |s| "POINT (#{s.join(' ')})"}
+        binding.pry if meta_work[:id] === "60991841bf0a8013ded7a6c8"
 
-        ride.update!(path_map: simple_coordinates_to_point)
+        crumbs_line = ride.crumbs.order(:read_at).pluck(:geolocation)
+        set_crumbs_line = if crumbs_line.size > 1
+                            ride_crumbs_coordinates = Charta.make_line(crumbs_line).simplify(0.00001).to_rgeo.coordinates
+                            ride_crumbs_coordinates.map{ |s| "POINT (#{s.join(' ')})"}
+                          else
+                            nil
+                          end
+
+        # ride_crumbs_coordinates = Charta.make_line(ride.crumbs.order(:read_at).pluck(:geolocation)).simplify(0.00001).to_rgeo.coordinates
+        # simple_coordinates_to_point = ride_crumbs_coordinates.map{ |s| "POINT (#{s.join(' ')})"}
+
+        puts meta_work.inspect.green
+        ride.update!(path_map: set_crumbs_line)
       end
 
       def initialize_crumbs(ride_id, meta_work_id, meta_work_breaks)
