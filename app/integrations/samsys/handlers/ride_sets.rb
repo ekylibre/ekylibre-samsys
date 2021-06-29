@@ -58,8 +58,6 @@ module Samsys
         if ride_set.present?
           ride = ::Samsys::Handlers::Rides.new(ride_set: ride_set, machine_equipment: machine_equipment)
           ride.bulk_find_or_create
-
-          ride_set.update!(rides_line: ::Charta.make_line(ride_set.crumbs.order(:read_at).map(&:geolocation)).simplify(0.0001).to_rgeo)
         end
       end
 
