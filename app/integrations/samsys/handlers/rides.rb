@@ -64,7 +64,7 @@ module Samsys
 
         # Compute and store ride line-string of ride crumbs
         set_crumbs_line = set_crumbs_line(ride)
-        ride.update!(path_map: set_crumbs_line)
+        ride.update!(crumbs_line: set_crumbs_line)
       end
 
       def initialize_crumbs(ride_id, meta_work_id, meta_work_breaks)
@@ -77,7 +77,7 @@ module Samsys
       end
 
       def find_or_create_crumbs_breaks(ride_id, meta_work_id, meta_work_breaks)
-        crumbs_breaks = initialize_crumbs(Rideride_id, meta_work_id, meta_work_breaks)
+        crumbs_breaks = initialize_crumbs(ride_id, meta_work_id, meta_work_breaks)
         crumbs_breaks.bulk_find_or_create_crumb_break
       end
 
