@@ -16,8 +16,8 @@ module Backend
 
           ride_set_map.rides.each do |ride|
             options = { color: ride.colors }
-            v.serie ride.name, ride.crumbs
-            v.path ride.name, ride.name, options
+            v.serie ride.name, ride.linestring
+            v.polyline ride.name, ride.name, options
           end
         end
 

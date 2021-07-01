@@ -81,7 +81,8 @@ module Samsys
 
         ride.bulk_find_or_create
 
-        ride_set.update!(crumbs_line: ::Charta.make_line(ride_set.crumbs.order(:read_at).map(&:geolocation)).simplify(0.0001).to_rgeo)
+        shape_line_with_buffer = ::Charta.make_line(ride_set.crumbs.order(:read_at).pluck(:geolocation)).simplify(0.0001).to_rgeo.buffer(1)
+        ride_set.update!(crumbs_line: shape_line_with_buffer)
       end
 
     end

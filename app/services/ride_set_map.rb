@@ -7,16 +7,13 @@ class RideSetMap
     @view = view
   end
 
+
   def rides
     resource.rides.map.with_index do |ride, index|
-      crumbs_line = ride.crumbs_line.map do |crumb_line|
-        { shape: Charta.new_geometry(crumb_line),
-        ride: ride.number }
-      end
-      OpenStruct.new({ name: ride.number, crumbs: crumbs_line, colors: [COLORS[index % COLORS.length]] })
+      shape = [{ shape: Charta.new_geometry(ride.shape), ride: ride.number }]    
+      OpenStruct.new({ name: ride.number, linestring: shape, colors: [COLORS[index % COLORS.length]] })
     end
   end
-
 
   def parcels_near_rides
     near_parcels.map do |parcel|
@@ -31,7 +28,7 @@ class RideSetMap
   private
 
     def near_parcels
-      line = resource.crumbs_line
-      LandParcel.at(resource.started_at).shape_intersecting(line.buffer(1))
+      line = resource.shape
+      LandParcel.at(resource.started_at).shape_intersecting(line)
     end
 end

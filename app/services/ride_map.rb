@@ -6,13 +6,8 @@ class RideMap
     @view = view
   end
 
-  def crumbs
-    resource.crumbs.where(nature: "point").order(:read_at).map do |crumb|
-      {
-        shape: Charta.new_geometry(crumb.geolocation),
-        ride: resource.number
-      }
-    end
+  def linestring
+    [{ shape: Charta.new_geometry(resource.shape), ride: resource.number }]
   end
 
   def pause_crumbs
@@ -48,7 +43,7 @@ class RideMap
   private
 
     def near_parcels
-      crumbs_line = ::Charta.make_line(resource.crumbs.order(:read_at).pluck(:geolocation)).simplify(0.0001)
-      LandParcel.availables(at: resource.started_at).initial_shape_near(crumbs_line, 100)
+      line = resource.ride_set.shape
+      LandParcel.at(resource.started_at).shape_intersecting(line)
     end
 end

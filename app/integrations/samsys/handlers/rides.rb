@@ -62,9 +62,8 @@ module Samsys
         find_or_create_crumbs(ride.id, meta_work[:id], meta_work[:breaks])
         find_or_create_crumbs_breaks(ride.id, meta_work[:id], meta_work[:breaks]) if meta_work[:breaks].present?
 
-        # Compute and store ride line-string of ride crumbs
-        set_crumbs_line = set_crumbs_line(ride)
-        ride.update!(crumbs_line: set_crumbs_line)
+        line_shape = Charta.make_line(ride.crumbs.order(:read_at).pluck(:geolocation))
+        ride.update!(shape: line_shape)
       end
 
       def initialize_crumbs(ride_id, meta_work_id, meta_work_breaks)
@@ -79,17 +78,6 @@ module Samsys
       def find_or_create_crumbs_breaks(ride_id, meta_work_id, meta_work_breaks)
         crumbs_breaks = initialize_crumbs(ride_id, meta_work_id, meta_work_breaks)
         crumbs_breaks.bulk_find_or_create_crumb_break
-      end
-
-      def set_crumbs_line(ride)
-        crumbs_line = ride.crumbs.order(:read_at).pluck(:geolocation)
-
-        if crumbs_line.size > 1
-          ride_crumbs_coordinates = Charta.make_line(crumbs_line).simplify(0.00001).to_rgeo.coordinates
-          ride_crumbs_coordinates.map{ |s| "POINT (#{s.join(' ')})"}
-        else
-          nil
-        end
       end
 
     end
