@@ -62,7 +62,7 @@ module Samsys
         find_or_create_crumbs(ride.id, meta_work[:id], meta_work[:breaks])
         find_or_create_crumbs_breaks(ride.id, meta_work[:id], meta_work[:breaks]) if meta_work[:breaks].present?
 
-        line_shape = Charta.make_line(ride.crumbs.order(:read_at).pluck(:geolocation))
+        line_shape = set_shape_line(ride)
         ride.update!(shape: line_shape)
       end
 
@@ -80,6 +80,19 @@ module Samsys
         crumbs_breaks.bulk_find_or_create_crumb_break
       end
 
+      # Method needed in case Samsys send ride with only 1 geolocation point
+      def set_shape_line(ride)
+        crumbs = ride.crumbs.order(:read_at).pluck(:geolocation)
+
+        line_shape = if crumbs.size > 1
+                      crumbs
+                    else
+                      crumbs << crumbs.first
+                      crumbs
+                    end
+
+        Charta.make_line(line_shape)
+      end
     end
   end
 end    
