@@ -14,8 +14,8 @@ module Backend
             v.simple parcel[:name], parcel[:name], options
           end
 
-          ride_set_map.rides.each do |ride|
-            options = { color: ride.colors, center: ride_set.shape_centroid }
+          ride_set_map.rides.reverse.each do |ride|
+            options = { color: ride.colors, center: ride_set.shape_centroid, ride_set: true }
             v.serie ride.name, ride.linestring
             v.polyline ride.name, ride.name, options
           end
