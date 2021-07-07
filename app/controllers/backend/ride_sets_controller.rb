@@ -18,8 +18,8 @@ module Backend
       t.column :provider_vendor
     end
 
-    list(:rides, selectable: true, model: :ride, conditions: { ride_set_id: 'params[:id]'.c }, order: 'rides.started_at DESC') do |t|
-      t.column :number, url: true
+    list(:rides, selectable: true, model: :ride, conditions: { ride_set_id: 'params[:id]'.c }, order: 'rides.started_at DESC', line_class: 'RECORD.state'.c) do |t|
+      t.column :number, url: true, class: 'ride-title'
       t.column :nature
       t.column :started_at
       t.column :stopped_at
