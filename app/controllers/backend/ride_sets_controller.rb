@@ -20,14 +20,15 @@ module Backend
 
     list(:rides, selectable: true, model: :ride, conditions: { ride_set_id: 'params[:id]'.c }, order: 'rides.started_at DESC', line_class: 'RECORD.state'.c) do |t|
       t.column :number, url: true, class: 'ride-title'
+      t.column :intervention, url: true
       t.column :nature
       t.column :started_at
       t.column :stopped_at
       t.column :duration, label_method: :decorated_duration
       t.column :sleep_count, class: 'center'
       t.column :sleep_duration, label_method: :decorated_sleep_duration
-      t.column :state
       t.column :equipment_name, url: { controller: 'backend/equipments', id: 'RECORD.product_id'.c }
+      t.column :provider_vendor
     end
 
     def index
