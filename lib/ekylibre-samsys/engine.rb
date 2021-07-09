@@ -1,7 +1,7 @@
 module EkylibreSamsys
   class Engine < ::Rails::Engine
     initializer 'ekylibre_samsys.assets.precompile' do |app|
-      app.config.assets.precompile += %w(integrations/samsys.png)
+      app.config.assets.precompile += %w(rides.js integrations/samsys.png)
     end
 
     initializer :ekylibre_samsys_i18n do |app|
@@ -14,6 +14,14 @@ module EkylibreSamsys
 
     initializer :ekylibre_samsys_restfully_manageable do |app|
       app.config.x.restfully_manageable.view_paths << EkylibreSamsys::Engine.root.join('app', 'views')
+    end
+
+    initializer :ekylibre_samsys_import_javascript do
+      tmp_file = Rails.root.join('tmp', 'plugins', 'javascript-addons', 'plugins.js.coffee')
+      tmp_file.open('a') do |f|
+        import = '#= require rides'
+        f.puts(import) unless tmp_file.open('r').read.include?(import)
+      end
     end
 
     initializer :ekylibre_samsys_integration do
