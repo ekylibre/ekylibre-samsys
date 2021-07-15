@@ -12,9 +12,11 @@
         init() {
             this.listSelectorInputs.forEach((input) => {
                 input.addEventListener('change', () => {
-                    const selectedIds = this.selectedIds;
-                    this.handleBtnsDisabling(selectedIds);
-                    this.updateBtnsHref(selectedIds);
+                    setTimeout(() => {
+                        const selectedIds = this.selectedIds;
+                        this.handleBtnsDisabling(selectedIds);
+                        this.updateBtnsHref(selectedIds);
+                    }, 300);
                 });
             });
         }
