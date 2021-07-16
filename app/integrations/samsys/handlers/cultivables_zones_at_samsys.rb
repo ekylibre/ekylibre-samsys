@@ -20,7 +20,10 @@ module Samsys
       private 
 
       def find_matching_fields_at_samsys
-        ::Samsys::Data::Fields.new.result.map do |field|
+        samsys_fields = ::Samsys::Data::Fields.new.result
+        return [] if samsys_fields.nil?
+
+        samsys_fields.map do |field|
           field_shape_samsys = Charta.new_geometry(field)
           CultivableZone.shape_matching(field_shape_samsys, 0.02).ids
         end
