@@ -9,7 +9,7 @@ class HandlersRideSetsTest < ::Ekylibre::Testing::ApplicationTestCase::WithFixtu
   end
 
   def test_find_or_create_ride_set
-    VCR.use_cassette("get_machines", :record => :new_episodes) do
+    VCR.use_cassette("get_machines") do
       machine_custom_fields = ::Samsys::Handlers::MachineCustomFields.new
       machine_custom_fields.bulk_find_or_create
 
