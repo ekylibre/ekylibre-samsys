@@ -64,7 +64,11 @@
             const getRides = getValuesofTargets.filter(target => target.options.rideSet == true)
             const ridesData = getRides.map((ride) => { return {name: ride.options.label, color: ride.options.color[0]} } )
 
-            ridesData.forEach(function(ride){
+            // Test compare ride list and ride legend
+            let ridesListNumber = selectRidesOnRideList();
+            const ridesDataToSelect = ridesData.filter(ride => ridesListNumber.includes(ride.name) == true)
+
+            ridesDataToSelect.forEach(function(ride){
                 addColorOnRidesList(ride.name, ride.color);
             })
         })
@@ -74,12 +78,9 @@
         $(document).on('list:page:change', function(){  
             disabledRideAffectedSelector();
         
-            const ridesNumber = []
-            const rideList = document.querySelector('#rides-list')
-            const ridesTitle = rideList.querySelectorAll('[id] > td.ride-title')
-            ridesTitle.forEach(function(ride) {ridesNumber.push(ride.title)})
+            let ridesListNumber = selectRidesOnRideList();
 
-            ridesNumber.forEach(function(ride) {
+            ridesListNumber.forEach(function(ride) {
                 let setLegendRideNameId = `legend-${ride.toLowerCase()}`
                 let legendRideId = document.querySelector(`#${setLegendRideNameId}`);
                 let rideLengendColor = legendRideId.querySelector('.leaflet-categories-sample').style.backgroundColor
@@ -87,6 +88,15 @@
                 addColorOnRidesList(ride, rideLengendColor);
             })
         })
+    }
+
+    let selectRidesOnRideList = function() {
+        const ridesNumber = []
+        const rideList = document.querySelector('#rides-list')
+        const ridesTitle = rideList.querySelectorAll('[id] > td.ride-title')
+        ridesTitle.forEach(function(ride) {ridesNumber.push(ride.title)})
+
+        return ridesNumber
     }
 
     E.onDomReady(function () {
