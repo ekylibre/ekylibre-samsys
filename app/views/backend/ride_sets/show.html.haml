@@ -30,12 +30,14 @@
 = cobbles do |c|
   - if resource.rides.any?
     - c.cobble :map do
-      = visualization(async_url: backend_visualizations_ride_sets_visualizations_path(ride_set_id: resource.id), view: {zoom: 15}) do |v|
+      = visualization(async_url: backend_visualizations_ride_sets_visualizations_path(ride_set_id: resource.id), view: {zoom: 16 }) do |v|
         - v.control :zoom
         - v.control :scale
         - v.control :fullscreen
         - v.control :layer_selector
-        - v.center resource.crumbs.first.geolocation.coordinates.reverse if resource.crumbs.first.present?
-
+        - v.center resource.shape_centroid
+      
     - c.cobble(:rides) do
-      = cobble_list(:rides)
+      = toolbar do |t|
+        = t.new(nature: :record, label: :add_intervention_record.tl, params: { controller: :interventions }, class: 'disabled', id: 'new-intervention-rides')
+      = cobble_list(:rides)  

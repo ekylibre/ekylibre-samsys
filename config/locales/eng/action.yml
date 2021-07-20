@@ -26,6 +26,7 @@ To synchronize your geolocated trips with your connected sensors, please configu
     scan: "Scan"
     sleep_duration: "Sleep duration"
     start: "Start"
+    started_at: "Start of the ride"
     stop: "Stop"
     started_at: "Started at"
     startend: "Start / end"
@@ -33,3 +34,5 @@ To synchronize your geolocated trips with your connected sensors, please configu
     ride_number: "Number"
     ride_paused_at: "Break at"
     ride_duration: "Duration"
+    ride_set_to_ride_information: "Click on a geolocated trip to view it on a map, then select the different sections of the trip to convert into an intervention"
+    road: "Total distance in km"

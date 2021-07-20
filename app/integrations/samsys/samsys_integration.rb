@@ -17,7 +17,6 @@ module Samsys
   class ServiceError < StandardError; end
 
   class SamsysIntegration < ActionIntegration::Base
-    # Set url needed for Samsys API v2
 
     BASE_URL = "https://app.samsys.io/api/v1".freeze
     TOKEN_URL = BASE_URL + "/auth".freeze
@@ -64,7 +63,6 @@ module Samsys
       end
     end
 
-    # POST MACHINE
     def post_machines(machine_name, machine_born_at, machine_type, cluster_id, machine_uuid)
       integration = fetch
       # Get token
@@ -98,16 +96,16 @@ module Samsys
       end
 
       land_parcel = [
-          {
-              "name": land_parcel_name,
-              "type": "Feature",
-              "date": land_parcel_born,
-              "geometry": {
-                  "type": "Polygon",
-                  "coordinates": land_parcel_coordinates
-              },
-              "provider": { "Ekylibre": land_parcel_providers }
-          }
+        {
+          "name": land_parcel_name,
+          "type": "Feature",
+          "date": land_parcel_born,
+          "geometry": {
+              "type": "Polygon",
+              "coordinates": land_parcel_coordinates
+          },
+          "provider": { "Ekylibre": land_parcel_providers }
+        }
       ]
       
       post_json("#{BASE_URL}/users/#{user_id}/fields", land_parcel, 'Authorization' => "JWT #{integration.parameters['token']}") do |r|
@@ -125,14 +123,11 @@ module Samsys
       if integration.parameters['token'].blank?
         get_token
       end
-      # for testing
-      # call = RestClient::Request.execute(method: :get, url: COUNTERS_URL, headers: {Authorization: "JWT #{token}"})
-      # counters = JSON.parse(call.body).map{|p| p.deep_symbolize_keys}
 
       # Call API
       get_json(COUNTERS_URL, 'Authorization' => "JWT #{integration.reload.parameters['token']}") do |r|
         r.success do
-          list = JSON(r.body).map{|p| p.deep_symbolize_keys}
+          list = JSON(r.body).map{ |p| p.deep_symbolize_keys }
         end
       end
     end
@@ -147,7 +142,7 @@ module Samsys
       # Call API
       get_json("#{BASE_URL}/machines", 'Authorization' => "JWT #{integration.reload.parameters['token']}") do |r|
         r.success do
-          list = JSON(r.body)
+          list = JSON(r.body).map{ |p| p.deep_symbolize_keys }
         end
       end
     end
@@ -185,7 +180,7 @@ module Samsys
       # Call API
       get_html("#{MACHINES_URL}/#{machine_id}/activities?start_date=#{started_on}&end_date=#{stopped_on}", 'Authorization' => "JWT #{integration.reload.parameters['token']}") do |r|
         r.success do
-          list = JSON.parse(r.body)
+          list = JSON(r.body).map{ |p| p.deep_symbolize_keys }
         end
       end
     end
@@ -204,7 +199,7 @@ module Samsys
             # Call API
       get_html("#{BASE_URL}/meta_works/#{activity_id}", 'Authorization' => "JWT #{integration.reload.parameters['token']}") do |r|
         r.success do
-          list = JSON.parse(r.body)
+          list = JSON(r.body).map{ |p| p.deep_symbolize_keys }
         end
       end  
     end
@@ -223,7 +218,7 @@ module Samsys
       # Call API
        get_html("#{BASE_URL}/works/#{work_id}/geolocations", 'Authorization' => "JWT #{integration.reload.parameters['token']}") do |r|
         r.success do
-          list = JSON.parse(r.body, allow_nan: true)
+          list = JSON(r.body , allow_nan: true).map{ |p| p.deep_symbolize_keys }
         end
       end       
     end
@@ -249,7 +244,7 @@ module Samsys
     def check(integration = nil)
       integration = fetch integration
       puts integration.inspect.red
-      payload = {"email": integration.parameters['email'], "password": integration.parameters['password']}
+      payload = { "email": integration.parameters['email'], "password": integration.parameters['password'] }
       post_json(TOKEN_URL, payload) do |r|
         r.success do
           list = JSON(r.body).deep_symbolize_keys
