@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<navigation>
+  <part name="production">
+    <group name="production">
+      <item name="ride_sets">
+      	<page to="backend/ride_sets#index"/>
+        <page to="backend/ride_sets#show"/>
+        <page to="backend/rides#index"/>
+        <page to="backend/rides#show"/>
+      </item>
+    </group>
+  </part>
+</navigation>

@@ -24,13 +24,14 @@ module Samsys
     COUNTERS_URL = BASE_URL + "/counters".freeze
     MACHINES_URL = BASE_URL + "/machines".freeze
     CAN_DATA_URL = BASE_URL + "/can_data".freeze
+    FIELDS_URL = BASE_URL + "/fields".freeze
 
     authenticate_with :check do
       parameter :email
       parameter :password
     end
 
-    calls :get_token, :fetch_all_counters, :fetch_j1939_bus, :fetch_geolocation, :fetch_fields_worked
+    calls :get_token, :fetch_user_info, :post_machines, :post_parcels, :fetch_all_counters, :fetch_all_machines, :fetch_geolocation, :fetch_activities_machine, :fetch_works_activity, :fetch_work_geolocations, :fetch_fields
 
     # Get token with login and password
     #DOC https://doc.samsys.io/#api-Authentication-Authentication
@@ -48,6 +49,74 @@ module Samsys
       end
     end
 
+    def fetch_user_info
+      integration = fetch
+      # Get token
+      if integration.parameters['token'].blank?
+        get_token
+      end
+
+      # Call API
+      get_json("#{BASE_URL}/me", 'Authorization' => "JWT #{integration.parameters['token']}") do |r|
+        r.success do
+          list = JSON(r.body).deep_symbolize_keys
+        end
+      end
+    end
+
+    # POST MACHINE
+    def post_machines(machine_name, machine_born_at, machine_type, cluster_id, machine_uuid)
+      integration = fetch
+      # Get token
+      if integration.parameters['token'].blank?
+        get_token
+      end
+
+      machine = {
+              "name": machine_name,
+              "start_date": machine_born_at,
+              "cluster": cluster_id,
+              "machine_type": machine_type,
+              "brand": machine_name,
+              "road_count_policy": "separate",
+              "aux_configurations": {},
+              "provider": {"name": "Ekylibre", "uuid": machine_uuid}
+            }
+      
+      post_json("#{BASE_URL}/machines", machine, 'Authorization' => "JWT #{integration.parameters['token']}") do |r|
+        r.success do
+          Rails.logger.info 'CREATED MACHINE'.green
+        end
+      end
+    end
+
+    def post_parcels(user_id, land_parcel_name, land_parcel_born, land_parcel_coordinates, land_parcel_providers)
+      integration = fetch
+      # Get token
+      if integration.parameters['token'].blank?
+        get_token
+      end
+
+      land_parcel = [
+          {
+              "name": land_parcel_name,
+              "type": "Feature",
+              "date": land_parcel_born,
+              "geometry": {
+                  "type": "Polygon",
+                  "coordinates": land_parcel_coordinates
+              },
+              "provider": { "Ekylibre": land_parcel_providers }
+          }
+      ]
+      
+      post_json("#{BASE_URL}/users/#{user_id}/fields", land_parcel, 'Authorization' => "JWT #{integration.parameters['token']}") do |r|
+        r.success do
+          Rails.logger.info 'CREATED FIELD'.green
+        end
+      end
+    end
+
     # Get all counters
     # DOC https://doc.samsys.io/#api-Counters-Get_all_counters_of_a_user
     def fetch_all_counters
@@ -61,45 +130,24 @@ module Samsys
       # counters = JSON.parse(call.body).map{|p| p.deep_symbolize_keys}
 
       # Call API
-      get_json(COUNTERS_URL, 'Authorization' => "JWT #{integration.parameters['token']}") do |r|
+      get_json(COUNTERS_URL, 'Authorization' => "JWT #{integration.reload.parameters['token']}") do |r|
         r.success do
           list = JSON(r.body).map{|p| p.deep_symbolize_keys}
-        end
-
-        r.redirect do
-          Rails.logger.info '*sigh*'.yellow
-        end
-
-        r.error do
-          Rails.logger.info 'What the fuck brah?'.red
-          Rails.logger.info 'Token_missing'.red if token.blank?
         end
       end
     end
 
-    # Get J1939 Data of a machine
-    # DOC https://doc.samsys.io/#api-Machines-A_machine_j1939_data
-    # https://app.samsys.io/api/v1/machines/:id_machine/j1939_data
-    def fetch_j1939_bus(machine_id)
+    # Get all machines
+    def fetch_all_machines
       integration = fetch
-
       # Get token
       if integration.parameters['token'].blank?
         get_token
       end
-
       # Call API
-      get_json("#{MACHINES_URL}/#{machine_id}/j1939_data", 'Authorization' => "JWT #{integration.parameters['token']}") do |r|
+      get_json("#{BASE_URL}/machines", 'Authorization' => "JWT #{integration.reload.parameters['token']}") do |r|
         r.success do
-          list = JSON(r.body).deep_symbolize_keys
-        end
-
-        r.redirect do
-          Rails.logger.info '*sigh*'.yellow
-        end
-
-        r.error do
-          Rails.logger.info 'What the fuck brah?'.red
+          list = JSON(r.body)
         end
       end
     end
@@ -116,54 +164,17 @@ module Samsys
       end
 
       # Call API
-      get_json("#{MACHINES_URL}/#{machine_id}/geolocation", 'Authorization' => "JWT #{integration.parameters['token']}") do |r|
+      get_json("#{MACHINES_URL}/#{machine_id}/geolocation", 'Authorization' => "JWT #{integration.reload.parameters['token']}") do |r|
         r.success do
-          list = JSON(r.body).deep_symbolize_keys
-        end
-
-        r.redirect do
-          Rails.logger.info '*sigh*'.yellow
-        end
-
-        r.error do
-          Rails.logger.info 'What the fuck brah?'.red
-        end
-      end
-    end
-
-    # Get fields work of a machine
-    # DOC https://doc.samsys.io/#api-Machines-A_machine_fields_worked_statistics
-    # https://app.samsys.io/api/v1/machines/:id_machine/statistics/fields_worked?start_date=:start_date&end_date=:end_date
-    def fetch_fields_worked(machine_id)
-      integration = fetch
-
-      # Get token
-      if integration.parameters['token'].blank?
-        get_token
-      end
-      stopped_on = Time.now.strftime("%FT%TZ")
-      started_on = (Time.now - 30.days).strftime("%FT%TZ")
-      puts "#{MACHINES_URL}/#{machine_id}/statistics/fields_worked?start_date=#{started_on}&end_date=#{stopped_on}".inspect.green
-      # Call API
-      get_json("#{MACHINES_URL}/#{machine_id}/statistics/fields_worked?start_date=#{started_on}&end_date=#{stopped_on}", 'Authorization' => "JWT #{integration.parameters['token']}") do |r|
-        r.success do
-          list = JSON(r.body).deep_symbolize_keys
-        end
-
-        r.redirect do
-          Rails.logger.info '*sigh*'.yellow
-        end
-
-        r.error do
           list = JSON(r.body).deep_symbolize_keys
         end
       end
     end
 
-    # Get CAN Data (ISOBUS) of a machine
-    # DOC https://doc.samsys.io/#api-Can_data-Get_historical_can_data
-    # https://app.samsys.io/api/v1/can_data?id_counter=:id_counter&id_counter=:id_counter&start_date=:start_date&end_date=:end_date&filter=:filter&filter=:filter
-    def fetch_can_bus(counter_ids, started_on, stopped_on, filter)
+    # Get Activities of a machine
+    # DCC https://doc.samsys.io/#api-Machines-A_machine_activities
+    # https://app.samsys.io/api/v1/machines/:id_machine/activities?start_date=:start_date&end_date=:end_date
+    def fetch_activities_machine(machine_id,  started_on, stopped_on)
       integration = fetch
 
       # Get token
@@ -171,26 +182,64 @@ module Samsys
         get_token
       end
 
-      # Build params (date in iso8601(3))
-      params = {
-                id_counter: counter_ids,
-                start_date: started_on.iso8601(3),
-                end_date: stopped_on.iso8601(3),
-                filter: filter
-      }
+      # Call API
+      get_html("#{MACHINES_URL}/#{machine_id}/activities?start_date=#{started_on}&end_date=#{stopped_on}", 'Authorization' => "JWT #{integration.reload.parameters['token']}") do |r|
+        r.success do
+          list = JSON.parse(r.body)
+        end
+      end
+    end
+
+    # Get Works in an Activity
+    # DOC https://doc.samsys.io/#api-Activities-Get_works_in_activities
+    # https://app.samsys.io/api/v1/meta_works/:id_activity
+    def fetch_works_activity(activity_id)
+      integration = fetch
+
+      # Get token
+      if integration.parameters['token'].blank?
+        get_token
+      end 
+
+            # Call API
+      get_html("#{BASE_URL}/meta_works/#{activity_id}", 'Authorization' => "JWT #{integration.reload.parameters['token']}") do |r|
+        r.success do
+          list = JSON.parse(r.body)
+        end
+      end  
+    end
+
+    # Get Geolocations Work
+    # https://doc.samsys.io/#api-Works-Get_work_geolocations
+    # https://app.samsys.io/api/v1/works/:id_work/geolocations
+    def fetch_work_geolocations(work_id)
+      integration = fetch
+
+      # Get token
+      if integration.parameters['token'].blank?
+        get_token
+      end  
 
       # Call API
-      get_json(CAN_DATA_URL, 'Authorization' => "JWT #{integration.parameters['token']}", params => params) do |r|
+       get_html("#{BASE_URL}/works/#{work_id}/geolocations", 'Authorization' => "JWT #{integration.reload.parameters['token']}") do |r|
         r.success do
-          list = JSON(r.body).deep_symbolize_keys
+          list = JSON.parse(r.body, allow_nan: true)
         end
+      end       
+    end
 
-        r.redirect do
-          Rails.logger.info '*sigh*'.yellow
-        end
+    # Get fields of user
+    def fetch_fields
+      integration = fetch 
+      # Get Token
+      if integration.parameters['token'].blank?
+        get_token
+      end
 
-        r.error do
-          Rails.logger.info 'What the fuck brah?'.red
+      # Call API
+      get_html(FIELDS_URL, 'Authorization' => "JWT #{integration.reload.parameters['token']}") do |r|
+        r.success do
+          list = JSON.parse(r.body)
         end
       end
     end

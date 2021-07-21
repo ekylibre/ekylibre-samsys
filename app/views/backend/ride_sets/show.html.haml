@@ -1,0 +1,41 @@
+= main_informations do
+  = infos do
+    .med-info
+      %span.title= :started_at.tl
+      %span.value= resource.started_at.l
+
+    .med-info
+      %span.title= :duration.tl
+      %span.value= resource.decorated_duration
+
+    - if resource.sleep_duration
+      .med-info
+        %span.title= :sleep_duration.tl
+        %span.value= resource.decorated_sleep_duration
+
+    .med-info
+      %span.title= :road.tl
+      %span.value= resource.road.nil? || resource.road.to_i.zero? ? '-' : resource.road.round(2)
+
+    - if resource.area_without_overlap
+      .med-info
+        %span.title= :area_without_overlap.tl
+        %span.value= resource.area_without_overlap.round(2).to_s + " ha"
+
+    - if resource.area_with_overlap
+      .med-info
+        %span.title= :area_with_overlap.tl
+        %span.value= resource.area_with_overlap.round(2).to_s + " ha"
+
+= cobbles do |c|
+  - if resource.rides.any?
+    - c.cobble :map do
+      = visualization(async_url: backend_visualizations_ride_sets_visualizations_path(ride_set_id: resource.id), view: {zoom: 15}) do |v|
+        - v.control :zoom
+        - v.control :scale
+        - v.control :fullscreen
+        - v.control :layer_selector
+        - v.center resource.crumbs.first.geolocation.coordinates.reverse if resource.crumbs.first.present?
+
+    - c.cobble(:rides) do
+      = cobble_list(:rides)
