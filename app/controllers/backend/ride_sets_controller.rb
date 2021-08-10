@@ -7,11 +7,11 @@ module Backend
     list(order: { started_at: :desc }) do |t|
       t.column :number, url: true
       t.column :nature
+      t.column :state, label_method: :decorated_state
       t.column :started_at
       t.column :stopped_at
       t.column :duration, label_method: :decorated_duration
-      t.column :sleep_count, class: 'center
-      '
+      t.column :sleep_count, class: 'center'
       t.column :sleep_duration, label_method: :decorated_sleep_duration
       t.column :road, class: 'center'
       t.column :equipment
