@@ -6,7 +6,7 @@ module Samsys
       def initialize(machine_id:, stopped_on:)
         @machine_id = machine_id
         @stopped_on = stopped_on.strftime("%FT%TZ")
-        @started_on = (stopped_on - 120.days).strftime("%FT%TZ")
+        @started_on = (stopped_on - 365.days).strftime("%FT%TZ")
       end
       
       def result
