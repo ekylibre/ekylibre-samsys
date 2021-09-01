@@ -1,0 +1,361 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://app.samsys.io/api/v1/auth
+    body:
+      encoding: UTF-8
+      string: '{"email":"Hello","password":"World"}'
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Host:
+      - app.samsys.io
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Wed, 12 May 2021 14:16:31 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Vary:
+      - Accept-Encoding
+      Access-Control-Allow-Origin:
+      - "*"
+    body:
+      encoding: ASCII-8BIT
+      string: '{"status": "ok", "message": "Connect\u00e9!", "jwt": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE2MjA4Mjg5OTEsIm5iZiI6MTYyMDgyODk5MSwianRpIjoiY2MwNmQzNTUtYzc0MC00YTQ3LThkMzktODFjNDEwMDUzZTkzIiwiZXhwIjoxNjUyMzY0OTkxLCJpZGVudGl0eSI6eyJ1c2VyX2lkIjoiNWU3Yzc5NWZmNDI3NTRiMTg2MTA3OTQ4IiwiYXBwIjoiY2xhdWRlIn0sImZyZXNoIjpmYWxzZSwidHlwZSI6ImFjY2VzcyJ9.wpEfFGGbGbEeLVlk56FiIx-fa3WGgmd_GkfMX6cVGmg"}
+
+'
+  recorded_at: Wed, 12 May 2021 14:16:31 GMT
+- request:
+    method: post
+    uri: https://app.samsys.io/api/v1/auth
+    body:
+      encoding: UTF-8
+      string: '{"email":"Hello","password":"World"}'
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Host:
+      - app.samsys.io
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Wed, 12 May 2021 14:16:31 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Vary:
+      - Accept-Encoding
+      Access-Control-Allow-Origin:
+      - "*"
+    body:
+      encoding: ASCII-8BIT
+      string: '{"status": "ok", "message": "Connect\u00e9!", "jwt": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE2MjA4Mjg5OTEsIm5iZiI6MTYyMDgyODk5MSwianRpIjoiMzJkZjgzYjEtOTBlZi00MzVjLWI1NDItNjUxYjlkNjQxYzU5IiwiZXhwIjoxNjUyMzY0OTkxLCJpZGVudGl0eSI6eyJ1c2VyX2lkIjoiNWU3Yzc5NWZmNDI3NTRiMTg2MTA3OTQ4IiwiYXBwIjoiY2xhdWRlIn0sImZyZXNoIjpmYWxzZSwidHlwZSI6ImFjY2VzcyJ9.wQBDiC_PYvHHKbuLfH7pjGq1me3Gb0Mf6chtEJu40f0"}
+
+'
+  recorded_at: Wed, 12 May 2021 14:16:31 GMT
+- request:
+    method: get
+    uri: https://app.samsys.io/api/v1/meta_works/5fa3ab62c493556ea4ec8bfd
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Host:
+      - app.samsys.io
+      Authorization:
+      - JWT eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE2MjA4Mjg5OTEsIm5iZiI6MTYyMDgyODk5MSwianRpIjoiY2MwNmQzNTUtYzc0MC00YTQ3LThkMzktODFjNDEwMDUzZTkzIiwiZXhwIjoxNjUyMzY0OTkxLCJpZGVudGl0eSI6eyJ1c2VyX2lkIjoiNWU3Yzc5NWZmNDI3NTRiMTg2MTA3OTQ4IiwiYXBwIjoiY2xhdWRlIn0sImZyZXNoIjpmYWxzZSwidHlwZSI6ImFjY2VzcyJ9.wpEfFGGbGbEeLVlk56FiIx-fa3WGgmd_GkfMX6cVGmg
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Wed, 12 May 2021 14:16:31 GMT
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '3165'
+      Connection:
+      - keep-alive
+      Vary:
+      - Accept-Encoding
+      Access-Control-Allow-Origin:
+      - "*"
+    body:
+      encoding: ASCII-8BIT
+      string: '[{"type": "road", "id": "5fa3ab62c493556ea4ec8bfc", "start_date": "2020-11-05T07:15:13.500000Z",
+        "end_date": "2020-11-05T07:30:28.720000Z", "breaks": [{"geometry": {"type":
+        "Point", "coordinates": [-0.27105419999999997, 45.6606951137931]}, "start_date":
+        "2020-11-05T07:15:13.500000Z", "end_date": "2020-11-05T07:19:35.100000Z",
+        "duration": 261.6, "comment": null}, {"geometry": {"type": "Point", "coordinates":
+        [-0.2708805, 45.660712133333334]}, "start_date": "2020-11-05T07:20:17.700000Z",
+        "end_date": "2020-11-05T07:22:55.780000Z", "duration": 158.08, "comment":
+        null}], "field": null, "islet": null, "duration": 915.22, "distance_km": 1.989557869059446,
+        "sleep_duration": 419.68000000000006, "sleep_count": 2, "area_without_overlap":
+        null, "area_with_overlap": null, "area_smart": null, "gasoline": 0.0, "machines":
+        [{"id": "5f6b41a15fd2a1ddcb5386ea", "name": "Boitier Ekyviti", "brand": "New
+        Holland", "machine_type": "Tracteur vigneron"}], "employees": [], "custom_data":
+        []}, {"type": "work", "id": "608bcdfe64a3433c8ad71188", "start_date": "2020-11-05T07:30:28.720000Z",
+        "end_date": "2020-11-05T11:00:27.100000Z", "breaks": [{"geometry": {"type":
+        "Point", "coordinates": [-0.2838653520231213, 45.65399125491328]}, "start_date":
+        "2020-11-05T07:30:40.390000Z", "end_date": "2020-11-05T07:45:05.500000Z",
+        "duration": 865.11, "comment": null}, {"geometry": {"type": "Point", "coordinates":
+        [-0.2841729111111111, 45.65313358888889]}, "start_date": "2020-11-05T07:45:56.590000Z",
+        "end_date": "2020-11-05T07:46:44.590000Z", "duration": 48.0, "comment": null},
+        {"geometry": {"type": "Point", "coordinates": [-0.28509184000000004, 45.65012428]},
+        "start_date": "2020-11-05T07:50:08Z", "end_date": "2020-11-05T07:50:30.590000Z",
+        "duration": 22.59, "comment": null}, {"geometry": {"type": "Point", "coordinates":
+        [-0.28397615, 45.65011095]}, "start_date": "2020-11-05T07:51:33.690000Z",
+        "end_date": "2020-11-05T07:51:54.990000Z", "duration": 21.3, "comment": null},
+        {"geometry": {"type": "Point", "coordinates": [-0.2850553, 45.6501969]}, "start_date":
+        "2020-11-05T07:52:31.500000Z", "end_date": "2020-11-05T07:53:34.940000Z",
+        "duration": 63.44, "comment": null}, {"geometry": {"type": "Point", "coordinates":
+        [-0.2850555, 45.6502898]}, "start_date": "2020-11-05T07:53:34.940000Z", "end_date":
+        "2020-11-05T07:54:09.520000Z", "duration": 34.58, "comment": null}, {"geometry":
+        {"type": "Point", "coordinates": [-0.28381675, 45.6540087]}, "start_date":
+        "2020-11-05T07:57:23.300000Z", "end_date": "2020-11-05T07:57:49.600000Z",
+        "duration": 26.3, "comment": null}, {"geometry": {"type": "Point", "coordinates":
+        [-0.28411366000000005, 45.65304181333334]}, "start_date": "2020-11-05T07:58:45.790000Z",
+        "end_date": "2020-11-05T08:01:11.790000Z", "duration": 146.0, "comment": null},
+        {"geometry": {"type": "Point", "coordinates": [-0.28501135, 45.65017456666667]},
+        "start_date": "2020-11-05T08:03:50.900000Z", "end_date": "2020-11-05T08:04:21.390000Z",
+        "duration": 30.49, "comment": null}, {"geometry": {"type": "Point", "coordinates":
+        [-0.2849783833333333, 45.65023885]}, "start_date": "2020-11-05T08:04:21.390000Z",
+        "end_date": "2020-11-05T08:04:44.490000Z", "duration": 23.1, "comment": null},
+        {"geometry": {"type": "Point", "coordinates": [-0.2837513571428571, 45.65395974285713]},
+        "start_date": "2020-11-05T08:08:15.990000Z", "end_date": "2020-11-05T08:08:50.990000Z",
+        "duration": 35.0, "comment": null}, {"geometry": {"type": "Point", "coordinates":
+        [-0.28493458, 45.65015264]}, "start_date": "2020-11-05T08:12:36.200000Z",
+        "end_date": "2020-11-05T08:13:00.790000Z", "duration": 24.59, "comment": null},
+        {"geometry": {"type": "Point", "coordinates": [-0.2839771125, 45.6530990875]},
+        "start_date": "2020-11-05T08:15:56.200000Z", "end_date": "2020-11-05T08:16:40.160000Z",
+        "duration": 43.96, "comment": null}, {"geometry": {"type": "Point", "coordinates":
+        [-0.2838579625, 45.65344105]}, "start_date": "2020-11-05T08:16:58.900000Z",
+        "end_date": "2020-11-05T08:17:40.200000Z", "duration": 41.3, "comment": null},
+        {"geometry": {"type": "Point", "coordinates": [-0.28367972, 45.65391666]},
+        "start_date": "2020-11-05T08:18:12.290000Z", "end_date": "2020-11-05T08:18:42.730000Z",
+        "duration": 30.44, "comment": null}, {"geometry": {"type": "Point", "coordinates":
+        [-0.28384195714285715, 45.653374171428574]}, "start_date": "2020-11-05T08:19:19.200000Z",
+        "end_date": "2020-11-05T08:19:54.540000Z", "duration": 35.34, "comment": null},
+        {"geometry": {"type": "Point", "coordinates": [-0.28403439, 45.652823639999994]},
+        "start_date": "2020-11-05T08:20:43.190000Z", "end_date": "2020-11-05T08:21:39.490000Z",
+        "duration": 56.3, "comment": null}, {"geometry": {"type": "Point", "coordinates":
+        [-0.28416969999999997, 45.6524228125]}, "start_date": "2020-11-05T08:22:12.300000Z",
+        "end_date": "2020-11-05T08:23:00.890000Z", "duration": 48.59, "comment": null},
+        {"geometry": {"type": "Point", "coordinates": [-0.28465024285714285, 45.65101644285714]},
+        "start_date": "2020-11-05T08:24:26.440000Z", "end_date": "2020-11-05T08:25:02.590000Z",
+        "duration": 36.15, "comment": null}, {"geometry": {"type": "Point", "coordinates":
+        [-0.28485316666666666, 45.65015221666667]}, "start_date": "2020-11-05T08:26:09.500000Z",
+        "end_date": "2020-11-05T08:26:41.500000Z", "duration": 32.0, "comment": null},
+        {"geometry": {"type": "Point", "coordinates": [-0.28458641111111116, 45.65106292222222]},
+        "start_date": "2020-11-05T08:27:44.300000Z", "end_date": "2020-11-05T08:28:28.190000Z",
+        "duration": 43.89, "comment": null}, {"geometry": {"type": "Point", "coordinates":
+        [-0.28424626999999997, 45.652053880000004]}, "start_date": "2020-11-05T08:29:28.290000Z",
+        "end_date": "2020-11-05T08:30:17.100000Z", "duration": 48.81, "comment": null},
+        {"geometry": {"type": "Point", "coordinates": [-0.2838568285714286, 45.65320041428572]},
+        "start_date": "2020-11-05T08:31:17.970000Z", "end_date": "2020-11-05T08:31:55.900000Z",
+        "duration": 37.93, "comment": null}, {"geometry": {"type": "Point", "coordinates":
+        [-0.28382086, 45.65330806]}, "start_date": "2020-11-05T08:31:55.900000Z",
+        "end_date": "2020-11-05T08:32:21.300000Z", "duration": 25.4, "comment": null},
+        {"geometry": {"type": "Point", "coordinates": [-0.2836139, 45.6538753]}, "start_date":
+        "2020-11-05T08:33:15.590000Z", "end_date": "2020-11-05T08:33:48.290000Z",
+        "duration": 32.7, "comment": null}, {"geometry": {"type": "Point", "coordinates":
+        [-0.2841116888888889, 45.65233616666667]}, "start_date": "2020-11-05T08:35:21.200000Z",
+        "end_date": "2020-11-05T08:36:00.900000Z", "duration": 39.7, "comment": null},
+        {"geometry": {"type": "Point", "coordinates": [-0.2847518875, 45.650148824999995]},
+        "start_date": "2020-11-05T08:38:06.500000Z", "end_date": "2020-11-05T08:38:43.590000Z",
+        "duration": 37.09, "comment": null}, {"geometry": {"type": "Point", "coordinates":
+        [-0.2846646, 45.650607171428575]}, "start_date": "2020-11-05T08:39:12.500000Z",
+        "end_date": "2020-11-05T08:39:50.350000Z", "duration": 37.85, "comment": null},
+        {"geometry": {"type": "Point", "coordinates": [-0.2846253555555555, 45.650722200000004]},
+        "start_date": "2020-11-05T08:39:50.350000Z", "end_date": "2020-11-05T08:40:38.500000Z",
+        "duration": 48.15, "comment": null}, {"geometry": {"type": "Point", "coordinates":
+        [-0.2835434464788732, 45.653785234272334]}, "start_date": "2020-11-05T08:43:37.090000Z",
+        "end_date": "2020-11-05T09:03:47.490000Z", "duration": 1210.4, "comment":
+        null}, {"geometry": {"type": "Point", "coordinates": [-0.28470041071428565,
+        45.65013615]}, "start_date": "2020-11-05T09:07:30.790000Z", "end_date": "2020-11-05T09:10:13.900000Z",
+        "duration": 163.11, "comment": null}, {"geometry": {"type": "Point", "coordinates":
+        [-0.2846566, 45.6502051]}, "start_date": "2020-11-05T09:10:13.900000Z", "end_date":
+        "2020-11-05T09:10:38.190000Z", "duration": 24.29, "comment": null}, {"geometry":
+        {"type": "Point", "coordinates": [-0.2846503458333333, 45.65032822499999]},
+        "start_date": "2020-11-05T09:10:38.190000Z", "end_date": "2020-11-05T09:12:59.600000Z",
+        "duration": 141.41, "comment": null}, {"geometry": {"type": "Point", "coordinates":
+        [-0.2846127352941176, 45.65051868823531]}, "start_date": "2020-11-05T09:13:07.300000Z",
+        "end_date": "2020-11-05T09:14:46.490000Z", "duration": 99.19, "comment": null},
+        {"geometry": {"type": "Point", "coordinates": [-0.28348987499999995, 45.65380214166667]},
+        "start_date": "2020-11-05T09:17:59.600000Z", "end_date": "2020-11-05T09:19:09.590000Z",
+        "duration": 69.99, "comment": null}, {"geometry": {"type": "Point", "coordinates":
+        [-0.28460906, 45.65013832]}, "start_date": "2020-11-05T09:22:49.900000Z",
+        "end_date": "2020-11-05T09:23:18.390000Z", "duration": 28.49, "comment": null},
+        {"geometry": {"type": "Point", "coordinates": [-0.2834205166666666, 45.65376213333332]},
+        "start_date": "2020-11-05T09:26:53.100000Z", "end_date": "2020-11-05T09:27:20.100000Z",
+        "duration": 27.0, "comment": null}, {"geometry": {"type": "Point", "coordinates":
+        [-0.28454312857142855, 45.65014361428572]}, "start_date": "2020-11-05T09:30:52.300000Z",
+        "end_date": "2020-11-05T09:31:28Z", "duration": 35.7, "comment": null}, {"geometry":
+        {"type": "Point", "coordinates": [-0.2837780875, 45.652394300000005]}, "start_date":
+        "2020-11-05T09:36:44.690000Z", "end_date": "2020-11-05T09:37:25.990000Z",
+        "duration": 41.3, "comment": null}, {"geometry": {"type": "Point", "coordinates":
+        [-0.2844103333333333, 45.650524744444446]}, "start_date": "2020-11-05T09:39:13.900000Z",
+        "end_date": "2020-11-05T09:39:58.990000Z", "duration": 45.09, "comment": null},
+        {"geometry": {"type": "Point", "coordinates": [-0.28445368571428575, 45.65012251428571]},
+        "start_date": "2020-11-05T09:40:18.890000Z", "end_date": "2020-11-05T09:40:51.990000Z",
+        "duration": 33.1, "comment": null}, {"geometry": {"type": "Point", "coordinates":
+        [-0.2843235, 45.65067858888888]}, "start_date": "2020-11-05T09:41:28.590000Z",
+        "end_date": "2020-11-05T09:42:18.060000Z", "duration": 49.47, "comment": null},
+        {"geometry": {"type": "Point", "coordinates": [-0.283297425, 45.653681975]},
+        "start_date": "2020-11-05T09:45:08.330000Z", "end_date": "2020-11-05T09:45:28.990000Z",
+        "duration": 20.66, "comment": null}, {"geometry": {"type": "Point", "coordinates":
+        [-0.2835521875, 45.6528548875]}, "start_date": "2020-11-05T09:46:40Z", "end_date":
+        "2020-11-05T09:47:23.500000Z", "duration": 43.5, "comment": null}, {"geometry":
+        {"type": "Point", "coordinates": [-0.2843865875, 45.6501356625]}, "start_date":
+        "2020-11-05T09:49:54.810000Z", "end_date": "2020-11-05T09:50:32.500000Z",
+        "duration": 37.69, "comment": null}, {"geometry": {"type": "Point", "coordinates":
+        [-0.28420656, 45.65080845]}, "start_date": "2020-11-05T09:51:11.300000Z",
+        "end_date": "2020-11-05T09:52:03.800000Z", "duration": 52.5, "comment": null},
+        {"geometry": {"type": "Point", "coordinates": [-0.28371888888888885, 45.65225328888888]},
+        "start_date": "2020-11-05T09:53:22.190000Z", "end_date": "2020-11-05T09:54:04.250000Z",
+        "duration": 42.06, "comment": null}, {"geometry": {"type": "Point", "coordinates":
+        [-0.2836577375, 45.652431899999996]}, "start_date": "2020-11-05T09:54:10.300000Z",
+        "end_date": "2020-11-05T09:54:52Z", "duration": 41.7, "comment": null}, {"geometry":
+        {"type": "Point", "coordinates": [-0.283425425, 45.6531139125]}, "start_date":
+        "2020-11-05T09:55:28.800000Z", "end_date": "2020-11-05T09:56:15.160000Z",
+        "duration": 46.36, "comment": null}, {"geometry": {"type": "Point", "coordinates":
+        [-0.2833847875, 45.6532278]}, "start_date": "2020-11-05T09:56:15.160000Z",
+        "end_date": "2020-11-05T09:57:01Z", "duration": 45.84, "comment": null}, {"geometry":
+        {"type": "Point", "coordinates": [-0.28323095853658536, 45.65365315853658]},
+        "start_date": "2020-11-05T09:57:25.860000Z", "end_date": "2020-11-05T10:01:23.090000Z",
+        "duration": 237.23, "comment": null}, {"geometry": {"type": "Point", "coordinates":
+        [-0.28431107499999997, 45.65010906250001]}, "start_date": "2020-11-05T10:04:48.200000Z",
+        "end_date": "2020-11-05T10:05:20.490000Z", "duration": 32.29, "comment": null},
+        {"geometry": {"type": "Point", "coordinates": [-0.28341146, 45.65292390499999]},
+        "start_date": "2020-11-05T10:08:03.100000Z", "end_date": "2020-11-05T10:08:54.460000Z",
+        "duration": 51.36, "comment": null}, {"geometry": {"type": "Point", "coordinates":
+        [-0.2833403428571429, 45.653131085714286]}, "start_date": "2020-11-05T10:09:00.500000Z",
+        "end_date": "2020-11-05T10:09:42.090000Z", "duration": 41.59, "comment": null},
+        {"geometry": {"type": "Point", "coordinates": [-0.2831770692307692, 45.65360749999999]},
+        "start_date": "2020-11-05T10:10:06.700000Z", "end_date": "2020-11-05T10:11:19.100000Z",
+        "duration": 72.4, "comment": null}, {"geometry": {"type": "Point", "coordinates":
+        [-0.28313197954545455, 45.65357114545455]}, "start_date": "2020-11-05T10:11:19.100000Z",
+        "end_date": "2020-11-05T10:15:34.500000Z", "duration": 255.4, "comment": null},
+        {"geometry": {"type": "Point", "coordinates": [-0.28427774285714286, 45.650105142857136]},
+        "start_date": "2020-11-05T10:18:45.790000Z", "end_date": "2020-11-05T10:19:26.800000Z",
+        "duration": 41.01, "comment": null}, {"geometry": {"type": "Point", "coordinates":
+        [-0.28340800000000005, 45.652794311111116]}, "start_date": "2020-11-05T10:22:06.130000Z",
+        "end_date": "2020-11-05T10:22:50.190000Z", "duration": 44.06, "comment": null},
+        {"geometry": {"type": "Point", "coordinates": [-0.28312125555555556, 45.65357424444445]},
+        "start_date": "2020-11-05T10:23:32.500000Z", "end_date": "2020-11-05T10:24:26.400000Z",
+        "duration": 53.9, "comment": null}, {"geometry": {"type": "Point", "coordinates":
+        [-0.28407315714285714, 45.6507207]}, "start_date": "2020-11-05T10:27:12.500000Z",
+        "end_date": "2020-11-05T10:27:52.400000Z", "duration": 39.9, "comment": null},
+        {"geometry": {"type": "Point", "coordinates": [-0.28418614, 45.650101819999996]},
+        "start_date": "2020-11-05T10:28:22.800000Z", "end_date": "2020-11-05T10:28:52.690000Z",
+        "duration": 29.89, "comment": null}, {"geometry": {"type": "Point", "coordinates":
+        [-0.2837762857142857, 45.65148821428571]}, "start_date": "2020-11-05T10:30:20.290000Z",
+        "end_date": "2020-11-05T10:31:00.490000Z", "duration": 40.2, "comment": null},
+        {"geometry": {"type": "Point", "coordinates": [-0.28316260000000004, 45.653261025000006]},
+        "start_date": "2020-11-05T10:32:37Z", "end_date": "2020-11-05T10:33:21.230000Z",
+        "duration": 44.23, "comment": null}, {"geometry": {"type": "Point", "coordinates":
+        [-0.28305582000000007, 45.653536880000004]}, "start_date": "2020-11-05T10:33:31.800000Z",
+        "end_date": "2020-11-05T10:34:02.180000Z", "duration": 30.38, "comment": null},
+        {"geometry": {"type": "Point", "coordinates": [-0.2835660909090909, 45.65197062727273]},
+        "start_date": "2020-11-05T10:35:39.190000Z", "end_date": "2020-11-05T10:36:25Z",
+        "duration": 45.81, "comment": null}, {"geometry": {"type": "Point", "coordinates":
+        [-0.28386023333333327, 45.65113447777778]}, "start_date": "2020-11-05T10:37:08.700000Z",
+        "end_date": "2020-11-05T10:37:45.120000Z", "duration": 36.42, "comment": null},
+        {"geometry": {"type": "Point", "coordinates": [-0.2841232166666667, 45.650102016666665]},
+        "start_date": "2020-11-05T10:38:44.890000Z", "end_date": "2020-11-05T10:39:16.900000Z",
+        "duration": 32.01, "comment": null}, {"geometry": {"type": "Point", "coordinates":
+        [-0.2834721444444444, 45.65216793333333]}, "start_date": "2020-11-05T10:41:16.070000Z",
+        "end_date": "2020-11-05T10:42:01.870000Z", "duration": 45.8, "comment": null},
+        {"geometry": {"type": "Point", "coordinates": [-0.2832368142857143, 45.65286362857143]},
+        "start_date": "2020-11-05T10:42:38.270000Z", "end_date": "2020-11-05T10:43:16.860000Z",
+        "duration": 38.59, "comment": null}, {"geometry": {"type": "Point", "coordinates":
+        [-0.28320275555555546, 45.65295222222222]}, "start_date": "2020-11-05T10:43:22.960000Z",
+        "end_date": "2020-11-05T10:44:12.600000Z", "duration": 49.64, "comment": null},
+        {"geometry": {"type": "Point", "coordinates": [-0.28315875999999995, 45.65307338]},
+        "start_date": "2020-11-05T10:44:18.700000Z", "end_date": "2020-11-05T10:44:49.100000Z",
+        "duration": 30.4, "comment": null}, {"geometry": {"type": "Point", "coordinates":
+        [-0.28313055000000004, 45.65316153333333]}, "start_date": "2020-11-05T10:45:02.900000Z",
+        "end_date": "2020-11-05T10:45:39.300000Z", "duration": 36.4, "comment": null},
+        {"geometry": {"type": "Point", "coordinates": [-0.2830203333333334, 45.65351103333333]},
+        "start_date": "2020-11-05T10:45:57Z", "end_date": "2020-11-05T10:46:33Z",
+        "duration": 36.0, "comment": null}, {"geometry": {"type": "Point", "coordinates":
+        [-0.2832777880281689, 45.65366519507041]}, "start_date": "2020-11-05T10:46:48.430000Z",
+        "end_date": "2020-11-05T11:00:21Z", "duration": 812.57, "comment": null}],
+        "field": "5fb329321e70a1595cff3e20", "islet": null, "duration": 12598.38,
+        "distance_km": 11.66462796116686, "sleep_duration": 6492.4299999999985, "sleep_count":
+        74, "area_without_overlap": 0.0, "area_with_overlap": 0.0, "area_smart": 0.0,
+        "gasoline": 0.0, "machines": [{"id": "5f6b41a15fd2a1ddcb5386ea", "name": "Boitier
+        Ekyviti", "brand": "New Holland", "machine_type": "Tracteur vigneron"}], "employees":
+        [], "custom_data": []}, {"type": "road", "id": "5fa4432aec2441d25325608f",
+        "start_date": "2020-11-05T11:00:27.100000Z", "end_date": "2020-11-05T12:50:15.490000Z",
+        "breaks": [{"geometry": {"type": "Point", "coordinates": [-0.2834760323809523,
+        45.65384328380953]}, "start_date": "2020-11-05T11:00:39.190000Z", "end_date":
+        "2020-11-05T11:10:51.970000Z", "duration": 612.78, "comment": null}, {"geometry":
+        {"type": "Point", "coordinates": [-0.2710275916030534, 45.660719631297724]},
+        "start_date": "2020-11-05T11:17:46.900000Z", "end_date": "2020-11-05T12:28:26.170000Z",
+        "duration": 4239.27, "comment": null}, {"geometry": {"type": "Point", "coordinates":
+        [-0.27141882702702697, 45.66034202342338]}, "start_date": "2020-11-05T12:28:56.470000Z",
+        "end_date": "2020-11-05T12:39:26.670000Z", "duration": 630.2, "comment": null},
+        {"geometry": {"type": "Point", "coordinates": [-0.271030096969697, 45.6607329030303]},
+        "start_date": "2020-11-05T12:40:08.600000Z", "end_date": "2020-11-05T12:50:15.490000Z",
+        "duration": 606.89, "comment": null}], "field": null, "islet": null, "duration":
+        6588.39, "distance_km": 2.153749107028894, "sleep_duration": 6089.14, "sleep_count":
+        4, "area_without_overlap": null, "area_with_overlap": null, "area_smart":
+        null, "gasoline": 0.0, "machines": [{"id": "5f6b41a15fd2a1ddcb5386ea", "name":
+        "Boitier Ekyviti", "brand": "New Holland", "machine_type": "Tracteur vigneron"}],
+        "employees": [], "custom_data": []}, {"type": "road", "id": "5fc11c91e41ab605cd9ef939",
+        "start_date": "2020-11-05T15:50:39.770000Z", "end_date": "2020-11-05T15:52:36.590000Z",
+        "breaks": [{"geometry": {"type": "Point", "coordinates": [-0.27106958, 45.660677039999996]},
+        "start_date": "2020-11-05T15:50:53.300000Z", "end_date": "2020-11-05T15:51:23.700000Z",
+        "duration": 30.4, "comment": null}, {"geometry": {"type": "Point", "coordinates":
+        [-0.27143971666666666, 45.6603336]}, "start_date": "2020-11-05T15:52:06.210000Z",
+        "end_date": "2020-11-05T15:52:36.590000Z", "duration": 30.38, "comment": null}],
+        "field": null, "islet": null, "duration": 116.82, "distance_km": 0.0802664108062901,
+        "sleep_duration": 60.78, "sleep_count": 2, "area_without_overlap": null, "area_with_overlap":
+        null, "area_smart": null, "gasoline": 0.0, "machines": [{"id": "5f6b41a15fd2a1ddcb5386ea",
+        "name": "Boitier Ekyviti", "brand": "New Holland", "machine_type": "Tracteur
+        vigneron"}], "employees": [], "custom_data": []}]
+
+'
+  recorded_at: Wed, 12 May 2021 14:16:31 GMT
+recorded_with: VCR 6.0.0

@@ -1,7 +1,7 @@
 module EkylibreSamsys
   class Engine < ::Rails::Engine
     initializer 'ekylibre_samsys.assets.precompile' do |app|
-      app.config.assets.precompile += %w(integrations/samsys.png)
+      app.config.assets.precompile += %w(rides.js integrations/samsys.png)
     end
 
     initializer :ekylibre_samsys_i18n do |app|
@@ -16,15 +16,21 @@ module EkylibreSamsys
       app.config.x.restfully_manageable.view_paths << EkylibreSamsys::Engine.root.join('app', 'views')
     end
 
+    initializer :ekylibre_samsys_import_javascript do
+      tmp_file = Rails.root.join('tmp', 'plugins', 'javascript-addons', 'plugins.js.coffee')
+      tmp_file.open('a') do |f|
+        import = '#= require rides'
+        f.puts(import) unless tmp_file.open('r').read.include?(import)
+      end
+    end
+
     initializer :ekylibre_samsys_integration do
       Samsys::SamsysIntegration.on_check_success do
         SamsysFetchUpdateCreateJob.perform_later
       end
 
       Samsys::SamsysIntegration.run every: :hour do
-        if Integration.find_by(nature: "samsys").present?
-          SamsysFetchUpdateCreateJob.perform_now
-        end
+        SamsysFetchUpdateCreateJob.perform_now if Integration.find_by(nature: "samsys").present?
       end
     end
   end

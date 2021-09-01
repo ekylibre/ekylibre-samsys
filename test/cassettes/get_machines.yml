@@ -1,0 +1,1827 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://app.samsys.io/api/v1/auth
+    body:
+      encoding: UTF-8
+      string: '{"email":"Hello","password":"World"}'
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Host:
+      - app.samsys.io
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Wed, 12 May 2021 14:16:34 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Vary:
+      - Accept-Encoding
+      Access-Control-Allow-Origin:
+      - "*"
+    body:
+      encoding: ASCII-8BIT
+      string: '{"status": "ok", "message": "Connect\u00e9!", "jwt": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE2MjA4Mjg5OTQsIm5iZiI6MTYyMDgyODk5NCwianRpIjoiZmFiZGI4ODEtMzBhZC00ZWU4LWFlODAtMDY2NTY4Yzc2YTA4IiwiZXhwIjoxNjUyMzY0OTk0LCJpZGVudGl0eSI6eyJ1c2VyX2lkIjoiNWU3Yzc5NWZmNDI3NTRiMTg2MTA3OTQ4IiwiYXBwIjoiY2xhdWRlIn0sImZyZXNoIjpmYWxzZSwidHlwZSI6ImFjY2VzcyJ9.E8GfDGoXETxaelIVVCpzpOFYrK0yUOOlXMGG8REyNuo"}
+
+'
+  recorded_at: Wed, 12 May 2021 14:16:34 GMT
+- request:
+    method: post
+    uri: https://app.samsys.io/api/v1/auth
+    body:
+      encoding: UTF-8
+      string: '{"email":"Hello","password":"World"}'
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Host:
+      - app.samsys.io
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Wed, 12 May 2021 14:16:34 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Vary:
+      - Accept-Encoding
+      Access-Control-Allow-Origin:
+      - "*"
+    body:
+      encoding: ASCII-8BIT
+      string: '{"status": "ok", "message": "Connect\u00e9!", "jwt": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE2MjA4Mjg5OTQsIm5iZiI6MTYyMDgyODk5NCwianRpIjoiNWM0NWY4ZGYtMzllMy00YWJlLWFjN2ItOTBlYmMyNjk4YTBmIiwiZXhwIjoxNjUyMzY0OTk0LCJpZGVudGl0eSI6eyJ1c2VyX2lkIjoiNWU3Yzc5NWZmNDI3NTRiMTg2MTA3OTQ4IiwiYXBwIjoiY2xhdWRlIn0sImZyZXNoIjpmYWxzZSwidHlwZSI6ImFjY2VzcyJ9.IE1aPguCuLcByhtMAOhrm-nlUyce0EjIPbP8aLc_vbQ"}
+
+'
+  recorded_at: Wed, 12 May 2021 14:16:34 GMT
+- request:
+    method: get
+    uri: https://app.samsys.io/api/v1/machines
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Host:
+      - app.samsys.io
+      Content-Type:
+      - application/json
+      Authorization:
+      - JWT eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE2MjA4Mjg5OTQsIm5iZiI6MTYyMDgyODk5NCwianRpIjoiZmFiZGI4ODEtMzBhZC00ZWU4LWFlODAtMDY2NTY4Yzc2YTA4IiwiZXhwIjoxNjUyMzY0OTk0LCJpZGVudGl0eSI6eyJ1c2VyX2lkIjoiNWU3Yzc5NWZmNDI3NTRiMTg2MTA3OTQ4IiwiYXBwIjoiY2xhdWRlIn0sImZyZXNoIjpmYWxzZSwidHlwZSI6ImFjY2VzcyJ9.E8GfDGoXETxaelIVVCpzpOFYrK0yUOOlXMGG8REyNuo
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Wed, 12 May 2021 14:16:35 GMT
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '8872'
+      Connection:
+      - keep-alive
+      Vary:
+      - Accept-Encoding
+      Access-Control-Allow-Origin:
+      - "*"
+    body:
+      encoding: ASCII-8BIT
+      string: '[{"id": "5f4e58963ea3af11caff4f2c", "name": "Tracteur de Chollet",
+        "start_date": "2020-09-01T14:20:06.015000Z", "cluster": {"id": "5f4e58953ea3af11caff4f2b",
+        "name": "Ferme de Chollet", "type_cluster": "farm", "vat_number": null, "description":
+        null}, "machine_type": "Tracteur agricole", "model": "SAMSYS", "brand": "Samsys",
+        "road_count_policy": "separate", "tool_width": null, "max_speed": 10.0, "aux_configurations":
+        {"in1_name": null, "in1_type_entree": null, "in1_scale": null, "in2_name":
+        null, "in2_type_entree": null, "in2_scale": null, "imu_name": null, "imu_axe":
+        null, "imu_threshold": null, "can_protocol": null}, "my_rights": {"can_delete_machine":
+        true, "can_edit_machine": true, "can_manage_machine": true, "can_book_machine":
+        true, "can_accept_book_machine": true, "can_view_real_time_machine": true,
+        "can_modify_activity_machine": true}, "associations": [{"id": "5f4e58963ea3af11caff4f2d",
+        "start_date": "2020-05-20T00:00:00Z", "end_date": null, "counter": "phone_Hello",
+        "machine": ["5f4e58963ea3af11caff4f2c"]}], "billing": [], "tag_ble": {"id":
+        null, "id_tag": null, "start_date": null, "end_date": null}, "provider": null},
+        {"id": "5f6b41a15fd2a1ddcb5386ea", "name": "Boitier Ekyviti", "start_date":
+        "2020-09-23T12:37:53.017000Z", "cluster": {"id": "5f4e58953ea3af11caff4f2b",
+        "name": "Ferme de Chollet", "type_cluster": "farm", "vat_number": null, "description":
+        null}, "machine_type": "Tracteur vigneron", "model": null, "brand": "New Holland",
+        "road_count_policy": "separate", "tool_width": null, "max_speed": 1.0, "aux_configurations":
+        {"in1_name": null, "in1_type_entree": null, "in1_scale": null, "in2_name":
+        null, "in2_type_entree": null, "in2_scale": null, "imu_name": null, "imu_axe":
+        null, "imu_threshold": null, "can_protocol": null}, "my_rights": {"can_delete_machine":
+        true, "can_edit_machine": true, "can_manage_machine": true, "can_book_machine":
+        true, "can_accept_book_machine": true, "can_view_real_time_machine": true,
+        "can_modify_activity_machine": true}, "associations": [{"id": "5f6b41b0355bdac337432d0f",
+        "start_date": "2020-09-23T12:00:00Z", "end_date": "2149-12-31T23:00:00Z",
+        "counter": "7E6472AD", "machine": ["5f6b41a15fd2a1ddcb5386ea"]}], "billing":
+        [], "tag_ble": {"id": null, "id_tag": null, "start_date": null, "end_date":
+        null}, "provider": null}, {"id": "603f4a22c208cb291b106db4", "name": "Round
+        Baler", "start_date": "2021-03-03T08:34:42.182000Z", "cluster": {"id": "5f4e58953ea3af11caff4f2b",
+        "name": "Ferme de Chollet", "type_cluster": "farm", "vat_number": null, "description":
+        null}, "machine_type": "Enrubanneuse", "model": null, "brand": "Round Baler",
+        "road_count_policy": "separate", "tool_width": null, "max_speed": null, "aux_configurations":
+        {"in1_name": null, "in1_type_entree": null, "in1_scale": null, "in2_name":
+        null, "in2_type_entree": null, "in2_scale": null, "imu_name": null, "imu_axe":
+        null, "imu_threshold": null, "can_protocol": null}, "my_rights": {"can_delete_machine":
+        true, "can_edit_machine": true, "can_manage_machine": true, "can_book_machine":
+        true, "can_accept_book_machine": true, "can_view_real_time_machine": true,
+        "can_modify_activity_machine": true}, "associations": [], "billing": [], "tag_ble":
+        {"id": null, "id_tag": null, "start_date": null, "end_date": null}, "provider":
+        {"name": "Ekylibre", "uuid": "a148e97b-8c7e-44c2-b618-29dffadb38a8"}}, {"id":
+        "604269070905adafb0461b0e", "name": "Renault 651", "start_date": "2021-03-05T17:23:19.927000Z",
+        "cluster": {"id": "5f4e58953ea3af11caff4f2b", "name": "Ferme de Chollet",
+        "type_cluster": "farm", "vat_number": null, "description": null}, "machine_type":
+        "Tracteur agricole", "model": null, "brand": "Renault 651", "road_count_policy":
+        "separate", "tool_width": null, "max_speed": null, "aux_configurations": {"in1_name":
+        null, "in1_type_entree": null, "in1_scale": null, "in2_name": null, "in2_type_entree":
+        null, "in2_scale": null, "imu_name": null, "imu_axe": null, "imu_threshold":
+        null, "can_protocol": null}, "my_rights": {"can_delete_machine": true, "can_edit_machine":
+        true, "can_manage_machine": true, "can_book_machine": true, "can_accept_book_machine":
+        true, "can_view_real_time_machine": true, "can_modify_activity_machine": true},
+        "associations": [], "billing": [], "tag_ble": {"id": null, "id_tag": null,
+        "start_date": null, "end_date": null}, "provider": {"name": "Ekylibre", "uuid":
+        "afef9e96-15c9-46ad-9f89-5e372fef2dfd"}}, {"id": "6042690953716665c8fcbb9e",
+        "name": "Renault Carraro R727B", "start_date": "2021-03-05T17:23:21.191000Z",
+        "cluster": {"id": "5f4e58953ea3af11caff4f2b", "name": "Ferme de Chollet",
+        "type_cluster": "farm", "vat_number": null, "description": null}, "machine_type":
+        "Tracteur agricole", "model": null, "brand": "Renault Carraro R727B", "road_count_policy":
+        "separate", "tool_width": null, "max_speed": null, "aux_configurations": {"in1_name":
+        null, "in1_type_entree": null, "in1_scale": null, "in2_name": null, "in2_type_entree":
+        null, "in2_scale": null, "imu_name": null, "imu_axe": null, "imu_threshold":
+        null, "can_protocol": null}, "my_rights": {"can_delete_machine": true, "can_edit_machine":
+        true, "can_manage_machine": true, "can_book_machine": true, "can_accept_book_machine":
+        true, "can_view_real_time_machine": true, "can_modify_activity_machine": true},
+        "associations": [], "billing": [], "tag_ble": {"id": null, "id_tag": null,
+        "start_date": null, "end_date": null}, "provider": {"name": "Ekylibre", "uuid":
+        "29b6ec37-257f-4e7e-ab24-62dd7df191ef"}}, {"id": "604269095308519857e775c4",
+        "name": "Massey-Fergusson 4245", "start_date": "2021-03-05T17:23:21.811000Z",
+        "cluster": {"id": "5f4e58953ea3af11caff4f2b", "name": "Ferme de Chollet",
+        "type_cluster": "farm", "vat_number": null, "description": null}, "machine_type":
+        "Tracteur agricole", "model": null, "brand": "Massey-Fergusson 4245", "road_count_policy":
+        "separate", "tool_width": null, "max_speed": null, "aux_configurations": {"in1_name":
+        null, "in1_type_entree": null, "in1_scale": null, "in2_name": null, "in2_type_entree":
+        null, "in2_scale": null, "imu_name": null, "imu_axe": null, "imu_threshold":
+        null, "can_protocol": null}, "my_rights": {"can_delete_machine": true, "can_edit_machine":
+        true, "can_manage_machine": true, "can_book_machine": true, "can_accept_book_machine":
+        true, "can_view_real_time_machine": true, "can_modify_activity_machine": true},
+        "associations": [], "billing": [], "tag_ble": {"id": null, "id_tag": null,
+        "start_date": null, "end_date": null}, "provider": {"name": "Ekylibre", "uuid":
+        "3cb39da4-6b2a-4f4f-8c28-8558f7418c4e"}}, {"id": "6042690ac208cb291b107a26",
+        "name": "Same 323DTF", "start_date": "2021-03-05T17:23:22.410000Z", "cluster":
+        {"id": "5f4e58953ea3af11caff4f2b", "name": "Ferme de Chollet", "type_cluster":
+        "farm", "vat_number": null, "description": null}, "machine_type": "Tracteur
+        agricole", "model": null, "brand": "Same 323DTF", "road_count_policy": "separate",
+        "tool_width": null, "max_speed": null, "aux_configurations": {"in1_name":
+        null, "in1_type_entree": null, "in1_scale": null, "in2_name": null, "in2_type_entree":
+        null, "in2_scale": null, "imu_name": null, "imu_axe": null, "imu_threshold":
+        null, "can_protocol": null}, "my_rights": {"can_delete_machine": true, "can_edit_machine":
+        true, "can_manage_machine": true, "can_book_machine": true, "can_accept_book_machine":
+        true, "can_view_real_time_machine": true, "can_modify_activity_machine": true},
+        "associations": [], "billing": [], "tag_ble": {"id": null, "id_tag": null,
+        "start_date": null, "end_date": null}, "provider": {"name": "Ekylibre", "uuid":
+        "3ac93515-c46b-4640-aa3c-836c32c01ab6"}}, {"id": "6042690a53716665c8fcbb9f",
+        "name": "Braud SB58", "start_date": "2021-03-05T17:23:22.990000Z", "cluster":
+        {"id": "5f4e58953ea3af11caff4f2b", "name": "Ferme de Chollet", "type_cluster":
+        "farm", "vat_number": null, "description": null}, "machine_type": "Arracheuses
+        de pommes de terre", "model": null, "brand": "Braud SB58", "road_count_policy":
+        "separate", "tool_width": null, "max_speed": null, "aux_configurations": {"in1_name":
+        null, "in1_type_entree": null, "in1_scale": null, "in2_name": null, "in2_type_entree":
+        null, "in2_scale": null, "imu_name": null, "imu_axe": null, "imu_threshold":
+        null, "can_protocol": null}, "my_rights": {"can_delete_machine": true, "can_edit_machine":
+        true, "can_manage_machine": true, "can_book_machine": true, "can_accept_book_machine":
+        true, "can_view_real_time_machine": true, "can_modify_activity_machine": true},
+        "associations": [], "billing": [], "tag_ble": {"id": null, "id_tag": null,
+        "start_date": null, "end_date": null}, "provider": {"name": "Ekylibre", "uuid":
+        "070f6279-1ed9-405f-8cfa-8b646b9dddf1"}}, {"id": "6042690b0905adafb0461b0f",
+        "name": "Braud SB64", "start_date": "2021-03-05T17:23:23.559000Z", "cluster":
+        {"id": "5f4e58953ea3af11caff4f2b", "name": "Ferme de Chollet", "type_cluster":
+        "farm", "vat_number": null, "description": null}, "machine_type": "Arracheuses
+        de pommes de terre", "model": null, "brand": "Braud SB64", "road_count_policy":
+        "separate", "tool_width": null, "max_speed": null, "aux_configurations": {"in1_name":
+        null, "in1_type_entree": null, "in1_scale": null, "in2_name": null, "in2_type_entree":
+        null, "in2_scale": null, "imu_name": null, "imu_axe": null, "imu_threshold":
+        null, "can_protocol": null}, "my_rights": {"can_delete_machine": true, "can_edit_machine":
+        true, "can_manage_machine": true, "can_book_machine": true, "can_accept_book_machine":
+        true, "can_view_real_time_machine": true, "can_modify_activity_machine": true},
+        "associations": [], "billing": [], "tag_ble": {"id": null, "id_tag": null,
+        "start_date": null, "end_date": null}, "provider": {"name": "Ekylibre", "uuid":
+        "44917e57-8ef9-4f16-be64-9a5d4832c0a1"}}, {"id": "6042690cc208cb291b107a27",
+        "name": "New Holland 9040 M", "start_date": "2021-03-05T17:23:24.171000Z",
+        "cluster": {"id": "5f4e58953ea3af11caff4f2b", "name": "Ferme de Chollet",
+        "type_cluster": "farm", "vat_number": null, "description": null}, "machine_type":
+        "Arracheuses de pommes de terre", "model": null, "brand": "New Holland 9040
+        M", "road_count_policy": "separate", "tool_width": null, "max_speed": null,
+        "aux_configurations": {"in1_name": null, "in1_type_entree": null, "in1_scale":
+        null, "in2_name": null, "in2_type_entree": null, "in2_scale": null, "imu_name":
+        null, "imu_axe": null, "imu_threshold": null, "can_protocol": null}, "my_rights":
+        {"can_delete_machine": true, "can_edit_machine": true, "can_manage_machine":
+        true, "can_book_machine": true, "can_accept_book_machine": true, "can_view_real_time_machine":
+        true, "can_modify_activity_machine": true}, "associations": [], "billing":
+        [], "tag_ble": {"id": null, "id_tag": null, "start_date": null, "end_date":
+        null}, "provider": {"name": "Ekylibre", "uuid": "0bfa4243-ede5-4ed7-b104-35f7b308b749"}},
+        {"id": "6042690cc208cb291b107a28", "name": "Pelle Hitachi 8,5T EX7SUR", "start_date":
+        "2021-03-05T17:23:24.796000Z", "cluster": {"id": "5f4e58953ea3af11caff4f2b",
+        "name": "Ferme de Chollet", "type_cluster": "farm", "vat_number": null, "description":
+        null}, "machine_type": "Autochargeuse", "model": null, "brand": "Pelle Hitachi
+        8,5T EX7SUR", "road_count_policy": "separate", "tool_width": null, "max_speed":
+        null, "aux_configurations": {"in1_name": null, "in1_type_entree": null, "in1_scale":
+        null, "in2_name": null, "in2_type_entree": null, "in2_scale": null, "imu_name":
+        null, "imu_axe": null, "imu_threshold": null, "can_protocol": null}, "my_rights":
+        {"can_delete_machine": true, "can_edit_machine": true, "can_manage_machine":
+        true, "can_book_machine": true, "can_accept_book_machine": true, "can_view_real_time_machine":
+        true, "can_modify_activity_machine": true}, "associations": [], "billing":
+        [], "tag_ble": {"id": null, "id_tag": null, "start_date": null, "end_date":
+        null}, "provider": {"name": "Ekylibre", "uuid": "0ae3569b-df0e-4cd3-b8b9-dc6d9f446a9e"}},
+        {"id": "6042690d5308519857e775c5", "name": "Tractopelle JCB 3CX", "start_date":
+        "2021-03-05T17:23:25.459000Z", "cluster": {"id": "5f4e58953ea3af11caff4f2b",
+        "name": "Ferme de Chollet", "type_cluster": "farm", "vat_number": null, "description":
+        null}, "machine_type": "Autochargeuse", "model": null, "brand": "Tractopelle
+        JCB 3CX", "road_count_policy": "separate", "tool_width": null, "max_speed":
+        null, "aux_configurations": {"in1_name": null, "in1_type_entree": null, "in1_scale":
+        null, "in2_name": null, "in2_type_entree": null, "in2_scale": null, "imu_name":
+        null, "imu_axe": null, "imu_threshold": null, "can_protocol": null}, "my_rights":
+        {"can_delete_machine": true, "can_edit_machine": true, "can_manage_machine":
+        true, "can_book_machine": true, "can_accept_book_machine": true, "can_view_real_time_machine":
+        true, "can_modify_activity_machine": true}, "associations": [], "billing":
+        [], "tag_ble": {"id": null, "id_tag": null, "start_date": null, "end_date":
+        null}, "provider": {"name": "Ekylibre", "uuid": "49b19621-3211-4159-b501-0a7ec62e16a5"}},
+        {"id": "6042690e0905adafb0461b10", "name": "Bulldozer Fiat Allis 14C", "start_date":
+        "2021-03-05T17:23:26.214000Z", "cluster": {"id": "5f4e58953ea3af11caff4f2b",
+        "name": "Ferme de Chollet", "type_cluster": "farm", "vat_number": null, "description":
+        null}, "machine_type": "Autochargeuse", "model": null, "brand": "Bulldozer
+        Fiat Allis 14C", "road_count_policy": "separate", "tool_width": null, "max_speed":
+        null, "aux_configurations": {"in1_name": null, "in1_type_entree": null, "in1_scale":
+        null, "in2_name": null, "in2_type_entree": null, "in2_scale": null, "imu_name":
+        null, "imu_axe": null, "imu_threshold": null, "can_protocol": null}, "my_rights":
+        {"can_delete_machine": true, "can_edit_machine": true, "can_manage_machine":
+        true, "can_book_machine": true, "can_accept_book_machine": true, "can_view_real_time_machine":
+        true, "can_modify_activity_machine": true}, "associations": [], "billing":
+        [], "tag_ble": {"id": null, "id_tag": null, "start_date": null, "end_date":
+        null}, "provider": {"name": "Ekylibre", "uuid": "899f6cf0-56ec-4442-886d-5d63b1f00e39"}},
+        {"id": "6042690e5308519857e775c6", "name": "Chargeur Allis Chalmer", "start_date":
+        "2021-03-05T17:23:26.817000Z", "cluster": {"id": "5f4e58953ea3af11caff4f2b",
+        "name": "Ferme de Chollet", "type_cluster": "farm", "vat_number": null, "description":
+        null}, "machine_type": "Autochargeuse", "model": null, "brand": "Chargeur
+        Allis Chalmer", "road_count_policy": "separate", "tool_width": null, "max_speed":
+        null, "aux_configurations": {"in1_name": null, "in1_type_entree": null, "in1_scale":
+        null, "in2_name": null, "in2_type_entree": null, "in2_scale": null, "imu_name":
+        null, "imu_axe": null, "imu_threshold": null, "can_protocol": null}, "my_rights":
+        {"can_delete_machine": true, "can_edit_machine": true, "can_manage_machine":
+        true, "can_book_machine": true, "can_accept_book_machine": true, "can_view_real_time_machine":
+        true, "can_modify_activity_machine": true}, "associations": [], "billing":
+        [], "tag_ble": {"id": null, "id_tag": null, "start_date": null, "end_date":
+        null}, "provider": {"name": "Ekylibre", "uuid": "6d4f706e-cfe8-474e-b7b0-103bf6cbb879"}},
+        {"id": "6042690f0905adafb0461b11", "name": "D\u00e9sherbeuse chimique \u2013
+        1", "start_date": "2021-03-05T17:23:27.400000Z", "cluster": {"id": "5f4e58953ea3af11caff4f2b",
+        "name": "Ferme de Chollet", "type_cluster": "farm", "vat_number": null, "description":
+        null}, "machine_type": "Pulv\u00e9risateur port\u00e9", "model": null, "brand":
+        "D\u00e9sherbeuse chimique \u2013 1", "road_count_policy": "separate", "tool_width":
+        null, "max_speed": null, "aux_configurations": {"in1_name": null, "in1_type_entree":
+        null, "in1_scale": null, "in2_name": null, "in2_type_entree": null, "in2_scale":
+        null, "imu_name": null, "imu_axe": null, "imu_threshold": null, "can_protocol":
+        null}, "my_rights": {"can_delete_machine": true, "can_edit_machine": true,
+        "can_manage_machine": true, "can_book_machine": true, "can_accept_book_machine":
+        true, "can_view_real_time_machine": true, "can_modify_activity_machine": true},
+        "associations": [], "billing": [], "tag_ble": {"id": null, "id_tag": null,
+        "start_date": null, "end_date": null}, "provider": {"name": "Ekylibre", "uuid":
+        "6a9888aa-aa8e-44bc-b2ea-75d5ea6987f5"}}, {"id": "60426910c208cb291b107a29",
+        "name": "Remorque vendange 5T", "start_date": "2021-03-05T17:23:28.026000Z",
+        "cluster": {"id": "5f4e58953ea3af11caff4f2b", "name": "Ferme de Chollet",
+        "type_cluster": "farm", "vat_number": null, "description": null}, "machine_type":
+        "Bennes \u00e0 vendanges", "model": null, "brand": "Remorque vendange 5T",
+        "road_count_policy": "separate", "tool_width": null, "max_speed": null, "aux_configurations":
+        {"in1_name": null, "in1_type_entree": null, "in1_scale": null, "in2_name":
+        null, "in2_type_entree": null, "in2_scale": null, "imu_name": null, "imu_axe":
+        null, "imu_threshold": null, "can_protocol": null}, "my_rights": {"can_delete_machine":
+        true, "can_edit_machine": true, "can_manage_machine": true, "can_book_machine":
+        true, "can_accept_book_machine": true, "can_view_real_time_machine": true,
+        "can_modify_activity_machine": true}, "associations": [], "billing": [], "tag_ble":
+        {"id": null, "id_tag": null, "start_date": null, "end_date": null}, "provider":
+        {"name": "Ekylibre", "uuid": "573aaaaa-752f-40fe-b838-8c706614db95"}}, {"id":
+        "604269100905adafb0461b12", "name": "Charrue", "start_date": "2021-03-05T17:23:28.808000Z",
+        "cluster": {"id": "5f4e58953ea3af11caff4f2b", "name": "Ferme de Chollet",
+        "type_cluster": "farm", "vat_number": null, "description": null}, "machine_type":
+        "Charrues", "model": null, "brand": "Charrue", "road_count_policy": "separate",
+        "tool_width": null, "max_speed": null, "aux_configurations": {"in1_name":
+        null, "in1_type_entree": null, "in1_scale": null, "in2_name": null, "in2_type_entree":
+        null, "in2_scale": null, "imu_name": null, "imu_axe": null, "imu_threshold":
+        null, "can_protocol": null}, "my_rights": {"can_delete_machine": true, "can_edit_machine":
+        true, "can_manage_machine": true, "can_book_machine": true, "can_accept_book_machine":
+        true, "can_view_real_time_machine": true, "can_modify_activity_machine": true},
+        "associations": [], "billing": [], "tag_ble": {"id": null, "id_tag": null,
+        "start_date": null, "end_date": null}, "provider": {"name": "Ekylibre", "uuid":
+        "e616f945-a347-4cc4-8b63-e98cde613462"}}, {"id": "60426911c208cb291b107a2a",
+        "name": "Sulfateuse \u2013 1", "start_date": "2021-03-05T17:23:29.463000Z",
+        "cluster": {"id": "5f4e58953ea3af11caff4f2b", "name": "Ferme de Chollet",
+        "type_cluster": "farm", "vat_number": null, "description": null}, "machine_type":
+        "Pulv\u00e9risateur port\u00e9", "model": null, "brand": "Sulfateuse \u2013
+        1", "road_count_policy": "separate", "tool_width": null, "max_speed": null,
+        "aux_configurations": {"in1_name": null, "in1_type_entree": null, "in1_scale":
+        null, "in2_name": null, "in2_type_entree": null, "in2_scale": null, "imu_name":
+        null, "imu_axe": null, "imu_threshold": null, "can_protocol": null}, "my_rights":
+        {"can_delete_machine": true, "can_edit_machine": true, "can_manage_machine":
+        true, "can_book_machine": true, "can_accept_book_machine": true, "can_view_real_time_machine":
+        true, "can_modify_activity_machine": true}, "associations": [], "billing":
+        [], "tag_ble": {"id": null, "id_tag": null, "start_date": null, "end_date":
+        null}, "provider": {"name": "Ekylibre", "uuid": "163b6c06-8196-4d06-bf65-782cd5b62e1a"}},
+        {"id": "604269120905adafb0461b13", "name": "Sulfateuse \u2013 2", "start_date":
+        "2021-03-05T17:23:30.078000Z", "cluster": {"id": "5f4e58953ea3af11caff4f2b",
+        "name": "Ferme de Chollet", "type_cluster": "farm", "vat_number": null, "description":
+        null}, "machine_type": "Pulv\u00e9risateur port\u00e9", "model": null, "brand":
+        "Sulfateuse \u2013 2", "road_count_policy": "separate", "tool_width": null,
+        "max_speed": null, "aux_configurations": {"in1_name": null, "in1_type_entree":
+        null, "in1_scale": null, "in2_name": null, "in2_type_entree": null, "in2_scale":
+        null, "imu_name": null, "imu_axe": null, "imu_threshold": null, "can_protocol":
+        null}, "my_rights": {"can_delete_machine": true, "can_edit_machine": true,
+        "can_manage_machine": true, "can_book_machine": true, "can_accept_book_machine":
+        true, "can_view_real_time_machine": true, "can_modify_activity_machine": true},
+        "associations": [], "billing": [], "tag_ble": {"id": null, "id_tag": null,
+        "start_date": null, "end_date": null}, "provider": {"name": "Ekylibre", "uuid":
+        "0db0c9e7-7981-4c98-ac0f-cca9cbeb9806"}}, {"id": "604269120905adafb0461b14",
+        "name": "Sulfateuse \u2013 3", "start_date": "2021-03-05T17:23:30.738000Z",
+        "cluster": {"id": "5f4e58953ea3af11caff4f2b", "name": "Ferme de Chollet",
+        "type_cluster": "farm", "vat_number": null, "description": null}, "machine_type":
+        "Pulv\u00e9risateur port\u00e9", "model": null, "brand": "Sulfateuse \u2013
+        3", "road_count_policy": "separate", "tool_width": null, "max_speed": null,
+        "aux_configurations": {"in1_name": null, "in1_type_entree": null, "in1_scale":
+        null, "in2_name": null, "in2_type_entree": null, "in2_scale": null, "imu_name":
+        null, "imu_axe": null, "imu_threshold": null, "can_protocol": null}, "my_rights":
+        {"can_delete_machine": true, "can_edit_machine": true, "can_manage_machine":
+        true, "can_book_machine": true, "can_accept_book_machine": true, "can_view_real_time_machine":
+        true, "can_modify_activity_machine": true}, "associations": [], "billing":
+        [], "tag_ble": {"id": null, "id_tag": null, "start_date": null, "end_date":
+        null}, "provider": {"name": "Ekylibre", "uuid": "473eaf2d-bd4b-46bb-8547-05949025676f"}},
+        {"id": "604269130905adafb0461b15", "name": "Sulfateuse \u2013 4", "start_date":
+        "2021-03-05T17:23:31.418000Z", "cluster": {"id": "5f4e58953ea3af11caff4f2b",
+        "name": "Ferme de Chollet", "type_cluster": "farm", "vat_number": null, "description":
+        null}, "machine_type": "Pulv\u00e9risateur port\u00e9", "model": null, "brand":
+        "Sulfateuse \u2013 4", "road_count_policy": "separate", "tool_width": null,
+        "max_speed": null, "aux_configurations": {"in1_name": null, "in1_type_entree":
+        null, "in1_scale": null, "in2_name": null, "in2_type_entree": null, "in2_scale":
+        null, "imu_name": null, "imu_axe": null, "imu_threshold": null, "can_protocol":
+        null}, "my_rights": {"can_delete_machine": true, "can_edit_machine": true,
+        "can_manage_machine": true, "can_book_machine": true, "can_accept_book_machine":
+        true, "can_view_real_time_machine": true, "can_modify_activity_machine": true},
+        "associations": [], "billing": [], "tag_ble": {"id": null, "id_tag": null,
+        "start_date": null, "end_date": null}, "provider": {"name": "Ekylibre", "uuid":
+        "5dcad326-17dd-421e-ad33-d26a6f322b19"}}, {"id": "604269140905adafb0461b16",
+        "name": "Remorque vendange 8T", "start_date": "2021-03-05T17:23:32.079000Z",
+        "cluster": {"id": "5f4e58953ea3af11caff4f2b", "name": "Ferme de Chollet",
+        "type_cluster": "farm", "vat_number": null, "description": null}, "machine_type":
+        "Bennes \u00e0 vendanges", "model": null, "brand": "Remorque vendange 8T",
+        "road_count_policy": "separate", "tool_width": null, "max_speed": null, "aux_configurations":
+        {"in1_name": null, "in1_type_entree": null, "in1_scale": null, "in2_name":
+        null, "in2_type_entree": null, "in2_scale": null, "imu_name": null, "imu_axe":
+        null, "imu_threshold": null, "can_protocol": null}, "my_rights": {"can_delete_machine":
+        true, "can_edit_machine": true, "can_manage_machine": true, "can_book_machine":
+        true, "can_accept_book_machine": true, "can_view_real_time_machine": true,
+        "can_modify_activity_machine": true}, "associations": [], "billing": [], "tag_ble":
+        {"id": null, "id_tag": null, "start_date": null, "end_date": null}, "provider":
+        {"name": "Ekylibre", "uuid": "b5f0ba52-45f9-4826-9a5f-8dfb3018af30"}}, {"id":
+        "604269145308519857e775c7", "name": "Remorque vendange 6,5T", "start_date":
+        "2021-03-05T17:23:32.748000Z", "cluster": {"id": "5f4e58953ea3af11caff4f2b",
+        "name": "Ferme de Chollet", "type_cluster": "farm", "vat_number": null, "description":
+        null}, "machine_type": "Bennes \u00e0 vendanges", "model": null, "brand":
+        "Remorque vendange 6,5T", "road_count_policy": "separate", "tool_width": null,
+        "max_speed": null, "aux_configurations": {"in1_name": null, "in1_type_entree":
+        null, "in1_scale": null, "in2_name": null, "in2_type_entree": null, "in2_scale":
+        null, "imu_name": null, "imu_axe": null, "imu_threshold": null, "can_protocol":
+        null}, "my_rights": {"can_delete_machine": true, "can_edit_machine": true,
+        "can_manage_machine": true, "can_book_machine": true, "can_accept_book_machine":
+        true, "can_view_real_time_machine": true, "can_modify_activity_machine": true},
+        "associations": [], "billing": [], "tag_ble": {"id": null, "id_tag": null,
+        "start_date": null, "end_date": null}, "provider": {"name": "Ekylibre", "uuid":
+        "f732aed7-b9f1-45cd-a462-ebcbc1a34550"}}, {"id": "6042691553716665c8fcbba0",
+        "name": "Tonne \u00e0 eau \u2013 1", "start_date": "2021-03-05T17:23:33.414000Z",
+        "cluster": {"id": "5f4e58953ea3af11caff4f2b", "name": "Ferme de Chollet",
+        "type_cluster": "farm", "vat_number": null, "description": null}, "machine_type":
+        "Bennes", "model": null, "brand": "Tonne \u00e0 eau \u2013 1", "road_count_policy":
+        "separate", "tool_width": null, "max_speed": null, "aux_configurations": {"in1_name":
+        null, "in1_type_entree": null, "in1_scale": null, "in2_name": null, "in2_type_entree":
+        null, "in2_scale": null, "imu_name": null, "imu_axe": null, "imu_threshold":
+        null, "can_protocol": null}, "my_rights": {"can_delete_machine": true, "can_edit_machine":
+        true, "can_manage_machine": true, "can_book_machine": true, "can_accept_book_machine":
+        true, "can_view_real_time_machine": true, "can_modify_activity_machine": true},
+        "associations": [], "billing": [], "tag_ble": {"id": null, "id_tag": null,
+        "start_date": null, "end_date": null}, "provider": {"name": "Ekylibre", "uuid":
+        "8fd19e13-e8ca-47aa-b3ce-a6a6141da389"}}, {"id": "604269165308519857e775c8",
+        "name": "Tonne \u00e0 eau \u2013 2", "start_date": "2021-03-05T17:23:34.028000Z",
+        "cluster": {"id": "5f4e58953ea3af11caff4f2b", "name": "Ferme de Chollet",
+        "type_cluster": "farm", "vat_number": null, "description": null}, "machine_type":
+        "Bennes", "model": null, "brand": "Tonne \u00e0 eau \u2013 2", "road_count_policy":
+        "separate", "tool_width": null, "max_speed": null, "aux_configurations": {"in1_name":
+        null, "in1_type_entree": null, "in1_scale": null, "in2_name": null, "in2_type_entree":
+        null, "in2_scale": null, "imu_name": null, "imu_axe": null, "imu_threshold":
+        null, "can_protocol": null}, "my_rights": {"can_delete_machine": true, "can_edit_machine":
+        true, "can_manage_machine": true, "can_book_machine": true, "can_accept_book_machine":
+        true, "can_view_real_time_machine": true, "can_modify_activity_machine": true},
+        "associations": [], "billing": [], "tag_ble": {"id": null, "id_tag": null,
+        "start_date": null, "end_date": null}, "provider": {"name": "Ekylibre", "uuid":
+        "7eae8986-7968-4433-9ecb-7a9b4a28f1cb"}}, {"id": "60426916c208cb291b107a2b",
+        "name": "Semoir", "start_date": "2021-03-05T17:23:34.703000Z", "cluster":
+        {"id": "5f4e58953ea3af11caff4f2b", "name": "Ferme de Chollet", "type_cluster":
+        "farm", "vat_number": null, "description": null}, "machine_type": "Semoir
+        - autre", "model": null, "brand": "Semoir", "road_count_policy": "separate",
+        "tool_width": null, "max_speed": null, "aux_configurations": {"in1_name":
+        null, "in1_type_entree": null, "in1_scale": null, "in2_name": null, "in2_type_entree":
+        null, "in2_scale": null, "imu_name": null, "imu_axe": null, "imu_threshold":
+        null, "can_protocol": null}, "my_rights": {"can_delete_machine": true, "can_edit_machine":
+        true, "can_manage_machine": true, "can_book_machine": true, "can_accept_book_machine":
+        true, "can_view_real_time_machine": true, "can_modify_activity_machine": true},
+        "associations": [], "billing": [], "tag_ble": {"id": null, "id_tag": null,
+        "start_date": null, "end_date": null}, "provider": {"name": "Ekylibre", "uuid":
+        "2e7dda88-103f-4327-ae46-5c003951e48c"}}, {"id": "60426917c208cb291b107a2c",
+        "name": "Remorque vendange 4T", "start_date": "2021-03-05T17:23:35.366000Z",
+        "cluster": {"id": "5f4e58953ea3af11caff4f2b", "name": "Ferme de Chollet",
+        "type_cluster": "farm", "vat_number": null, "description": null}, "machine_type":
+        "Bennes \u00e0 vendanges", "model": null, "brand": "Remorque vendange 4T",
+        "road_count_policy": "separate", "tool_width": null, "max_speed": null, "aux_configurations":
+        {"in1_name": null, "in1_type_entree": null, "in1_scale": null, "in2_name":
+        null, "in2_type_entree": null, "in2_scale": null, "imu_name": null, "imu_axe":
+        null, "imu_threshold": null, "can_protocol": null}, "my_rights": {"can_delete_machine":
+        true, "can_edit_machine": true, "can_manage_machine": true, "can_book_machine":
+        true, "can_accept_book_machine": true, "can_view_real_time_machine": true,
+        "can_modify_activity_machine": true}, "associations": [], "billing": [], "tag_ble":
+        {"id": null, "id_tag": null, "start_date": null, "end_date": null}, "provider":
+        {"name": "Ekylibre", "uuid": "037aeaf4-4368-48a2-b652-dcc5fe7fcee8"}}, {"id":
+        "604269180905adafb0461b17", "name": "Remorque vendange 12T", "start_date":
+        "2021-03-05T17:23:36.045000Z", "cluster": {"id": "5f4e58953ea3af11caff4f2b",
+        "name": "Ferme de Chollet", "type_cluster": "farm", "vat_number": null, "description":
+        null}, "machine_type": "Bennes \u00e0 vendanges", "model": null, "brand":
+        "Remorque vendange 12T", "road_count_policy": "separate", "tool_width": null,
+        "max_speed": null, "aux_configurations": {"in1_name": null, "in1_type_entree":
+        null, "in1_scale": null, "in2_name": null, "in2_type_entree": null, "in2_scale":
+        null, "imu_name": null, "imu_axe": null, "imu_threshold": null, "can_protocol":
+        null}, "my_rights": {"can_delete_machine": true, "can_edit_machine": true,
+        "can_manage_machine": true, "can_book_machine": true, "can_accept_book_machine":
+        true, "can_view_real_time_machine": true, "can_modify_activity_machine": true},
+        "associations": [], "billing": [], "tag_ble": {"id": null, "id_tag": null,
+        "start_date": null, "end_date": null}, "provider": {"name": "Ekylibre", "uuid":
+        "0ba51102-44ba-42af-8d82-c9c819e2db8d"}}, {"id": "604269180905adafb0461b18",
+        "name": "Remorque transport \u2013 1", "start_date": "2021-03-05T17:23:36.738000Z",
+        "cluster": {"id": "5f4e58953ea3af11caff4f2b", "name": "Ferme de Chollet",
+        "type_cluster": "farm", "vat_number": null, "description": null}, "machine_type":
+        "Bennes", "model": null, "brand": "Remorque transport \u2013 1", "road_count_policy":
+        "separate", "tool_width": null, "max_speed": null, "aux_configurations": {"in1_name":
+        null, "in1_type_entree": null, "in1_scale": null, "in2_name": null, "in2_type_entree":
+        null, "in2_scale": null, "imu_name": null, "imu_axe": null, "imu_threshold":
+        null, "can_protocol": null}, "my_rights": {"can_delete_machine": true, "can_edit_machine":
+        true, "can_manage_machine": true, "can_book_machine": true, "can_accept_book_machine":
+        true, "can_view_real_time_machine": true, "can_modify_activity_machine": true},
+        "associations": [], "billing": [], "tag_ble": {"id": null, "id_tag": null,
+        "start_date": null, "end_date": null}, "provider": {"name": "Ekylibre", "uuid":
+        "e160cb40-366f-4774-9a96-ffe65c26fa44"}}, {"id": "6042691953716665c8fcbba1",
+        "name": "Remorque transport \u2013 2", "start_date": "2021-03-05T17:23:37.568000Z",
+        "cluster": {"id": "5f4e58953ea3af11caff4f2b", "name": "Ferme de Chollet",
+        "type_cluster": "farm", "vat_number": null, "description": null}, "machine_type":
+        "Bennes", "model": null, "brand": "Remorque transport \u2013 2", "road_count_policy":
+        "separate", "tool_width": null, "max_speed": null, "aux_configurations": {"in1_name":
+        null, "in1_type_entree": null, "in1_scale": null, "in2_name": null, "in2_type_entree":
+        null, "in2_scale": null, "imu_name": null, "imu_axe": null, "imu_threshold":
+        null, "can_protocol": null}, "my_rights": {"can_delete_machine": true, "can_edit_machine":
+        true, "can_manage_machine": true, "can_book_machine": true, "can_accept_book_machine":
+        true, "can_view_real_time_machine": true, "can_modify_activity_machine": true},
+        "associations": [], "billing": [], "tag_ble": {"id": null, "id_tag": null,
+        "start_date": null, "end_date": null}, "provider": {"name": "Ekylibre", "uuid":
+        "5c90cedf-b2f1-4470-8ba1-eb4b3644fdb3"}}, {"id": "6042691ac208cb291b107a2d",
+        "name": "D\u00e9compacteur", "start_date": "2021-03-05T17:23:38.255000Z",
+        "cluster": {"id": "5f4e58953ea3af11caff4f2b", "name": "Ferme de Chollet",
+        "type_cluster": "farm", "vat_number": null, "description": null}, "machine_type":
+        "D\u00e9compacteurs", "model": null, "brand": "D\u00e9compacteur", "road_count_policy":
+        "separate", "tool_width": null, "max_speed": null, "aux_configurations": {"in1_name":
+        null, "in1_type_entree": null, "in1_scale": null, "in2_name": null, "in2_type_entree":
+        null, "in2_scale": null, "imu_name": null, "imu_axe": null, "imu_threshold":
+        null, "can_protocol": null}, "my_rights": {"can_delete_machine": true, "can_edit_machine":
+        true, "can_manage_machine": true, "can_book_machine": true, "can_accept_book_machine":
+        true, "can_view_real_time_machine": true, "can_modify_activity_machine": true},
+        "associations": [], "billing": [], "tag_ble": {"id": null, "id_tag": null,
+        "start_date": null, "end_date": null}, "provider": {"name": "Ekylibre", "uuid":
+        "657268f2-f088-4c43-9821-0cdf77f632f9"}}, {"id": "6042691a5308519857e775c9",
+        "name": "Epandeur \u00e0 fumier 5T", "start_date": "2021-03-05T17:23:38.953000Z",
+        "cluster": {"id": "5f4e58953ea3af11caff4f2b", "name": "Ferme de Chollet",
+        "type_cluster": "farm", "vat_number": null, "description": null}, "machine_type":
+        "Epandeur \u00e0 fumier", "model": null, "brand": "Epandeur \u00e0 fumier
+        5T", "road_count_policy": "separate", "tool_width": null, "max_speed": null,
+        "aux_configurations": {"in1_name": null, "in1_type_entree": null, "in1_scale":
+        null, "in2_name": null, "in2_type_entree": null, "in2_scale": null, "imu_name":
+        null, "imu_axe": null, "imu_threshold": null, "can_protocol": null}, "my_rights":
+        {"can_delete_machine": true, "can_edit_machine": true, "can_manage_machine":
+        true, "can_book_machine": true, "can_accept_book_machine": true, "can_view_real_time_machine":
+        true, "can_modify_activity_machine": true}, "associations": [], "billing":
+        [], "tag_ble": {"id": null, "id_tag": null, "start_date": null, "end_date":
+        null}, "provider": {"name": "Ekylibre", "uuid": "87b5f145-0b20-4d9e-9cf8-c1b31becab22"}},
+        {"id": "6042691b0905adafb0461b19", "name": "Epandeur \u00e0 fumier 7T", "start_date":
+        "2021-03-05T17:23:39.672000Z", "cluster": {"id": "5f4e58953ea3af11caff4f2b",
+        "name": "Ferme de Chollet", "type_cluster": "farm", "vat_number": null, "description":
+        null}, "machine_type": "Epandeur \u00e0 fumier", "model": null, "brand": "Epandeur
+        \u00e0 fumier 7T", "road_count_policy": "separate", "tool_width": null, "max_speed":
+        null, "aux_configurations": {"in1_name": null, "in1_type_entree": null, "in1_scale":
+        null, "in2_name": null, "in2_type_entree": null, "in2_scale": null, "imu_name":
+        null, "imu_axe": null, "imu_threshold": null, "can_protocol": null}, "my_rights":
+        {"can_delete_machine": true, "can_edit_machine": true, "can_manage_machine":
+        true, "can_book_machine": true, "can_accept_book_machine": true, "can_view_real_time_machine":
+        true, "can_modify_activity_machine": true}, "associations": [], "billing":
+        [], "tag_ble": {"id": null, "id_tag": null, "start_date": null, "end_date":
+        null}, "provider": {"name": "Ekylibre", "uuid": "eb685c40-878e-4791-9816-6d9b63cf7923"}},
+        {"id": "6042691c53716665c8fcbba2", "name": "Herse rotative Alpego", "start_date":
+        "2021-03-05T17:23:40.399000Z", "cluster": {"id": "5f4e58953ea3af11caff4f2b",
+        "name": "Ferme de Chollet", "type_cluster": "farm", "vat_number": null, "description":
+        null}, "machine_type": "Machines \u00e0 b\u00eacher", "model": null, "brand":
+        "Herse rotative Alpego", "road_count_policy": "separate", "tool_width": null,
+        "max_speed": null, "aux_configurations": {"in1_name": null, "in1_type_entree":
+        null, "in1_scale": null, "in2_name": null, "in2_type_entree": null, "in2_scale":
+        null, "imu_name": null, "imu_axe": null, "imu_threshold": null, "can_protocol":
+        null}, "my_rights": {"can_delete_machine": true, "can_edit_machine": true,
+        "can_manage_machine": true, "can_book_machine": true, "can_accept_book_machine":
+        true, "can_view_real_time_machine": true, "can_modify_activity_machine": true},
+        "associations": [], "billing": [], "tag_ble": {"id": null, "id_tag": null,
+        "start_date": null, "end_date": null}, "provider": {"name": "Ekylibre", "uuid":
+        "1785d4f5-6973-43dd-b5ca-28a2e65affc4"}}, {"id": "6042691d5308519857e775ca",
+        "name": "Gyrobroyeur \u2013 1", "start_date": "2021-03-05T17:23:41.200000Z",
+        "cluster": {"id": "5f4e58953ea3af11caff4f2b", "name": "Ferme de Chollet",
+        "type_cluster": "farm", "vat_number": null, "description": null}, "machine_type":
+        "Distributeur d''engrais", "model": null, "brand": "Gyrobroyeur \u2013 1",
+        "road_count_policy": "separate", "tool_width": null, "max_speed": null, "aux_configurations":
+        {"in1_name": null, "in1_type_entree": null, "in1_scale": null, "in2_name":
+        null, "in2_type_entree": null, "in2_scale": null, "imu_name": null, "imu_axe":
+        null, "imu_threshold": null, "can_protocol": null}, "my_rights": {"can_delete_machine":
+        true, "can_edit_machine": true, "can_manage_machine": true, "can_book_machine":
+        true, "can_accept_book_machine": true, "can_view_real_time_machine": true,
+        "can_modify_activity_machine": true}, "associations": [], "billing": [], "tag_ble":
+        {"id": null, "id_tag": null, "start_date": null, "end_date": null}, "provider":
+        {"name": "Ekylibre", "uuid": "2a3ae045-d8f4-4287-a0bc-d25d24d87061"}}, {"id":
+        "6042691d0905adafb0461b1a", "name": "Gyrobroyeur \u2013 2", "start_date":
+        "2021-03-05T17:23:41.992000Z", "cluster": {"id": "5f4e58953ea3af11caff4f2b",
+        "name": "Ferme de Chollet", "type_cluster": "farm", "vat_number": null, "description":
+        null}, "machine_type": "Distributeur d''engrais", "model": null, "brand":
+        "Gyrobroyeur \u2013 2", "road_count_policy": "separate", "tool_width": null,
+        "max_speed": null, "aux_configurations": {"in1_name": null, "in1_type_entree":
+        null, "in1_scale": null, "in2_name": null, "in2_type_entree": null, "in2_scale":
+        null, "imu_name": null, "imu_axe": null, "imu_threshold": null, "can_protocol":
+        null}, "my_rights": {"can_delete_machine": true, "can_edit_machine": true,
+        "can_manage_machine": true, "can_book_machine": true, "can_accept_book_machine":
+        true, "can_view_real_time_machine": true, "can_modify_activity_machine": true},
+        "associations": [], "billing": [], "tag_ble": {"id": null, "id_tag": null,
+        "start_date": null, "end_date": null}, "provider": {"name": "Ekylibre", "uuid":
+        "e0b4229b-b12c-4d28-ad36-0d6fbf0d0963"}}, {"id": "6042691e53716665c8fcbba3",
+        "name": "Herse rotative Vigolo", "start_date": "2021-03-05T17:23:42.697000Z",
+        "cluster": {"id": "5f4e58953ea3af11caff4f2b", "name": "Ferme de Chollet",
+        "type_cluster": "farm", "vat_number": null, "description": null}, "machine_type":
+        "Machines \u00e0 b\u00eacher", "model": null, "brand": "Herse rotative Vigolo",
+        "road_count_policy": "separate", "tool_width": null, "max_speed": null, "aux_configurations":
+        {"in1_name": null, "in1_type_entree": null, "in1_scale": null, "in2_name":
+        null, "in2_type_entree": null, "in2_scale": null, "imu_name": null, "imu_axe":
+        null, "imu_threshold": null, "can_protocol": null}, "my_rights": {"can_delete_machine":
+        true, "can_edit_machine": true, "can_manage_machine": true, "can_book_machine":
+        true, "can_accept_book_machine": true, "can_view_real_time_machine": true,
+        "can_modify_activity_machine": true}, "associations": [], "billing": [], "tag_ble":
+        {"id": null, "id_tag": null, "start_date": null, "end_date": null}, "provider":
+        {"name": "Ekylibre", "uuid": "eca4e828-eb29-4975-ab4b-56b431b02880"}}, {"id":
+        "6042691f0905adafb0461b1b", "name": "Massey-Fergusson 140", "start_date":
+        "2021-03-05T17:23:43.464000Z", "cluster": {"id": "5f4e58953ea3af11caff4f2b",
+        "name": "Ferme de Chollet", "type_cluster": "farm", "vat_number": null, "description":
+        null}, "machine_type": "Tracteur agricole", "model": null, "brand": "Massey-Fergusson
+        140", "road_count_policy": "separate", "tool_width": null, "max_speed": null,
+        "aux_configurations": {"in1_name": null, "in1_type_entree": null, "in1_scale":
+        null, "in2_name": null, "in2_type_entree": null, "in2_scale": null, "imu_name":
+        null, "imu_axe": null, "imu_threshold": null, "can_protocol": null}, "my_rights":
+        {"can_delete_machine": true, "can_edit_machine": true, "can_manage_machine":
+        true, "can_book_machine": true, "can_accept_book_machine": true, "can_view_real_time_machine":
+        true, "can_modify_activity_machine": true}, "associations": [], "billing":
+        [], "tag_ble": {"id": null, "id_tag": null, "start_date": null, "end_date":
+        null}, "provider": {"name": "Ekylibre", "uuid": "1775318b-0c9c-4ad0-a613-3627d457b429"}},
+        {"id": "604269200905adafb0461b1c", "name": "D\u00e9sherbeuse chimique \u2013
+        2", "start_date": "2021-03-05T17:23:44.200000Z", "cluster": {"id": "5f4e58953ea3af11caff4f2b",
+        "name": "Ferme de Chollet", "type_cluster": "farm", "vat_number": null, "description":
+        null}, "machine_type": "Pulv\u00e9risateur port\u00e9", "model": null, "brand":
+        "D\u00e9sherbeuse chimique \u2013 2", "road_count_policy": "separate", "tool_width":
+        null, "max_speed": null, "aux_configurations": {"in1_name": null, "in1_type_entree":
+        null, "in1_scale": null, "in2_name": null, "in2_type_entree": null, "in2_scale":
+        null, "imu_name": null, "imu_axe": null, "imu_threshold": null, "can_protocol":
+        null}, "my_rights": {"can_delete_machine": true, "can_edit_machine": true,
+        "can_manage_machine": true, "can_book_machine": true, "can_accept_book_machine":
+        true, "can_view_real_time_machine": true, "can_modify_activity_machine": true},
+        "associations": [], "billing": [], "tag_ble": {"id": null, "id_tag": null,
+        "start_date": null, "end_date": null}, "provider": {"name": "Ekylibre", "uuid":
+        "e1ec9f81-d792-4253-a583-d5e485679da2"}}, {"id": "604269200905adafb0461b1d",
+        "name": "Valmet 900", "start_date": "2021-03-05T17:23:44.945000Z", "cluster":
+        {"id": "5f4e58953ea3af11caff4f2b", "name": "Ferme de Chollet", "type_cluster":
+        "farm", "vat_number": null, "description": null}, "machine_type": "Tracteur
+        agricole", "model": null, "brand": "Valmet 900", "road_count_policy": "separate",
+        "tool_width": null, "max_speed": null, "aux_configurations": {"in1_name":
+        null, "in1_type_entree": null, "in1_scale": null, "in2_name": null, "in2_type_entree":
+        null, "in2_scale": null, "imu_name": null, "imu_axe": null, "imu_threshold":
+        null, "can_protocol": null}, "my_rights": {"can_delete_machine": true, "can_edit_machine":
+        true, "can_manage_machine": true, "can_book_machine": true, "can_accept_book_machine":
+        true, "can_view_real_time_machine": true, "can_modify_activity_machine": true},
+        "associations": [], "billing": [], "tag_ble": {"id": null, "id_tag": null,
+        "start_date": null, "end_date": null}, "provider": {"name": "Ekylibre", "uuid":
+        "d0075796-22ba-498d-a57f-e3faa14f962c"}}, {"id": "60426921c208cb291b107a2e",
+        "name": "Valtra N123", "start_date": "2021-03-05T17:23:45.714000Z", "cluster":
+        {"id": "5f4e58953ea3af11caff4f2b", "name": "Ferme de Chollet", "type_cluster":
+        "farm", "vat_number": null, "description": null}, "machine_type": "Tracteur
+        agricole", "model": null, "brand": "Valtra N123", "road_count_policy": "separate",
+        "tool_width": null, "max_speed": null, "aux_configurations": {"in1_name":
+        null, "in1_type_entree": null, "in1_scale": null, "in2_name": null, "in2_type_entree":
+        null, "in2_scale": null, "imu_name": null, "imu_axe": null, "imu_threshold":
+        null, "can_protocol": null}, "my_rights": {"can_delete_machine": true, "can_edit_machine":
+        true, "can_manage_machine": true, "can_book_machine": true, "can_accept_book_machine":
+        true, "can_view_real_time_machine": true, "can_modify_activity_machine": true},
+        "associations": [], "billing": [], "tag_ble": {"id": null, "id_tag": null,
+        "start_date": null, "end_date": null}, "provider": {"name": "Ekylibre", "uuid":
+        "2efd70f9-ddf5-434e-b7fd-015d2f744d24"}}, {"id": "60426922c208cb291b107a2f",
+        "name": "Sulky DR1150", "start_date": "2021-03-05T17:23:46.463000Z", "cluster":
+        {"id": "5f4e58953ea3af11caff4f2b", "name": "Ferme de Chollet", "type_cluster":
+        "farm", "vat_number": null, "description": null}, "machine_type": "Distributeur
+        d''engrais", "model": null, "brand": "Sulky DR1150", "road_count_policy":
+        "separate", "tool_width": null, "max_speed": null, "aux_configurations": {"in1_name":
+        null, "in1_type_entree": null, "in1_scale": null, "in2_name": null, "in2_type_entree":
+        null, "in2_scale": null, "imu_name": null, "imu_axe": null, "imu_threshold":
+        null, "can_protocol": null}, "my_rights": {"can_delete_machine": true, "can_edit_machine":
+        true, "can_manage_machine": true, "can_book_machine": true, "can_accept_book_machine":
+        true, "can_view_real_time_machine": true, "can_modify_activity_machine": true},
+        "associations": [], "billing": [], "tag_ble": {"id": null, "id_tag": null,
+        "start_date": null, "end_date": null}, "provider": {"name": "Ekylibre", "uuid":
+        "b2a1b6de-402e-4b4f-8ecb-4e4f4cd74e86"}}, {"id": "60426923c208cb291b107a30",
+        "name": "Valtra A73", "start_date": "2021-03-05T17:23:47.231000Z", "cluster":
+        {"id": "5f4e58953ea3af11caff4f2b", "name": "Ferme de Chollet", "type_cluster":
+        "farm", "vat_number": null, "description": null}, "machine_type": "Tracteur
+        agricole", "model": null, "brand": "Valtra A73", "road_count_policy": "separate",
+        "tool_width": null, "max_speed": null, "aux_configurations": {"in1_name":
+        null, "in1_type_entree": null, "in1_scale": null, "in2_name": null, "in2_type_entree":
+        null, "in2_scale": null, "imu_name": null, "imu_axe": null, "imu_threshold":
+        null, "can_protocol": null}, "my_rights": {"can_delete_machine": true, "can_edit_machine":
+        true, "can_manage_machine": true, "can_book_machine": true, "can_accept_book_machine":
+        true, "can_view_real_time_machine": true, "can_modify_activity_machine": true},
+        "associations": [], "billing": [], "tag_ble": {"id": null, "id_tag": null,
+        "start_date": null, "end_date": null}, "provider": {"name": "Ekylibre", "uuid":
+        "03e54c97-86b5-42ef-ad93-77bac70796df"}}, {"id": "6042692453716665c8fcbba4",
+        "name": "Valtra A104", "start_date": "2021-03-05T17:23:48.037000Z", "cluster":
+        {"id": "5f4e58953ea3af11caff4f2b", "name": "Ferme de Chollet", "type_cluster":
+        "farm", "vat_number": null, "description": null}, "machine_type": "Tracteur
+        agricole", "model": null, "brand": "Valtra A104", "road_count_policy": "separate",
+        "tool_width": null, "max_speed": null, "aux_configurations": {"in1_name":
+        null, "in1_type_entree": null, "in1_scale": null, "in2_name": null, "in2_type_entree":
+        null, "in2_scale": null, "imu_name": null, "imu_axe": null, "imu_threshold":
+        null, "can_protocol": null}, "my_rights": {"can_delete_machine": true, "can_edit_machine":
+        true, "can_manage_machine": true, "can_book_machine": true, "can_accept_book_machine":
+        true, "can_view_real_time_machine": true, "can_modify_activity_machine": true},
+        "associations": [], "billing": [], "tag_ble": {"id": null, "id_tag": null,
+        "start_date": null, "end_date": null}, "provider": {"name": "Ekylibre", "uuid":
+        "839e9e1a-c485-4e0c-8eac-fa9b46603ad6"}}, {"id": "6042692453716665c8fcbba5",
+        "name": "Deutz Agroplus 70 \u2013 1", "start_date": "2021-03-05T17:23:48.845000Z",
+        "cluster": {"id": "5f4e58953ea3af11caff4f2b", "name": "Ferme de Chollet",
+        "type_cluster": "farm", "vat_number": null, "description": null}, "machine_type":
+        "Tracteur agricole", "model": null, "brand": "Deutz Agroplus 70 \u2013 1",
+        "road_count_policy": "separate", "tool_width": null, "max_speed": null, "aux_configurations":
+        {"in1_name": null, "in1_type_entree": null, "in1_scale": null, "in2_name":
+        null, "in2_type_entree": null, "in2_scale": null, "imu_name": null, "imu_axe":
+        null, "imu_threshold": null, "can_protocol": null}, "my_rights": {"can_delete_machine":
+        true, "can_edit_machine": true, "can_manage_machine": true, "can_book_machine":
+        true, "can_accept_book_machine": true, "can_view_real_time_machine": true,
+        "can_modify_activity_machine": true}, "associations": [], "billing": [], "tag_ble":
+        {"id": null, "id_tag": null, "start_date": null, "end_date": null}, "provider":
+        {"name": "Ekylibre", "uuid": "d0dff869-5f3f-451d-b6a1-2f6eb7e56c13"}}, {"id":
+        "6042692553716665c8fcbba6", "name": "Deutz Agroplus 70 \u2013 2", "start_date":
+        "2021-03-05T17:23:49.777000Z", "cluster": {"id": "5f4e58953ea3af11caff4f2b",
+        "name": "Ferme de Chollet", "type_cluster": "farm", "vat_number": null, "description":
+        null}, "machine_type": "Tracteur agricole", "model": null, "brand": "Deutz
+        Agroplus 70 \u2013 2", "road_count_policy": "separate", "tool_width": null,
+        "max_speed": null, "aux_configurations": {"in1_name": null, "in1_type_entree":
+        null, "in1_scale": null, "in2_name": null, "in2_type_entree": null, "in2_scale":
+        null, "imu_name": null, "imu_axe": null, "imu_threshold": null, "can_protocol":
+        null}, "my_rights": {"can_delete_machine": true, "can_edit_machine": true,
+        "can_manage_machine": true, "can_book_machine": true, "can_accept_book_machine":
+        true, "can_view_real_time_machine": true, "can_modify_activity_machine": true},
+        "associations": [], "billing": [], "tag_ble": {"id": null, "id_tag": null,
+        "start_date": null, "end_date": null}, "provider": {"name": "Ekylibre", "uuid":
+        "c9198cf2-d93d-433c-8dec-aa6447b9fbb1"}}, {"id": "6042692653716665c8fcbba7",
+        "name": "Deutz Agroplus 70 \u2013 3", "start_date": "2021-03-05T17:23:50.603000Z",
+        "cluster": {"id": "5f4e58953ea3af11caff4f2b", "name": "Ferme de Chollet",
+        "type_cluster": "farm", "vat_number": null, "description": null}, "machine_type":
+        "Tracteur agricole", "model": null, "brand": "Deutz Agroplus 70 \u2013 3",
+        "road_count_policy": "separate", "tool_width": null, "max_speed": null, "aux_configurations":
+        {"in1_name": null, "in1_type_entree": null, "in1_scale": null, "in2_name":
+        null, "in2_type_entree": null, "in2_scale": null, "imu_name": null, "imu_axe":
+        null, "imu_threshold": null, "can_protocol": null}, "my_rights": {"can_delete_machine":
+        true, "can_edit_machine": true, "can_manage_machine": true, "can_book_machine":
+        true, "can_accept_book_machine": true, "can_view_real_time_machine": true,
+        "can_modify_activity_machine": true}, "associations": [], "billing": [], "tag_ble":
+        {"id": null, "id_tag": null, "start_date": null, "end_date": null}, "provider":
+        {"name": "Ekylibre", "uuid": "f2a84a79-eb7f-43c5-b06f-0e644331e11c"}}, {"id":
+        "604269275308519857e775cb", "name": "Fiat Agri M100DT", "start_date": "2021-03-05T17:23:51.520000Z",
+        "cluster": {"id": "5f4e58953ea3af11caff4f2b", "name": "Ferme de Chollet",
+        "type_cluster": "farm", "vat_number": null, "description": null}, "machine_type":
+        "Tracteur agricole", "model": null, "brand": "Fiat Agri M100DT", "road_count_policy":
+        "separate", "tool_width": null, "max_speed": null, "aux_configurations": {"in1_name":
+        null, "in1_type_entree": null, "in1_scale": null, "in2_name": null, "in2_type_entree":
+        null, "in2_scale": null, "imu_name": null, "imu_axe": null, "imu_threshold":
+        null, "can_protocol": null}, "my_rights": {"can_delete_machine": true, "can_edit_machine":
+        true, "can_manage_machine": true, "can_book_machine": true, "can_accept_book_machine":
+        true, "can_view_real_time_machine": true, "can_modify_activity_machine": true},
+        "associations": [], "billing": [], "tag_ble": {"id": null, "id_tag": null,
+        "start_date": null, "end_date": null}, "provider": {"name": "Ekylibre", "uuid":
+        "2607793e-5d37-4220-b45f-431af0b001ef"}}, {"id": "60426928c208cb291b107a31",
+        "name": "Same Minitaurus 2RMU", "start_date": "2021-03-05T17:23:52.403000Z",
+        "cluster": {"id": "5f4e58953ea3af11caff4f2b", "name": "Ferme de Chollet",
+        "type_cluster": "farm", "vat_number": null, "description": null}, "machine_type":
+        "Tracteur agricole", "model": null, "brand": "Same Minitaurus 2RMU", "road_count_policy":
+        "separate", "tool_width": null, "max_speed": null, "aux_configurations": {"in1_name":
+        null, "in1_type_entree": null, "in1_scale": null, "in2_name": null, "in2_type_entree":
+        null, "in2_scale": null, "imu_name": null, "imu_axe": null, "imu_threshold":
+        null, "can_protocol": null}, "my_rights": {"can_delete_machine": true, "can_edit_machine":
+        true, "can_manage_machine": true, "can_book_machine": true, "can_accept_book_machine":
+        true, "can_view_real_time_machine": true, "can_modify_activity_machine": true},
+        "associations": [], "billing": [], "tag_ble": {"id": null, "id_tag": null,
+        "start_date": null, "end_date": null}, "provider": {"name": "Ekylibre", "uuid":
+        "fd5b9c95-ca3d-4826-8d76-6be9b2cb964d"}}, {"id": "60426a4a5308519857e775cc",
+        "name": "Epandeur engrais", "start_date": "2021-03-05T17:28:42.024000Z", "cluster":
+        {"id": "5f4e58953ea3af11caff4f2b", "name": "Ferme de Chollet", "type_cluster":
+        "farm", "vat_number": null, "description": null}, "machine_type": "Pulv\u00e9risateur
+        port\u00e9", "model": null, "brand": "Epandeur engrais", "road_count_policy":
+        "separate", "tool_width": null, "max_speed": null, "aux_configurations": {"in1_name":
+        null, "in1_type_entree": null, "in1_scale": null, "in2_name": null, "in2_type_entree":
+        null, "in2_scale": null, "imu_name": null, "imu_axe": null, "imu_threshold":
+        null, "can_protocol": null}, "my_rights": {"can_delete_machine": true, "can_edit_machine":
+        true, "can_manage_machine": true, "can_book_machine": true, "can_accept_book_machine":
+        true, "can_view_real_time_machine": true, "can_modify_activity_machine": true},
+        "associations": [], "billing": [], "tag_ble": {"id": null, "id_tag": null,
+        "start_date": null, "end_date": null}, "provider": {"name": "Ekylibre", "uuid":
+        "ea6bebb5-bac1-4ad1-9414-67725039769c"}}, {"id": "60426a4b53716665c8fcbba8",
+        "name": "Tracteur 533", "start_date": "2021-03-05T17:28:43.889000Z", "cluster":
+        {"id": "5f4e58953ea3af11caff4f2b", "name": "Ferme de Chollet", "type_cluster":
+        "farm", "vat_number": null, "description": null}, "machine_type": "Tracteur
+        agricole", "model": null, "brand": "Tracteur 533", "road_count_policy": "separate",
+        "tool_width": null, "max_speed": null, "aux_configurations": {"in1_name":
+        null, "in1_type_entree": null, "in1_scale": null, "in2_name": null, "in2_type_entree":
+        null, "in2_scale": null, "imu_name": null, "imu_axe": null, "imu_threshold":
+        null, "can_protocol": null}, "my_rights": {"can_delete_machine": true, "can_edit_machine":
+        true, "can_manage_machine": true, "can_book_machine": true, "can_accept_book_machine":
+        true, "can_view_real_time_machine": true, "can_modify_activity_machine": true},
+        "associations": [], "billing": [], "tag_ble": {"id": null, "id_tag": null,
+        "start_date": null, "end_date": null}, "provider": {"name": "Ekylibre", "uuid":
+        "afb19a26-6fed-42b4-827f-bb4e55ac7c0b"}}, {"id": "60426a4c53716665c8fcbba9",
+        "name": "Vigneronne", "start_date": "2021-03-05T17:28:44.877000Z", "cluster":
+        {"id": "5f4e58953ea3af11caff4f2b", "name": "Ferme de Chollet", "type_cluster":
+        "farm", "vat_number": null, "description": null}, "machine_type": "Charrues",
+        "model": null, "brand": "Vigneronne", "road_count_policy": "separate", "tool_width":
+        null, "max_speed": null, "aux_configurations": {"in1_name": null, "in1_type_entree":
+        null, "in1_scale": null, "in2_name": null, "in2_type_entree": null, "in2_scale":
+        null, "imu_name": null, "imu_axe": null, "imu_threshold": null, "can_protocol":
+        null}, "my_rights": {"can_delete_machine": true, "can_edit_machine": true,
+        "can_manage_machine": true, "can_book_machine": true, "can_accept_book_machine":
+        true, "can_view_real_time_machine": true, "can_modify_activity_machine": true},
+        "associations": [], "billing": [], "tag_ble": {"id": null, "id_tag": null,
+        "start_date": null, "end_date": null}, "provider": {"name": "Ekylibre", "uuid":
+        "42855e8c-f377-4dbe-aef1-24018829dcd9"}}, {"id": "60426a4d53716665c8fcbbaa",
+        "name": "Tracteur 6506", "start_date": "2021-03-05T17:28:45.749000Z", "cluster":
+        {"id": "5f4e58953ea3af11caff4f2b", "name": "Ferme de Chollet", "type_cluster":
+        "farm", "vat_number": null, "description": null}, "machine_type": "Tracteur
+        agricole", "model": null, "brand": "Tracteur 6506", "road_count_policy": "separate",
+        "tool_width": null, "max_speed": null, "aux_configurations": {"in1_name":
+        null, "in1_type_entree": null, "in1_scale": null, "in2_name": null, "in2_type_entree":
+        null, "in2_scale": null, "imu_name": null, "imu_axe": null, "imu_threshold":
+        null, "can_protocol": null}, "my_rights": {"can_delete_machine": true, "can_edit_machine":
+        true, "can_manage_machine": true, "can_book_machine": true, "can_accept_book_machine":
+        true, "can_view_real_time_machine": true, "can_modify_activity_machine": true},
+        "associations": [], "billing": [], "tag_ble": {"id": null, "id_tag": null,
+        "start_date": null, "end_date": null}, "provider": {"name": "Ekylibre", "uuid":
+        "2f3d8557-bec9-477b-91a8-c5f844fa1c08"}}, {"id": "60426a4e53716665c8fcbbab",
+        "name": "Tracteur 1075 JXN", "start_date": "2021-03-05T17:28:46.721000Z",
+        "cluster": {"id": "5f4e58953ea3af11caff4f2b", "name": "Ferme de Chollet",
+        "type_cluster": "farm", "vat_number": null, "description": null}, "machine_type":
+        "Tracteur agricole", "model": null, "brand": "Tracteur 1075 JXN", "road_count_policy":
+        "separate", "tool_width": null, "max_speed": null, "aux_configurations": {"in1_name":
+        null, "in1_type_entree": null, "in1_scale": null, "in2_name": null, "in2_type_entree":
+        null, "in2_scale": null, "imu_name": null, "imu_axe": null, "imu_threshold":
+        null, "can_protocol": null}, "my_rights": {"can_delete_machine": true, "can_edit_machine":
+        true, "can_manage_machine": true, "can_book_machine": true, "can_accept_book_machine":
+        true, "can_view_real_time_machine": true, "can_modify_activity_machine": true},
+        "associations": [], "billing": [], "tag_ble": {"id": null, "id_tag": null,
+        "start_date": null, "end_date": null}, "provider": {"name": "Ekylibre", "uuid":
+        "c32877dc-f9a9-4816-9233-483e7b7c2d22"}}, {"id": "60426a4f53716665c8fcbbac",
+        "name": "Tracteur 5090 GF", "start_date": "2021-03-05T17:28:47.556000Z", "cluster":
+        {"id": "5f4e58953ea3af11caff4f2b", "name": "Ferme de Chollet", "type_cluster":
+        "farm", "vat_number": null, "description": null}, "machine_type": "Tracteur
+        agricole", "model": null, "brand": "Tracteur 5090 GF", "road_count_policy":
+        "separate", "tool_width": null, "max_speed": null, "aux_configurations": {"in1_name":
+        null, "in1_type_entree": null, "in1_scale": null, "in2_name": null, "in2_type_entree":
+        null, "in2_scale": null, "imu_name": null, "imu_axe": null, "imu_threshold":
+        null, "can_protocol": null}, "my_rights": {"can_delete_machine": true, "can_edit_machine":
+        true, "can_manage_machine": true, "can_book_machine": true, "can_accept_book_machine":
+        true, "can_view_real_time_machine": true, "can_modify_activity_machine": true},
+        "associations": [], "billing": [], "tag_ble": {"id": null, "id_tag": null,
+        "start_date": null, "end_date": null}, "provider": {"name": "Ekylibre", "uuid":
+        "419bc230-3914-4680-bdd2-11995e98be71"}}, {"id": "60426a505308519857e775cd",
+        "name": "Rouleau Huard", "start_date": "2021-03-05T17:28:48.414000Z", "cluster":
+        {"id": "5f4e58953ea3af11caff4f2b", "name": "Ferme de Chollet", "type_cluster":
+        "farm", "vat_number": null, "description": null}, "machine_type": "Machines
+        \u00e0 b\u00eacher", "model": null, "brand": "Rouleau Huard", "road_count_policy":
+        "separate", "tool_width": null, "max_speed": null, "aux_configurations": {"in1_name":
+        null, "in1_type_entree": null, "in1_scale": null, "in2_name": null, "in2_type_entree":
+        null, "in2_scale": null, "imu_name": null, "imu_axe": null, "imu_threshold":
+        null, "can_protocol": null}, "my_rights": {"can_delete_machine": true, "can_edit_machine":
+        true, "can_manage_machine": true, "can_book_machine": true, "can_accept_book_machine":
+        true, "can_view_real_time_machine": true, "can_modify_activity_machine": true},
+        "associations": [], "billing": [], "tag_ble": {"id": null, "id_tag": null,
+        "start_date": null, "end_date": null}, "provider": {"name": "Ekylibre", "uuid":
+        "43cfef46-673c-4aef-8360-b4cfa817ada0"}}, {"id": "60426a5153716665c8fcbbad",
+        "name": "Tracteur 745 XL", "start_date": "2021-03-05T17:28:49.248000Z", "cluster":
+        {"id": "5f4e58953ea3af11caff4f2b", "name": "Ferme de Chollet", "type_cluster":
+        "farm", "vat_number": null, "description": null}, "machine_type": "Tracteur
+        agricole", "model": null, "brand": "Tracteur 745 XL", "road_count_policy":
+        "separate", "tool_width": null, "max_speed": null, "aux_configurations": {"in1_name":
+        null, "in1_type_entree": null, "in1_scale": null, "in2_name": null, "in2_type_entree":
+        null, "in2_scale": null, "imu_name": null, "imu_axe": null, "imu_threshold":
+        null, "can_protocol": null}, "my_rights": {"can_delete_machine": true, "can_edit_machine":
+        true, "can_manage_machine": true, "can_book_machine": true, "can_accept_book_machine":
+        true, "can_view_real_time_machine": true, "can_modify_activity_machine": true},
+        "associations": [], "billing": [], "tag_ble": {"id": null, "id_tag": null,
+        "start_date": null, "end_date": null}, "provider": {"name": "Ekylibre", "uuid":
+        "e74f1fd5-bfa8-4183-817c-df1755b62b62"}}, {"id": "60426a520905adafb0461b23",
+        "name": "Vibroculteur", "start_date": "2021-03-05T17:28:50.043000Z", "cluster":
+        {"id": "5f4e58953ea3af11caff4f2b", "name": "Ferme de Chollet", "type_cluster":
+        "farm", "vat_number": null, "description": null}, "machine_type": "Machines
+        \u00e0 b\u00eacher", "model": null, "brand": "Vibroculteur", "road_count_policy":
+        "separate", "tool_width": null, "max_speed": null, "aux_configurations": {"in1_name":
+        null, "in1_type_entree": null, "in1_scale": null, "in2_name": null, "in2_type_entree":
+        null, "in2_scale": null, "imu_name": null, "imu_axe": null, "imu_threshold":
+        null, "can_protocol": null}, "my_rights": {"can_delete_machine": true, "can_edit_machine":
+        true, "can_manage_machine": true, "can_book_machine": true, "can_accept_book_machine":
+        true, "can_view_real_time_machine": true, "can_modify_activity_machine": true},
+        "associations": [], "billing": [], "tag_ble": {"id": null, "id_tag": null,
+        "start_date": null, "end_date": null}, "provider": {"name": "Ekylibre", "uuid":
+        "ef7a2560-696f-4167-b4e8-5bed6955b245"}}, {"id": "60426a520905adafb0461b24",
+        "name": "Epandeur anti-limaces", "start_date": "2021-03-05T17:28:50.914000Z",
+        "cluster": {"id": "5f4e58953ea3af11caff4f2b", "name": "Ferme de Chollet",
+        "type_cluster": "farm", "vat_number": null, "description": null}, "machine_type":
+        "Pulv\u00e9risateur port\u00e9", "model": null, "brand": "Epandeur anti-limaces",
+        "road_count_policy": "separate", "tool_width": null, "max_speed": null, "aux_configurations":
+        {"in1_name": null, "in1_type_entree": null, "in1_scale": null, "in2_name":
+        null, "in2_type_entree": null, "in2_scale": null, "imu_name": null, "imu_axe":
+        null, "imu_threshold": null, "can_protocol": null}, "my_rights": {"can_delete_machine":
+        true, "can_edit_machine": true, "can_manage_machine": true, "can_book_machine":
+        true, "can_accept_book_machine": true, "can_view_real_time_machine": true,
+        "can_modify_activity_machine": true}, "associations": [], "billing": [], "tag_ble":
+        {"id": null, "id_tag": null, "start_date": null, "end_date": null}, "provider":
+        {"name": "Ekylibre", "uuid": "3755777b-e9fa-4fb8-978b-4b97c68cd96f"}}, {"id":
+        "60426a535308519857e775ce", "name": "Pulv\u00e9risateur Bertoud 1000L", "start_date":
+        "2021-03-05T17:28:51.758000Z", "cluster": {"id": "5f4e58953ea3af11caff4f2b",
+        "name": "Ferme de Chollet", "type_cluster": "farm", "vat_number": null, "description":
+        null}, "machine_type": "Pulv\u00e9risateur port\u00e9", "model": null, "brand":
+        "Pulv\u00e9risateur Bertoud 1000L", "road_count_policy": "separate", "tool_width":
+        null, "max_speed": null, "aux_configurations": {"in1_name": null, "in1_type_entree":
+        null, "in1_scale": null, "in2_name": null, "in2_type_entree": null, "in2_scale":
+        null, "imu_name": null, "imu_axe": null, "imu_threshold": null, "can_protocol":
+        null}, "my_rights": {"can_delete_machine": true, "can_edit_machine": true,
+        "can_manage_machine": true, "can_book_machine": true, "can_accept_book_machine":
+        true, "can_view_real_time_machine": true, "can_modify_activity_machine": true},
+        "associations": [], "billing": [], "tag_ble": {"id": null, "id_tag": null,
+        "start_date": null, "end_date": null}, "provider": {"name": "Ekylibre", "uuid":
+        "d8f31697-ac0f-406f-89c8-3dc3c96a26e1"}}, {"id": "60426a5453716665c8fcbbae",
+        "name": "Moissonneuse-batteuse 8040", "start_date": "2021-03-05T17:28:52.624000Z",
+        "cluster": {"id": "5f4e58953ea3af11caff4f2b", "name": "Ferme de Chollet",
+        "type_cluster": "farm", "vat_number": null, "description": null}, "machine_type":
+        "Moissonneuses batteuses", "model": null, "brand": "Moissonneuse-batteuse
+        8040", "road_count_policy": "separate", "tool_width": null, "max_speed": null,
+        "aux_configurations": {"in1_name": null, "in1_type_entree": null, "in1_scale":
+        null, "in2_name": null, "in2_type_entree": null, "in2_scale": null, "imu_name":
+        null, "imu_axe": null, "imu_threshold": null, "can_protocol": null}, "my_rights":
+        {"can_delete_machine": true, "can_edit_machine": true, "can_manage_machine":
+        true, "can_book_machine": true, "can_accept_book_machine": true, "can_view_real_time_machine":
+        true, "can_modify_activity_machine": true}, "associations": [], "billing":
+        [], "tag_ble": {"id": null, "id_tag": null, "start_date": null, "end_date":
+        null}, "provider": {"name": "Ekylibre", "uuid": "453d02cf-6e75-4d70-a0b5-5d707e449533"}},
+        {"id": "60426a555308519857e775cf", "name": "Broyeur \u00e0 bras", "start_date":
+        "2021-03-05T17:28:53.537000Z", "cluster": {"id": "5f4e58953ea3af11caff4f2b",
+        "name": "Ferme de Chollet", "type_cluster": "farm", "vat_number": null, "description":
+        null}, "machine_type": "Broyeurs", "model": null, "brand": "Broyeur \u00e0
+        bras", "road_count_policy": "separate", "tool_width": null, "max_speed": null,
+        "aux_configurations": {"in1_name": null, "in1_type_entree": null, "in1_scale":
+        null, "in2_name": null, "in2_type_entree": null, "in2_scale": null, "imu_name":
+        null, "imu_axe": null, "imu_threshold": null, "can_protocol": null}, "my_rights":
+        {"can_delete_machine": true, "can_edit_machine": true, "can_manage_machine":
+        true, "can_book_machine": true, "can_accept_book_machine": true, "can_view_real_time_machine":
+        true, "can_modify_activity_machine": true}, "associations": [], "billing":
+        [], "tag_ble": {"id": null, "id_tag": null, "start_date": null, "end_date":
+        null}, "provider": {"name": "Ekylibre", "uuid": "0ac4dc6b-2d64-4eaf-b846-dd6e030035e0"}},
+        {"id": "60426a5653716665c8fcbbaf", "name": "Machine \u00e0 vendanger", "start_date":
+        "2021-03-05T17:28:54.390000Z", "cluster": {"id": "5f4e58953ea3af11caff4f2b",
+        "name": "Ferme de Chollet", "type_cluster": "farm", "vat_number": null, "description":
+        null}, "machine_type": "Arracheuses de pommes de terre", "model": null, "brand":
+        "Machine \u00e0 vendanger", "road_count_policy": "separate", "tool_width":
+        null, "max_speed": null, "aux_configurations": {"in1_name": null, "in1_type_entree":
+        null, "in1_scale": null, "in2_name": null, "in2_type_entree": null, "in2_scale":
+        null, "imu_name": null, "imu_axe": null, "imu_threshold": null, "can_protocol":
+        null}, "my_rights": {"can_delete_machine": true, "can_edit_machine": true,
+        "can_manage_machine": true, "can_book_machine": true, "can_accept_book_machine":
+        true, "can_view_real_time_machine": true, "can_modify_activity_machine": true},
+        "associations": [], "billing": [], "tag_ble": {"id": null, "id_tag": null,
+        "start_date": null, "end_date": null}, "provider": {"name": "Ekylibre", "uuid":
+        "0aa7b585-9fb3-413e-928b-6901fd959c1b"}}, {"id": "60426a575308519857e775d0",
+        "name": "Broyeur Chabas 2.25m", "start_date": "2021-03-05T17:28:55.215000Z",
+        "cluster": {"id": "5f4e58953ea3af11caff4f2b", "name": "Ferme de Chollet",
+        "type_cluster": "farm", "vat_number": null, "description": null}, "machine_type":
+        "Broyeurs", "model": null, "brand": "Broyeur Chabas 2.25m", "road_count_policy":
+        "separate", "tool_width": null, "max_speed": null, "aux_configurations": {"in1_name":
+        null, "in1_type_entree": null, "in1_scale": null, "in2_name": null, "in2_type_entree":
+        null, "in2_scale": null, "imu_name": null, "imu_axe": null, "imu_threshold":
+        null, "can_protocol": null}, "my_rights": {"can_delete_machine": true, "can_edit_machine":
+        true, "can_manage_machine": true, "can_book_machine": true, "can_accept_book_machine":
+        true, "can_view_real_time_machine": true, "can_modify_activity_machine": true},
+        "associations": [], "billing": [], "tag_ble": {"id": null, "id_tag": null,
+        "start_date": null, "end_date": null}, "provider": {"name": "Ekylibre", "uuid":
+        "e6763e58-290f-4a01-8775-1f6f64b33996"}}, {"id": "60426a580905adafb0461b25",
+        "name": "Pulv\u00e9risateur Vo\u00fbte 1000 L", "start_date": "2021-03-05T17:28:56.068000Z",
+        "cluster": {"id": "5f4e58953ea3af11caff4f2b", "name": "Ferme de Chollet",
+        "type_cluster": "farm", "vat_number": null, "description": null}, "machine_type":
+        "Pulv\u00e9risateur port\u00e9", "model": null, "brand": "Pulv\u00e9risateur
+        Vo\u00fbte 1000 L", "road_count_policy": "separate", "tool_width": null, "max_speed":
+        null, "aux_configurations": {"in1_name": null, "in1_type_entree": null, "in1_scale":
+        null, "in2_name": null, "in2_type_entree": null, "in2_scale": null, "imu_name":
+        null, "imu_axe": null, "imu_threshold": null, "can_protocol": null}, "my_rights":
+        {"can_delete_machine": true, "can_edit_machine": true, "can_manage_machine":
+        true, "can_book_machine": true, "can_accept_book_machine": true, "can_view_real_time_machine":
+        true, "can_modify_activity_machine": true}, "associations": [], "billing":
+        [], "tag_ble": {"id": null, "id_tag": null, "start_date": null, "end_date":
+        null}, "provider": {"name": "Ekylibre", "uuid": "76b6a55c-fcca-4278-8731-1cd55f5ce08e"}},
+        {"id": "60426a5853716665c8fcbbb0", "name": "Epandeur engrais vignes 2M", "start_date":
+        "2021-03-05T17:28:56.956000Z", "cluster": {"id": "5f4e58953ea3af11caff4f2b",
+        "name": "Ferme de Chollet", "type_cluster": "farm", "vat_number": null, "description":
+        null}, "machine_type": "Pulv\u00e9risateur port\u00e9", "model": null, "brand":
+        "Epandeur engrais vignes 2M", "road_count_policy": "separate", "tool_width":
+        null, "max_speed": null, "aux_configurations": {"in1_name": null, "in1_type_entree":
+        null, "in1_scale": null, "in2_name": null, "in2_type_entree": null, "in2_scale":
+        null, "imu_name": null, "imu_axe": null, "imu_threshold": null, "can_protocol":
+        null}, "my_rights": {"can_delete_machine": true, "can_edit_machine": true,
+        "can_manage_machine": true, "can_book_machine": true, "can_accept_book_machine":
+        true, "can_view_real_time_machine": true, "can_modify_activity_machine": true},
+        "associations": [], "billing": [], "tag_ble": {"id": null, "id_tag": null,
+        "start_date": null, "end_date": null}, "provider": {"name": "Ekylibre", "uuid":
+        "8ad0dbea-c95e-4a45-9c70-550c9a1fdf08"}}, {"id": "60426a5953716665c8fcbbb1",
+        "name": "Vibroculteur Vignes", "start_date": "2021-03-05T17:28:57.995000Z",
+        "cluster": {"id": "5f4e58953ea3af11caff4f2b", "name": "Ferme de Chollet",
+        "type_cluster": "farm", "vat_number": null, "description": null}, "machine_type":
+        "Machines \u00e0 b\u00eacher", "model": null, "brand": "Vibroculteur Vignes",
+        "road_count_policy": "separate", "tool_width": null, "max_speed": null, "aux_configurations":
+        {"in1_name": null, "in1_type_entree": null, "in1_scale": null, "in2_name":
+        null, "in2_type_entree": null, "in2_scale": null, "imu_name": null, "imu_axe":
+        null, "imu_threshold": null, "can_protocol": null}, "my_rights": {"can_delete_machine":
+        true, "can_edit_machine": true, "can_manage_machine": true, "can_book_machine":
+        true, "can_accept_book_machine": true, "can_view_real_time_machine": true,
+        "can_modify_activity_machine": true}, "associations": [], "billing": [], "tag_ble":
+        {"id": null, "id_tag": null, "start_date": null, "end_date": null}, "provider":
+        {"name": "Ekylibre", "uuid": "26aed259-8d95-49e6-b669-d20e5a541880"}}, {"id":
+        "60426a5a5308519857e775d1", "name": "Cultivateur bleu", "start_date": "2021-03-05T17:28:58.863000Z",
+        "cluster": {"id": "5f4e58953ea3af11caff4f2b", "name": "Ferme de Chollet",
+        "type_cluster": "farm", "vat_number": null, "description": null}, "machine_type":
+        "Machines \u00e0 b\u00eacher", "model": null, "brand": "Cultivateur bleu",
+        "road_count_policy": "separate", "tool_width": null, "max_speed": null, "aux_configurations":
+        {"in1_name": null, "in1_type_entree": null, "in1_scale": null, "in2_name":
+        null, "in2_type_entree": null, "in2_scale": null, "imu_name": null, "imu_axe":
+        null, "imu_threshold": null, "can_protocol": null}, "my_rights": {"can_delete_machine":
+        true, "can_edit_machine": true, "can_manage_machine": true, "can_book_machine":
+        true, "can_accept_book_machine": true, "can_view_real_time_machine": true,
+        "can_modify_activity_machine": true}, "associations": [], "billing": [], "tag_ble":
+        {"id": null, "id_tag": null, "start_date": null, "end_date": null}, "provider":
+        {"name": "Ekylibre", "uuid": "847a8684-5382-439e-855d-af2b5571ef6a"}}, {"id":
+        "60426a5b53716665c8fcbbb2", "name": "Cultivateur vert Grands Fers", "start_date":
+        "2021-03-05T17:28:59.805000Z", "cluster": {"id": "5f4e58953ea3af11caff4f2b",
+        "name": "Ferme de Chollet", "type_cluster": "farm", "vat_number": null, "description":
+        null}, "machine_type": "Machines \u00e0 b\u00eacher", "model": null, "brand":
+        "Cultivateur vert Grands Fers", "road_count_policy": "separate", "tool_width":
+        null, "max_speed": null, "aux_configurations": {"in1_name": null, "in1_type_entree":
+        null, "in1_scale": null, "in2_name": null, "in2_type_entree": null, "in2_scale":
+        null, "imu_name": null, "imu_axe": null, "imu_threshold": null, "can_protocol":
+        null}, "my_rights": {"can_delete_machine": true, "can_edit_machine": true,
+        "can_manage_machine": true, "can_book_machine": true, "can_accept_book_machine":
+        true, "can_view_real_time_machine": true, "can_modify_activity_machine": true},
+        "associations": [], "billing": [], "tag_ble": {"id": null, "id_tag": null,
+        "start_date": null, "end_date": null}, "provider": {"name": "Ekylibre", "uuid":
+        "1bfb5e59-0d18-4814-93f7-b1fa1b753670"}}, {"id": "60426a5c53716665c8fcbbb3",
+        "name": "Semoir c\u00e9r\u00e9ales", "start_date": "2021-03-05T17:29:00.695000Z",
+        "cluster": {"id": "5f4e58953ea3af11caff4f2b", "name": "Ferme de Chollet",
+        "type_cluster": "farm", "vat_number": null, "description": null}, "machine_type":
+        "Semoir - autre", "model": null, "brand": "Semoir c\u00e9r\u00e9ales", "road_count_policy":
+        "separate", "tool_width": null, "max_speed": null, "aux_configurations": {"in1_name":
+        null, "in1_type_entree": null, "in1_scale": null, "in2_name": null, "in2_type_entree":
+        null, "in2_scale": null, "imu_name": null, "imu_axe": null, "imu_threshold":
+        null, "can_protocol": null}, "my_rights": {"can_delete_machine": true, "can_edit_machine":
+        true, "can_manage_machine": true, "can_book_machine": true, "can_accept_book_machine":
+        true, "can_view_real_time_machine": true, "can_modify_activity_machine": true},
+        "associations": [], "billing": [], "tag_ble": {"id": null, "id_tag": null,
+        "start_date": null, "end_date": null}, "provider": {"name": "Ekylibre", "uuid":
+        "f2bb1dbb-b4cc-4ccd-a25f-83ca3d096299"}}, {"id": "60426a5d53716665c8fcbbb4",
+        "name": "Broyeur \u00e0 sarments 2M", "start_date": "2021-03-05T17:29:01.631000Z",
+        "cluster": {"id": "5f4e58953ea3af11caff4f2b", "name": "Ferme de Chollet",
+        "type_cluster": "farm", "vat_number": null, "description": null}, "machine_type":
+        "Broyeurs", "model": null, "brand": "Broyeur \u00e0 sarments 2M", "road_count_policy":
+        "separate", "tool_width": null, "max_speed": null, "aux_configurations": {"in1_name":
+        null, "in1_type_entree": null, "in1_scale": null, "in2_name": null, "in2_type_entree":
+        null, "in2_scale": null, "imu_name": null, "imu_axe": null, "imu_threshold":
+        null, "can_protocol": null}, "my_rights": {"can_delete_machine": true, "can_edit_machine":
+        true, "can_manage_machine": true, "can_book_machine": true, "can_accept_book_machine":
+        true, "can_view_real_time_machine": true, "can_modify_activity_machine": true},
+        "associations": [], "billing": [], "tag_ble": {"id": null, "id_tag": null,
+        "start_date": null, "end_date": null}, "provider": {"name": "Ekylibre", "uuid":
+        "26732c5d-14c8-484a-ac1c-06ef0165553e"}}, {"id": "60426a5e53716665c8fcbbb5",
+        "name": "Cultivateur \u00e0 disques maxivigne", "start_date": "2021-03-05T17:29:02.597000Z",
+        "cluster": {"id": "5f4e58953ea3af11caff4f2b", "name": "Ferme de Chollet",
+        "type_cluster": "farm", "vat_number": null, "description": null}, "machine_type":
+        "Machines \u00e0 b\u00eacher", "model": null, "brand": "Cultivateur \u00e0
+        disques maxivigne", "road_count_policy": "separate", "tool_width": null, "max_speed":
+        null, "aux_configurations": {"in1_name": null, "in1_type_entree": null, "in1_scale":
+        null, "in2_name": null, "in2_type_entree": null, "in2_scale": null, "imu_name":
+        null, "imu_axe": null, "imu_threshold": null, "can_protocol": null}, "my_rights":
+        {"can_delete_machine": true, "can_edit_machine": true, "can_manage_machine":
+        true, "can_book_machine": true, "can_accept_book_machine": true, "can_view_real_time_machine":
+        true, "can_modify_activity_machine": true}, "associations": [], "billing":
+        [], "tag_ble": {"id": null, "id_tag": null, "start_date": null, "end_date":
+        null}, "provider": {"name": "Ekylibre", "uuid": "b8e2c2cb-4ec1-4fc6-ade4-74956f0d60dd"}},
+        {"id": "60426a5fc208cb291b107a33", "name": "Pulv\u00e9risateur Panneaux 1500
+        L", "start_date": "2021-03-05T17:29:03.505000Z", "cluster": {"id": "5f4e58953ea3af11caff4f2b",
+        "name": "Ferme de Chollet", "type_cluster": "farm", "vat_number": null, "description":
+        null}, "machine_type": "Pulv\u00e9risateur port\u00e9", "model": null, "brand":
+        "Pulv\u00e9risateur Panneaux 1500 L", "road_count_policy": "separate", "tool_width":
+        null, "max_speed": null, "aux_configurations": {"in1_name": null, "in1_type_entree":
+        null, "in1_scale": null, "in2_name": null, "in2_type_entree": null, "in2_scale":
+        null, "imu_name": null, "imu_axe": null, "imu_threshold": null, "can_protocol":
+        null}, "my_rights": {"can_delete_machine": true, "can_edit_machine": true,
+        "can_manage_machine": true, "can_book_machine": true, "can_accept_book_machine":
+        true, "can_view_real_time_machine": true, "can_modify_activity_machine": true},
+        "associations": [], "billing": [], "tag_ble": {"id": null, "id_tag": null,
+        "start_date": null, "end_date": null}, "provider": {"name": "Ekylibre", "uuid":
+        "c688902e-e8ee-41a1-8d05-0d84373ac8f1"}}, {"id": "60426a60c208cb291b107a34",
+        "name": "Quad Outlander", "start_date": "2021-03-05T17:29:04.490000Z", "cluster":
+        {"id": "5f4e58953ea3af11caff4f2b", "name": "Ferme de Chollet", "type_cluster":
+        "farm", "vat_number": null, "description": null}, "machine_type": "Tracteur
+        agricole", "model": null, "brand": "Quad Outlander", "road_count_policy":
+        "separate", "tool_width": null, "max_speed": null, "aux_configurations": {"in1_name":
+        null, "in1_type_entree": null, "in1_scale": null, "in2_name": null, "in2_type_entree":
+        null, "in2_scale": null, "imu_name": null, "imu_axe": null, "imu_threshold":
+        null, "can_protocol": null}, "my_rights": {"can_delete_machine": true, "can_edit_machine":
+        true, "can_manage_machine": true, "can_book_machine": true, "can_accept_book_machine":
+        true, "can_view_real_time_machine": true, "can_modify_activity_machine": true},
+        "associations": [], "billing": [], "tag_ble": {"id": null, "id_tag": null,
+        "start_date": null, "end_date": null}, "provider": {"name": "Ekylibre", "uuid":
+        "f0b772fa-3664-4c87-b9f9-81ec12c9c49a"}}, {"id": "60426a6153716665c8fcbbb6",
+        "name": "Charrue Goizin", "start_date": "2021-03-05T17:29:05.430000Z", "cluster":
+        {"id": "5f4e58953ea3af11caff4f2b", "name": "Ferme de Chollet", "type_cluster":
+        "farm", "vat_number": null, "description": null}, "machine_type": "Charrues",
+        "model": null, "brand": "Charrue Goizin", "road_count_policy": "separate",
+        "tool_width": null, "max_speed": null, "aux_configurations": {"in1_name":
+        null, "in1_type_entree": null, "in1_scale": null, "in2_name": null, "in2_type_entree":
+        null, "in2_scale": null, "imu_name": null, "imu_axe": null, "imu_threshold":
+        null, "can_protocol": null}, "my_rights": {"can_delete_machine": true, "can_edit_machine":
+        true, "can_manage_machine": true, "can_book_machine": true, "can_accept_book_machine":
+        true, "can_view_real_time_machine": true, "can_modify_activity_machine": true},
+        "associations": [], "billing": [], "tag_ble": {"id": null, "id_tag": null,
+        "start_date": null, "end_date": null}, "provider": {"name": "Ekylibre", "uuid":
+        "a04c2f6c-5f6f-4595-95af-e0e3084a9970"}}, {"id": "60426a625308519857e775d2",
+        "name": "Herse rotative Howard", "start_date": "2021-03-05T17:29:06.377000Z",
+        "cluster": {"id": "5f4e58953ea3af11caff4f2b", "name": "Ferme de Chollet",
+        "type_cluster": "farm", "vat_number": null, "description": null}, "machine_type":
+        "Machines \u00e0 b\u00eacher", "model": null, "brand": "Herse rotative Howard",
+        "road_count_policy": "separate", "tool_width": null, "max_speed": null, "aux_configurations":
+        {"in1_name": null, "in1_type_entree": null, "in1_scale": null, "in2_name":
+        null, "in2_type_entree": null, "in2_scale": null, "imu_name": null, "imu_axe":
+        null, "imu_threshold": null, "can_protocol": null}, "my_rights": {"can_delete_machine":
+        true, "can_edit_machine": true, "can_manage_machine": true, "can_book_machine":
+        true, "can_accept_book_machine": true, "can_view_real_time_machine": true,
+        "can_modify_activity_machine": true}, "associations": [], "billing": [], "tag_ble":
+        {"id": null, "id_tag": null, "start_date": null, "end_date": null}, "provider":
+        {"name": "Ekylibre", "uuid": "b210bab9-d72c-48a6-af20-a56416a38a22"}}, {"id":
+        "60426a635308519857e775d3", "name": "Benne c\u00e9r\u00e9ali\u00e8re ", "start_date":
+        "2021-03-05T17:29:07.335000Z", "cluster": {"id": "5f4e58953ea3af11caff4f2b",
+        "name": "Ferme de Chollet", "type_cluster": "farm", "vat_number": null, "description":
+        null}, "machine_type": "Bennes", "model": null, "brand": "Benne c\u00e9r\u00e9ali\u00e8re
+        ", "road_count_policy": "separate", "tool_width": null, "max_speed": null,
+        "aux_configurations": {"in1_name": null, "in1_type_entree": null, "in1_scale":
+        null, "in2_name": null, "in2_type_entree": null, "in2_scale": null, "imu_name":
+        null, "imu_axe": null, "imu_threshold": null, "can_protocol": null}, "my_rights":
+        {"can_delete_machine": true, "can_edit_machine": true, "can_manage_machine":
+        true, "can_book_machine": true, "can_accept_book_machine": true, "can_view_real_time_machine":
+        true, "can_modify_activity_machine": true}, "associations": [], "billing":
+        [], "tag_ble": {"id": null, "id_tag": null, "start_date": null, "end_date":
+        null}, "provider": {"name": "Ekylibre", "uuid": "666f87e8-51c9-481f-a72b-0f63562ffbe5"}},
+        {"id": "60426a640905adafb0461b26", "name": "Benne 50 Hl", "start_date": "2021-03-05T17:29:08.276000Z",
+        "cluster": {"id": "5f4e58953ea3af11caff4f2b", "name": "Ferme de Chollet",
+        "type_cluster": "farm", "vat_number": null, "description": null}, "machine_type":
+        "Bennes", "model": null, "brand": "Benne 50 Hl", "road_count_policy": "separate",
+        "tool_width": null, "max_speed": null, "aux_configurations": {"in1_name":
+        null, "in1_type_entree": null, "in1_scale": null, "in2_name": null, "in2_type_entree":
+        null, "in2_scale": null, "imu_name": null, "imu_axe": null, "imu_threshold":
+        null, "can_protocol": null}, "my_rights": {"can_delete_machine": true, "can_edit_machine":
+        true, "can_manage_machine": true, "can_book_machine": true, "can_accept_book_machine":
+        true, "can_view_real_time_machine": true, "can_modify_activity_machine": true},
+        "associations": [], "billing": [], "tag_ble": {"id": null, "id_tag": null,
+        "start_date": null, "end_date": null}, "provider": {"name": "Ekylibre", "uuid":
+        "cc97c7ed-0c5a-4385-b479-24d1977e3a6a"}}, {"id": "60426a65c208cb291b107a35",
+        "name": "Benne 20 Hl", "start_date": "2021-03-05T17:29:09.223000Z", "cluster":
+        {"id": "5f4e58953ea3af11caff4f2b", "name": "Ferme de Chollet", "type_cluster":
+        "farm", "vat_number": null, "description": null}, "machine_type": "Bennes",
+        "model": null, "brand": "Benne 20 Hl", "road_count_policy": "separate", "tool_width":
+        null, "max_speed": null, "aux_configurations": {"in1_name": null, "in1_type_entree":
+        null, "in1_scale": null, "in2_name": null, "in2_type_entree": null, "in2_scale":
+        null, "imu_name": null, "imu_axe": null, "imu_threshold": null, "can_protocol":
+        null}, "my_rights": {"can_delete_machine": true, "can_edit_machine": true,
+        "can_manage_machine": true, "can_book_machine": true, "can_accept_book_machine":
+        true, "can_view_real_time_machine": true, "can_modify_activity_machine": true},
+        "associations": [], "billing": [], "tag_ble": {"id": null, "id_tag": null,
+        "start_date": null, "end_date": null}, "provider": {"name": "Ekylibre", "uuid":
+        "78d88148-f561-4e23-b5f9-41bc450881b7"}}, {"id": "60426a665308519857e775d4",
+        "name": "Benne \u00e0 vendange Inox", "start_date": "2021-03-05T17:29:10.422000Z",
+        "cluster": {"id": "5f4e58953ea3af11caff4f2b", "name": "Ferme de Chollet",
+        "type_cluster": "farm", "vat_number": null, "description": null}, "machine_type":
+        "Bennes", "model": null, "brand": "Benne \u00e0 vendange Inox", "road_count_policy":
+        "separate", "tool_width": null, "max_speed": null, "aux_configurations": {"in1_name":
+        null, "in1_type_entree": null, "in1_scale": null, "in2_name": null, "in2_type_entree":
+        null, "in2_scale": null, "imu_name": null, "imu_axe": null, "imu_threshold":
+        null, "can_protocol": null}, "my_rights": {"can_delete_machine": true, "can_edit_machine":
+        true, "can_manage_machine": true, "can_book_machine": true, "can_accept_book_machine":
+        true, "can_view_real_time_machine": true, "can_modify_activity_machine": true},
+        "associations": [], "billing": [], "tag_ble": {"id": null, "id_tag": null,
+        "start_date": null, "end_date": null}, "provider": {"name": "Ekylibre", "uuid":
+        "bcafafe5-15aa-4984-8d6f-af14e0b0ca26"}}, {"id": "60426a6753716665c8fcbbb7",
+        "name": "Benne \u00e0 vendange acier", "start_date": "2021-03-05T17:29:11.336000Z",
+        "cluster": {"id": "5f4e58953ea3af11caff4f2b", "name": "Ferme de Chollet",
+        "type_cluster": "farm", "vat_number": null, "description": null}, "machine_type":
+        "Bennes", "model": null, "brand": "Benne \u00e0 vendange acier", "road_count_policy":
+        "separate", "tool_width": null, "max_speed": null, "aux_configurations": {"in1_name":
+        null, "in1_type_entree": null, "in1_scale": null, "in2_name": null, "in2_type_entree":
+        null, "in2_scale": null, "imu_name": null, "imu_axe": null, "imu_threshold":
+        null, "can_protocol": null}, "my_rights": {"can_delete_machine": true, "can_edit_machine":
+        true, "can_manage_machine": true, "can_book_machine": true, "can_accept_book_machine":
+        true, "can_view_real_time_machine": true, "can_modify_activity_machine": true},
+        "associations": [], "billing": [], "tag_ble": {"id": null, "id_tag": null,
+        "start_date": null, "end_date": null}, "provider": {"name": "Ekylibre", "uuid":
+        "13be6686-c53a-43bc-baed-dda4651469a6"}}, {"id": "60426a6853716665c8fcbbb8",
+        "name": "Pulv\u00e9risateur 600 L", "start_date": "2021-03-05T17:29:12.237000Z",
+        "cluster": {"id": "5f4e58953ea3af11caff4f2b", "name": "Ferme de Chollet",
+        "type_cluster": "farm", "vat_number": null, "description": null}, "machine_type":
+        "Pulv\u00e9risateur port\u00e9", "model": null, "brand": "Pulv\u00e9risateur
+        600 L", "road_count_policy": "separate", "tool_width": null, "max_speed":
+        null, "aux_configurations": {"in1_name": null, "in1_type_entree": null, "in1_scale":
+        null, "in2_name": null, "in2_type_entree": null, "in2_scale": null, "imu_name":
+        null, "imu_axe": null, "imu_threshold": null, "can_protocol": null}, "my_rights":
+        {"can_delete_machine": true, "can_edit_machine": true, "can_manage_machine":
+        true, "can_book_machine": true, "can_accept_book_machine": true, "can_view_real_time_machine":
+        true, "can_modify_activity_machine": true}, "associations": [], "billing":
+        [], "tag_ble": {"id": null, "id_tag": null, "start_date": null, "end_date":
+        null}, "provider": {"name": "Ekylibre", "uuid": "551c66bd-8478-454f-bf8f-7751ddcfa364"}},
+        {"id": "60426a6953716665c8fcbbb9", "name": "Tracteur 6100 RC", "start_date":
+        "2021-03-05T17:29:13.197000Z", "cluster": {"id": "5f4e58953ea3af11caff4f2b",
+        "name": "Ferme de Chollet", "type_cluster": "farm", "vat_number": null, "description":
+        null}, "machine_type": "Tracteur agricole", "model": null, "brand": "Tracteur
+        6100 RC", "road_count_policy": "separate", "tool_width": null, "max_speed":
+        null, "aux_configurations": {"in1_name": null, "in1_type_entree": null, "in1_scale":
+        null, "in2_name": null, "in2_type_entree": null, "in2_scale": null, "imu_name":
+        null, "imu_axe": null, "imu_threshold": null, "can_protocol": null}, "my_rights":
+        {"can_delete_machine": true, "can_edit_machine": true, "can_manage_machine":
+        true, "can_book_machine": true, "can_accept_book_machine": true, "can_view_real_time_machine":
+        true, "can_modify_activity_machine": true}, "associations": [], "billing":
+        [], "tag_ble": {"id": null, "id_tag": null, "start_date": null, "end_date":
+        null}, "provider": {"name": "Ekylibre", "uuid": "26fa2f18-8c16-4aaa-895d-fe835aad1519"}},
+        {"id": "60426a6a53716665c8fcbbba", "name": "Tracteur 633", "start_date": "2021-03-05T17:29:14.300000Z",
+        "cluster": {"id": "5f4e58953ea3af11caff4f2b", "name": "Ferme de Chollet",
+        "type_cluster": "farm", "vat_number": null, "description": null}, "machine_type":
+        "Tracteur agricole", "model": null, "brand": "Tracteur 633", "road_count_policy":
+        "separate", "tool_width": null, "max_speed": null, "aux_configurations": {"in1_name":
+        null, "in1_type_entree": null, "in1_scale": null, "in2_name": null, "in2_type_entree":
+        null, "in2_scale": null, "imu_name": null, "imu_axe": null, "imu_threshold":
+        null, "can_protocol": null}, "my_rights": {"can_delete_machine": true, "can_edit_machine":
+        true, "can_manage_machine": true, "can_book_machine": true, "can_accept_book_machine":
+        true, "can_view_real_time_machine": true, "can_modify_activity_machine": true},
+        "associations": [], "billing": [], "tag_ble": {"id": null, "id_tag": null,
+        "start_date": null, "end_date": null}, "provider": {"name": "Ekylibre", "uuid":
+        "5103be8c-ec1b-45f7-8f4f-b98c8882a754"}}, {"id": "60426a6b5308519857e775d5",
+        "name": "Tonne \u00e0 lisier", "start_date": "2021-03-05T17:29:15.315000Z",
+        "cluster": {"id": "5f4e58953ea3af11caff4f2b", "name": "Ferme de Chollet",
+        "type_cluster": "farm", "vat_number": null, "description": null}, "machine_type":
+        "Pulv\u00e9risateur port\u00e9", "model": null, "brand": "Tonne \u00e0 lisier",
+        "road_count_policy": "separate", "tool_width": null, "max_speed": null, "aux_configurations":
+        {"in1_name": null, "in1_type_entree": null, "in1_scale": null, "in2_name":
+        null, "in2_type_entree": null, "in2_scale": null, "imu_name": null, "imu_axe":
+        null, "imu_threshold": null, "can_protocol": null}, "my_rights": {"can_delete_machine":
+        true, "can_edit_machine": true, "can_manage_machine": true, "can_book_machine":
+        true, "can_accept_book_machine": true, "can_view_real_time_machine": true,
+        "can_modify_activity_machine": true}, "associations": [], "billing": [], "tag_ble":
+        {"id": null, "id_tag": null, "start_date": null, "end_date": null}, "provider":
+        {"name": "Ekylibre", "uuid": "12fc37d4-ee81-4ddd-bccb-fbb69a7d6da4"}}, {"id":
+        "60426b1a5308519857e775d6", "name": "Rouleau", "start_date": "2021-03-05T17:32:10.571000Z",
+        "cluster": {"id": "5f4e58953ea3af11caff4f2b", "name": "Ferme de Chollet",
+        "type_cluster": "farm", "vat_number": null, "description": null}, "machine_type":
+        "Rouleau", "model": null, "brand": "Rouleau", "road_count_policy": "separate",
+        "tool_width": null, "max_speed": null, "aux_configurations": {"in1_name":
+        null, "in1_type_entree": null, "in1_scale": null, "in2_name": null, "in2_type_entree":
+        null, "in2_scale": null, "imu_name": null, "imu_axe": null, "imu_threshold":
+        null, "can_protocol": null}, "my_rights": {"can_delete_machine": true, "can_edit_machine":
+        true, "can_manage_machine": true, "can_book_machine": true, "can_accept_book_machine":
+        true, "can_view_real_time_machine": true, "can_modify_activity_machine": true},
+        "associations": [], "billing": [], "tag_ble": {"id": null, "id_tag": null,
+        "start_date": null, "end_date": null}, "provider": {"name": "Ekylibre", "uuid":
+        "a64362aa-3a28-4155-993d-eecc3fcff936"}}, {"id": "60426b1cc208cb291b107a38",
+        "name": "Gyrobroyeur 2m", "start_date": "2021-03-05T17:32:12.575000Z", "cluster":
+        {"id": "5f4e58953ea3af11caff4f2b", "name": "Ferme de Chollet", "type_cluster":
+        "farm", "vat_number": null, "description": null}, "machine_type": "Faucheuse",
+        "model": null, "brand": "Gyrobroyeur 2m", "road_count_policy": "separate",
+        "tool_width": null, "max_speed": null, "aux_configurations": {"in1_name":
+        null, "in1_type_entree": null, "in1_scale": null, "in2_name": null, "in2_type_entree":
+        null, "in2_scale": null, "imu_name": null, "imu_axe": null, "imu_threshold":
+        null, "can_protocol": null}, "my_rights": {"can_delete_machine": true, "can_edit_machine":
+        true, "can_manage_machine": true, "can_book_machine": true, "can_accept_book_machine":
+        true, "can_view_real_time_machine": true, "can_modify_activity_machine": true},
+        "associations": [], "billing": [], "tag_ble": {"id": null, "id_tag": null,
+        "start_date": null, "end_date": null}, "provider": {"name": "Ekylibre", "uuid":
+        "b934ddbf-3f89-4ef1-a360-b661fbbe0e30"}}, {"id": "60426b1d53716665c8fcbbbb",
+        "name": "Charrue Goizin", "start_date": "2021-03-05T17:32:13.714000Z", "cluster":
+        {"id": "5f4e58953ea3af11caff4f2b", "name": "Ferme de Chollet", "type_cluster":
+        "farm", "vat_number": null, "description": null}, "machine_type": "Charrues",
+        "model": null, "brand": "Charrue Goizin", "road_count_policy": "separate",
+        "tool_width": null, "max_speed": null, "aux_configurations": {"in1_name":
+        null, "in1_type_entree": null, "in1_scale": null, "in2_name": null, "in2_type_entree":
+        null, "in2_scale": null, "imu_name": null, "imu_axe": null, "imu_threshold":
+        null, "can_protocol": null}, "my_rights": {"can_delete_machine": true, "can_edit_machine":
+        true, "can_manage_machine": true, "can_book_machine": true, "can_accept_book_machine":
+        true, "can_view_real_time_machine": true, "can_modify_activity_machine": true},
+        "associations": [], "billing": [], "tag_ble": {"id": null, "id_tag": null,
+        "start_date": null, "end_date": null}, "provider": {"name": "Ekylibre", "uuid":
+        "97db19e3-ea46-4166-abfc-0e28404c2e51"}}, {"id": "60426b1e53716665c8fcbbbc",
+        "name": "Semoir", "start_date": "2021-03-05T17:32:14.737000Z", "cluster":
+        {"id": "5f4e58953ea3af11caff4f2b", "name": "Ferme de Chollet", "type_cluster":
+        "farm", "vat_number": null, "description": null}, "machine_type": "Semoir
+        - autre", "model": null, "brand": "Semoir", "road_count_policy": "separate",
+        "tool_width": null, "max_speed": null, "aux_configurations": {"in1_name":
+        null, "in1_type_entree": null, "in1_scale": null, "in2_name": null, "in2_type_entree":
+        null, "in2_scale": null, "imu_name": null, "imu_axe": null, "imu_threshold":
+        null, "can_protocol": null}, "my_rights": {"can_delete_machine": true, "can_edit_machine":
+        true, "can_manage_machine": true, "can_book_machine": true, "can_accept_book_machine":
+        true, "can_view_real_time_machine": true, "can_modify_activity_machine": true},
+        "associations": [], "billing": [], "tag_ble": {"id": null, "id_tag": null,
+        "start_date": null, "end_date": null}, "provider": {"name": "Ekylibre", "uuid":
+        "42343f8c-642d-4ffe-ab2b-5fabe423fd2f"}}, {"id": "60426b1f53716665c8fcbbbd",
+        "name": "D\u00e9sherbeuse Dhugues", "start_date": "2021-03-05T17:32:15.887000Z",
+        "cluster": {"id": "5f4e58953ea3af11caff4f2b", "name": "Ferme de Chollet",
+        "type_cluster": "farm", "vat_number": null, "description": null}, "machine_type":
+        "Pulv\u00e9risateur port\u00e9", "model": null, "brand": "D\u00e9sherbeuse
+        Dhugues", "road_count_policy": "separate", "tool_width": null, "max_speed":
+        null, "aux_configurations": {"in1_name": null, "in1_type_entree": null, "in1_scale":
+        null, "in2_name": null, "in2_type_entree": null, "in2_scale": null, "imu_name":
+        null, "imu_axe": null, "imu_threshold": null, "can_protocol": null}, "my_rights":
+        {"can_delete_machine": true, "can_edit_machine": true, "can_manage_machine":
+        true, "can_book_machine": true, "can_accept_book_machine": true, "can_view_real_time_machine":
+        true, "can_modify_activity_machine": true}, "associations": [], "billing":
+        [], "tag_ble": {"id": null, "id_tag": null, "start_date": null, "end_date":
+        null}, "provider": {"name": "Ekylibre", "uuid": "36455f7a-bd05-4bbe-8f69-c520ba75293c"}},
+        {"id": "60426b215308519857e775d7", "name": "Round Baler", "start_date": "2021-03-05T17:32:17.013000Z",
+        "cluster": {"id": "5f4e58953ea3af11caff4f2b", "name": "Ferme de Chollet",
+        "type_cluster": "farm", "vat_number": null, "description": null}, "machine_type":
+        "Enrubanneuse", "model": null, "brand": "Round Baler", "road_count_policy":
+        "separate", "tool_width": null, "max_speed": null, "aux_configurations": {"in1_name":
+        null, "in1_type_entree": null, "in1_scale": null, "in2_name": null, "in2_type_entree":
+        null, "in2_scale": null, "imu_name": null, "imu_axe": null, "imu_threshold":
+        null, "can_protocol": null}, "my_rights": {"can_delete_machine": true, "can_edit_machine":
+        true, "can_manage_machine": true, "can_book_machine": true, "can_accept_book_machine":
+        true, "can_view_real_time_machine": true, "can_modify_activity_machine": true},
+        "associations": [], "billing": [], "tag_ble": {"id": null, "id_tag": null,
+        "start_date": null, "end_date": null}, "provider": {"name": "Ekylibre", "uuid":
+        "945ca557-027f-409b-8106-27a4833e935f"}}, {"id": "60426b22c208cb291b107a39",
+        "name": "Decomptacteur", "start_date": "2021-03-05T17:32:18.176000Z", "cluster":
+        {"id": "5f4e58953ea3af11caff4f2b", "name": "Ferme de Chollet", "type_cluster":
+        "farm", "vat_number": null, "description": null}, "machine_type": "D\u00e9compacteurs",
+        "model": null, "brand": "Decomptacteur", "road_count_policy": "separate",
+        "tool_width": null, "max_speed": null, "aux_configurations": {"in1_name":
+        null, "in1_type_entree": null, "in1_scale": null, "in2_name": null, "in2_type_entree":
+        null, "in2_scale": null, "imu_name": null, "imu_axe": null, "imu_threshold":
+        null, "can_protocol": null}, "my_rights": {"can_delete_machine": true, "can_edit_machine":
+        true, "can_manage_machine": true, "can_book_machine": true, "can_accept_book_machine":
+        true, "can_view_real_time_machine": true, "can_modify_activity_machine": true},
+        "associations": [], "billing": [], "tag_ble": {"id": null, "id_tag": null,
+        "start_date": null, "end_date": null}, "provider": {"name": "Ekylibre", "uuid":
+        "ca9b926c-60fd-4b32-86e7-f8fd7daf21b1"}}, {"id": "60426b230905adafb0461b29",
+        "name": "Herse Rotative", "start_date": "2021-03-05T17:32:19.275000Z", "cluster":
+        {"id": "5f4e58953ea3af11caff4f2b", "name": "Ferme de Chollet", "type_cluster":
+        "farm", "vat_number": null, "description": null}, "machine_type": "Machines
+        \u00e0 b\u00eacher", "model": null, "brand": "Herse Rotative", "road_count_policy":
+        "separate", "tool_width": null, "max_speed": null, "aux_configurations": {"in1_name":
+        null, "in1_type_entree": null, "in1_scale": null, "in2_name": null, "in2_type_entree":
+        null, "in2_scale": null, "imu_name": null, "imu_axe": null, "imu_threshold":
+        null, "can_protocol": null}, "my_rights": {"can_delete_machine": true, "can_edit_machine":
+        true, "can_manage_machine": true, "can_book_machine": true, "can_accept_book_machine":
+        true, "can_view_real_time_machine": true, "can_modify_activity_machine": true},
+        "associations": [], "billing": [], "tag_ble": {"id": null, "id_tag": null,
+        "start_date": null, "end_date": null}, "provider": {"name": "Ekylibre", "uuid":
+        "c226d032-70da-448a-9cb4-9b21e530dc66"}}, {"id": "60426b240905adafb0461b2a",
+        "name": "Faucheuse Kuhn", "start_date": "2021-03-05T17:32:20.509000Z", "cluster":
+        {"id": "5f4e58953ea3af11caff4f2b", "name": "Ferme de Chollet", "type_cluster":
+        "farm", "vat_number": null, "description": null}, "machine_type": "Faucheuse",
+        "model": null, "brand": "Faucheuse Kuhn", "road_count_policy": "separate",
+        "tool_width": null, "max_speed": null, "aux_configurations": {"in1_name":
+        null, "in1_type_entree": null, "in1_scale": null, "in2_name": null, "in2_type_entree":
+        null, "in2_scale": null, "imu_name": null, "imu_axe": null, "imu_threshold":
+        null, "can_protocol": null}, "my_rights": {"can_delete_machine": true, "can_edit_machine":
+        true, "can_manage_machine": true, "can_book_machine": true, "can_accept_book_machine":
+        true, "can_view_real_time_machine": true, "can_modify_activity_machine": true},
+        "associations": [], "billing": [], "tag_ble": {"id": null, "id_tag": null,
+        "start_date": null, "end_date": null}, "provider": {"name": "Ekylibre", "uuid":
+        "080eb2d8-a307-49c8-b8d7-d12d96de9527"}}, {"id": "60426b2553716665c8fcbbbe",
+        "name": "Cultivateur vignesetroites", "start_date": "2021-03-05T17:32:21.553000Z",
+        "cluster": {"id": "5f4e58953ea3af11caff4f2b", "name": "Ferme de Chollet",
+        "type_cluster": "farm", "vat_number": null, "description": null}, "machine_type":
+        "Machines \u00e0 b\u00eacher", "model": null, "brand": "Cultivateur vignesetroites",
+        "road_count_policy": "separate", "tool_width": null, "max_speed": null, "aux_configurations":
+        {"in1_name": null, "in1_type_entree": null, "in1_scale": null, "in2_name":
+        null, "in2_type_entree": null, "in2_scale": null, "imu_name": null, "imu_axe":
+        null, "imu_threshold": null, "can_protocol": null}, "my_rights": {"can_delete_machine":
+        true, "can_edit_machine": true, "can_manage_machine": true, "can_book_machine":
+        true, "can_accept_book_machine": true, "can_view_real_time_machine": true,
+        "can_modify_activity_machine": true}, "associations": [], "billing": [], "tag_ble":
+        {"id": null, "id_tag": null, "start_date": null, "end_date": null}, "provider":
+        {"name": "Ekylibre", "uuid": "b1c87097-e9ba-430d-bb45-9e914dd52668"}}, {"id":
+        "60426b260905adafb0461b2b", "name": "Cultivateur vignes larges", "start_date":
+        "2021-03-05T17:32:22.703000Z", "cluster": {"id": "5f4e58953ea3af11caff4f2b",
+        "name": "Ferme de Chollet", "type_cluster": "farm", "vat_number": null, "description":
+        null}, "machine_type": "Machines \u00e0 b\u00eacher", "model": null, "brand":
+        "Cultivateur vignes larges", "road_count_policy": "separate", "tool_width":
+        null, "max_speed": null, "aux_configurations": {"in1_name": null, "in1_type_entree":
+        null, "in1_scale": null, "in2_name": null, "in2_type_entree": null, "in2_scale":
+        null, "imu_name": null, "imu_axe": null, "imu_threshold": null, "can_protocol":
+        null}, "my_rights": {"can_delete_machine": true, "can_edit_machine": true,
+        "can_manage_machine": true, "can_book_machine": true, "can_accept_book_machine":
+        true, "can_view_real_time_machine": true, "can_modify_activity_machine": true},
+        "associations": [], "billing": [], "tag_ble": {"id": null, "id_tag": null,
+        "start_date": null, "end_date": null}, "provider": {"name": "Ekylibre", "uuid":
+        "49492f30-a36a-4151-a5ce-86ba3fc39a8a"}}, {"id": "60426b2753716665c8fcbbbf",
+        "name": "Moissonneuse batteuse", "start_date": "2021-03-05T17:32:23.789000Z",
+        "cluster": {"id": "5f4e58953ea3af11caff4f2b", "name": "Ferme de Chollet",
+        "type_cluster": "farm", "vat_number": null, "description": null}, "machine_type":
+        "Moissonneuses batteuses", "model": null, "brand": "Moissonneuse batteuse",
+        "road_count_policy": "separate", "tool_width": null, "max_speed": null, "aux_configurations":
+        {"in1_name": null, "in1_type_entree": null, "in1_scale": null, "in2_name":
+        null, "in2_type_entree": null, "in2_scale": null, "imu_name": null, "imu_axe":
+        null, "imu_threshold": null, "can_protocol": null}, "my_rights": {"can_delete_machine":
+        true, "can_edit_machine": true, "can_manage_machine": true, "can_book_machine":
+        true, "can_accept_book_machine": true, "can_view_real_time_machine": true,
+        "can_modify_activity_machine": true}, "associations": [], "billing": [], "tag_ble":
+        {"id": null, "id_tag": null, "start_date": null, "end_date": null}, "provider":
+        {"name": "Ekylibre", "uuid": "2a0423ce-bdb1-4dcc-84b5-1bee94671747"}}, {"id":
+        "60426b2853716665c8fcbbc0", "name": "Machine a Vendanger", "start_date": "2021-03-05T17:32:24.958000Z",
+        "cluster": {"id": "5f4e58953ea3af11caff4f2b", "name": "Ferme de Chollet",
+        "type_cluster": "farm", "vat_number": null, "description": null}, "machine_type":
+        "Arracheuses de pommes de terre", "model": null, "brand": "Machine a Vendanger",
+        "road_count_policy": "separate", "tool_width": null, "max_speed": null, "aux_configurations":
+        {"in1_name": null, "in1_type_entree": null, "in1_scale": null, "in2_name":
+        null, "in2_type_entree": null, "in2_scale": null, "imu_name": null, "imu_axe":
+        null, "imu_threshold": null, "can_protocol": null}, "my_rights": {"can_delete_machine":
+        true, "can_edit_machine": true, "can_manage_machine": true, "can_book_machine":
+        true, "can_accept_book_machine": true, "can_view_real_time_machine": true,
+        "can_modify_activity_machine": true}, "associations": [], "billing": [], "tag_ble":
+        {"id": null, "id_tag": null, "start_date": null, "end_date": null}, "provider":
+        {"name": "Ekylibre", "uuid": "2e2e64c7-38e3-4908-9349-a76f0c2fc033"}}, {"id":
+        "60426b2a5308519857e775d8", "name": "Epandeur d\u2019engrais", "start_date":
+        "2021-03-05T17:32:26.054000Z", "cluster": {"id": "5f4e58953ea3af11caff4f2b",
+        "name": "Ferme de Chollet", "type_cluster": "farm", "vat_number": null, "description":
+        null}, "machine_type": "Distributeur d''engrais", "model": null, "brand":
+        "Epandeur d\u2019engrais", "road_count_policy": "separate", "tool_width":
+        null, "max_speed": null, "aux_configurations": {"in1_name": null, "in1_type_entree":
+        null, "in1_scale": null, "in2_name": null, "in2_type_entree": null, "in2_scale":
+        null, "imu_name": null, "imu_axe": null, "imu_threshold": null, "can_protocol":
+        null}, "my_rights": {"can_delete_machine": true, "can_edit_machine": true,
+        "can_manage_machine": true, "can_book_machine": true, "can_accept_book_machine":
+        true, "can_view_real_time_machine": true, "can_modify_activity_machine": true},
+        "associations": [], "billing": [], "tag_ble": {"id": null, "id_tag": null,
+        "start_date": null, "end_date": null}, "provider": {"name": "Ekylibre", "uuid":
+        "8088e117-6251-4d7b-a88d-a3a5abc07808"}}, {"id": "60426b2b53716665c8fcbbc1",
+        "name": "Tracteur JD 6105", "start_date": "2021-03-05T17:32:27.086000Z", "cluster":
+        {"id": "5f4e58953ea3af11caff4f2b", "name": "Ferme de Chollet", "type_cluster":
+        "farm", "vat_number": null, "description": null}, "machine_type": "Tracteur
+        agricole", "model": null, "brand": "Tracteur JD 6105", "road_count_policy":
+        "separate", "tool_width": null, "max_speed": null, "aux_configurations": {"in1_name":
+        null, "in1_type_entree": null, "in1_scale": null, "in2_name": null, "in2_type_entree":
+        null, "in2_scale": null, "imu_name": null, "imu_axe": null, "imu_threshold":
+        null, "can_protocol": null}, "my_rights": {"can_delete_machine": true, "can_edit_machine":
+        true, "can_manage_machine": true, "can_book_machine": true, "can_accept_book_machine":
+        true, "can_view_real_time_machine": true, "can_modify_activity_machine": true},
+        "associations": [], "billing": [], "tag_ble": {"id": null, "id_tag": null,
+        "start_date": null, "end_date": null}, "provider": {"name": "Ekylibre", "uuid":
+        "099c4aae-66e9-4b90-9976-4b951bf45883"}}, {"id": "60426b2c5308519857e775d9",
+        "name": "Tracteur viticole JD 5105", "start_date": "2021-03-05T17:32:28.111000Z",
+        "cluster": {"id": "5f4e58953ea3af11caff4f2b", "name": "Ferme de Chollet",
+        "type_cluster": "farm", "vat_number": null, "description": null}, "machine_type":
+        "Tracteur agricole", "model": null, "brand": "Tracteur viticole JD 5105",
+        "road_count_policy": "separate", "tool_width": null, "max_speed": null, "aux_configurations":
+        {"in1_name": null, "in1_type_entree": null, "in1_scale": null, "in2_name":
+        null, "in2_type_entree": null, "in2_scale": null, "imu_name": null, "imu_axe":
+        null, "imu_threshold": null, "can_protocol": null}, "my_rights": {"can_delete_machine":
+        true, "can_edit_machine": true, "can_manage_machine": true, "can_book_machine":
+        true, "can_accept_book_machine": true, "can_view_real_time_machine": true,
+        "can_modify_activity_machine": true}, "associations": [], "billing": [], "tag_ble":
+        {"id": null, "id_tag": null, "start_date": null, "end_date": null}, "provider":
+        {"name": "Ekylibre", "uuid": "26d6fd05-efc2-408b-a5fc-b0a7ed8a340f"}}, {"id":
+        "60426b2d5308519857e775da", "name": "Pulv\u00e9 viti S21", "start_date": "2021-03-05T17:32:29.412000Z",
+        "cluster": {"id": "5f4e58953ea3af11caff4f2b", "name": "Ferme de Chollet",
+        "type_cluster": "farm", "vat_number": null, "description": null}, "machine_type":
+        "Pulv\u00e9risateur port\u00e9", "model": null, "brand": "Pulv\u00e9 viti
+        S21", "road_count_policy": "separate", "tool_width": null, "max_speed": null,
+        "aux_configurations": {"in1_name": null, "in1_type_entree": null, "in1_scale":
+        null, "in2_name": null, "in2_type_entree": null, "in2_scale": null, "imu_name":
+        null, "imu_axe": null, "imu_threshold": null, "can_protocol": null}, "my_rights":
+        {"can_delete_machine": true, "can_edit_machine": true, "can_manage_machine":
+        true, "can_book_machine": true, "can_accept_book_machine": true, "can_view_real_time_machine":
+        true, "can_modify_activity_machine": true}, "associations": [], "billing":
+        [], "tag_ble": {"id": null, "id_tag": null, "start_date": null, "end_date":
+        null}, "provider": {"name": "Ekylibre", "uuid": "1f822e2e-8a16-4b93-8eea-c1e462e695a2"}},
+        {"id": "60426b2e5308519857e775db", "name": "Tracteur JD 5700", "start_date":
+        "2021-03-05T17:32:30.712000Z", "cluster": {"id": "5f4e58953ea3af11caff4f2b",
+        "name": "Ferme de Chollet", "type_cluster": "farm", "vat_number": null, "description":
+        null}, "machine_type": "Tracteur agricole", "model": null, "brand": "Tracteur
+        JD 5700", "road_count_policy": "separate", "tool_width": null, "max_speed":
+        null, "aux_configurations": {"in1_name": null, "in1_type_entree": null, "in1_scale":
+        null, "in2_name": null, "in2_type_entree": null, "in2_scale": null, "imu_name":
+        null, "imu_axe": null, "imu_threshold": null, "can_protocol": null}, "my_rights":
+        {"can_delete_machine": true, "can_edit_machine": true, "can_manage_machine":
+        true, "can_book_machine": true, "can_accept_book_machine": true, "can_view_real_time_machine":
+        true, "can_modify_activity_machine": true}, "associations": [], "billing":
+        [], "tag_ble": {"id": null, "id_tag": null, "start_date": null, "end_date":
+        null}, "provider": {"name": "Ekylibre", "uuid": "62af5e5a-9a9f-472c-b45d-60c01d355c71"}},
+        {"id": "60426b2fc208cb291b107a3a", "name": "Tracteur JD 5805", "start_date":
+        "2021-03-05T17:32:31.977000Z", "cluster": {"id": "5f4e58953ea3af11caff4f2b",
+        "name": "Ferme de Chollet", "type_cluster": "farm", "vat_number": null, "description":
+        null}, "machine_type": "Tracteur agricole", "model": null, "brand": "Tracteur
+        JD 5805", "road_count_policy": "separate", "tool_width": null, "max_speed":
+        null, "aux_configurations": {"in1_name": null, "in1_type_entree": null, "in1_scale":
+        null, "in2_name": null, "in2_type_entree": null, "in2_scale": null, "imu_name":
+        null, "imu_axe": null, "imu_threshold": null, "can_protocol": null}, "my_rights":
+        {"can_delete_machine": true, "can_edit_machine": true, "can_manage_machine":
+        true, "can_book_machine": true, "can_accept_book_machine": true, "can_view_real_time_machine":
+        true, "can_modify_activity_machine": true}, "associations": [], "billing":
+        [], "tag_ble": {"id": null, "id_tag": null, "start_date": null, "end_date":
+        null}, "provider": {"name": "Ekylibre", "uuid": "f4e47241-d710-41ac-b6c0-43114e98576f"}},
+        {"id": "60426b3153716665c8fcbbc2", "name": "Pulv\u00e9 viti Dhugues Koleos",
+        "start_date": "2021-03-05T17:32:33.267000Z", "cluster": {"id": "5f4e58953ea3af11caff4f2b",
+        "name": "Ferme de Chollet", "type_cluster": "farm", "vat_number": null, "description":
+        null}, "machine_type": "Pulv\u00e9risateur port\u00e9", "model": null, "brand":
+        "Pulv\u00e9 viti Dhugues Koleos", "road_count_policy": "separate", "tool_width":
+        null, "max_speed": null, "aux_configurations": {"in1_name": null, "in1_type_entree":
+        null, "in1_scale": null, "in2_name": null, "in2_type_entree": null, "in2_scale":
+        null, "imu_name": null, "imu_axe": null, "imu_threshold": null, "can_protocol":
+        null}, "my_rights": {"can_delete_machine": true, "can_edit_machine": true,
+        "can_manage_machine": true, "can_book_machine": true, "can_accept_book_machine":
+        true, "can_view_real_time_machine": true, "can_modify_activity_machine": true},
+        "associations": [], "billing": [], "tag_ble": {"id": null, "id_tag": null,
+        "start_date": null, "end_date": null}, "provider": {"name": "Ekylibre", "uuid":
+        "6c9440a5-86ed-452e-80c6-d35966ff115f"}}, {"id": "60426b320905adafb0461b2c",
+        "name": "Tracteur viticole JD 5090", "start_date": "2021-03-05T17:32:34.532000Z",
+        "cluster": {"id": "5f4e58953ea3af11caff4f2b", "name": "Ferme de Chollet",
+        "type_cluster": "farm", "vat_number": null, "description": null}, "machine_type":
+        "Tracteur agricole", "model": null, "brand": "Tracteur viticole JD 5090",
+        "road_count_policy": "separate", "tool_width": null, "max_speed": null, "aux_configurations":
+        {"in1_name": null, "in1_type_entree": null, "in1_scale": null, "in2_name":
+        null, "in2_type_entree": null, "in2_scale": null, "imu_name": null, "imu_axe":
+        null, "imu_threshold": null, "can_protocol": null}, "my_rights": {"can_delete_machine":
+        true, "can_edit_machine": true, "can_manage_machine": true, "can_book_machine":
+        true, "can_accept_book_machine": true, "can_view_real_time_machine": true,
+        "can_modify_activity_machine": true}, "associations": [], "billing": [], "tag_ble":
+        {"id": null, "id_tag": null, "start_date": null, "end_date": null}, "provider":
+        {"name": "Ekylibre", "uuid": "c74af4c7-f92e-425c-816c-c262c4af3a43"}}, {"id":
+        "60426b33c208cb291b107a3b", "name": "Broyeur Lagarde", "start_date": "2021-03-05T17:32:35.797000Z",
+        "cluster": {"id": "5f4e58953ea3af11caff4f2b", "name": "Ferme de Chollet",
+        "type_cluster": "farm", "vat_number": null, "description": null}, "machine_type":
+        "Faucheuse", "model": null, "brand": "Broyeur Lagarde", "road_count_policy":
+        "separate", "tool_width": null, "max_speed": null, "aux_configurations": {"in1_name":
+        null, "in1_type_entree": null, "in1_scale": null, "in2_name": null, "in2_type_entree":
+        null, "in2_scale": null, "imu_name": null, "imu_axe": null, "imu_threshold":
+        null, "can_protocol": null}, "my_rights": {"can_delete_machine": true, "can_edit_machine":
+        true, "can_manage_machine": true, "can_book_machine": true, "can_accept_book_machine":
+        true, "can_view_real_time_machine": true, "can_modify_activity_machine": true},
+        "associations": [], "billing": [], "tag_ble": {"id": null, "id_tag": null,
+        "start_date": null, "end_date": null}, "provider": {"name": "Ekylibre", "uuid":
+        "01c626de-ed96-438e-ac7a-40e74f3fb604"}}, {"id": "60426b350905adafb0461b2d",
+        "name": "Pulv\u00e9 Khun", "start_date": "2021-03-05T17:32:37.111000Z", "cluster":
+        {"id": "5f4e58953ea3af11caff4f2b", "name": "Ferme de Chollet", "type_cluster":
+        "farm", "vat_number": null, "description": null}, "machine_type": "Pulv\u00e9risateur
+        port\u00e9", "model": null, "brand": "Pulv\u00e9 Khun", "road_count_policy":
+        "separate", "tool_width": null, "max_speed": null, "aux_configurations": {"in1_name":
+        null, "in1_type_entree": null, "in1_scale": null, "in2_name": null, "in2_type_entree":
+        null, "in2_scale": null, "imu_name": null, "imu_axe": null, "imu_threshold":
+        null, "can_protocol": null}, "my_rights": {"can_delete_machine": true, "can_edit_machine":
+        true, "can_manage_machine": true, "can_book_machine": true, "can_accept_book_machine":
+        true, "can_view_real_time_machine": true, "can_modify_activity_machine": true},
+        "associations": [], "billing": [], "tag_ble": {"id": null, "id_tag": null,
+        "start_date": null, "end_date": null}, "provider": {"name": "Ekylibre", "uuid":
+        "6107030a-fae8-423b-86c6-76cd3bd31efe"}}, {"id": "60426b360905adafb0461b2e",
+        "name": "Tracteur viticole JD 5080", "start_date": "2021-03-05T17:32:38.395000Z",
+        "cluster": {"id": "5f4e58953ea3af11caff4f2b", "name": "Ferme de Chollet",
+        "type_cluster": "farm", "vat_number": null, "description": null}, "machine_type":
+        "Tracteur agricole", "model": null, "brand": "Tracteur viticole JD 5080",
+        "road_count_policy": "separate", "tool_width": null, "max_speed": null, "aux_configurations":
+        {"in1_name": null, "in1_type_entree": null, "in1_scale": null, "in2_name":
+        null, "in2_type_entree": null, "in2_scale": null, "imu_name": null, "imu_axe":
+        null, "imu_threshold": null, "can_protocol": null}, "my_rights": {"can_delete_machine":
+        true, "can_edit_machine": true, "can_manage_machine": true, "can_book_machine":
+        true, "can_accept_book_machine": true, "can_view_real_time_machine": true,
+        "can_modify_activity_machine": true}, "associations": [], "billing": [], "tag_ble":
+        {"id": null, "id_tag": null, "start_date": null, "end_date": null}, "provider":
+        {"name": "Ekylibre", "uuid": "db1f1f4c-e780-4e31-95c7-d73621f702d8"}}, {"id":
+        "60426b370905adafb0461b2f", "name": "Broyeur 3m", "start_date": "2021-03-05T17:32:39.868000Z",
+        "cluster": {"id": "5f4e58953ea3af11caff4f2b", "name": "Ferme de Chollet",
+        "type_cluster": "farm", "vat_number": null, "description": null}, "machine_type":
+        "Faucheuse", "model": null, "brand": "Broyeur 3m", "road_count_policy": "separate",
+        "tool_width": null, "max_speed": null, "aux_configurations": {"in1_name":
+        null, "in1_type_entree": null, "in1_scale": null, "in2_name": null, "in2_type_entree":
+        null, "in2_scale": null, "imu_name": null, "imu_axe": null, "imu_threshold":
+        null, "can_protocol": null}, "my_rights": {"can_delete_machine": true, "can_edit_machine":
+        true, "can_manage_machine": true, "can_book_machine": true, "can_accept_book_machine":
+        true, "can_view_real_time_machine": true, "can_modify_activity_machine": true},
+        "associations": [], "billing": [], "tag_ble": {"id": null, "id_tag": null,
+        "start_date": null, "end_date": null}, "provider": {"name": "Ekylibre", "uuid":
+        "fe7b2c6a-1c8b-4450-8455-fdb06685769b"}}, {"id": "60426b3953716665c8fcbbc3",
+        "name": "Endaineur Kuhn", "start_date": "2021-03-05T17:32:41.108000Z", "cluster":
+        {"id": "5f4e58953ea3af11caff4f2b", "name": "Ferme de Chollet", "type_cluster":
+        "farm", "vat_number": null, "description": null}, "machine_type": "Aligneuse",
+        "model": null, "brand": "Endaineur Kuhn", "road_count_policy": "separate",
+        "tool_width": null, "max_speed": null, "aux_configurations": {"in1_name":
+        null, "in1_type_entree": null, "in1_scale": null, "in2_name": null, "in2_type_entree":
+        null, "in2_scale": null, "imu_name": null, "imu_axe": null, "imu_threshold":
+        null, "can_protocol": null}, "my_rights": {"can_delete_machine": true, "can_edit_machine":
+        true, "can_manage_machine": true, "can_book_machine": true, "can_accept_book_machine":
+        true, "can_view_real_time_machine": true, "can_modify_activity_machine": true},
+        "associations": [], "billing": [], "tag_ble": {"id": null, "id_tag": null,
+        "start_date": null, "end_date": null}, "provider": {"name": "Ekylibre", "uuid":
+        "54e7745a-543d-41e8-a11e-d7476692682a"}}, {"id": "6045f1f45308519857e77b4a",
+        "name": "Tracteur JD 5100", "start_date": "2021-03-08T09:44:20.069000Z", "cluster":
+        {"id": "5f4e58953ea3af11caff4f2b", "name": "Ferme de Chollet", "type_cluster":
+        "farm", "vat_number": null, "description": null}, "machine_type": "Tracteur
+        agricole", "model": null, "brand": "Tracteur JD 5100", "road_count_policy":
+        "separate", "tool_width": null, "max_speed": null, "aux_configurations": {"in1_name":
+        null, "in1_type_entree": null, "in1_scale": null, "in2_name": null, "in2_type_entree":
+        null, "in2_scale": null, "imu_name": null, "imu_axe": null, "imu_threshold":
+        null, "can_protocol": null}, "my_rights": {"can_delete_machine": true, "can_edit_machine":
+        true, "can_manage_machine": true, "can_book_machine": true, "can_accept_book_machine":
+        true, "can_view_real_time_machine": true, "can_modify_activity_machine": true},
+        "associations": [], "billing": [], "tag_ble": {"id": null, "id_tag": null,
+        "start_date": null, "end_date": null}, "provider": {"name": "Ekylibre", "uuid":
+        "4aa40850-51c3-4cf6-a72d-24164659599f"}}, {"id": "6045f244c208cb291b107fe2",
+        "name": "Tracteur MF 3660", "start_date": "2021-03-08T09:45:40.578000Z", "cluster":
+        {"id": "5f4e58953ea3af11caff4f2b", "name": "Ferme de Chollet", "type_cluster":
+        "farm", "vat_number": null, "description": null}, "machine_type": "Tracteur
+        agricole", "model": null, "brand": "Tracteur MF 3660", "road_count_policy":
+        "separate", "tool_width": null, "max_speed": null, "aux_configurations": {"in1_name":
+        null, "in1_type_entree": null, "in1_scale": null, "in2_name": null, "in2_type_entree":
+        null, "in2_scale": null, "imu_name": null, "imu_axe": null, "imu_threshold":
+        null, "can_protocol": null}, "my_rights": {"can_delete_machine": true, "can_edit_machine":
+        true, "can_manage_machine": true, "can_book_machine": true, "can_accept_book_machine":
+        true, "can_view_real_time_machine": true, "can_modify_activity_machine": true},
+        "associations": [], "billing": [], "tag_ble": {"id": null, "id_tag": null,
+        "start_date": null, "end_date": null}, "provider": {"name": "Ekylibre", "uuid":
+        "577e15cb-9f6f-43a0-81d2-cd8405b9d907"}}, {"id": "6045f24f5308519857e77b4b",
+        "name": "Tracteur MF 5710", "start_date": "2021-03-08T09:45:51.871000Z", "cluster":
+        {"id": "5f4e58953ea3af11caff4f2b", "name": "Ferme de Chollet", "type_cluster":
+        "farm", "vat_number": null, "description": null}, "machine_type": "Tracteur
+        agricole", "model": null, "brand": "Tracteur MF 5710", "road_count_policy":
+        "separate", "tool_width": null, "max_speed": null, "aux_configurations": {"in1_name":
+        null, "in1_type_entree": null, "in1_scale": null, "in2_name": null, "in2_type_entree":
+        null, "in2_scale": null, "imu_name": null, "imu_axe": null, "imu_threshold":
+        null, "can_protocol": null}, "my_rights": {"can_delete_machine": true, "can_edit_machine":
+        true, "can_manage_machine": true, "can_book_machine": true, "can_accept_book_machine":
+        true, "can_view_real_time_machine": true, "can_modify_activity_machine": true},
+        "associations": [], "billing": [], "tag_ble": {"id": null, "id_tag": null,
+        "start_date": null, "end_date": null}, "provider": {"name": "Ekylibre", "uuid":
+        "32811001-3e22-483d-b944-2e6be6a3ec74"}}, {"id": "5e78eb21e440bbd47cada798",
+        "name": "mon Tracteur Test Rouge", "start_date": "2020-03-23T17:00:17.913000Z",
+        "cluster": {"id": "5e78d64ead4822853ec7ef6e", "name": "ekylibre Test", "type_cluster":
+        "farm", "vat_number": null, "description": null}, "machine_type": "Tracteur
+        agricole", "model": "6910", "brand": "John Deere", "road_count_policy": "separate",
+        "tool_width": 2.0, "max_speed": 6.0, "aux_configurations": {"in1_name": null,
+        "in1_type_entree": null, "in1_scale": null, "in2_name": null, "in2_type_entree":
+        null, "in2_scale": null, "imu_name": null, "imu_axe": null, "imu_threshold":
+        null, "can_protocol": null}, "my_rights": {"can_delete_machine": true, "can_edit_machine":
+        true, "can_manage_machine": true, "can_book_machine": true, "can_accept_book_machine":
+        true, "can_view_real_time_machine": false, "can_modify_activity_machine":
+        false}, "associations": [{"id": "5e78eb2fad4822853ec7ef79", "start_date":
+        "2018-05-31T22:00:00Z", "end_date": "2149-12-31T23:00:00Z", "counter": "test_ekylibre",
+        "machine": ["5e78eb21e440bbd47cada798"]}], "billing": [], "tag_ble": {"id":
+        null, "id_tag": null, "start_date": null, "end_date": null}, "provider": {"name":
+        "Ekylibre", "uuid": "dd88a009-faf1-4ad7-945b-e5b12145f2c0"}}, {"id": "5e8a1a6f4efc4b97b441e6b7",
+        "name": "oGuille_Phone", "start_date": "2020-04-05T17:50:39.811000Z", "cluster":
+        {"id": "5e78d64ead4822853ec7ef6e", "name": "ekylibre Test", "type_cluster":
+        "farm", "vat_number": null, "description": null}, "machine_type": "Tracteur
+        agricole", "model": "911", "brand": "Porsche", "road_count_policy": "separate",
+        "tool_width": 4.0, "max_speed": 8.0, "aux_configurations": {"in1_name": null,
+        "in1_type_entree": null, "in1_scale": null, "in2_name": null, "in2_type_entree":
+        null, "in2_scale": null, "imu_name": null, "imu_axe": null, "imu_threshold":
+        null, "can_protocol": null}, "my_rights": {"can_delete_machine": true, "can_edit_machine":
+        true, "can_manage_machine": true, "can_book_machine": true, "can_accept_book_machine":
+        true, "can_view_real_time_machine": false, "can_modify_activity_machine":
+        false}, "associations": [{"id": "5e9f3fa25823380fa5c30165", "start_date":
+        "2020-04-14T22:32:00Z", "end_date": "2150-01-01T00:00:00Z", "counter": "phone_oguille@samsys.fr",
+        "machine": ["5e8a1a6f4efc4b97b441e6b7"]}], "billing": [], "tag_ble": {"id":
+        null, "id_tag": null, "start_date": null, "end_date": null}, "provider": null},
+        {"id": "5e8b3eac0baf831e885b4313", "name": "Ju Sony Xperia", "start_date":
+        "2020-04-06T14:37:32.610000Z", "cluster": {"id": "5e78d64ead4822853ec7ef6e",
+        "name": "ekylibre Test", "type_cluster": "farm", "vat_number": null, "description":
+        null}, "machine_type": "Tracteur vigneron", "model": "4567", "brand": "Alasco",
+        "road_count_policy": "separate", "tool_width": 3.0, "max_speed": 40.0, "aux_configurations":
+        {"in1_name": null, "in1_type_entree": null, "in1_scale": null, "in2_name":
+        null, "in2_type_entree": null, "in2_scale": null, "imu_name": null, "imu_axe":
+        null, "imu_threshold": null, "can_protocol": null}, "my_rights": {"can_delete_machine":
+        true, "can_edit_machine": true, "can_manage_machine": true, "can_book_machine":
+        true, "can_accept_book_machine": true, "can_view_real_time_machine": false,
+        "can_modify_activity_machine": false}, "associations": [{"id": "5e8b3f067d343013c5b5d756",
+        "start_date": "2020-04-06T14:29:00Z", "end_date": "2149-12-31T23:00:00Z",
+        "counter": "phone_739750", "machine": ["5e8b3eac0baf831e885b4313"]}], "billing":
+        [{"name": "", "unit": ""}], "tag_ble": {"id": null, "id_tag": null, "start_date":
+        null, "end_date": null}, "provider": null}, {"id": "5f16f7257bafdc8b503696e8",
+        "name": "Tracteur Rouge", "start_date": "2020-07-21T14:09:41.441000Z", "cluster":
+        {"id": "5e78d64ead4822853ec7ef6e", "name": "ekylibre Test", "type_cluster":
+        "farm", "vat_number": null, "description": null}, "machine_type": "Micro tracteur",
+        "model": "2345", "brand": "ABB", "road_count_policy": "separate", "tool_width":
+        3.0, "max_speed": 30.0, "aux_configurations": {"in1_name": null, "in1_type_entree":
+        null, "in1_scale": null, "in2_name": null, "in2_type_entree": null, "in2_scale":
+        null, "imu_name": null, "imu_axe": null, "imu_threshold": null, "can_protocol":
+        null}, "my_rights": {"can_delete_machine": true, "can_edit_machine": true,
+        "can_manage_machine": true, "can_book_machine": true, "can_accept_book_machine":
+        true, "can_view_real_time_machine": false, "can_modify_activity_machine":
+        false}, "associations": [], "billing": [], "tag_ble": {"id": null, "id_tag":
+        null, "start_date": null, "end_date": null}, "provider": null}, {"id": "5f3e8d389420b544c3e11f19",
+        "name": "RKA tractor", "start_date": "2020-08-20T14:48:24.695000Z", "cluster":
+        {"id": "5e78d64ead4822853ec7ef6e", "name": "ekylibre Test", "type_cluster":
+        "farm", "vat_number": null, "description": null}, "machine_type": "Tracteur
+        agricole", "model": "6910", "brand": "John Deere", "road_count_policy": "separate",
+        "tool_width": 2.0, "max_speed": 6.0, "aux_configurations": {"in1_name": null,
+        "in1_type_entree": null, "in1_scale": null, "in2_name": null, "in2_type_entree":
+        null, "in2_scale": null, "imu_name": null, "imu_axe": null, "imu_threshold":
+        null, "can_protocol": null}, "my_rights": {"can_delete_machine": true, "can_edit_machine":
+        true, "can_manage_machine": true, "can_book_machine": true, "can_accept_book_machine":
+        true, "can_view_real_time_machine": false, "can_modify_activity_machine":
+        false}, "associations": [], "billing": [], "tag_ble": {"id": null, "id_tag":
+        null, "start_date": null, "end_date": null}, "provider": null}, {"id": "5f44feb42011b406b83a1dbf",
+        "name": "Massey-Fergusson 4245", "start_date": "2020-08-25T12:06:12.053000Z",
+        "cluster": {"id": "5e78d64ead4822853ec7ef6e", "name": "ekylibre Test", "type_cluster":
+        "farm", "vat_number": null, "description": null}, "machine_type": "Tracteur
+        agricole", "model": "6910", "brand": "John Deere", "road_count_policy": "separate",
+        "tool_width": 2.0, "max_speed": 6.0, "aux_configurations": {"in1_name": null,
+        "in1_type_entree": null, "in1_scale": null, "in2_name": null, "in2_type_entree":
+        null, "in2_scale": null, "imu_name": null, "imu_axe": null, "imu_threshold":
+        null, "can_protocol": null}, "my_rights": {"can_delete_machine": true, "can_edit_machine":
+        true, "can_manage_machine": true, "can_book_machine": true, "can_accept_book_machine":
+        true, "can_view_real_time_machine": false, "can_modify_activity_machine":
+        false}, "associations": [], "billing": [], "tag_ble": {"id": null, "id_tag":
+        null, "start_date": null, "end_date": null}, "provider": null}, {"id": "5f45017a2011b406b83a1dc0",
+        "name": "SUPER Tractor", "start_date": "2020-08-25T12:18:02.737000Z", "cluster":
+        {"id": "5e78d64ead4822853ec7ef6e", "name": "ekylibre Test", "type_cluster":
+        "farm", "vat_number": null, "description": null}, "machine_type": "tracteur
+        agricole", "model": null, "brand": "Massey-Fergusson 140", "road_count_policy":
+        "separate", "tool_width": null, "max_speed": null, "aux_configurations": {"in1_name":
+        null, "in1_type_entree": null, "in1_scale": null, "in2_name": null, "in2_type_entree":
+        null, "in2_scale": null, "imu_name": null, "imu_axe": null, "imu_threshold":
+        null, "can_protocol": null}, "my_rights": {"can_delete_machine": true, "can_edit_machine":
+        true, "can_manage_machine": true, "can_book_machine": true, "can_accept_book_machine":
+        true, "can_view_real_time_machine": false, "can_modify_activity_machine":
+        false}, "associations": [], "billing": [], "tag_ble": {"id": null, "id_tag":
+        null, "start_date": null, "end_date": null}, "provider": null}, {"id": "5f69afa043b2e35e2582c386",
+        "name": "Ekylibre Tractor", "start_date": "2020-09-22T08:02:40.266000Z", "cluster":
+        {"id": "5e78d64ead4822853ec7ef6e", "name": "ekylibre Test", "type_cluster":
+        "farm", "vat_number": null, "description": null}, "machine_type": "tracteur
+        agricole", "model": null, "brand": "Massey-Fergusson 4245", "road_count_policy":
+        "separate", "tool_width": null, "max_speed": null, "aux_configurations": {"in1_name":
+        null, "in1_type_entree": null, "in1_scale": null, "in2_name": null, "in2_type_entree":
+        null, "in2_scale": null, "imu_name": null, "imu_axe": null, "imu_threshold":
+        null, "can_protocol": null}, "my_rights": {"can_delete_machine": true, "can_edit_machine":
+        true, "can_manage_machine": true, "can_book_machine": true, "can_accept_book_machine":
+        true, "can_view_real_time_machine": false, "can_modify_activity_machine":
+        false}, "associations": [], "billing": [], "tag_ble": {"id": null, "id_tag":
+        null, "start_date": null, "end_date": null}, "provider": {"name": "Ekylibre",
+        "id": "a62dc087-a7f7-416f-bf29-83a526cadcbc"}}, {"id": "603e64570905adafb0460c92",
+        "name": "Charrue 4 socs", "start_date": "2021-03-02T16:14:15.968000Z", "cluster":
+        {"id": "5e78d64ead4822853ec7ef6e", "name": "ekylibre Test", "type_cluster":
+        "farm", "vat_number": null, "description": null}, "machine_type": "Charrues",
+        "model": null, "brand": "Charrue 4 socs", "road_count_policy": "separate",
+        "tool_width": null, "max_speed": null, "aux_configurations": {"in1_name":
+        null, "in1_type_entree": null, "in1_scale": null, "in2_name": null, "in2_type_entree":
+        null, "in2_scale": null, "imu_name": null, "imu_axe": null, "imu_threshold":
+        null, "can_protocol": null}, "my_rights": {"can_delete_machine": true, "can_edit_machine":
+        true, "can_manage_machine": true, "can_book_machine": true, "can_accept_book_machine":
+        true, "can_view_real_time_machine": false, "can_modify_activity_machine":
+        false}, "associations": [], "billing": [], "tag_ble": {"id": null, "id_tag":
+        null, "start_date": null, "end_date": null}, "provider": {"name": "Ekylibre",
+        "id": "cad72ff8-9160-442d-823f-031d7eec474"}}, {"id": "603e69bcc208cb291b106c6a",
+        "name": "Charrue 4 socs", "start_date": "2021-03-02T16:37:16.634000Z", "cluster":
+        {"id": "5e78d64ead4822853ec7ef6e", "name": "ekylibre Test", "type_cluster":
+        "farm", "vat_number": null, "description": null}, "machine_type": "Charrues",
+        "model": null, "brand": "Charrue 4 socs", "road_count_policy": "separate",
+        "tool_width": null, "max_speed": null, "aux_configurations": {"in1_name":
+        null, "in1_type_entree": null, "in1_scale": null, "in2_name": null, "in2_type_entree":
+        null, "in2_scale": null, "imu_name": null, "imu_axe": null, "imu_threshold":
+        null, "can_protocol": null}, "my_rights": {"can_delete_machine": true, "can_edit_machine":
+        true, "can_manage_machine": true, "can_book_machine": true, "can_accept_book_machine":
+        true, "can_view_real_time_machine": false, "can_modify_activity_machine":
+        false}, "associations": [], "billing": [], "tag_ble": {"id": null, "id_tag":
+        null, "start_date": null, "end_date": null}, "provider": {"name": "Ekylibre",
+        "uuid": "cad72ff8-9160-442d-823f-031d7eec4743"}}, {"id": "603e69d7c208cb291b106c6b",
+        "name": "Charrue", "start_date": "2021-03-02T16:37:43.106000Z", "cluster":
+        {"id": "5e78d64ead4822853ec7ef6e", "name": "ekylibre Test", "type_cluster":
+        "farm", "vat_number": null, "description": null}, "machine_type": "Charrues",
+        "model": null, "brand": "Charrue", "road_count_policy": "separate", "tool_width":
+        null, "max_speed": null, "aux_configurations": {"in1_name": null, "in1_type_entree":
+        null, "in1_scale": null, "in2_name": null, "in2_type_entree": null, "in2_scale":
+        null, "imu_name": null, "imu_axe": null, "imu_threshold": null, "can_protocol":
+        null}, "my_rights": {"can_delete_machine": true, "can_edit_machine": true,
+        "can_manage_machine": true, "can_book_machine": true, "can_accept_book_machine":
+        true, "can_view_real_time_machine": false, "can_modify_activity_machine":
+        false}, "associations": [], "billing": [], "tag_ble": {"id": null, "id_tag":
+        null, "start_date": null, "end_date": null}, "provider": {"name": "Ekylibre",
+        "uuid": "7f3f3849-65cb-476d-bf74-c30f48a0e52a"}}, {"id": "603e69ddc208cb291b106c6c",
+        "name": "Charrue Goizin", "start_date": "2021-03-02T16:37:49.370000Z", "cluster":
+        {"id": "5e78d64ead4822853ec7ef6e", "name": "ekylibre Test", "type_cluster":
+        "farm", "vat_number": null, "description": null}, "machine_type": "Charrues",
+        "model": null, "brand": "Charrue Goizin", "road_count_policy": "separate",
+        "tool_width": null, "max_speed": null, "aux_configurations": {"in1_name":
+        null, "in1_type_entree": null, "in1_scale": null, "in2_name": null, "in2_type_entree":
+        null, "in2_scale": null, "imu_name": null, "imu_axe": null, "imu_threshold":
+        null, "can_protocol": null}, "my_rights": {"can_delete_machine": true, "can_edit_machine":
+        true, "can_manage_machine": true, "can_book_machine": true, "can_accept_book_machine":
+        true, "can_view_real_time_machine": false, "can_modify_activity_machine":
+        false}, "associations": [], "billing": [], "tag_ble": {"id": null, "id_tag":
+        null, "start_date": null, "end_date": null}, "provider": {"name": "Ekylibre",
+        "uuid": "5ab1e7d5-8815-4d7a-a92f-015548651e35"}}, {"id": "603e69e2c208cb291b106c6d",
+        "name": "Charrue", "start_date": "2021-03-02T16:37:54.333000Z", "cluster":
+        {"id": "5e78d64ead4822853ec7ef6e", "name": "ekylibre Test", "type_cluster":
+        "farm", "vat_number": null, "description": null}, "machine_type": "Charrues",
+        "model": null, "brand": "Charrue", "road_count_policy": "separate", "tool_width":
+        null, "max_speed": null, "aux_configurations": {"in1_name": null, "in1_type_entree":
+        null, "in1_scale": null, "in2_name": null, "in2_type_entree": null, "in2_scale":
+        null, "imu_name": null, "imu_axe": null, "imu_threshold": null, "can_protocol":
+        null}, "my_rights": {"can_delete_machine": true, "can_edit_machine": true,
+        "can_manage_machine": true, "can_book_machine": true, "can_accept_book_machine":
+        true, "can_view_real_time_machine": false, "can_modify_activity_machine":
+        false}, "associations": [], "billing": [], "tag_ble": {"id": null, "id_tag":
+        null, "start_date": null, "end_date": null}, "provider": {"name": "Ekylibre",
+        "uuid": "70fbb8e9-d353-45d7-8789-0c8e9a0fa6f8"}}, {"id": "603f70620905adafb0460f1f",
+        "name": "Rouleau", "start_date": "2021-03-03T11:17:54Z", "cluster": {"id":
+        "5e78d64ead4822853ec7ef6e", "name": "ekylibre Test", "type_cluster": "farm",
+        "vat_number": null, "description": null}, "machine_type": "Rouleau", "model":
+        null, "brand": "Rouleau", "road_count_policy": "separate", "tool_width": null,
+        "max_speed": null, "aux_configurations": {"in1_name": null, "in1_type_entree":
+        null, "in1_scale": null, "in2_name": null, "in2_type_entree": null, "in2_scale":
+        null, "imu_name": null, "imu_axe": null, "imu_threshold": null, "can_protocol":
+        null}, "my_rights": {"can_delete_machine": true, "can_edit_machine": true,
+        "can_manage_machine": true, "can_book_machine": true, "can_accept_book_machine":
+        true, "can_view_real_time_machine": false, "can_modify_activity_machine":
+        false}, "associations": [], "billing": [], "tag_ble": {"id": null, "id_tag":
+        null, "start_date": null, "end_date": null}, "provider": {"name": "Ekylibre",
+        "uuid": "4981e8af-a5f9-4854-8c95-3f01117399ec"}}, {"id": "604624875308519857e77d0a",
+        "name": "Herse rotative Belrecolt", "start_date": "2021-03-08T13:20:07.716000Z",
+        "cluster": {"id": "5e78d64ead4822853ec7ef6e", "name": "ekylibre Test", "type_cluster":
+        "farm", "vat_number": null, "description": null}, "machine_type": "Herses
+        rotatives", "model": null, "brand": "Herse rotative Belrecolt", "road_count_policy":
+        "separate", "tool_width": null, "max_speed": null, "aux_configurations": {"in1_name":
+        null, "in1_type_entree": null, "in1_scale": null, "in2_name": null, "in2_type_entree":
+        null, "in2_scale": null, "imu_name": null, "imu_axe": null, "imu_threshold":
+        null, "can_protocol": null}, "my_rights": {"can_delete_machine": true, "can_edit_machine":
+        true, "can_manage_machine": true, "can_book_machine": true, "can_accept_book_machine":
+        true, "can_view_real_time_machine": false, "can_modify_activity_machine":
+        false}, "associations": [], "billing": [], "tag_ble": {"id": null, "id_tag":
+        null, "start_date": null, "end_date": null}, "provider": {"name": "Ekylibre",
+        "uuid": "c80c9864-1503-4e8b-ab32-559e0041351e"}}]
+
+'
+  recorded_at: Wed, 12 May 2021 14:16:35 GMT
+recorded_with: VCR 6.0.0

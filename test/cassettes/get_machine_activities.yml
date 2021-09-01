@@ -1,0 +1,338 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://app.samsys.io/api/v1/auth
+    body:
+      encoding: UTF-8
+      string: '{"email":"Hello","password":"World"}'
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Host:
+      - app.samsys.io
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Wed, 12 May 2021 14:16:33 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Vary:
+      - Accept-Encoding
+      Access-Control-Allow-Origin:
+      - "*"
+    body:
+      encoding: ASCII-8BIT
+      string: '{"status": "ok", "message": "Connect\u00e9!", "jwt": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE2MjA4Mjg5OTMsIm5iZiI6MTYyMDgyODk5MywianRpIjoiZjQ0MzE2OWUtNjE2MC00NjkzLWJjOTAtOWY0ZGIwMzRhNGFiIiwiZXhwIjoxNjUyMzY0OTkzLCJpZGVudGl0eSI6eyJ1c2VyX2lkIjoiNWU3Yzc5NWZmNDI3NTRiMTg2MTA3OTQ4IiwiYXBwIjoiY2xhdWRlIn0sImZyZXNoIjpmYWxzZSwidHlwZSI6ImFjY2VzcyJ9.-UMivyx_6WVAxUflGKKNXN8rE9ml1woMlUhN3VmZ2x0"}
+
+'
+  recorded_at: Wed, 12 May 2021 14:16:33 GMT
+- request:
+    method: post
+    uri: https://app.samsys.io/api/v1/auth
+    body:
+      encoding: UTF-8
+      string: '{"email":"Hello","password":"World"}'
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Host:
+      - app.samsys.io
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Wed, 12 May 2021 14:16:33 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Vary:
+      - Accept-Encoding
+      Access-Control-Allow-Origin:
+      - "*"
+    body:
+      encoding: ASCII-8BIT
+      string: '{"status": "ok", "message": "Connect\u00e9!", "jwt": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE2MjA4Mjg5OTMsIm5iZiI6MTYyMDgyODk5MywianRpIjoiMzQzYTZkYjctOGJiNi00NmI0LWFmMWUtNzNlMjI4MWVlYTk1IiwiZXhwIjoxNjUyMzY0OTkzLCJpZGVudGl0eSI6eyJ1c2VyX2lkIjoiNWU3Yzc5NWZmNDI3NTRiMTg2MTA3OTQ4IiwiYXBwIjoiY2xhdWRlIn0sImZyZXNoIjpmYWxzZSwidHlwZSI6ImFjY2VzcyJ9.x8Sh-vIBddiNk6ZkrImRtr3ulm4JQqzGQ-Xv4YKcRG8"}
+
+'
+  recorded_at: Wed, 12 May 2021 14:16:33 GMT
+- request:
+    method: get
+    uri: https://app.samsys.io/api/v1/machines/5f6b41a15fd2a1ddcb5386ea/activities?end_date=2020-12-17T00:00:00Z&start_date=2020-09-18T00:00:00Z
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Host:
+      - app.samsys.io
+      Authorization:
+      - JWT eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE2MjA4Mjg5OTMsIm5iZiI6MTYyMDgyODk5MywianRpIjoiZjQ0MzE2OWUtNjE2MC00NjkzLWJjOTAtOWY0ZGIwMzRhNGFiIiwiZXhwIjoxNjUyMzY0OTkzLCJpZGVudGl0eSI6eyJ1c2VyX2lkIjoiNWU3Yzc5NWZmNDI3NTRiMTg2MTA3OTQ4IiwiYXBwIjoiY2xhdWRlIn0sImZyZXNoIjpmYWxzZSwidHlwZSI6ImFjY2VzcyJ9.-UMivyx_6WVAxUflGKKNXN8rE9ml1woMlUhN3VmZ2x0
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Wed, 12 May 2021 14:16:34 GMT
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '1731'
+      Connection:
+      - keep-alive
+      Vary:
+      - Accept-Encoding
+      Access-Control-Allow-Origin:
+      - "*"
+    body:
+      encoding: ASCII-8BIT
+      string: '[{"id": "5fd3af2018a18df555a899b1", "start_date": "2020-12-11T08:40:04.990000Z",
+        "end_date": "2020-12-11T14:13:15.090000Z", "duration": 1.6, "road": 0.00022560481139084415,
+        "area_without_overlap": 0.0, "area_with_overlap": null, "area_smart": null,
+        "gasoline": 0.0, "type": "road", "user": {"lastname": null, "firstname": null,
+        "id": null}, "sleep_duration": null, "sleep_count": 0, "machines": [{"id":
+        "5f6b41a15fd2a1ddcb5386ea", "name": "Boitier Ekyviti", "brand": "New Holland",
+        "machine_type": "Tracteur vigneron"}], "counter_machine": {"id": "5f6b41b0355bdac337432d0f",
+        "counter": "7E6472AD", "start_date": "2020-09-23T12:00:00Z", "end_date": "2149-12-31T23:00:00Z",
+        "machines": ["5f6b41a15fd2a1ddcb5386ea"]}, "missing_data": false, "motor_on_duration":
+        0.0, "employees": []}, {"id": "5fce000ce289ae7dc1a53935", "start_date": "2020-12-07T10:09:55.990000Z",
+        "end_date": "2020-12-07T14:03:52.200000Z", "duration": 7342.92, "road": 0.04402672525396801,
+        "area_without_overlap": 0.0, "area_with_overlap": null, "area_smart": null,
+        "gasoline": 0.0, "type": "road", "user": {"lastname": null, "firstname": null,
+        "id": null}, "sleep_duration": 7342.92, "sleep_count": 4, "machines": [{"id":
+        "5f6b41a15fd2a1ddcb5386ea", "name": "Boitier Ekyviti", "brand": "New Holland",
+        "machine_type": "Tracteur vigneron"}], "counter_machine": {"id": "5f6b41b0355bdac337432d0f",
+        "counter": "7E6472AD", "start_date": "2020-09-23T12:00:00Z", "end_date": "2149-12-31T23:00:00Z",
+        "machines": ["5f6b41a15fd2a1ddcb5386ea"]}, "missing_data": false, "motor_on_duration":
+        0.0, "employees": []}, {"id": "5fce000ce289ae7dc1a53934", "start_date": "2020-11-30T07:23:36.900000Z",
+        "end_date": "2020-11-30T07:23:43Z", "duration": 6.1, "road": 0.0004037058698172928,
+        "area_without_overlap": 0.0, "area_with_overlap": null, "area_smart": null,
+        "gasoline": 0.0, "type": "road", "user": {"lastname": null, "firstname": null,
+        "id": null}, "sleep_duration": null, "sleep_count": 0, "machines": [{"id":
+        "5f6b41a15fd2a1ddcb5386ea", "name": "Boitier Ekyviti", "brand": "New Holland",
+        "machine_type": "Tracteur vigneron"}], "counter_machine": {"id": "5f6b41b0355bdac337432d0f",
+        "counter": "7E6472AD", "start_date": "2020-09-23T12:00:00Z", "end_date": "2149-12-31T23:00:00Z",
+        "machines": ["5f6b41a15fd2a1ddcb5386ea"]}, "missing_data": false, "motor_on_duration":
+        0.0, "employees": []}, {"id": "5fa3ab62c493556ea4ec8bfd", "start_date": "2020-11-05T07:15:13.500000Z",
+        "end_date": "2020-11-05T15:52:36.590000Z", "duration": 20218.809999999998,
+        "road": 4.22357338689463, "area_without_overlap": 0.0, "area_with_overlap":
+        0.0, "area_smart": 0.0, "gasoline": 0.0, "type": "work", "user": {"lastname":
+        "Chollet", "firstname": "Julien", "id": "5e7c795ff42754b186107948"}, "sleep_duration":
+        13062.03, "sleep_count": 82, "machines": [{"id": "5f6b41a15fd2a1ddcb5386ea",
+        "name": "Boitier Ekyviti", "brand": "New Holland", "machine_type": "Tracteur
+        vigneron"}], "counter_machine": {"id": "5f6b41b0355bdac337432d0f", "counter":
+        "7E6472AD", "start_date": "2020-09-23T12:00:00Z", "end_date": "2149-12-31T23:00:00Z",
+        "machines": ["5f6b41a15fd2a1ddcb5386ea"]}, "missing_data": false, "motor_on_duration":
+        0.0, "employees": []}, {"id": "5fa2bccb9ff217fb4b39f82e", "start_date": "2020-11-04T14:10:14.790000Z",
+        "end_date": "2020-11-04T14:11:47.200000Z", "duration": 92.41, "road": 0.003233756655748408,
+        "area_without_overlap": 0.0, "area_with_overlap": null, "area_smart": null,
+        "gasoline": 0.0, "type": "road", "user": {"lastname": null, "firstname": null,
+        "id": null}, "sleep_duration": 92.41, "sleep_count": 1, "machines": [{"id":
+        "5f6b41a15fd2a1ddcb5386ea", "name": "Boitier Ekyviti", "brand": "New Holland",
+        "machine_type": "Tracteur vigneron"}], "counter_machine": {"id": "5f6b41b0355bdac337432d0f",
+        "counter": "7E6472AD", "start_date": "2020-09-23T12:00:00Z", "end_date": "2149-12-31T23:00:00Z",
+        "machines": ["5f6b41a15fd2a1ddcb5386ea"]}, "missing_data": false, "motor_on_duration":
+        0.0, "employees": []}, {"id": "5f99815d15d774fa1be8705a", "start_date": "2020-10-28T14:11:32.690000Z",
+        "end_date": "2020-10-28T15:45:25.590000Z", "duration": 5632.9, "road": 0.10115541408662101,
+        "area_without_overlap": 0.0, "area_with_overlap": null, "area_smart": null,
+        "gasoline": 0.0, "type": "road", "user": {"lastname": null, "firstname": null,
+        "id": null}, "sleep_duration": 5632.9, "sleep_count": 5, "machines": [{"id":
+        "5f6b41a15fd2a1ddcb5386ea", "name": "Boitier Ekyviti", "brand": "New Holland",
+        "machine_type": "Tracteur vigneron"}], "counter_machine": {"id": "5f6b41b0355bdac337432d0f",
+        "counter": "7E6472AD", "start_date": "2020-09-23T12:00:00Z", "end_date": "2149-12-31T23:00:00Z",
+        "machines": ["5f6b41a15fd2a1ddcb5386ea"]}, "missing_data": false, "motor_on_duration":
+        0.0, "employees": []}, {"id": "5f92f5a7cffad4fbb77a6a05", "start_date": "2020-10-23T15:03:34.290000Z",
+        "end_date": "2020-10-23T15:09:57.700000Z", "duration": 383.41, "road": 0.010555544610214131,
+        "area_without_overlap": 0.0, "area_with_overlap": null, "area_smart": null,
+        "gasoline": 0.0, "type": "road", "user": {"lastname": null, "firstname": null,
+        "id": null}, "sleep_duration": 383.41, "sleep_count": 1, "machines": [{"id":
+        "5f6b41a15fd2a1ddcb5386ea", "name": "Boitier Ekyviti", "brand": "New Holland",
+        "machine_type": "Tracteur vigneron"}], "counter_machine": {"id": "5f6b41b0355bdac337432d0f",
+        "counter": "7E6472AD", "start_date": "2020-09-23T12:00:00Z", "end_date": "2149-12-31T23:00:00Z",
+        "machines": ["5f6b41a15fd2a1ddcb5386ea"]}, "missing_data": false, "motor_on_duration":
+        0.0, "employees": []}, {"id": "5f917d37c4f1db9b4078521c", "start_date": "2020-10-22T12:32:07.190000Z",
+        "end_date": "2020-10-22T12:48:01.490000Z", "duration": 954.3, "road": 0.03121290670383785,
+        "area_without_overlap": 0.0, "area_with_overlap": null, "area_smart": null,
+        "gasoline": 0.0, "type": "road", "user": {"lastname": null, "firstname": null,
+        "id": null}, "sleep_duration": 934.4100000000001, "sleep_count": 2, "machines":
+        [{"id": "5f6b41a15fd2a1ddcb5386ea", "name": "Boitier Ekyviti", "brand": "New
+        Holland", "machine_type": "Tracteur vigneron"}], "counter_machine": {"id":
+        "5f6b41b0355bdac337432d0f", "counter": "7E6472AD", "start_date": "2020-09-23T12:00:00Z",
+        "end_date": "2149-12-31T23:00:00Z", "machines": ["5f6b41a15fd2a1ddcb5386ea"]},
+        "missing_data": false, "motor_on_duration": 0.0, "employees": []}, {"id":
+        "5fb32a6d14cf19446f0c251e", "start_date": "2020-10-15T07:46:34.320000Z", "end_date":
+        "2020-10-15T09:40:00.900000Z", "duration": 6806.58, "road": 5.927144601778634,
+        "area_without_overlap": 0.0, "area_with_overlap": 0.0, "area_smart": 0.0,
+        "gasoline": 0.0, "type": "work", "user": {"lastname": "Chollet", "firstname":
+        "Julien", "id": "5e7c795ff42754b186107948"}, "sleep_duration": 5935.01, "sleep_count":
+        9, "machines": [{"id": "5f6b41a15fd2a1ddcb5386ea", "name": "Boitier Ekyviti",
+        "brand": "New Holland", "machine_type": "Tracteur vigneron"}], "counter_machine":
+        {"id": "5f6b41b0355bdac337432d0f", "counter": "7E6472AD", "start_date": "2020-09-23T12:00:00Z",
+        "end_date": "2149-12-31T23:00:00Z", "machines": ["5f6b41a15fd2a1ddcb5386ea"]},
+        "missing_data": false, "motor_on_duration": 0.0, "employees": []}, {"id":
+        "5f883be0cffad4fbb775c83b", "start_date": "2020-10-15T06:11:32.090000Z", "end_date":
+        "2020-10-15T07:46:34.320000Z", "duration": 5702.23, "road": 1.662482391024993,
+        "area_without_overlap": 0.0, "area_with_overlap": 0.0, "area_smart": 0.0,
+        "gasoline": 0.0, "type": "work", "user": {"lastname": "Chollet", "firstname":
+        "Julien", "id": "5e7c795ff42754b186107948"}, "sleep_duration": 4642.87, "sleep_count":
+        38, "machines": [{"id": "5f6b41a15fd2a1ddcb5386ea", "name": "Boitier Ekyviti",
+        "brand": "New Holland", "machine_type": "Tracteur vigneron"}], "counter_machine":
+        {"id": "5f6b41b0355bdac337432d0f", "counter": "7E6472AD", "start_date": "2020-09-23T12:00:00Z",
+        "end_date": "2149-12-31T23:00:00Z", "machines": ["5f6b41a15fd2a1ddcb5386ea"]},
+        "missing_data": false, "motor_on_duration": 0.0, "employees": []}, {"id":
+        "5f883be0cffad4fbb775c83a", "start_date": "2020-10-07T10:43:07.400000Z", "end_date":
+        "2020-10-07T16:01:23.590000Z", "duration": 15319.689999999999, "road": 14.811105217258886,
+        "area_without_overlap": 0.0, "area_with_overlap": null, "area_smart": null,
+        "gasoline": 0.0, "type": "road", "user": {"lastname": null, "firstname": null,
+        "id": null}, "sleep_duration": 13528.940000000002, "sleep_count": 39, "machines":
+        [{"id": "5f6b41a15fd2a1ddcb5386ea", "name": "Boitier Ekyviti", "brand": "New
+        Holland", "machine_type": "Tracteur vigneron"}], "counter_machine": {"id":
+        "5f6b41b0355bdac337432d0f", "counter": "7E6472AD", "start_date": "2020-09-23T12:00:00Z",
+        "end_date": "2149-12-31T23:00:00Z", "machines": ["5f6b41a15fd2a1ddcb5386ea"]},
+        "missing_data": false, "motor_on_duration": 0.0, "employees": []}, {"id":
+        "5f883be0cffad4fbb775c839", "start_date": "2020-09-29T07:31:11.800000Z", "end_date":
+        "2020-09-29T14:13:48.190000Z", "duration": 8753.689999999999, "road": 10.750932456718528,
+        "area_without_overlap": 0.0, "area_with_overlap": null, "area_smart": null,
+        "gasoline": 0.0, "type": "road", "user": {"lastname": null, "firstname": null,
+        "id": null}, "sleep_duration": 7138.45, "sleep_count": 16, "machines": [{"id":
+        "5f6b41a15fd2a1ddcb5386ea", "name": "Boitier Ekyviti", "brand": "New Holland",
+        "machine_type": "Tracteur vigneron"}], "counter_machine": {"id": "5f6b41b0355bdac337432d0f",
+        "counter": "7E6472AD", "start_date": "2020-09-23T12:00:00Z", "end_date": "2149-12-31T23:00:00Z",
+        "machines": ["5f6b41a15fd2a1ddcb5386ea"]}, "missing_data": false, "motor_on_duration":
+        0.0, "employees": []}, {"id": "5f883be0cffad4fbb775c838", "start_date": "2020-09-28T06:42:46.600000Z",
+        "end_date": "2020-09-28T15:21:42.610000Z", "duration": 5248.16, "road": 14.892713052375212,
+        "area_without_overlap": 0.0, "area_with_overlap": 0.0, "area_smart": 0.0,
+        "gasoline": 0.0, "type": "work", "user": {"lastname": "JOULIN", "firstname":
+        "David", "id": "5e78d3421396ef9a4a06780e"}, "sleep_duration": 3952.4199999999996,
+        "sleep_count": 6, "machines": [{"id": "5f6b41a15fd2a1ddcb5386ea", "name":
+        "Boitier Ekyviti", "brand": "New Holland", "machine_type": "Tracteur vigneron"}],
+        "counter_machine": {"id": "5f6b41b0355bdac337432d0f", "counter": "7E6472AD",
+        "start_date": "2020-09-23T12:00:00Z", "end_date": "2149-12-31T23:00:00Z",
+        "machines": ["5f6b41a15fd2a1ddcb5386ea"]}, "missing_data": false, "motor_on_duration":
+        0.0, "employees": []}, {"id": "5ff84ecbf1d7e04011ff832a", "start_date": "2020-09-25T08:55:18.530000Z",
+        "end_date": "2020-09-25T09:08:04.670000Z", "duration": 766.14, "road": 0.1311089816162953,
+        "area_without_overlap": 0.0, "area_with_overlap": 0.0, "area_smart": 0.0,
+        "gasoline": 0.0, "type": "work", "user": {"lastname": "JOULIN", "firstname":
+        "David", "id": "5e78d3421396ef9a4a06780e"}, "sleep_duration": null, "sleep_count":
+        0, "machines": [{"id": "5f6b41a15fd2a1ddcb5386ea", "name": "Boitier Ekyviti",
+        "brand": "New Holland", "machine_type": "Tracteur vigneron"}], "counter_machine":
+        {"id": "5f6b41b0355bdac337432d0f", "counter": "7E6472AD", "start_date": "2020-09-23T12:00:00Z",
+        "end_date": "2149-12-31T23:00:00Z", "machines": ["5f6b41a15fd2a1ddcb5386ea"]},
+        "missing_data": false, "motor_on_duration": 0.0, "employees": []}, {"id":
+        "5fc8bdab8ce0eb973c0f844a", "start_date": "2020-09-25T08:51:21.540000Z", "end_date":
+        "2020-09-25T08:55:18.530000Z", "duration": 236.99, "road": null, "area_without_overlap":
+        0.0, "area_with_overlap": 0.0, "area_smart": 0.0, "gasoline": 0.0, "type":
+        "work", "user": {"lastname": "Chollet", "firstname": "Julien", "id": "5e7c795ff42754b186107948"},
+        "sleep_duration": null, "sleep_count": 0, "machines": [{"id": "5f6b41a15fd2a1ddcb5386ea",
+        "name": "Boitier Ekyviti", "brand": "New Holland", "machine_type": "Tracteur
+        vigneron"}], "counter_machine": {"id": "5f6b41b0355bdac337432d0f", "counter":
+        "7E6472AD", "start_date": "2020-09-23T12:00:00Z", "end_date": "2149-12-31T23:00:00Z",
+        "machines": ["5f6b41a15fd2a1ddcb5386ea"]}, "missing_data": false, "motor_on_duration":
+        0.0, "employees": []}, {"id": "5fc8bdab8ce0eb973c0f8449", "start_date": "2020-09-25T08:43:24.940000Z",
+        "end_date": "2020-09-25T08:51:21.540000Z", "duration": 470.47, "road": null,
+        "area_without_overlap": 0.0, "area_with_overlap": 0.0, "area_smart": 0.0,
+        "gasoline": 0.0, "type": "work", "user": {"lastname": null, "firstname": null,
+        "id": null}, "sleep_duration": 86.49, "sleep_count": 1, "machines": [{"id":
+        "5f6b41a15fd2a1ddcb5386ea", "name": "Boitier Ekyviti", "brand": "New Holland",
+        "machine_type": "Tracteur vigneron"}], "counter_machine": {"id": "5f6b41b0355bdac337432d0f",
+        "counter": "7E6472AD", "start_date": "2020-09-23T12:00:00Z", "end_date": "2149-12-31T23:00:00Z",
+        "machines": ["5f6b41a15fd2a1ddcb5386ea"]}, "missing_data": false, "motor_on_duration":
+        0.0, "employees": []}, {"id": "5ff84ecbf1d7e04011ff8329", "start_date": "2020-09-25T03:15:49.210000Z",
+        "end_date": "2020-09-25T08:43:24.940000Z", "duration": 19553.12, "road": 3.3679878611783454,
+        "area_without_overlap": 0.0, "area_with_overlap": 0.0, "area_smart": 0.0,
+        "gasoline": 0.0, "type": "work", "user": {"lastname": "Chollet", "firstname":
+        "Julien", "id": "5e7c795ff42754b186107948"}, "sleep_duration": 11088.100000000002,
+        "sleep_count": 47, "machines": [{"id": "5f6b41a15fd2a1ddcb5386ea", "name":
+        "Boitier Ekyviti", "brand": "New Holland", "machine_type": "Tracteur vigneron"}],
+        "counter_machine": {"id": "5f6b41b0355bdac337432d0f", "counter": "7E6472AD",
+        "start_date": "2020-09-23T12:00:00Z", "end_date": "2149-12-31T23:00:00Z",
+        "machines": ["5f6b41a15fd2a1ddcb5386ea"]}, "missing_data": false, "motor_on_duration":
+        0.0, "employees": []}, {"id": "5f883be0cffad4fbb775c837", "start_date": "2020-09-25T02:52:45.270000Z",
+        "end_date": "2020-09-25T03:15:49.210000Z", "duration": 1371.74, "road": 2.797642757693929,
+        "area_without_overlap": 0.0, "area_with_overlap": 0.0, "area_smart": 0.0,
+        "gasoline": 0.0, "type": "work", "user": {"lastname": "JOULIN", "firstname":
+        "David", "id": "5e78d3421396ef9a4a06780e"}, "sleep_duration": 615.18, "sleep_count":
+        4, "machines": [{"id": "5f6b41a15fd2a1ddcb5386ea", "name": "Boitier Ekyviti",
+        "brand": "New Holland", "machine_type": "Tracteur vigneron"}], "counter_machine":
+        {"id": "5f6b41b0355bdac337432d0f", "counter": "7E6472AD", "start_date": "2020-09-23T12:00:00Z",
+        "end_date": "2149-12-31T23:00:00Z", "machines": ["5f6b41a15fd2a1ddcb5386ea"]},
+        "missing_data": false, "motor_on_duration": 0.0, "employees": []}, {"id":
+        "5ff84ecbf1d7e04011ff8328", "start_date": "2020-09-24T11:11:14.430000Z", "end_date":
+        "2020-09-24T17:45:53.380000Z", "duration": 15629.07, "road": null, "area_without_overlap":
+        0.0, "area_with_overlap": 0.0, "area_smart": 0.0, "gasoline": 0.0, "type":
+        "work", "user": {"lastname": "JOULIN", "firstname": "David", "id": "5e78d3421396ef9a4a06780e"},
+        "sleep_duration": 15294.81, "sleep_count": 10, "machines": [{"id": "5f6b41a15fd2a1ddcb5386ea",
+        "name": "Boitier Ekyviti", "brand": "New Holland", "machine_type": "Tracteur
+        vigneron"}], "counter_machine": {"id": "5f6b41b0355bdac337432d0f", "counter":
+        "7E6472AD", "start_date": "2020-09-23T12:00:00Z", "end_date": "2149-12-31T23:00:00Z",
+        "machines": ["5f6b41a15fd2a1ddcb5386ea"]}, "missing_data": false, "motor_on_duration":
+        0.0, "employees": []}, {"id": "5ff84ecbf1d7e04011ff8327", "start_date": "2020-09-24T03:21:51.200000Z",
+        "end_date": "2020-09-24T11:11:14.430000Z", "duration": 28097.41, "road": 5.11552386273749,
+        "area_without_overlap": 0.0, "area_with_overlap": 0.0, "area_smart": 0.0,
+        "gasoline": 0.0, "type": "work", "user": {"lastname": "Chollet", "firstname":
+        "Julien", "id": "5e7c795ff42754b186107948"}, "sleep_duration": 18028.29, "sleep_count":
+        57, "machines": [{"id": "5f6b41a15fd2a1ddcb5386ea", "name": "Boitier Ekyviti",
+        "brand": "New Holland", "machine_type": "Tracteur vigneron"}], "counter_machine":
+        {"id": "5f6b41b0355bdac337432d0f", "counter": "7E6472AD", "start_date": "2020-09-23T12:00:00Z",
+        "end_date": "2149-12-31T23:00:00Z", "machines": ["5f6b41a15fd2a1ddcb5386ea"]},
+        "missing_data": false, "motor_on_duration": 0.0, "employees": []}, {"id":
+        "5f883be0cffad4fbb775c836", "start_date": "2020-09-24T02:36:29.690000Z", "end_date":
+        "2020-09-24T03:21:51.200000Z", "duration": 2697.11, "road": 16.415935272554396,
+        "area_without_overlap": 0.0, "area_with_overlap": 0.0, "area_smart": 0.0,
+        "gasoline": 0.0, "type": "work", "user": {"lastname": "JOULIN", "firstname":
+        "David", "id": "5e78d3421396ef9a4a06780e"}, "sleep_duration": 927.8100000000001,
+        "sleep_count": 7, "machines": [{"id": "5f6b41a15fd2a1ddcb5386ea", "name":
+        "Boitier Ekyviti", "brand": "New Holland", "machine_type": "Tracteur vigneron"}],
+        "counter_machine": {"id": "5f6b41b0355bdac337432d0f", "counter": "7E6472AD",
+        "start_date": "2020-09-23T12:00:00Z", "end_date": "2149-12-31T23:00:00Z",
+        "machines": ["5f6b41a15fd2a1ddcb5386ea"]}, "missing_data": false, "motor_on_duration":
+        0.0, "employees": []}, {"id": "5f883be0cffad4fbb775c835", "start_date": "2020-09-23T12:29:14.090000Z",
+        "end_date": "2020-09-23T18:46:56.590000Z", "duration": 14185.41, "road": 5.204063077472564,
+        "area_without_overlap": 0.0, "area_with_overlap": 0.0, "area_smart": 0.0,
+        "gasoline": 0.0, "type": "work", "user": {"lastname": "Chollet", "firstname":
+        "Julien", "id": "5e7c795ff42754b186107948"}, "sleep_duration": 8369.41, "sleep_count":
+        46, "machines": [{"id": "5f6b41a15fd2a1ddcb5386ea", "name": "Boitier Ekyviti",
+        "brand": "New Holland", "machine_type": "Tracteur vigneron"}], "counter_machine":
+        {"id": "5f6b41b0355bdac337432d0f", "counter": "7E6472AD", "start_date": "2020-09-23T12:00:00Z",
+        "end_date": "2149-12-31T23:00:00Z", "machines": ["5f6b41a15fd2a1ddcb5386ea"]},
+        "missing_data": false, "motor_on_duration": 0.0, "employees": []}]
+
+'
+  recorded_at: Wed, 12 May 2021 14:16:34 GMT
+recorded_with: VCR 6.0.0

@@ -1,0 +1,167 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://app.samsys.io/api/v1/auth
+    body:
+      encoding: UTF-8
+      string: '{"email":"Hello","password":"World"}'
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Host:
+      - app.samsys.io
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Wed, 12 May 2021 14:16:43 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Vary:
+      - Accept-Encoding
+      Access-Control-Allow-Origin:
+      - "*"
+    body:
+      encoding: ASCII-8BIT
+      string: '{"status": "ok", "message": "Connect\u00e9!", "jwt": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE2MjA4MjkwMDMsIm5iZiI6MTYyMDgyOTAwMywianRpIjoiOTNiMWRmMmQtYzFkMS00OGUxLTkwOWItYzJjYzBkNzQ5YjhhIiwiZXhwIjoxNjUyMzY1MDAzLCJpZGVudGl0eSI6eyJ1c2VyX2lkIjoiNWU3Yzc5NWZmNDI3NTRiMTg2MTA3OTQ4IiwiYXBwIjoiY2xhdWRlIn0sImZyZXNoIjpmYWxzZSwidHlwZSI6ImFjY2VzcyJ9.yJtnDM5NyIGYY8FT-knwxploDh8Kdm7pNic_V-CrjfM"}
+
+'
+  recorded_at: Wed, 12 May 2021 14:16:43 GMT
+- request:
+    method: post
+    uri: https://app.samsys.io/api/v1/auth
+    body:
+      encoding: UTF-8
+      string: '{"email":"Hello","password":"World"}'
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Host:
+      - app.samsys.io
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Wed, 12 May 2021 14:16:44 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Vary:
+      - Accept-Encoding
+      Access-Control-Allow-Origin:
+      - "*"
+    body:
+      encoding: ASCII-8BIT
+      string: '{"status": "ok", "message": "Connect\u00e9!", "jwt": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE2MjA4MjkwMDQsIm5iZiI6MTYyMDgyOTAwNCwianRpIjoiZGVjNzY3OWYtYjkxNC00Y2IwLWE1ZmQtYjhjMmY5Y2JmMzFjIiwiZXhwIjoxNjUyMzY1MDA0LCJpZGVudGl0eSI6eyJ1c2VyX2lkIjoiNWU3Yzc5NWZmNDI3NTRiMTg2MTA3OTQ4IiwiYXBwIjoiY2xhdWRlIn0sImZyZXNoIjpmYWxzZSwidHlwZSI6ImFjY2VzcyJ9.uoNTRjo34k_3pBgBp5XD4N8hZsYvhQy0Z6unwZhhFYg"}
+
+'
+  recorded_at: Wed, 12 May 2021 14:16:44 GMT
+- request:
+    method: get
+    uri: https://app.samsys.io/api/v1/counters
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Host:
+      - app.samsys.io
+      Content-Type:
+      - application/json
+      Authorization:
+      - JWT eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE2MjA4MjkwMDMsIm5iZiI6MTYyMDgyOTAwMywianRpIjoiOTNiMWRmMmQtYzFkMS00OGUxLTkwOWItYzJjYzBkNzQ5YjhhIiwiZXhwIjoxNjUyMzY1MDAzLCJpZGVudGl0eSI6eyJ1c2VyX2lkIjoiNWU3Yzc5NWZmNDI3NTRiMTg2MTA3OTQ4IiwiYXBwIjoiY2xhdWRlIn0sImZyZXNoIjpmYWxzZSwidHlwZSI6ImFjY2VzcyJ9.yJtnDM5NyIGYY8FT-knwxploDh8Kdm7pNic_V-CrjfM
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Wed, 12 May 2021 14:16:44 GMT
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '727'
+      Connection:
+      - keep-alive
+      Vary:
+      - Accept-Encoding
+      Access-Control-Allow-Origin:
+      - "*"
+    body:
+      encoding: ASCII-8BIT
+      string: '[{"id": "test_ekylibre", "v_bat": 82.5, "v_ext": 138.0, "owner": {"id":
+        "5e78d64ead4822853ec7ef6e", "name": "ekylibre Test", "type_cluster": "farm",
+        "vat_number": null, "description": null}, "association": {"id": "5e78eb2fad4822853ec7ef79",
+        "start_date": "2018-05-31T22:00:00Z", "end_date": "2149-12-31T23:00:00Z",
+        "counter": "test_ekylibre", "machine": [{"id": "5e78eb21e440bbd47cada798",
+        "name": "mon Tracteur Test Rouge", "brand": "John Deere", "machine_type":
+        "Tracteur agricole"}]}}, {"id": "phone_693109", "v_bat": 20.0, "v_ext": 0.0,
+        "owner": {"id": "5e78d64ead4822853ec7ef6e", "name": "ekylibre Test", "type_cluster":
+        "farm", "vat_number": null, "description": null}, "association": {"id": null,
+        "start_date": null, "end_date": null, "counter": null, "machine": null}},
+        {"id": "phone_739750", "v_bat": 7.5, "v_ext": 0.0, "owner": {"id": "5e78d64ead4822853ec7ef6e",
+        "name": "ekylibre Test", "type_cluster": "farm", "vat_number": null, "description":
+        null}, "association": {"id": "5e8b3f067d343013c5b5d756", "start_date": "2020-04-06T14:29:00Z",
+        "end_date": "2149-12-31T23:00:00Z", "counter": "phone_739750", "machine":
+        [{"id": "5e8b3eac0baf831e885b4313", "name": "Ju Sony Xperia", "brand": "Alasco",
+        "machine_type": "Tracteur vigneron"}]}}, {"id": "phone_oguille@samsys.fr",
+        "v_bat": 67.5, "v_ext": 0.0, "owner": {"id": "5e78d64ead4822853ec7ef6e", "name":
+        "ekylibre Test", "type_cluster": "farm", "vat_number": null, "description":
+        null}, "association": {"id": "5e9f3fa25823380fa5c30165", "start_date": "2020-04-14T22:32:00Z",
+        "end_date": "2150-01-01T00:00:00Z", "counter": "phone_oguille@samsys.fr",
+        "machine": [{"id": "5e8a1a6f4efc4b97b441e6b7", "name": "oGuille_Phone", "brand":
+        "Porsche", "machine_type": "Tracteur agricole"}]}}, {"id": "7E6472AD", "v_bat":
+        52.5, "v_ext": 0.0, "owner": {"id": "5e78d64ead4822853ec7ef6e", "name": "ekylibre
+        Test", "type_cluster": "farm", "vat_number": null, "description": null}, "association":
+        {"id": "5f6b41b0355bdac337432d0f", "start_date": "2020-09-23T12:00:00Z", "end_date":
+        "2149-12-31T23:00:00Z", "counter": "7E6472AD", "machine": [{"id": "5f6b41a15fd2a1ddcb5386ea",
+        "name": "Boitier Ekyviti", "brand": "New Holland", "machine_type": "Tracteur
+        vigneron"}]}}, {"id": "63AEEF39", "v_bat": 52.5, "v_ext": 0.0, "owner": {"id":
+        "5e78d64ead4822853ec7ef6e", "name": "ekylibre Test", "type_cluster": "farm",
+        "vat_number": null, "description": null}, "association": {"id": null, "start_date":
+        null, "end_date": null, "counter": null, "machine": null}}, {"id": "phone_Hello",
+        "v_bat": 0, "v_ext": 0.0, "owner": {"id": "5f4e58953ea3af11caff4f2b", "name":
+        "Ferme de Chollet", "type_cluster": "farm", "vat_number": null, "description":
+        null}, "association": {"id": "5f4e58963ea3af11caff4f2d", "start_date": "2020-05-20T00:00:00Z",
+        "end_date": null, "counter": "phone_Hello", "machine": [{"id": "5f4e58963ea3af11caff4f2c",
+        "name": "Tracteur de Chollet", "brand": "Samsys", "machine_type": "Tracteur
+        agricole"}]}}]
+
+'
+  recorded_at: Wed, 12 May 2021 14:16:44 GMT
+recorded_with: VCR 6.0.0
