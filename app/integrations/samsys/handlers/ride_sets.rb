@@ -33,7 +33,7 @@ module Samsys
       def get_machine_activities(machine_id)
         ::Samsys::Data::MachineActivities.new(
           machine_id: machine_id, stopped_on: @stopped_on
-        ).result.sort_by{ |h| h[:start_date] }.reverse
+        ).result.sort_by{ |h| h[:start_date] }
       end
 
       def find_or_create_machine_equipment(machine)
