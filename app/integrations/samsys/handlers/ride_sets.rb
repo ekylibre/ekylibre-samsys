@@ -5,7 +5,7 @@ module Samsys
     class RideSets
       VENDOR = ::Samsys::Handlers::VENDOR
 
-      def initialize(stopped_on: stopped_on)
+      def initialize(stopped_on:)
         @stopped_on = stopped_on
       end
 
