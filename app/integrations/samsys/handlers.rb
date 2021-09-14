@@ -5,4 +5,3 @@ module Samsys
     VENDOR = 'samsys'
   end
 end
-    
