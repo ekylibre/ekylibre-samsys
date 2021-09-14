@@ -18,7 +18,8 @@ module Backend
       t.column :provider_vendor
     end
 
-    list(:rides, selectable: true, model: :ride, conditions: { ride_set_id: 'params[:id]'.c }, order: 'rides.started_at DESC', line_class: 'RECORD.state'.c) do |t|
+    list(:rides, selectable: true, model: :ride, conditions: { ride_set_id: 'params[:id]'.c }, order: 'rides.started_at DESC',
+line_class: 'RECORD.state'.c) do |t|
       t.column :number, url: true, class: 'ride-title'
       t.column :intervention, url: true
       t.column :nature
@@ -36,7 +37,7 @@ module Backend
 
       super
     end
-    
+
     private
 
       def notify_ride_set_information

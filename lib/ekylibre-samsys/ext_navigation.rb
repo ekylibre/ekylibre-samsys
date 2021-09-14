@@ -38,11 +38,10 @@ module EkylibreSamsys
       @new_navigation_tree
     end
 
-
     private
 
-    def samsys_navigation_file_path
-      EkylibreSamsys.root.join('config', 'navigation.xml')
-    end
+      def samsys_navigation_file_path
+        EkylibreSamsys.root.join('config', 'navigation.xml')
+      end
   end
 end
