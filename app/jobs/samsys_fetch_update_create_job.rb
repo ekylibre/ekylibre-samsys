@@ -2,7 +2,7 @@ class SamsysFetchUpdateCreateJob < ActiveJob::Base
   queue_as :default
   include Rails.application.routes.url_helpers
 
-  def perform(stopped_on = Time.now)
+  def perform(stopped_on:, started_on:)
     begin
       # create custom field for all equipement if not exist
       machine_custom_fields = ::Samsys::Handlers::MachineCustomFields.new
@@ -13,7 +13,7 @@ class SamsysFetchUpdateCreateJob < ActiveJob::Base
       sensors = ::Samsys::Handlers::Sensors.new
       sensors.bulk_find_or_create
 
-      ride_sets = ::Samsys::Handlers::RideSets.new(stopped_on: stopped_on)
+      ride_sets = ::Samsys::Handlers::RideSets.new(stopped_on: stopped_on, started_on: started_on)
       ride_sets.bulk_find_or_create
       ride_sets.delete_ride_sets_without_rides
     rescue StandardError => error

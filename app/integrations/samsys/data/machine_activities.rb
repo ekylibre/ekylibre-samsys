@@ -3,10 +3,10 @@
 module Samsys
   module Data
     class MachineActivities
-      def initialize(machine_id:, stopped_on:)
+      def initialize(machine_id:, stopped_on:, started_on:)
         @machine_id = machine_id
-        @stopped_on = stopped_on.strftime('%FT%TZ')
-        @started_on = (stopped_on - 65.days).strftime('%FT%TZ')
+        @stopped_on = stopped_on.to_time.strftime('%FT%TZ')
+        @started_on = started_on.to_time.strftime('%FT%TZ')
       end
 
       def result
