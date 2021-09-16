@@ -5,8 +5,9 @@ module Samsys
     class RideSets
       VENDOR = ::Samsys::Handlers::VENDOR
 
-      def initialize(stopped_on:)
+      def initialize(stopped_on:, started_on:)
         @stopped_on = stopped_on
+        @started_on = started_on
       end
 
       def bulk_find_or_create
@@ -32,7 +33,7 @@ module Samsys
 
         def get_machine_activities(machine_id)
           ::Samsys::Data::MachineActivities.new(
-            machine_id: machine_id, stopped_on: @stopped_on
+            machine_id: machine_id, stopped_on: @stopped_on, started_on: @started_on
           ).result.sort_by{ |h| h[:start_date] }
         end
 
