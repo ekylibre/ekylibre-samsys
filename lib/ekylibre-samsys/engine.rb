@@ -1,7 +1,7 @@
 module EkylibreSamsys
   class Engine < ::Rails::Engine
     initializer 'ekylibre_samsys.assets.precompile' do |app|
-      app.config.assets.precompile += %w(rides.js integrations/samsys.png)
+      app.config.assets.precompile += %w[rides.js integrations/samsys.png]
     end
 
     initializer :ekylibre_samsys_i18n do |app|
@@ -26,11 +26,13 @@ module EkylibreSamsys
 
     initializer :ekylibre_samsys_integration do
       Samsys::SamsysIntegration.on_check_success do
-        SamsysFetchUpdateCreateJob.perform_later
+        SamsysFetchUpdateCreateJob.perform_later(stopped_on: Time.now.to_s, started_on: (Time.now - 365.days).to_s)
       end
 
-      Samsys::SamsysIntegration.run every: :hour do
-        SamsysFetchUpdateCreateJob.perform_now if Integration.find_by(nature: "samsys").present?
+      Samsys::SamsysIntegration.run every: :day do
+        if Integration.find_by(nature: 'samsys').present?
+          SamsysFetchUpdateCreateJob.perform_now(stopped_on: Time.now.to_s, started_on: (Time.now - 1.days).to_s)
+        end
       end
     end
   end

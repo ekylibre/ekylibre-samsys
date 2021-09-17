@@ -28,35 +28,35 @@ module Samsys
 
       private
 
-      def find_or_create_sensor_equipment(sensor, counter)
-        sensor_equipment = Equipment.of_provider_vendor(VENDOR).of_provider_data(:id, counter[:id].to_s).first
+        def find_or_create_sensor_equipment(sensor, counter)
+          sensor_equipment = Equipment.of_provider_vendor(VENDOR).of_provider_data(:id, counter[:id].to_s).first
 
-        if sensor_equipment.present?
-          sensor_equipment
-        else
-          create_sensor_equipment(sensor, counter)
+          if sensor_equipment.present?
+            sensor_equipment
+          else
+            create_sensor_equipment(sensor, counter)
+          end
         end
-      end
 
-      def create_sensor_equipment(sensor, counter)
-        owner = if counter[:owner][:type_cluster] == "farm"
-                  Entity.of_company
-                elsif counter[:owner][:type_cluster] != "farm"
-                  #TODO create the entity
-                end
+        def create_sensor_equipment(sensor, counter)
+          owner = if counter[:owner][:type_cluster] == 'farm'
+                    Entity.of_company
+                  elsif counter[:owner][:type_cluster] != 'farm'
+                    # TODO: create the entity
+                  end
 
-        sensor_variant = ProductNatureVariant.import_from_nomenclature(:geolocation_box)
+          sensor_variant = ProductNatureVariant.import_from_nomenclature(:geolocation_box)
 
-        sensor_equipment = Equipment.create!(
-          variant_id: sensor_variant.id,
-          name: counter[:id],
-          initial_born_at: sensor.created_at,
-          initial_population: 1,
-          initial_owner: owner,
-          work_number: "SAMSYS_#{counter[:id]}",
-          provider: { vendor: VENDOR, name: "samsys_sensor", data: { id: counter[:id] } }
-        )
-      end
+          sensor_equipment = Equipment.create!(
+            variant_id: sensor_variant.id,
+            name: counter[:id],
+            initial_born_at: sensor.created_at,
+            initial_population: 1,
+            initial_owner: owner,
+            work_number: "SAMSYS_#{counter[:id]}",
+            provider: { vendor: VENDOR, name: 'samsys_sensor', data: { id: counter[:id] } }
+          )
+        end
 
     end
   end

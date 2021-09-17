@@ -4,7 +4,7 @@ module Backend
     manage_restfully
 
     unroll
- 
+
     def self.rides_conditions
       search_conditions(rides: [:equipment_name])
     end

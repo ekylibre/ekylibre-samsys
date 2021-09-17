@@ -11,7 +11,7 @@ class RideMap
   end
 
   def pause_crumbs
-    @pause_crumbs ||= resource.crumbs.where(nature: "pause").map do |crumb|
+    @pause_crumbs ||= resource.crumbs.where(nature: 'pause').map do |crumb|
       pause_popup = view.render(partial: 'popup', locals: { crumb: crumb })
       header_content = view.content_tag(:span, :pause.tl, class: 'sensor-name')
       {
@@ -22,7 +22,7 @@ class RideMap
   end
 
   def start_end_crumbs
-    resource.crumbs.where(nature: ["hard_start", "hard_stop"]).order(:read_at).map do |crumb|
+    resource.crumbs.where(nature: %w[hard_start hard_stop]).order(:read_at).map do |crumb|
       {
         name: crumb.nature.tl,
         shape: Charta.new_geometry(crumb.geolocation)
@@ -36,7 +36,7 @@ class RideMap
       header_content = view.content_tag(:span, parcel.name, class: 'sensor-name')
       { name: parcel.name,
         shape: parcel.initial_shape,
-        popup: { header: header_content, content: popup_parcel }}
+        popup: { header: header_content, content: popup_parcel } }
     end
   end
 
