@@ -28,57 +28,58 @@ module Samsys
         end
       end
 
-      private 
+      private
 
-      def fetch_all_work_geolocations
-        ::Samsys::Data::WorksGeolocations.new(work_id: @work_id).result
-      end
+        def fetch_all_work_geolocations
+          ::Samsys::Data::WorksGeolocations.new(work_id: @work_id).result
+        end
 
-      def find_existant_crumb(work_geolocation)
-        Crumb.of_provider_vendor(VENDOR).of_provider_data(:id, work_geolocation[:id_data].to_s).where(ride_id: @ride_id).first
-      end
+        def find_existant_crumb(work_geolocation)
+          Crumb.of_provider_vendor(VENDOR).of_provider_data(:id, work_geolocation[:id_data].to_s).where(ride_id: @ride_id).first
+        end
 
-      def create_crumb(work_geolocation, index)
-        lat_lon = work_geolocation[:geometry][:coordinates]
-        geolocation_crumb = Charta.new_point(lat_lon[1], lat_lon[0]).to_rgeo
-        nature_crumb = if index == 0 
-                        "hard_start"
-                      elsif index == (@work_geolocations_size - 1)
-                        "hard_stop"
-                      else
-                        "point"
-                      end
-        
-        crumb = Crumb.create!(
-          nature: nature_crumb,
-          device_uid: "samsys",
-          accuracy: 4,
-          geolocation: geolocation_crumb,
-          read_at: work_geolocation[:properties][:t],
-          ride_id: @ride_id,
-          provider: { vendor: VENDOR, name: "samsys_crumb", data: { id: work_geolocation[:id_data], speed: work_geolocation[:properties][:speed] } },
-        )
-      end
+        def create_crumb(work_geolocation, index)
+          lat_lon = work_geolocation[:geometry][:coordinates]
+          geolocation_crumb = Charta.new_point(lat_lon[1], lat_lon[0]).to_rgeo
+          nature_crumb = if index == 0
+                           'hard_start'
+                         elsif index == (@work_geolocations_size - 1)
+                           'hard_stop'
+                         else
+                           'point'
+                         end
 
-      def find_existant_crumb_break(work_break)
-        Crumb.of_provider_name(VENDOR, 'samsys_crumb_break').of_provider_data(:start_date, work_break[:start_date].to_s).first
-      end
+          crumb = Crumb.create!(
+            nature: nature_crumb,
+            device_uid: 'samsys',
+            accuracy: 4,
+            geolocation: geolocation_crumb,
+            read_at: work_geolocation[:properties][:t],
+            ride_id: @ride_id,
+            provider: { vendor: VENDOR, name: 'samsys_crumb',
+  data: { id: work_geolocation[:id_data], speed: work_geolocation[:properties][:speed] } },
+          )
+        end
 
-      def create_crumb_break(work_break)
-        lat_lon = work_break[:geometry][:coordinates]
-        geolocation_break = Charta.new_point(lat_lon[1], lat_lon[0]).to_rgeo
+        def find_existant_crumb_break(work_break)
+          Crumb.of_provider_name(VENDOR, 'samsys_crumb_break').of_provider_data(:start_date, work_break[:start_date].to_s).first
+        end
 
-        crumb = Crumb.create!(
-          nature: "pause",
-          device_uid: "samsys",
-          accuracy: 4,
-          geolocation: geolocation_break,
-          read_at: work_break[:start_date],
-          metadata: { 'duration' => work_break[:duration], 'start_date' => work_break[:start_date], 'end_date' => work_break[:end_date] },
-          ride_id: @ride_id,
-          provider: { vendor: VENDOR, name: "samsys_crumb_break", data: { start_date: work_break[:start_date] } },
-        )
-      end
+        def create_crumb_break(work_break)
+          lat_lon = work_break[:geometry][:coordinates]
+          geolocation_break = Charta.new_point(lat_lon[1], lat_lon[0]).to_rgeo
+
+          crumb = Crumb.create!(
+            nature: 'pause',
+            device_uid: 'samsys',
+            accuracy: 4,
+            geolocation: geolocation_break,
+            read_at: work_break[:start_date],
+            metadata: { 'duration' => work_break[:duration], 'start_date' => work_break[:start_date], 'end_date' => work_break[:end_date] },
+            ride_id: @ride_id,
+            provider: { vendor: VENDOR, name: 'samsys_crumb_break', data: { start_date: work_break[:start_date] } },
+          )
+        end
 
     end
   end
