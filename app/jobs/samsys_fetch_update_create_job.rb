@@ -2,7 +2,8 @@ class SamsysFetchUpdateCreateJob < ActiveJob::Base
   queue_as :default
   include Rails.application.routes.url_helpers
 
-  def perform(stopped_on:, started_on:)
+  def perform(stopped_on:, started_on:, user_id: nil)
+    Preference.set!(:samsys_fetch_job_running, true, :boolean)
     begin
       # create custom field for all equipement if not exist
       machine_custom_fields = ::Samsys::Handlers::MachineCustomFields.new
@@ -20,20 +21,40 @@ class SamsysFetchUpdateCreateJob < ActiveJob::Base
       Rails.logger.error $ERROR_INFO
       Rails.logger.error $ERROR_INFO.backtrace.join("\n")
       ExceptionNotifier.notify_exception($ERROR_INFO, data: { message: error })
+      @error = error
     end
+    if (user = User.find_by_id(user_id))
+      ActionCable.server.broadcast("main_#{user.email}", event: 'update_job_over')
+      notif_params =  if @error.nil?
+                        correct_samsys_fetch_params
+                      else
+                        errors_samsys_fetch_params
+                      end
+      locale = user.language.present? ? user.language.to_sym : :eng
+      I18n.with_locale(locale) do
+        user.notifications.create!(notif_params)
+      end
+    end
+    Preference.set!(:samsys_fetch_job_running, false, :boolean)
   end
 
   private
 
-    def error_notification_params(error)
+    def errors_samsys_fetch_params
       {
-        message: 'error_during_samsys_api_call',
+        message: :failed_samsys_fetch_params.tl,
         level: :error,
-        target_type: '',
-        target_url: '',
-        interpolations: {
-          error_message: error
-        }
+        interpolations: {}
       }
     end
+
+    def correct_samsys_fetch_params
+      {
+        message: :correct_samsys_fetch_params.tl,
+        level: :success,
+        target_url: '/backend/ride_sets',
+        interpolations: {}
+      }
+    end
+
 end

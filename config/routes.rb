@@ -19,6 +19,7 @@ Rails.application.routes.draw do
       resource :ride_sets_visualizations, only: :show
       resource :rides_visualizations, only: :show
     end
+    get :samsys_synchro, to: 'ride_sets#synchronize'
   end
-
+  
 end

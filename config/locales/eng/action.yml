@@ -12,6 +12,8 @@ eng:
     area_without_overlap: "Area without overlap"
     area_with_overlap: "Area with overlap"
     converted: "Converted"
+    correct_samsys_fetch_params: "Samsys synchronisation is over, New ride sets are available in Ekylibre."
+    failed_samsys_fetch_params: "An error occured during Samsys synchronisation."
     ride_set_message: "
 To synchronize your geolocated trips with your connected sensors, please configure your account in Tools > Integrations"
     samsys_short_description: Equipment geotracking sensors
@@ -25,6 +27,7 @@ To synchronize your geolocated trips with your connected sensors, please configu
     resume: "CV"
     ride: "Ride"
     road: "Total distance"
+    samsys_synchronisation: Samsys synchronisation
     scan: "Scan"
     sleep_duration: "Sleep duration"
     start: "Start"
