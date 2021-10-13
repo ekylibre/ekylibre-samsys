@@ -16,14 +16,6 @@ module EkylibreSamsys
       app.config.x.restfully_manageable.view_paths << EkylibreSamsys::Engine.root.join('app', 'views')
     end
 
-    initializer :ekylibre_samsys_import_javascript do
-      tmp_file = Rails.root.join('tmp', 'plugins', 'javascript-addons', 'plugins.js.coffee')
-      tmp_file.open('a') do |f|
-        import = '#= require rides'
-        f.puts(import) unless tmp_file.open('r').read.include?(import)
-      end
-    end
-
     initializer :ekylibre_samsys_integration do
       Samsys::SamsysIntegration.on_check_success do
         SamsysFetchUpdateCreateJob.perform_later(stopped_on: Time.now.to_s, started_on: (Time.now - 365.days).to_s)
@@ -35,5 +27,18 @@ module EkylibreSamsys
         end
       end
     end
+
+    initializer :ekylibre_samsys_import_javascript do
+      tmp_file = Rails.root.join('tmp', 'plugins', 'javascript-addons', 'plugins.js.coffee')
+      tmp_file.open('a') do |f|
+        import = '#= require rides'
+        f.puts(import) unless tmp_file.open('r').read.include?(import)
+      end
+    end
+
+    initializer :add_samsys_partials do |_app|
+      Ekylibre::View::Addon.add(:extensions_content_top, 'backend/ride_sets/synchro', to: 'backend/ride_sets#index')
+    end
+
   end
 end
