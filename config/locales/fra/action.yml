@@ -12,6 +12,8 @@ fra:
     area_without_overlap: "Surface sans recouvrement"
     area_with_overlap: "Surface avec recouvrement"
     converted: "Déjà converti"
+    correct_samsys_fetch_params: "La synchronisation Samsys est terminée, les nouveaux trajets sont disponibles dans Ekylibre"
+    failed_samsys_fetch_params: "Une erreur s'est produite lors de la synchronisation Samsys."
     ride_set_message: "Pour synchroniser vos trajets géolocalisés avec vos capteurs connectés, veuillez configurer votre compte dans Outils > Connexion partenaire"
     samsys_short_description: Géolocalisation des équipements
     samsys_long_description:  Samsys fournit des capteurs de géolocalisation pour le matériel agricole
@@ -24,6 +26,7 @@ fra:
     resume: "CV"
     ride: "Trajet"
     road: "Distance totale en km"
+    samsys_synchronisation: Synchronisation Samsys
     scan: "Balayage"
     sleep_duration: "Temps de pause"
     start: "Démarrer"
