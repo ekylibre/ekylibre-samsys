@@ -39,6 +39,6 @@ To synchronize your geolocated trips with your connected sensors, please configu
     ride_number: "Number"
     ride_paused_at: "Break at"
     ride_duration: "Duration"
-    ride_set_to_ride_information: "Click on a geolocated trip to view it on a map, then select the different sections of the trip to convert into an intervention"
+    ride_set_to_ride_information: "Click on a geolocated ride to view it on a map, then select its different sections to convert it into an intervention"
     road: "Total distance in km"
     to_convert: "To convert"
