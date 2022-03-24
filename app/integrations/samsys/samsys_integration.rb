@@ -42,9 +42,12 @@ module Samsys
         r.error :api_down unless r.body.include? 'ok'
         r.success do
           list = JSON(r.body).deep_symbolize_keys
-          integration.parameters['token'] = list[:jwt]
-          integration.save!
-          Rails.logger.info 'CHECKED'.green
+          parameters = integration.parameters
+          parameters['token'] = list[:jwt]
+          integration.update_columns(
+            ciphered_parameters: parameters.ciphered,
+            initialization_vectors: parameters.ivs
+          )
         end
       end
     end
