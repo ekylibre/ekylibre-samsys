@@ -3,42 +3,10 @@
 module Samsys
   module Handlers
     class MachinesEquipments
-      # transcode Samsys machine type in Ekylibre machine nature
-      TO_EKYLIBRE_MACHINE_TYPE = {
-        'micro tracteur' => :tractor, 'tracteur agricole' => :tractor,
-        'tracteur de pente' => :tractor, 'tracteur enjambeur' => :tractor,
-        'tracteur forestier' => :tractor, 'tracteur fruitier' => :tractor,
-        'tracteur vigneron' => :tractor, 'unimog' => :tractor, 'broyeur de branches' => :grinder,
-        'broyeur forestier' => :grinder, 'broyeurs' => :grinder, "broyeurs d'accotement" => :grinder,
-        'broyeur de fanes' => :grinder, 'broyeur de pierres' => :grinder, 'broyeur à axe horizontal' => :grinder,
-        'epareuse' => :grinder, 'epareuses' => :grinder, 'gyrobroyeur' => :grinder,
-        'desileuse' => :silage_distributor, 'ensileuse automotrice' => :forager, 'ensileuse tractée' => :forager,
-        'ensileuses' => :forager, 'pick-ups pour ensileuses' => :forager, "distributeur d'engrais" => :spreader,
-        'epandeur à fumier' => :spreader_trailer, 'mixeur' => :spreader, 'tonne à lisier' => :spreader,
-        'aligneuse' => :hay_rake, 'andaineur' => :hay_rake, 'autochargeuse' => :wheel_loader,
-        'enrubanneuse' => :baler, 'faneur' => :hay_rake, 'faneur andaineur' => :hay_rake,
-        'faucheuse' => :mower, 'faucheuses conditionneuses' => :mower, 'fenaison - autre' => :baler,
-        'groupeurs de balles' => :bale_collector, 'matériel de manutention du fourrage' => :baler, 'pirouette' => :baler,
-        'presse enrubanneuse' => :baler, 'presse moyenne densité' => :baler, 'presse à balles rondes' => :baler,
-        'presse haute densité' => :baler, 'surélévateur' => :forklift, 'toupie' => :hay_rake,
-        'retourneuse' => :baler, 'souleveuse' => :baler, 'automotrice' => :tractor, 'bâchage de tas' => :tractor,
-        'intégrale' => :tractor, 'arracheuses de pommes de terre' => :harvester, 'butteuses' => :tractor,
-        'matériel pommes de terre - autres' => :tractor, 'planteuses de pommes de terre' => :implanter,
-        'tamiseuses' => :sieve_shaker, 'moissonneuses batteuses' => :reaper, 'moissonneuses batteuses - autre' => :reaper,
-        'cultivateurs à axe horizontal' => :arboricultural_cultivator, 'herses alternatives' => :harrow,
-        'herses rotatives' => :harrow, 'machines à bêcher' => :harrow, "matériel d'épierrage" => :harrow,
-        'bineuses' => :hoe, 'charrues' => :plow, 'chisels' => :plow, 'combinés de préparation de sol' => :plow,
-        'cover crops' => :plow, 'déchaumeurs' => :stubble_cultivator, 'décompacteurs' => :soil_loosener,
-        'herses rigides' => :harrow, 'herses étrillesRouleaux' => :harrow, 'rouleau' => :roll,
-        'vibroculteurs' => :vibrocultivator, 'pieton' => :employee, 'pulvérisateur automoteur' => :sprayer,
-        'pulvérisateur porté' => :sprayer, 'pulvérisateur trainé' => :sprayer, 'autochargeuses' => :wheel_loader,
-        'autres remorques agricoles' => :trailer, 'benne agricole' => :trailer, 'bennes' => :trailer,
-        'bennes TP' => :trailer, 'bennes à vendanges' => :grape_trailer, 'bétaillères' => :trailer,
-        'plateau fourrager' => :trailer, 'combinés de semis' => :sower, 'semoir - autre' => :sower,
-        'semoir monograine' => :sower, 'semoirs en ligne conventionnel' => :sower,
-        'semoirs pour semis simplifié' => :sower, 'telescopique' => :telescopic_handler, 'camions' => :truck,
-        'citernes' => :water_bowser, 'pelles' => :tractor, 'VL' => :car, 'VUL' => :car
-      }.freeze
+      # transcode Samsys machine type in Ekylibre machine variant
+      # row 0 : Ekylibre variant reference name
+      # row 1 : Samsys machine type
+      MACHINE_TYPE_FILE_NAME = 'samsys_ekylibre_machine_types.csv'
 
       # set default creation date older because we have no date for machine
       DEFAULT_BORN_AT = Time.new(2010, 1, 1, 10, 0, 0, '+00:00')
@@ -47,9 +15,6 @@ module Samsys
 
       def bulk_find_or_create(machine, sensor_equipment)
         machine_equipment = find_or_create_machine_equipment(machine)
-
-        custom_field = CustomField.find_by(column_name: 'brand_name')
-        machine_equipment.set_custom_value(custom_field, machine[:brand])
 
         # Get geolocation for a machine
         machine_geolocation(machine[:id], machine_equipment)
@@ -70,7 +35,6 @@ module Samsys
           if machine_equipment.present?
             update_machine_equipment_provider(machine_equipment, machine)
             machine_equipment
-
           else
             create_machine_equipment(machine)
           end
@@ -78,7 +42,7 @@ module Samsys
 
         def create_machine_equipment(machine)
           owner = owner_entity(machine)
-          equipment_variant = variant_to_find(TO_EKYLIBRE_MACHINE_TYPE, machine[:machine_type])
+          equipment_variant = variant_to_find(machine[:machine_type])
 
           machine_equipment = Equipment.create!(
             variant_id: equipment_variant.id,
@@ -87,18 +51,26 @@ module Samsys
             initial_population: 1,
             initial_owner: owner,
             work_number: "SAMSYS_#{machine[:id]}",
-            provider: { vendor: VENDOR, name: 'samsys_equipment', data: { id: machine[:id], tool_width: machine[:tool_width] } }
+            provider: { vendor: VENDOR, name: 'samsys_equipment', data: { id: machine[:id].to_s } }
           )
+          ::Samsys::Handlers::MachineCustomFields::MACHINE_CUSTOM_FIELDS.each do |k, v|
+            c_field = v[:options][:column_name]
+            f = CustomField.find_by(column_name: c_field)
+            machine_equipment.set_custom_value(f, machine[k.to_sym]) if f
+          end
+          machine_equipment.application_width = machine[:tool_width].to_f.in_meter
+          machine_equipment.save
         end
 
+        # update application_width in Ekylibre (tool_width in Samsys) && custom_fields
         def update_machine_equipment_provider(machine_equipment, machine)
-          if machine_equipment.provider[:data]['tool_width'] != machine[:tool_width]
-            machine_equipment.update!(provider: {
-              vendor: VENDOR,
-              name: 'samsys_equipment',
-              data: { id: machine[:id], tool_width: machine[:tool_width] }
-            })
+          ::Samsys::Handlers::MachineCustomFields::MACHINE_CUSTOM_FIELDS.each do |k, v|
+            c_field = v[:options][:column_name]
+            f = CustomField.find_by(column_name: c_field)
+            machine_equipment.set_custom_value(f, machine[k.to_sym]) if f
           end
+          machine_equipment.application_width = machine[:tool_width].to_f.in_meter if machine_equipment.application_width.convert(:meter).to_f != machine[:tool_width].to_f
+          machine_equipment.save
         end
 
         def owner_entity(machine)
@@ -109,13 +81,22 @@ module Samsys
           end
         end
 
-        def variant_to_find(to_ekylibre_machine_type, machine_type)
-          variant_to_find = to_ekylibre_machine_type[machine_type.downcase]
+        # find or create variant with Lexicon based on transcode file
+        def variant_to_find(machine_type)
 
-          if variant_to_find
-            ProductNatureVariant.import_from_nomenclature(variant_to_find)
+          here = Pathname.new(__FILE__).dirname
+
+          to_machine_type = {}.with_indifferent_access
+          CSV.foreach(here.join(MACHINE_TYPE_FILE_NAME), headers: true) do |row|
+            to_machine_type[row[1].to_s] = row[0].to_sym
+          end
+
+          ekylibre_reference_name = to_machine_type[machine_type]
+
+          if ekylibre_reference_name
+            ProductNatureVariant.import_from_lexicon(ekylibre_reference_name)
           else
-            ProductNatureVariant.import_from_nomenclature(:tractor)
+            ProductNatureVariant.import_from_lexicon(:tractor)
           end
         end
 
