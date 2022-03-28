@@ -30,7 +30,7 @@ module Samsys
       parameter :password
     end
 
-    calls :get_token, :fetch_user_info, :post_machines, :post_parcels, :fetch_all_counters, :fetch_all_machines, :fetch_geolocation,
+    calls :get_token, :fetch_user_info, :fetch_clusters, :post_machines, :post_parcels, :fetch_all_counters, :fetch_all_machines, :fetch_geolocation,
           :fetch_activities_machine, :fetch_works_activity, :fetch_work_geolocations, :fetch_fields
 
     # Get token with login and password
@@ -67,7 +67,22 @@ module Samsys
       end
     end
 
-    def post_machines(machine_name, machine_born_at, machine_type, cluster_id, machine_uuid)
+    def fetch_clusters
+      integration = fetch
+      # Get token
+      if integration.parameters['token'].blank?
+        get_token
+      end
+
+      # Call API
+      get_json("#{BASE_URL}/clusters", 'Authorization' => "JWT #{integration.parameters['token']}") do |r|
+        r.success do
+          list = JSON(r.body).map(&:deep_symbolize_keys)
+        end
+      end
+    end
+
+    def post_machines(name, machine_type, cluster_id, brand, model, uuid, machine_width, machine_max_speed = 30.0)
       integration = fetch
       # Get token
       if integration.parameters['token'].blank?
@@ -75,19 +90,22 @@ module Samsys
       end
 
       machine = {
-              name: machine_name,
-              start_date: machine_born_at,
-              cluster: cluster_id,
+              name: name,
               machine_type: machine_type,
-              brand: machine_name,
+              cluster: cluster_id,
+              brand: brand,
+              model: model,
               road_count_policy: 'separate',
+              tool_width: machine_width,
+              max_speed: machine_max_speed,
               aux_configurations: {},
-              provider: { name: 'Ekylibre', uuid: machine_uuid }
+              provider: { name: 'ekylibre', uuid: uuid }
             }
 
       post_json("#{BASE_URL}/machines", machine, 'Authorization' => "JWT #{integration.parameters['token']}") do |r|
         r.success do
           Rails.logger.info 'CREATED MACHINE'.green
+          list = JSON(r.body).deep_symbolize_keys
         end
       end
     end
