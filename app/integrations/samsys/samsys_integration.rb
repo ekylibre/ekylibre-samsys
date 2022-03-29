@@ -30,7 +30,7 @@ module Samsys
       parameter :password
     end
 
-    calls :get_token, :fetch_user_info, :fetch_clusters, :post_machines, :post_parcels, :fetch_all_counters, :fetch_all_machines, :fetch_geolocation,
+    calls :get_token, :fetch_user_info, :fetch_clusters, :get_machine, :delete_machine, :post_machines, :post_parcels, :fetch_all_counters, :fetch_all_machines, :fetch_geolocation,
           :fetch_activities_machine, :fetch_works_activity, :fetch_work_geolocations, :fetch_fields
 
     # Get token with login and password
@@ -78,6 +78,36 @@ module Samsys
       get_json("#{BASE_URL}/clusters", 'Authorization' => "JWT #{integration.parameters['token']}") do |r|
         r.success do
           list = JSON(r.body).map(&:deep_symbolize_keys)
+        end
+      end
+    end
+
+    # Get informations about one machine
+    def get_machine(machine_id)
+      integration = fetch
+      # Get token
+      if integration.parameters['token'].blank?
+        get_token
+      end
+      # Call API
+      get_json("#{BASE_URL}/machines/#{machine_id}", 'Authorization' => "JWT #{integration.reload.parameters['token']}") do |r|
+        r.success do
+          list = JSON(r.body).deep_symbolize_keys
+        end
+      end
+    end
+
+    # Delete one machine
+    def delete_machine(machine_id)
+      integration = fetch
+      # Get token
+      if integration.parameters['token'].blank?
+        get_token
+      end
+      # Call API
+      delete_json("#{BASE_URL}/machines/#{machine_id}", 'Authorization' => "JWT #{integration.reload.parameters['token']}") do |r|
+        r.success do
+          "Machine ID #{machine_id} DELETED"
         end
       end
     end
