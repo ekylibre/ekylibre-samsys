@@ -5,7 +5,7 @@ module Samsys
     class MachineCustomFields
 
       MACHINE_CUSTOM_FIELDS = {
-        'model' => { name: 'Modèle', customized_type: 'Equipment', options: { column_name: 'type_name' } },
+        'model' => { name: 'Modèle', customized_type: 'Equipment', options: { column_name: 'mod_name' } },
         'brand' => { name: 'Marque', customized_type: 'Equipment', options: { column_name: 'brand_name' } }
       }.freeze
 

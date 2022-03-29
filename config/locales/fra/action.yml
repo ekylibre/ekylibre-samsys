@@ -1,5 +1,5 @@
 fra:
-  actions: 
+  actions:
     backend/rides:
       index: "Trajets géolocalisés"
       show: "Section du trajet géolocalisé : %{number}"
@@ -12,8 +12,6 @@ fra:
     area_without_overlap: "Surface sans recouvrement"
     area_with_overlap: "Surface avec recouvrement"
     converted: "Déjà converti"
-    correct_samsys_fetch_params: "La synchronisation Samsys est terminée, les nouveaux trajets sont disponibles dans Ekylibre"
-    failed_samsys_fetch_params: "Une erreur s'est produite lors de la synchronisation Samsys."
     ride_set_message: "Pour synchroniser vos trajets géolocalisés avec vos capteurs connectés, veuillez configurer votre compte dans Outils > Connexions partenaires"
     samsys_short_description: Géolocalisation des équipements
     samsys_long_description:  Samsys fournit des capteurs de géolocalisation pour le matériel agricole
@@ -41,4 +39,5 @@ fra:
     ride_set_to_ride_information: "Cliquez sur un trajet géolocalisé pour le visualiser sur une carte, puis sélectionner ses différentes sections pour le convertir en intervention"
     road: "Distance totale en km"
     to_convert: "A convertir"
-
+    correct_samsys_fetch_params: "La synchronisation Samsys est terminée, les %{count} nouveaux trajets sont disponibles dans Ekylibre"
+    failed_samsys_fetch_params: "Une erreur s'est produite lors de la synchronisation Samsys\_: %{message}"
