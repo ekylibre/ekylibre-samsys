@@ -34,6 +34,7 @@ class SamsysFetchUpdateCreateJob < ActiveJob::Base
       count_after = RideSet.count
       @count = count_after - count_before
     rescue StandardError => error
+      Preference.set!(:samsys_fetch_job_running, false, :boolean)
       Rails.logger.error $ERROR_INFO
       Rails.logger.error $ERROR_INFO.backtrace.join("\n")
       ExceptionNotifier.notify_exception($ERROR_INFO, data: { message: error })
