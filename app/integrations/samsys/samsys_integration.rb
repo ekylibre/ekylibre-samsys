@@ -137,6 +137,10 @@ module Samsys
           Rails.logger.info 'CREATED MACHINE'.green
           list = JSON(r.body).deep_symbolize_keys
         end
+        r.error do
+          Rails.logger.info 'FAILED CREATED MACHINE'.red
+          list = JSON(r.body).deep_symbolize_keys
+        end
       end
     end
 
