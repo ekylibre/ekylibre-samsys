@@ -32,6 +32,9 @@ module Samsys
               equipment.provider = { vendor: VENDOR, name: 'samsys_equipment', data: { id: response[:id].to_s } }
               equipment.save
             end
+            c.error do |response|
+              Rails.logger.error response
+            end
           end
         end
       end
