@@ -3,11 +3,9 @@ class SamsysDeleteEquipmentJob < ActiveJob::Base
 
   def perform(equipment_id:, user_id: nil)
     user = User.find(user_id) if user_id
-    @equipment = Equipment.find(equipment_id.to_i) if equipment_id
-    if @equipment && @equipment.provider? && @equipment.provider_vendor == 'samsys'
-      machine_id = @equipment.provider_data[:id]
+    if equipment_id
       begin
-        machine = ::Samsys::Data::Machine.new(machine_id)
+        machine = ::Samsys::Data::Machine.new(equipment_id)
         machine.delete_machine
       rescue StandardError => error
         Rails.logger.error $ERROR_INFO
