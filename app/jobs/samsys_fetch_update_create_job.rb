@@ -40,7 +40,7 @@ class SamsysFetchUpdateCreateJob < ActiveJob::Base
       ExceptionNotifier.notify_exception($ERROR_INFO, data: { message: error })
       @error = error.message
     end
-    user = User.find(user_id)
+    user = User.find(user_id) if user_id
     if user
       ActionCable.server.broadcast("main_#{user.email}", event: 'update_job_over')
       if @count.present?
