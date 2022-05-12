@@ -66,7 +66,7 @@ module Samsys
           ride_set = RideSet.create!(
             started_at: machine_activity[:start_date],
             stopped_at: machine_activity[:end_date],
-            road: machine_activity[:road],
+            road: machine_activity[:road].to_d,
             nature: machine_activity[:type],
             sleep_count: machine_activity[:sleep_count],
             duration: machine_activity[:duration].to_i.seconds,

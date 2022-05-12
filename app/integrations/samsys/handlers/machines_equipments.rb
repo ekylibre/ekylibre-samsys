@@ -58,8 +58,8 @@ module Samsys
             f = CustomField.find_by(column_name: c_field)
             machine_equipment.set_custom_value(f, machine[k.to_sym]) if f
           end
-          machine_equipment.application_width = machine[:tool_width].to_f.in_meter
-          machine_equipment.save
+          machine_equipment.read!(:application_width, machine[:tool_width].to_f.in_meter, at: DEFAULT_BORN_AT)
+          machine_equipment.read!(:ground_speed, machine[:max_speed].to_f.in_kilometer_per_hour, at: DEFAULT_BORN_AT)
         end
 
         # update application_width in Ekylibre (tool_width in Samsys) && custom_fields
@@ -69,8 +69,8 @@ module Samsys
             f = CustomField.find_by(column_name: c_field)
             machine_equipment.set_custom_value(f, machine[k.to_sym]) if f
           end
-          machine_equipment.application_width = machine[:tool_width].to_f.in_meter if machine_equipment.application_width.convert(:meter).to_f != machine[:tool_width].to_f
-          machine_equipment.save
+          machine_equipment.read!(:application_width, machine[:tool_width].to_f.in_meter, at: Time.now) if machine_equipment.application_width.to_f != machine[:tool_width].to_f
+          machine_equipment.read!(:ground_speed, machine[:max_speed].to_f.in_kilometer_per_hour, at: Time.now) if machine_equipment.ground_speed.to_f != machine[:max_speed].to_f
         end
 
         def owner_entity(machine)
