@@ -8,7 +8,8 @@ module Samsys
       def initialize(ride_set:, machine_equipment:)
         @ride_set = ride_set
         @machine_equipment = machine_equipment
-        @machine_equipment_tool_width = @machine_equipment.get(:application_width).in(:meter).to_f || 2.0
+        width = @machine_equipment.get(:application_width).in(:meter).to_f
+        @machine_equipment_tool_width = ( (width == 0.0 || width.nil?) ? 2.0 : width )
       end
 
       def bulk_find_or_create

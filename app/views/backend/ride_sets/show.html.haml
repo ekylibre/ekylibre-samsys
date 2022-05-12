@@ -15,7 +15,7 @@
 
     .med-info
       %span.title= :road.tl
-      %span.value= resource.road.nil? || resource.road.to_i.zero? ? '-' : resource.road.round(2)
+      %span.value= resource.road&.round(2)
 
     - if resource.area_without_overlap
       .med-info
@@ -36,8 +36,8 @@
         - v.control :fullscreen
         - v.control :layer_selector
         - v.center resource.shape_centroid
-      
+
     - c.cobble(:rides) do
       = toolbar do |t|
         = t.new(nature: :record, label: :add_intervention_record.tl, params: { controller: :interventions }, class: 'disabled', id: 'new-intervention-rides')
-      = cobble_list(:rides)  
+      = cobble_list(:rides)
