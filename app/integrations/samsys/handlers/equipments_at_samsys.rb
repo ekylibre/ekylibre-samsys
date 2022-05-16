@@ -20,8 +20,8 @@ module Samsys
 
         equipments_to_create_at_samsys = Equipment.where.not(variety: 'connected_object') - Equipment.where.not(variety: 'connected_object').of_provider_vendor('samsys')
         equipments_to_create_at_samsys.each do |equipment|
-          brand = (equipment.custom_fields? && equipment.custom_fields.key?("brand_name") ? equipment.custom_fields["brand_name"] : 'Inconnue')
-          mod = (equipment.custom_fields? && equipment.custom_fields.key?("mod_name") ? equipment.custom_fields["mod_name"] : 'Inconnue')
+          brand = ((equipment.custom_fields? && equipment.custom_fields.key?("brand_name") && equipment.custom_fields["brand_name"].present?) ? equipment.custom_fields["brand_name"] : 'Inconnue')
+          mod = ((equipment.custom_fields? && equipment.custom_fields.key?("mod_name") && equipment.custom_fields["mod_name"].present? ) ? equipment.custom_fields["mod_name"] : 'Inconnue')
           ::Samsys::SamsysIntegration.post_machines(
             equipment.name,
             to_machine_type[equipment.variant.reference_name],
@@ -29,7 +29,8 @@ module Samsys
             brand,
             mod,
             equipment.uuid,
-            equipment.get(:application_width).in(:meter).to_f).execute do |c|
+            equipment.get(:application_width).in(:meter).to_f,
+            equipment.get(:ground_speed).in(:kilometer_per_hour).to_f).execute do |c|
             c.success do |response|
               equipment.provider = { vendor: VENDOR, name: 'samsys_equipment', data: { id: response[:id].to_s } }
               equipment.save
