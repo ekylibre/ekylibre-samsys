@@ -9,6 +9,7 @@ horizontal_grinder,Broyeur à axe horizontal
 horizontal_grinder,Epareuse
 horizontal_grinder,Epareuses
 horizontal_grinder,Gyrobroyeur
+rotary_grinder_lv,Broyeurs
 silage_bucket,Desileuse
 forager,Ensileuse automotrice
 forager,Ensileuse tractée
@@ -68,7 +69,8 @@ weeder_harrow,Herses étrillesRouleaux
 destructive_roller,Rouleau
 vibro_cultivator,Vibroculteurs
 employee,pieton
-Pulvérisateur automoteur,Pulvérisateur automoteur
+harrow,Herses rotatives
+self_propelled_sprayer,Pulvérisateur automoteur
 mounted_sprayer,Pulvérisateur porté
 trailed_sprayer,Pulvérisateur trainé
 self_loading_hay_trailer,Autochargeuses
