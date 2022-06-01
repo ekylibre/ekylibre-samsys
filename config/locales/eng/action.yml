@@ -12,6 +12,7 @@ eng:
     area_without_overlap: "Area without overlap"
     area_with_overlap: "Area with overlap"
     converted: "Converted"
+    create_from_request_intervention: "Create from request intervention"
     correct_samsys_fetch_params: "Samsys synchronisation is over, New ride sets are available in Ekylibre."
     failed_samsys_fetch_params: "An error occured during Samsys synchronisation."
     ride_set_message: "
