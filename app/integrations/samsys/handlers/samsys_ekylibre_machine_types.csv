@@ -69,7 +69,6 @@ weeder_harrow,Herses étrillesRouleaux
 destructive_roller,Rouleau
 vibro_cultivator,Vibroculteurs
 employee,pieton
-harrow,Herses rotatives
 self_propelled_sprayer,Pulvérisateur automoteur
 mounted_sprayer,Pulvérisateur porté
 trailed_sprayer,Pulvérisateur trainé
@@ -87,6 +86,7 @@ single_grain_sower,Semoir monograine
 mechanical_sower,Semoirs en ligne conventionnel
 mechanical_sower,Semoirs pour semis simplifié
 telescopic,Telescopique
+telescopic_handler,Tracteur agricole
 tractor,Micro tracteur
 tractor,Tracteur agricole
 tractor,Tracteur de pente
@@ -101,3 +101,8 @@ tipper_trailer,Citernes
 tipper_trailer,Pelles
 car,VL
 car,VUL
+vine_trimmer,Broyeurs
+intervine_hill_remover,Broyeurs
+mower,Matériels manutention du fourrage
+hay_rake,Matériels manutention du fourrage
+spreader,Distributeur d'engrais

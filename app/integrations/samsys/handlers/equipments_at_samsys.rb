@@ -18,8 +18,12 @@ module Samsys
           to_machine_type[row[0].to_s] = row[1].to_s
         end
 
-        equipments_to_create_at_samsys = Equipment.where.not(variety: 'connected_object') - Equipment.where.not(variety: 'connected_object').of_provider_vendor('samsys')
+        list_of_equipment_variety = ['tractor', 'trailed_equipment', 'handling_equipment', 'equipment']
+        equipments_to_create_at_samsys = Equipment.where(variety: list_of_equipment_variety) - Equipment.where.not(provider: nil).of_provider_vendor('samsys')
+
         equipments_to_create_at_samsys.each do |equipment|
+          next if equipment.variant.reference_name.nil?
+
           brand = ((equipment.custom_fields? && equipment.custom_fields.key?("brand_name") && equipment.custom_fields["brand_name"].present?) ? equipment.custom_fields["brand_name"] : 'Inconnue')
           mod = ((equipment.custom_fields? && equipment.custom_fields.key?("mod_name") && equipment.custom_fields["mod_name"].present? ) ? equipment.custom_fields["mod_name"] : 'Inconnue')
           ::Samsys::SamsysIntegration.post_machines(
