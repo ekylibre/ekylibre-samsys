@@ -5,7 +5,7 @@ module Samsys
     class CultivablesZonesAtSamsys
 
       def create_cultivables_zones_at_samsys
-        cultivables_zones_to_create_at_samsys = CultivableZone.where.not(id: find_matching_fields_at_samsys.flatten.uniq)
+        cultivables_zones_to_create_at_samsys = CultivableZone.where.not(id: synchronized_cultivables_zones_ids.uniq)
         cultivables_zones_to_create_at_samsys.each do |cultivable_zone|
           ::Samsys::SamsysIntegration.post_parcels(
             samsys_current_user[:id],
@@ -19,13 +19,15 @@ module Samsys
 
       private
 
-        def find_matching_fields_at_samsys
+        def synchronized_cultivables_zones_ids
           samsys_fields = ::Samsys::Data::Fields.new.result
           return [] if samsys_fields.nil?
 
           samsys_fields.map do |field|
-            field_shape_samsys = Charta.new_geometry(field)
-            CultivableZone.shape_matching(field_shape_samsys, 0.02).ids
+            valid_ewkt = ShapeCorrector.build.try_fix_geojson(field["geometry"].to_json, 4326)
+            samsys_shape = Charta.new_geometry(Maybe(valid_ewkt).or_else(field)).convert_to(:multi_polygon)
+
+            CultivableZone.shape_matching(samsys_shape, 0.02).ids 
           end
         end
 
