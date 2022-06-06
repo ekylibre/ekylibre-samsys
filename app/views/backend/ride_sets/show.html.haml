@@ -40,5 +40,5 @@
     - c.cobble(:rides) do
       = toolbar do |t|
         = t.new(nature: :record, label: :add_intervention_record.tl, params: { controller: :interventions }, class: 'disabled', id: 'new-intervention-rides')
-        = t.new(nature: :request, label: :create_from_request_intervention.tl, params: { controller: :interventions }, class: 'disabled', id: 'request-intervention-rides')
+        = link_to :create_from_request_intervention.tl, "#", class: 'btn btn-default icn btn-new', id: 'request-intervention-rides'
       = cobble_list(:rides)
