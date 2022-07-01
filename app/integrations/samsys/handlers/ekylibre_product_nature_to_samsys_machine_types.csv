@@ -1,0 +1,66 @@
+product_nature_reference_name,samsys_machine_type
+animal_trailer,Bétaillères
+animal_vehicle,Bétaillères
+bale_collector,Groupeurs de balles
+baler,Presse enrubanneuse
+blower,Andaineur
+cleaning_equipment,Tracteur agricole
+connected_object,Tracteur agricole
+covering_equipment,Tracteur agricole
+cutting_equipment,Epareuse
+cutting_tool,Epareuse
+destoning_equipment,Matériels d'épierrage
+filler,Tracteur agricole
+food_distributor,Desileuse
+frost_protection_equipment,Tracteur agricole
+handling_equipment,Tracteur agricole
+harrow,Herses rotatives
+harvester,Tracteur agricole
+heavy_equipment,Unimog
+hiller,Combinés de préparation du sol
+hoe,Bineuses
+implanter,Combinés de préparation du sol
+lifter,Tracteur agricole
+mechanical_weeder,Charrues
+mechanical_weeding_tool,Charrues
+mower,Faucheuse
+plant_grinder,Broyeurs
+plow,Charrues
+rake,Andaineur
+roll,Rouleau
+self_propelled_baler,Presse enrubanneuse
+self_propelled_cleaning_equipment,Tracteur agricole
+self_propelled_cutting_equipment,Epareuse
+self_propelled_harvester,Tracteur agricole
+self_propelled_hoe,Bineuses
+self_propelled_implanter,Combinés de préparation du sol
+self_propelled_mower,Faucheuse
+self_propelled_rake,Andaineur
+self_propelled_sower,Semoir - autre
+self_propelled_sprayer,Pulvérisateur automoteur
+self_propelled_spreader,Distributeur d'engrais
+self_propelled_unloader,Tracteur agricole
+sieve_shaker,Tamiseuses
+soil_grinder,Décompacteurs
+soil_loosener,Décompacteurs
+sorting_equipment,Tracteur agricole
+sower,Semoir - autre
+sprayer,Pulvérisateur porté
+spreader,Distributeur d'engrais
+steam_weeder,Tracteur agricole
+steam_weeding_tool,Tracteur agricole
+superficial_plowing_equipment,Combinés de préparation du sol
+tedder,Faneur
+thermal_weeder,Combinés de préparation du sol
+thermal_weeding_tool,Combinés de préparation du sol
+topper,Epareuse
+tractor,Tracteur agricole
+trailer,Remorque
+uncovering_equipment,Tracteur agricole
+unloader,Désileuse
+vehicule,VL
+vine_lifter,Broyeurs
+vine_shoot_extractor,Tracteur agricole
+water_extracter,Tracteur agricole
+water_spreader,Pulvérisateur porté
+wood_rake,Andaineur

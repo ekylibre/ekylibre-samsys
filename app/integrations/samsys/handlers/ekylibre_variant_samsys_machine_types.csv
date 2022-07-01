@@ -1,0 +1,271 @@
+variant_reference_name,samsys_machine_type,default_samsys_machine_type,default_variant
+alternative_harrow,Herses alternatives,1,1
+alternative_harrow,Herses rigides,,1
+animal_trailer,Bétaillères,1,
+animal_vehicle,Bétaillères,1,
+antidrift_panel,Pulvérisateur porté,1,
+arboricultural_cultivator,Cultivateurs à axe horizontal,1,
+arboricultural_mounted_jet_sprayer,Pulvérisateur porté,1,
+arboricultural_platform,Bennes,1,
+arboricultural_pneumatic_sprayer,Pulvérisateur porté,1,
+arboricultural_tractor,Tracteur fruitier,1,1
+arboricultural_weeding_boom,Pulvérisateur automoteur,1,
+automatic_feed_dispenser,Desileuse,1,
+back_arboricultural_wood_rake,Andaineur,1,
+bale_collector,Groupeurs de balles,1,1
+baler_wrapper,Matériel de manutention du fourrage,,1
+baler_wrapper,Pirouette,,1
+baler_wrapper,Presse enrubanneuse,1,1
+baler_wrapper,Presse haute densité,,1
+baler_wrapper,Presse moyenne densité,,1
+bed_former,Cultivateurs à axe horizontal,1,
+beet_harvester,Intégrale,1,
+beet_leaves_remover,Intégrale,1,
+beet_picker,Automotrice,,
+beet_picker,Bâchage de tas,,1
+beet_picker,Intégrale,1,1
+blade_intercep_tv,Combinés de préparation de sol,1,
+blade_intercep_vtv,Combinés de préparation de sol,1,
+brush_intercep_tv,Combinés de préparation de sol,1,
+brush_intercep_vtv,Combinés de préparation de sol,1,
+cambridge_roller,Rouleau,1,
+car,Camions,,1
+car,VL,1,1
+car,VUL,,
+carrot_harvester,Tracteur agricole,1,
+cereal_hoe,Bineuses,1,1
+chemical_trunck_cleaner,Pulvérisateur porté,1,
+chisel,Chisels,1,1
+cider_apple_harvester,Tracteur agricole,1,
+claw_interrow,Combinés de préparation de sol,1,
+cleaning_equipment,Tracteur agricole,1,
+compost_spreader,Distributeur d'engrais,1,
+confined_sprayer,Pulvérisateur porté,1,
+corker,Tracteur agricole,1,
+corn_header,Tracteur agricole,1,
+corn_picker,Tracteur agricole,1,
+cover_implanter,Tracteur agricole,1,
+covering_equipment,Tracteur agricole,1,
+crawler_tractor,Unimog,1,
+crop_duster,Tracteur agricole,1,
+croskill,Rouleau,1,
+cubic_baler,Presse moyenne densité,1,
+cultipacker,Rouleau,1,
+cultirateau,Cultivateurs à axe horizontal,1,
+cultivator,Cultivateurs à axe horizontal,1,
+destructive_roller,Rouleau,1,1
+disc_harrow,Cover crops,1,1
+disc_intercep,Combinés de préparation de sol,1,
+disc_sower,Semoir - autre,1,
+disc_stubble_cultivator,Déchaumeurs,1,1
+distributor_trailer,Autres remorques agricoles,1,
+employee,pieton,1,1
+fertilizer_trailer,Distributeur d'engrais,1,
+filler,Tracteur agricole,1,
+flatbed_trailer,Plateau fourrager,1,1
+flax_baler,Presse à balles rondes,1,
+flax_harvester,retourneuse,1,
+flax_lifter,souleveuse,1,1
+forager,Ensileuse automotrice,,1
+forager,Ensileuse tractée,,1
+forager,Ensileuses,1,1
+forager,Pick-ups pour ensileuses,,1
+forager_trailer,Plateau fourrager,1,
+front_arboricultural_wood_rake,Andaineur,1,
+front_destructive_roller,Rouleau,1,
+front_loader,Surélévateur,1,1
+front_tine_hoe,Bineuses,1,
+grape_harvester_lv,Tracteur agricole,1,
+grape_harvester_tv,Tracteur agricole,1,
+hay_rake,Andaineur,1,
+header_extension,Fenaison - autre,1,
+heavy_equipment,Unimog,1,1
+hedge_mower,Epareuse,1,1
+hedge_mower,Epareuses,,1
+horizontal_grinder,Broyeur à axe horizontal,1,1
+horizontal_grinder,Broyeur de branches,,1
+horizontal_grinder,Broyeur de fanes,,
+horizontal_grinder,Broyeur forestier,,1
+horizontal_grinder,Broyeurs,,1
+horizontal_grinder,Gyrobroyeur,,1
+hydraulic_hill_remover_lv,Combinés de préparation de sol,1,
+hydraulic_hill_remover_tv,Combinés de préparation de sol,1,
+hydraulic_intercep,Combinés de préparation de sol,1,
+hydraulic_trunck_cleaner,Tracteur agricole,1,
+implanter,Tracteur agricole,1,
+integrated_sower,Combinés de semis,1,
+interrow_sower,Combinés de semis,1,
+intervine_hill_remover,Charrues,1,
+intervine_hiller,Charrues,1,
+large_tine_hoe,Bineuses,1,
+leaves_remover,Broyeur de branches,1,
+leaves_remover_lv,Broyeur de branches,1,
+leaves_remover_tv,Broyeur de branches,1,
+liquid_deep_injector,Distributeur d'engrais,1,
+livestock_trailer,Bétaillères,1,1
+located_treatment_sprayer,Pulvérisateur porté,1,
+manure_spreader,Epandeur à fumier,1,1
+manure_spreader,Mixeur,,1
+manure_spreader_lv,Epandeur à fumier,1,
+manure_spreader_tv,Epandeur à fumier,1,
+mechanical_beet_sower,Semoir - autre,1,
+mechanical_hill_remover_lv,Charrues,1,
+mechanical_hill_remover_tv,Charrues,1,
+mechanical_pruner,Tracteur agricole,1,
+mechanical_sower,Semoir - autre,1,1
+mechanical_sower,Semoirs en ligne conventionnel,,1
+mechanical_sower,Semoirs pour semis simplifié,,1
+mixer_trailer,Autres remorques agricoles,1,
+mounted_jet_sprayer_lv,Pulvérisateur porté,1,
+mounted_jet_sprayer_tv,Pulvérisateur porté,1,
+mounted_jet_sprayer_vtv,Pulvérisateur porté,1,
+mounted_sprayer,Pulvérisateur porté,1,1
+mower_conditioner,Faucheuses conditionneuses,1,1
+mower,Faucheuse,1,
+plow,Charrues,1,
+plow_interrow,Charrues,1,
+pneumatic_beet_sower,Semoir - autre,1,
+pneumatic_granule_spreader,Distributeur d'engrais,1,1
+pneumatic_sprayer_lv,Pulvérisateur porté,1,
+pneumatic_sprayer_tv,Pulvérisateur porté,1,
+pneumatic_sprayer_vtv,Pulvérisateur porté,1,
+potato_grinder,Broyeur de fanes,1,1
+potato_harvester,Arracheuses de pommes de terre,1,1
+potato_hiller,Butteuses,1,1
+potato_planter,Aligneuse,,
+potato_planter,Matériel pommes de terre - autres,,1
+potato_planter,Planteuses de pommes de terre,1,1
+pre_pruner,Tracteur agricole,1,
+pre_pruner_pruner,Tracteur agricole,1,
+projected_jet_sprayer_tv,Pulvérisateur porté,1,
+projected_jet_sprayer_vtv,Pulvérisateur porté,1,
+projection_granule_spreader,Distributeur d'engrais,1,
+quad,VUL,1,1
+quad_anti_slug_sprayer,VUL,1,
+quad_sprayer,VUL,1,
+quad_spreader,VUL,1,
+rake,Aligneuse,,1
+rake,Andaineur,1,1
+reaper,Moissonneuses batteuses,1,1
+reaper,Moissonneuses batteuses - autre,,1
+reversible_plow,Charrues,1,1
+reversible_plow,Combinés de préparation de sol,,1
+rollstar_hoe,Bineuses,1,
+rotary_cultivator,Cultivateurs à axe horizontal,1,1
+rotary_cultivator_lv,Cultivateurs à axe horizontal,1,
+rotary_cultivator_tv,Cultivateurs à axe horizontal,1,
+rotary_flail_intercep,Combinés de préparation de sol,1,
+rotary_grinder_lv,Broyeurs,1,
+rotary_grinder_tv,Broyeurs,1,
+rotary_harrow,Herses rotatives,1,1
+rotary_hoe,Bineuses,1,
+rotary_mower,Faucheuse,1,1
+rotary_spade_interrow,Machines à bêcher,1,1
+rotary_weeder,Combinés de préparation de sol,1,
+rotative_intercep,Combinés de préparation de sol,1,
+rotavator,Cultivateurs à axe horizontal,1,
+round_baler,Presse à balles rondes,1,1
+scarifier,Cover crops,1,
+seed_corn_sprayer,Semoir - autre,1,
+seed_corn_topper,Tracteur agricole,1,
+seed_corn_tractor,Tracteur agricole,1,
+self_loading_hay_trailer,Autochargeuses,1,1
+self_loading_silage_trailer,Autochargeuses,1,
+self_propelled_beet_harvester,Automotrice,1,1
+self_propelled_carrier,Bennes,1,
+self_propelled_cider_apple_harvester,Tracteur agricole,1,
+self_propelled_cleaning_equipment,Tracteur agricole,1,
+self_propelled_flax_baler,Presse à balles rondes,1,
+self_propelled_flax_turner,retourneuse,1,1
+self_propelled_grape_harvester_lv,Tracteur agricole,1,
+self_propelled_grape_harvester_tv,Tracteur agricole,1,
+self_propelled_hoe,Bineuses,1,
+self_propelled_implanter,Tracteur agricole,1,
+self_propelled_mixer_unloader,Desileuse,1,
+self_propelled_mower,Faucheuse,1,
+self_propelled_potato_harvester,Arracheuses de pommes de terre,1,
+self_propelled_pre_pruner,Tracteur agricole,1,
+self_propelled_sower,Semoir - autre,1,
+self_propelled_sprayer,Pulvérisateur automoteur,1,1
+self_propelled_spreader,Distributeur d'engrais,1,
+sieve_shaker,Tamiseuses,1,
+silage_bucket,Desileuse,1,
+simple_plow,Charrues,1,
+single_grain_sower,Semoir monograine,1,1
+slurry_spreader,Tonne à lisier,1,1
+solid_deep_injector,Distributeur d'engrais,1,
+sorting_equipment,Tracteur agricole,1,
+sower,Semoir - autre,1,
+spire_roller,Rouleau,1,
+spreader,Distributeur d'engrais,1,
+spreader_lv,Distributeur d'engrais,1,
+spreader_tv,Distributeur d'engrais,1,
+sprayer,Pulvérisateur porté,1,
+star_intercep,Combinés de préparation de sol,1,
+steam_weeder,Tracteur agricole,1,
+stone_aligner,Matériel d'épierrage,1,
+stone_grinder,Broyeur de pierres,1,1
+stone_picker,Matériel d'épierrage,1,1
+straddle_tractor,Tracteur enjambeur,1,1
+strap_trunck_cleaner,Tracteur agricole,1,
+straw_blower,Fenaison - autre,1,
+strip_till,Combinés de préparation de sol,1,
+superficial_plow,Charrues,1,
+subsoiler,Décompacteurs,1,1
+tedder,Faneur,1,1
+tedder,Faneur andaineur,,1
+tedder,Fenaison - autre,,1
+tedder,Toupie,,1
+telescopic,Telescopique,1,1
+telescopic_handler,Telescopique,1,
+thermal_leaves_remover,Tracteur agricole,1,
+thermal_weeder,Tracteur agricole,1,
+thermal_weeding_tool,Tracteur agricole,1,
+tight_tine_hoe,Bineuses,1,
+tine_sower,Semoir - autre,1,
+tine_stubble_cultivator,Déchaumeurs,1,
+tipper_trailer,Autres remorques agricoles,,1
+tipper_trailer,Benne agricole,1,1
+tipper_trailer,Bennes,,1
+tipper_trailer,Bennes TP,,1
+tipper_trailer,Citernes,,1
+tipper_trailer,Pelles,,1
+topper,Tracteur agricole,1,
+topper_trimmer_lv,Tracteur agricole,1,
+topper_trimmer_tv,Tracteur agricole,1,
+tractor,Micro tracteur,,1
+tractor,Tracteur agricole,1,1
+tractor,Tracteur de pente,,1
+tractor,Tracteur forestier,,1
+trailed_sprayer,Pulvérisateur trainé,1,1
+transporter_trailer,Autres remorques agricoles,1,
+trunck_cleaner,Tracteur agricole,1,
+uncovering_equipment,Tracteur agricole,1,
+unloader,Désileuse,1,1
+unroller_straw_blower,Fenaison - autre,1,
+vertical_grinder,Broyeurs d'accotement,1,1
+vibro_cultivator,Vibroculteurs,1,1
+vine_and_arboricultural_tractor,Tracteur vigneron,1,
+vine_compost_spreader,Distributeur d'engrais,1,
+vine_cultivator_lv,Cultivateurs à axe horizontal,1,
+vine_cultivator_tv,Cultivateurs à axe horizontal,1,
+vine_destructive_roller,Rouleau,1,
+vine_direct_sower,Semoir - autre,1,
+vine_disc_harrow,Broyeur de pierres,1,
+vine_disc_stubble_cultivator,Déchaumeurs,1,
+vine_lifter,Broyeur à axe horizontal,1,
+vine_planter,Tracteur agricole,1,
+vine_shoot_extractor,Tracteur agricole,1,
+vine_shoot_grinder,Broyeur à axe horizontal,1,
+vine_shoot_grinder_lv,Broyeur à axe horizontal,1,
+vine_shoot_grinder_tv,Broyeur à axe horizontal,1,
+vine_shoot_rake,Tracteur agricole,1,
+vine_stone_grinder,Broyeur de pierres,1,
+vine_subsoiler,Décompacteurs,1,
+vine_tipper_trailer,Bennes à vendanges,1,1
+vine_tractor,Tracteur vigneron,1,1
+vine_trimmer,Broyeurs,1,
+weeder_harrow,Herses étrillesRouleaux,1,1
+weeding_boom,Tracteur agricole,1,
+wire_lifter,Tracteur agricole,1,
+wrapper,Enrubanneuse,1,1
