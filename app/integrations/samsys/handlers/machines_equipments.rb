@@ -6,7 +6,7 @@ module Samsys
       # transcode Samsys machine type in Ekylibre machine variant
       # row 0 : Ekylibre variant reference name
       # row 1 : Samsys machine type
-      MACHINE_TYPE_FILE_NAME = 'samsys_ekylibre_machine_types.csv'
+      MACHINE_TYPE_FILE_NAME = 'ekylibre_variant_samsys_machine_types.csv'
 
       # set default creation date older because we have no date for machine
       DEFAULT_BORN_AT = Time.new(2010, 1, 1, 10, 0, 0, '+00:00')
@@ -58,8 +58,9 @@ module Samsys
             f = CustomField.find_by(column_name: c_field)
             machine_equipment.set_custom_value(f, machine[k.to_sym]) if f
           end
-          machine_equipment.read!(:application_width, machine[:tool_width].to_f.in_meter, at: DEFAULT_BORN_AT)
-          machine_equipment.read!(:ground_speed, machine[:max_speed].to_f.in_kilometer_per_hour, at: DEFAULT_BORN_AT)
+
+          machine_equipment.read!(:application_width, machine[:tool_width].to_f.in_meter, at: Time.now) if machine_equipment.application_width.to_f != machine[:tool_width].to_f
+          machine_equipment.read!(:ground_speed, machine[:max_speed].to_f.in_kilometer_per_hour, at: Time.now) if machine_equipment.ground_speed.to_f != machine[:max_speed].to_f
         end
 
         # update application_width in Ekylibre (tool_width in Samsys) && custom_fields
@@ -69,6 +70,7 @@ module Samsys
             f = CustomField.find_by(column_name: c_field)
             machine_equipment.set_custom_value(f, machine[k.to_sym]) if f
           end
+
           machine_equipment.read!(:application_width, machine[:tool_width].to_f.in_meter, at: Time.now) if machine_equipment.application_width.to_f != machine[:tool_width].to_f
           machine_equipment.read!(:ground_speed, machine[:max_speed].to_f.in_kilometer_per_hour, at: Time.now) if machine_equipment.ground_speed.to_f != machine[:max_speed].to_f
         end
@@ -88,7 +90,9 @@ module Samsys
 
           to_machine_type = {}.with_indifferent_access
           CSV.foreach(here.join(MACHINE_TYPE_FILE_NAME), headers: true) do |row|
-            to_machine_type[row[1].to_s] = row[0].to_sym
+            if row[3] == "1"
+              to_machine_type[row[1].to_s] = row[0].to_sym
+            end
           end
 
           ekylibre_reference_name = to_machine_type[machine_type]
