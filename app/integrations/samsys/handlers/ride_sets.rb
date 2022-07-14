@@ -38,7 +38,11 @@ module Samsys
         end
 
         def find_or_create_machine_equipment(machine)
-          sensor_equipment = Equipment.of_provider_vendor(VENDOR).of_provider_data(:id, machine[:associations].first[:counter].to_s).first
+          sensor_equipment = if machine[:associations].present?
+                               Equipment.of_provider_vendor(VENDOR).of_provider_data(:id, machine[:associations].first[:counter].to_s).first
+                             else
+                               nil
+                             end
 
           # Find or create machine_equipment throught handers/machines_equipments.rb
           machine_equipment = ::Samsys::Handlers::MachinesEquipments.new
