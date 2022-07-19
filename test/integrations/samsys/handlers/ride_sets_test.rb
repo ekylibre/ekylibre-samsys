@@ -13,9 +13,10 @@ class HandlersRideSetsTest < ::Ekylibre::Testing::ApplicationTestCase::WithFixtu
       machine_custom_fields = ::Samsys::Handlers::MachineCustomFields.new
       machine_custom_fields.bulk_find_or_create
 
-      stopped_on = Time.now
+      started_on = Time.now
+      stopped_on = Time.now + 1*60*60
       assert_difference 'RideSet.count', 3 do
-        ::Samsys::Handlers::RideSets.new(stopped_on: stopped_on).bulk_find_or_create
+        ::Samsys::Handlers::RideSets.new(started_on: started_on, stopped_on: stopped_on).bulk_find_or_create
       end
     end
 
