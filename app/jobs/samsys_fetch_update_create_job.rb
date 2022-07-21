@@ -16,12 +16,11 @@ class SamsysFetchUpdateCreateJob < ActiveJob::Base
         machine_equipment = ::Samsys::Handlers::MachinesEquipments.new
         machine_equipment.bulk_find_or_create(machine, nil)
       end
-
       # find or create equipments in Samsys from Ekylibre equipment without Samsys provider
-      ::Samsys::Handlers::EquipmentsAtSamsys.new.create_equipments_at_samsys
+      #::Samsys::Handlers::EquipmentsAtSamsys.new.create_equipments_at_samsys
 
       # find or create CZ in Samsys
-      ::Samsys::Handlers::CultivablesZonesAtSamsys.new.create_cultivables_zones_at_samsys
+      #::Samsys::Handlers::CultivablesZonesAtSamsys.new.create_cultivables_zones_at_samsys
 
       # create sensors
       sensors = ::Samsys::Handlers::Sensors.new
