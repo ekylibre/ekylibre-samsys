@@ -296,6 +296,25 @@ module Samsys
       end
     end
 
+    def fetch_field(id)
+      integration = fetch
+
+      get_html(FIELDS_URL + '/' + id , header(integration)) do |r|
+        r.success do
+          list = JSON.parse(r.body)
+        end
+      end
+    end
+
+
+    def header(integration)
+      if integration.parameters['token'].blank?
+        get_token
+      end
+
+      { 'Authorization' => "JWT #{integration.reload.parameters['token']}" }
+    end
+
     # Check if the API is up
     # https://doc.samsys.io/#api-Authentication-Authentication
     def check(integration = nil)

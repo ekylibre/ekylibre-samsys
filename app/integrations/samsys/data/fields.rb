@@ -25,7 +25,7 @@ module Samsys
         end
 
         def desired_fields
-          %w[id type geometry]
+          %w[id type geometry provider]
         end
 
     end
