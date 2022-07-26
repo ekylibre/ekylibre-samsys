@@ -26,7 +26,7 @@ class SamsysFetchUpdateCreateJob < ActiveJob::Base
       sensors = ::Samsys::Handlers::Sensors.new
       sensors.bulk_find_or_create
 
-      # create ride sets
+      # Sync ride sets
       ride_sets = ::Samsys::Handlers::RideSets.new(stopped_on: stopped_on, started_on: started_on)
       ride_sets.bulk_find_or_create
       ride_sets.delete_ride_sets_without_rides

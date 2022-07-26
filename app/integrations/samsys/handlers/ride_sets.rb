@@ -80,8 +80,7 @@ module Samsys
             provider: { vendor: VENDOR, name: 'samsys_ride_set', data: { id: machine_activity[:id] } }
           )
 
-          ride = ::Samsys::Handlers::Rides.new(ride_set: ride_set, machine_equipment: machine_equipment)
-
+          ride = ::Samsys::Handlers::Rides.new(ride_sets: [ride_set], machine_equipment: machine_equipment)
           ride.bulk_find_or_create
 
           shape_line_with_buffer = ::Charta.make_line(ride_set.crumbs.order(:read_at).pluck(:geolocation)).simplify(0.0001).to_rgeo.buffer(1)

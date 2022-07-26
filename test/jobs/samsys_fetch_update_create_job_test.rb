@@ -7,12 +7,14 @@ class SamsysFetchUpdateCreateJobTest < ActiveJob::TestCase
     @started_on = Time.new(2022,7,6,13,3,0)
     @stopped_on = Time.new(2022,7,6,13,10,0)
     @user = User.first
+    shape = "{\"type\":\"MultiPolygon\",\"coordinates\":[[[[-0.076277,44.623439],[-0.076279,44.623438],[-0.07629,44.623451],[-0.076494,44.623694],[-0.076625,44.623851],[-0.076633,44.62386],[-0.076631,44.623861],[-0.076236,44.62403],[-0.076232,44.624032],[-0.076449,44.624277],[-0.076553,44.624394],[-0.076538,44.624401],[-0.076516,44.624411],[-0.076356,44.62448],[-0.075674,44.624747],[-0.076659,44.625587],[-0.076651,44.625627],[-0.076649,44.625628],[-0.076632,44.625636],[-0.076639,44.625662],[-0.076604,44.625689],[-0.075118,44.626375],[-0.075059,44.626331],[-0.074595,44.625987],[-0.074369,44.625832],[-0.074165,44.625731],[-0.073735,44.625667],[-0.074406,44.625399],[-0.074281,44.625277],[-0.073887,44.624877],[-0.074304,44.624708],[-0.075309,44.624293],[-0.07523,44.624216],[-0.075016,44.624008],[-0.075508,44.623784],[-0.076203,44.623472],[-0.076277,44.623439]]]]}"
+    @cultivable_zone = FactoryBot.create(:cultivable_zone, shape: Charta.new_geometry(JSON.parse(shape)))
     Preference.set!(:language, 'fra')
     Integration.create(nature: 'samsys', parameters: { email: ENV['SAMSYS_TEST_EMAIL'], password: ENV['SAMSYS_TEST_PASSWORD'] })
   end
 
   test 'Create the right number of records' do
-    SamsysFetchUpdateCreateJob.perform_now(started_on: @started_on, stopped_on:@stopped_on, user_id: @user)
+    SamsysFetchUpdateCreateJob.perform_now(started_on: @started_on, stopped_on:@stopped_on, user_id: @user.id)
     assert_equal(1, RideSet.between(@started_on - 1.minute, @stopped_on).count)
     ride_set = RideSet.between(@started_on - 1.minute, @stopped_on).first
 
@@ -52,13 +54,13 @@ class SamsysFetchUpdateCreateJobTest < ActiveJob::TestCase
     assert_equal("PT6S",road_ride[:duration])
     assert_equal("PT0S",road_ride[:sleep_duration])
     assert_equal(0.006285547045648425, road_ride.distance_km)
-    assert_equal(nil,road_ride.area_without_overlap)
-    assert_equal(nil,road_ride.area_with_overlap)
-    assert_equal(nil,road_ride.area_smart)
+    assert_nil(road_ride.area_without_overlap)
+    assert_nil(road_ride.area_with_overlap)
+    assert_nil(road_ride.area_smart)
     assert_equal(0.0,road_ride.gasoline)
     assert_equal("road",road_ride.nature)
     assert_equal(ride_set.id, road_ride.ride_set_id)
-    assert_equal(nil,road_ride.intervention_id)
+    assert_nil(road_ride.intervention_id)
     assert_equal(6.690714031373384, road_ride.shape.length)
 
     assert_equal("R000000000001", work_ride.number)
@@ -81,8 +83,9 @@ class SamsysFetchUpdateCreateJobTest < ActiveJob::TestCase
     assert_equal(0,work_ride.gasoline)
     assert_equal("work",work_ride.nature)
     assert_equal(ride_set.id, work_ride.ride_set_id)
-    assert_equal(nil,work_ride.intervention_id)
+    assert_nil(work_ride.intervention_id)
     assert_equal(136.04382546452223, work_ride.shape.length)
+    assert_equal(@cultivable_zone, work_ride.cultivable_zones.first)
   
     assert_equal(474, Crumb.where(ride_id: ride_set.rides.pluck(:id)).count)
 
