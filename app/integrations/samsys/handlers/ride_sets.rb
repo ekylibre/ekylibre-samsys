@@ -59,7 +59,7 @@ module Samsys
           ride_set = RideSet.of_provider_vendor(VENDOR).of_provider_data(:id, machine_activity[:id].to_s).first
 
           if ride_set.present?
-            ride = ::Samsys::Handlers::Rides.new(ride_set: ride_set, machine_equipment: machine_equipment)
+            ride = ::Samsys::Handlers::Rides.new(ride_sets: [ride_set], machine_equipment: machine_equipment)
             ride.bulk_find_or_create
           end
         end
