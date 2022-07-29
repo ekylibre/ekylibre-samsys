@@ -3,7 +3,7 @@
         constructor(element) {
             this.list = element;
             this.listSelectorInputs = element.querySelectorAll('input[data-list-selector]');
-            this.interventionRequestBtn = element.parentElement.querySelector('#new-intervention-rides');
+            this.interventionRequestBtn = element.parentElement.querySelector('#intervention-request');
             this.interventionRecordBtn = element.parentElement.querySelector('#new-intervention-rides');
             this.interventionRequestUrl = this.interventionRequestBtn.href;
             this.interventionRecordUrl = this.interventionRecordBtn.href;
@@ -28,12 +28,18 @@
         }
 
         updateBtnsHref(ids) {
-            const url = new URL(this.interventionRequestUrl);
+            const requestUrl = new URL(this.interventionRequestUrl);
             if (ids.length > 0) {
-                ids.map((id) => url.searchParams.append('ride_ids[]', id));
+                ids.map((id) => requestUrl.searchParams.append('ride_ids[]', id));
             }
-            this.interventionRequestBtn.setAttribute('href', url);
-            this.interventionRecordBtn.setAttribute('href', url);
+            this.interventionRequestBtn.setAttribute('href', requestUrl);
+
+
+            const reccordUrl = new URL(this.interventionRecordUrl);
+            if (ids.length > 0) {
+                ids.map((id) => reccordUrl.searchParams.append('ride_ids[]', id));
+            }
+            this.interventionRecordBtn.setAttribute('href', reccordUrl);
         }
 
         get selectedIds() {
@@ -108,4 +114,21 @@
             reloadRidesColorAfterClicOnActiveList();
         }
     });
+
+
+    E.onDomReady(function () {
+      button = document.querySelector('#intervention-request');
+      button.addEventListener('click', function (event) {
+          const title = this.dataset.modalTitle;
+          event.preventDefault();
+          E.Dialog.open(this.href, {
+              title,
+              success: (response) => {
+                  eval(response.data);
+              },
+          });
+      });
+    });
+
+  
 })(ekylibre);
