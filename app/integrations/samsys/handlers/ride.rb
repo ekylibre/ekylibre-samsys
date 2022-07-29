@@ -71,7 +71,7 @@ module Samsys
           )
 
           if cultivable_zone.present?
-            ride.cultivable_zones << cultivable_zone
+            ride.cultivable_zone = cultivable_zone
           end
           
           find_or_create_crumbs(ride.id, meta_work[:id], meta_work[:breaks])

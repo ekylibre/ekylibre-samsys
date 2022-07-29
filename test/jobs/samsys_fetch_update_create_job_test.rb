@@ -1,7 +1,7 @@
 require 'test_helper'
 require_relative '../test_helper'
 
-class SamsysFetchUpdateCreateJobTest < ActiveJob::TestCase
+class SamsysFetchUpdateCreateJobTest < Ekylibre::Testing::ApplicationTestCase::WithFixtures
   setup do
     #dates to match only one ride set of testsynchroequipementsamsys3@gmail.com account
     @started_on = Time.new(2022,7,6,13,3,0)
@@ -85,7 +85,7 @@ class SamsysFetchUpdateCreateJobTest < ActiveJob::TestCase
     assert_equal(ride_set.id, work_ride.ride_set_id)
     assert_nil(work_ride.intervention_id)
     assert_equal(136.04382546452223, work_ride.shape.length)
-    assert_equal(@cultivable_zone, work_ride.cultivable_zones.first)
+    assert_equal(@cultivable_zone, work_ride.cultivable_zone)
   
     assert_equal(474, Crumb.where(ride_id: ride_set.rides.pluck(:id)).count)
 
