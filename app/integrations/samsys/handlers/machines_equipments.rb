@@ -60,8 +60,14 @@ module Samsys
             machine_equipment.set_custom_value(f, machine[k.to_sym]) if f
           end
 
-          machine_equipment.read!(:application_width, machine[:tool_width].to_f.in_meter, at: Time.now, force: true) if machine_equipment.application_width.to_f != machine[:tool_width].to_f
-          machine_equipment.read!(:ground_speed, machine[:max_speed].to_f.in_kilometer_per_hour, at: Time.now) if machine_equipment.ground_speed.to_f != machine[:max_speed].to_f
+          if machine_equipment.application_width.to_f != machine[:tool_width].to_f
+            machine_equipment.read!(:application_width, machine[:tool_width].to_f.in_meter, at: Time.now,
+force: true)
+          end
+          if machine_equipment.ground_speed.to_f != machine[:max_speed].to_f
+            machine_equipment.read!(:ground_speed, machine[:max_speed].to_f.in_kilometer_per_hour,
+                                    at: Time.now)
+          end
 
           machine_equipment
         end
@@ -74,8 +80,14 @@ module Samsys
             machine_equipment.set_custom_value(f, machine[k.to_sym]) if f
           end
 
-          machine_equipment.read!(:application_width, machine[:tool_width].to_f.in_meter, at: Time.now) if machine_equipment.application_width.to_f != machine[:tool_width].to_f
-          machine_equipment.read!(:ground_speed, machine[:max_speed].to_f.in_kilometer_per_hour, at: Time.now) if machine_equipment.ground_speed.to_f != machine[:max_speed].to_f
+          if machine_equipment.application_width.to_f != machine[:tool_width].to_f
+            machine_equipment.read!(:application_width, machine[:tool_width].to_f.in_meter,
+                                    at: Time.now)
+          end
+          if machine_equipment.ground_speed.to_f != machine[:max_speed].to_f
+            machine_equipment.read!(:ground_speed, machine[:max_speed].to_f.in_kilometer_per_hour,
+                                    at: Time.now)
+          end
         end
 
         def owner_entity(machine)
@@ -93,7 +105,7 @@ module Samsys
 
           to_machine_type = {}.with_indifferent_access
           CSV.foreach(here.join(MACHINE_TYPE_FILE_NAME), headers: true) do |row|
-            if row[3] == "1"
+            if row[3] == '1'
               to_machine_type[row[1].to_s] = row[0].to_sym
             end
           end

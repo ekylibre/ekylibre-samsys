@@ -15,8 +15,8 @@ module Samsys
               field = Samsys::Data::Fields.new(call: ::Samsys::SamsysIntegration.fetch_field(field_id)).result
             end
             Samsys::Handlers::Ride.new(meta_work: meta_work,
-              ride_set: ride_set, 
-              machine_equipment: machine_equipment, 
+              ride_set: ride_set,
+              machine_equipment: machine_equipment,
               field: field).bulk_find_or_create
           end
         end

@@ -67,7 +67,7 @@ class SamsysFetchUpdateCreateJob < ActiveJob::Base
         message: :correct_samsys_fetch_params.tl,
         level: :success,
         target_url: '/backend/ride_sets',
-        interpolations: { count: @count.to_s}
+        interpolations: { count: @count.to_s }
       }
     end
 

@@ -6,7 +6,7 @@ module Samsys
       VENDOR = ::Samsys::Handlers::VENDOR
       DEFAULT_TOOL_WIDTH = 2.0
 
-      def initialize(ride_set: , meta_work:, machine_equipment:, field:)
+      def initialize(ride_set:, meta_work:, machine_equipment:, field:)
         @ride_set = ride_set
         @meta_work = meta_work
         @machine_equipment = machine_equipment
@@ -25,7 +25,7 @@ module Samsys
         def tool_width
           equipment_width = machine_equipment.get(:application_width).in(:meter).to_f
           return DEFAULT_TOOL_WIDTH if (equipment_width == 0.0 || equipment_width.nil?)
-          
+
           equipment_width
         end
 
@@ -73,7 +73,7 @@ module Samsys
           if cultivable_zone.present?
             ride.cultivable_zone = cultivable_zone
           end
-          
+
           find_or_create_crumbs(ride.id, meta_work[:id], meta_work[:breaks])
           find_or_create_crumbs_breaks(ride.id, meta_work[:id], meta_work[:breaks]) if meta_work[:breaks].present?
 

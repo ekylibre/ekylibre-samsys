@@ -21,5 +21,5 @@ Rails.application.routes.draw do
     end
     get :samsys_synchro, to: 'ride_sets#synchronize'
   end
-  
+
 end

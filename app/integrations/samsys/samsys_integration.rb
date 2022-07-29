@@ -299,13 +299,12 @@ module Samsys
     def fetch_field(id)
       integration = fetch
 
-      get_html(FIELDS_URL + '/' + id , header(integration)) do |r|
+      get_html(FIELDS_URL + '/' + id, header(integration)) do |r|
         r.success do
           list = JSON.parse(r.body)
         end
       end
     end
-
 
     def header(integration)
       if integration.parameters['token'].blank?

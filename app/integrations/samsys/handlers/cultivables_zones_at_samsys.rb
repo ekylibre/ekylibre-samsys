@@ -24,10 +24,10 @@ module Samsys
           return [] if samsys_fields.nil?
 
           samsys_fields.map do |field|
-            valid_ewkt = ShapeCorrector.build.try_fix_geojson(field["geometry"].to_json, 4326)
+            valid_ewkt = ShapeCorrector.build.try_fix_geojson(field['geometry'].to_json, 4326)
             samsys_shape = Charta.new_geometry(Maybe(valid_ewkt).or_else(field)).convert_to(:multi_polygon)
 
-            CultivableZone.shape_matching(samsys_shape, 0.02).ids 
+            CultivableZone.shape_matching(samsys_shape, 0.02).ids
           end
         end
 
