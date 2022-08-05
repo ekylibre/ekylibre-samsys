@@ -7,6 +7,7 @@ fra:
       index: "Trajets géolocalisés"
       show: "Trajet géolocalisé : %{number}"
   labels:
+    create_from_planned_intervention: "Créer depuis une intervention plannifiée"
     samsys_incoming_data_exchange: "Machines, capteurs et trajets géolocalisés"
     samsys_outgoing_data_exchange: "Zones cultivables"
     area_without_overlap: "Surface sans recouvrement"

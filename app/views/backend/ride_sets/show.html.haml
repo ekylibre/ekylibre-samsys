@@ -40,5 +40,5 @@
     - c.cobble(:rides) do
       = toolbar do |t|
         = t.new(nature: :record, label: :add_intervention_record.tl, params: { controller: :interventions }, class: 'disabled', id: 'new-intervention-rides')
-        = t.action(:selection_modal, label: :add_intervention_record.tl, params: { controller: :interventions }, class: 'disabled', id: 'intervention-request')
+        = t.action(:selection_modal, label: :create_from_planned_intervention.tl, params: { controller: :interventions }, class: 'disabled', id: 'intervention-request')
       = cobble_list(:rides)
