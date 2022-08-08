@@ -19,4 +19,5 @@ Gem::Specification.new do |s|
   s.add_dependency 'dotenv'
   s.add_dependency 'vcr'
   s.add_dependency 'webmock'
+  s.add_development_dependency 'rubocop', '~> 1.11.0'
 end

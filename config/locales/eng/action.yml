@@ -7,6 +7,7 @@ eng:
       index: "Geolocated Rides"
       show: "Geolocated Ride: %{number}"
   labels:
+    create_from_planned_intervention: "Create from planned intervention"
     samsys_incoming_data_exchange: "Equipments, sensors and geolocated rides"
     samsys_outgoing_data_exchange: "Cultivable zones"
     area_without_overlap: "Area without overlap"

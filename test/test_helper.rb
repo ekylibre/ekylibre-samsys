@@ -4,7 +4,7 @@ require('dotenv')
 Dotenv.load(File.join(EkylibreSamsys::Engine.root, '.env'))
 
 VCR.configure do |config|
-  config.allow_http_connections_when_no_cassette = false
+  config.allow_http_connections_when_no_cassette = true
   config.cassette_library_dir = File.expand_path('cassettes', __dir__)
   config.filter_sensitive_data('Hello') { ENV['SAMSYS_TEST_EMAIL'] }
   config.filter_sensitive_data('World') { ENV['SAMSYS_TEST_PASSWORD'] }

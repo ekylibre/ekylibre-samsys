@@ -31,7 +31,7 @@ module Samsys
     end
 
     calls :get_token, :fetch_user_info, :fetch_clusters, :get_machine, :delete_machine, :post_machines, :post_parcels, :fetch_all_counters, :fetch_all_machines, :fetch_geolocation,
-          :fetch_activities_machine, :fetch_works_activity, :fetch_work_geolocations, :fetch_fields
+          :fetch_activities_machine, :fetch_works_activity, :fetch_work_geolocations, :fetch_fields, :fetch_field
 
     # Get token with login and password
     # DOC https://doc.samsys.io/#api-Authentication-Authentication
@@ -294,6 +294,24 @@ module Samsys
           list = JSON.parse(r.body)
         end
       end
+    end
+
+    def fetch_field(id)
+      integration = fetch
+
+      get_html(FIELDS_URL + '/' + id, header(integration)) do |r|
+        r.success do
+          list = JSON.parse(r.body)
+        end
+      end
+    end
+
+    def header(integration)
+      if integration.parameters['token'].blank?
+        get_token
+      end
+
+      { 'Authorization' => "JWT #{integration.reload.parameters['token']}" }
     end
 
     # Check if the API is up

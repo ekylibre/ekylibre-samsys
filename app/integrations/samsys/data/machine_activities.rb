@@ -5,8 +5,8 @@ module Samsys
     class MachineActivities
       def initialize(machine_id:, stopped_on:, started_on:)
         @machine_id = machine_id
-        @stopped_on = stopped_on.to_time.strftime('%FT%TZ')
-        @started_on = started_on.to_time.strftime('%FT%TZ')
+        @stopped_on = stopped_on.to_time.utc.iso8601
+        @started_on = started_on.to_time.utc.iso8601
       end
 
       def result

@@ -29,7 +29,7 @@ module Samsys
 
         def desired_fields
           %i[id type start_date end_date breaks duration sleep_count sleep_duration type distance_km
-             area_without_overlap area_with_overlap area_smart gasoline]
+             area_without_overlap area_with_overlap area_smart gasoline field]
         end
 
     end

@@ -16,24 +16,24 @@ class SamsysFetchUpdateCreateJob < ActiveJob::Base
         machine_equipment = ::Samsys::Handlers::MachinesEquipments.new
         machine_equipment.bulk_find_or_create(machine, nil)
       end
-
       # find or create equipments in Samsys from Ekylibre equipment without Samsys provider
-      ::Samsys::Handlers::EquipmentsAtSamsys.new.create_equipments_at_samsys
+      #::Samsys::Handlers::EquipmentsAtSamsys.new.create_equipments_at_samsys
 
       # find or create CZ in Samsys
-      ::Samsys::Handlers::CultivablesZonesAtSamsys.new.create_cultivables_zones_at_samsys
+      #::Samsys::Handlers::CultivablesZonesAtSamsys.new.create_cultivables_zones_at_samsys
 
       # create sensors
       sensors = ::Samsys::Handlers::Sensors.new
       sensors.bulk_find_or_create
 
-      # create ride sets
+      # Sync ride sets
       ride_sets = ::Samsys::Handlers::RideSets.new(stopped_on: stopped_on, started_on: started_on)
       ride_sets.bulk_find_or_create
       ride_sets.delete_ride_sets_without_rides
       count_after = RideSet.count
       @count = count_after - count_before
     rescue StandardError => error
+      binding.pry
       Preference.set!(:samsys_fetch_job_running, false, :boolean)
       Rails.logger.error $ERROR_INFO
       Rails.logger.error $ERROR_INFO.backtrace.join("\n")
@@ -67,7 +67,7 @@ class SamsysFetchUpdateCreateJob < ActiveJob::Base
         message: :correct_samsys_fetch_params.tl,
         level: :success,
         target_url: '/backend/ride_sets',
-        interpolations: { count: @count.to_s}
+        interpolations: { count: @count.to_s }
       }
     end
 

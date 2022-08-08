@@ -15,7 +15,7 @@ module Samsys
       EKYLIBRE_PRODUCT_NATURE_TO_SAMSYS_MACHINE_TYPES = 'ekylibre_product_nature_to_samsys_machine_types.csv'
 
       def create_equipments_at_samsys
-        list_of_equipment_variety = ['tractor', 'trailed_equipment', 'handling_equipment', 'equipment']
+        list_of_equipment_variety = %w[tractor trailed_equipment handling_equipment equipment]
         equipments_to_create_at_samsys = Equipment.where(variety: list_of_equipment_variety) - Equipment.where.not(provider: nil).of_provider_vendor('samsys')
 
         equipments_to_create_at_samsys.each do |equipment|
@@ -24,11 +24,11 @@ module Samsys
 
             to_machine_type = {}.with_indifferent_access
             CSV.foreach(here.join(EKYLIBRE_VARIANT_SAMSYS_MACHINE_TYPES), headers: true) do |row|
-              if row[2] == "1"
+              if row[2] == '1'
                 to_machine_type[row[0].to_s] = row[1].to_s
               end
             end
-    
+
             post_equipment_at_samsys(equipment, to_machine_type[equipment.variant.reference_name])
 
           elsif equipment.variant.reference_name.nil? && equipment.variant.nature.reference_name
@@ -52,8 +52,8 @@ module Samsys
       end
 
       def post_equipment_at_samsys(equipment, machine_type)
-        brand = ((equipment.custom_fields? && equipment.custom_fields.key?("brand_name") && equipment.custom_fields["brand_name"].present?) ? equipment.custom_fields["brand_name"] : 'Inconnue')
-        mod = ((equipment.custom_fields? && equipment.custom_fields.key?("mod_name") && equipment.custom_fields["mod_name"].present? ) ? equipment.custom_fields["mod_name"] : 'Inconnue')
+        brand = ((equipment.custom_fields? && equipment.custom_fields.key?('brand_name') && equipment.custom_fields['brand_name'].present?) ? equipment.custom_fields['brand_name'] : 'Inconnue')
+        mod = ((equipment.custom_fields? && equipment.custom_fields.key?('mod_name') && equipment.custom_fields['mod_name'].present? ) ? equipment.custom_fields['mod_name'] : 'Inconnue')
         ::Samsys::SamsysIntegration.post_machines(
           equipment.name,
           machine_type,
@@ -62,7 +62,8 @@ module Samsys
           mod,
           equipment.uuid,
           equipment.get(:application_width).in(:meter).to_f,
-          equipment.get(:ground_speed).in(:kilometer_per_hour).to_f).execute do |c|
+          equipment.get(:ground_speed).in(:kilometer_per_hour).to_f
+        ).execute do |c|
           c.success do |response|
             equipment.provider = { vendor: VENDOR, name: 'samsys_equipment', data: { id: response[:id].to_s } }
             equipment.save

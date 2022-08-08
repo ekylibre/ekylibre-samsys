@@ -38,11 +38,9 @@ module Samsys
         end
 
         def find_or_create_machine_equipment(machine)
-          sensor_equipment = if machine[:associations].present?
-                               Equipment.of_provider_vendor(VENDOR).of_provider_data(:id, machine[:associations].first[:counter].to_s).first
-                             else
-                               nil
-                             end
+          if machine[:associations].any?
+            sensor_equipment = Equipment.of_provider_vendor(VENDOR).of_provider_data(:id, machine[:associations].first[:counter].to_s).first
+          end
 
           # Find or create machine_equipment throught handers/machines_equipments.rb
           machine_equipment = ::Samsys::Handlers::MachinesEquipments.new
@@ -61,7 +59,7 @@ module Samsys
           ride_set = RideSet.of_provider_vendor(VENDOR).of_provider_data(:id, machine_activity[:id].to_s).first
 
           if ride_set.present?
-            ride = ::Samsys::Handlers::Rides.new(ride_set: ride_set, machine_equipment: machine_equipment)
+            ride = ::Samsys::Handlers::Rides.new(ride_sets: [ride_set], machine_equipment: machine_equipment)
             ride.bulk_find_or_create
           end
         end
@@ -82,8 +80,7 @@ module Samsys
             provider: { vendor: VENDOR, name: 'samsys_ride_set', data: { id: machine_activity[:id] } }
           )
 
-          ride = ::Samsys::Handlers::Rides.new(ride_set: ride_set, machine_equipment: machine_equipment)
-
+          ride = ::Samsys::Handlers::Rides.new(ride_sets: [ride_set], machine_equipment: machine_equipment)
           ride.bulk_find_or_create
 
           shape_line_with_buffer = ::Charta.make_line(ride_set.crumbs.order(:read_at).pluck(:geolocation)).simplify(0.0001).to_rgeo.buffer(1)

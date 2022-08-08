@@ -3,6 +3,9 @@
 module Samsys
   module Data
     class Fields
+      def initialize(call: ::Samsys::SamsysIntegration.fetch_fields)
+        @call = call
+      end
 
       def result
         @formated_data ||= call_api
@@ -10,22 +13,26 @@ module Samsys
 
       private
 
+        attr_reader :call
+
         def call_api
-          ::Samsys::SamsysIntegration.fetch_fields.execute do |c|
-            c.success do |list|
-              format_data(list)
+          call.execute do |c|
+            c.success do |results|
+              if results.is_a?(Array)
+                results.map { |result| format_data(result) }
+              else
+                format_data(results)
+              end
             end
           end
         end
 
-        def format_data(list)
-          list.map do |field|
-            field.filter{ |k, _v| desired_fields.include?(k) }
-          end
+        def format_data(field)
+          field.filter{ |k, _v| desired_fields.include?(k) }
         end
 
         def desired_fields
-          %w[id type geometry]
+          %w[id type geometry provider]
         end
 
     end
