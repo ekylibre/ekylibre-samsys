@@ -57,7 +57,6 @@ module Samsys
             sleep_count: meta_work[:sleep_count],
             sleep_duration: meta_work[:sleep_duration].to_i.seconds,
             equipment_name: machine_equipment.name,
-            state: 'unaffected',
             nature: meta_work[:type],
             distance_km: meta_work[:distance_km],
             area_without_overlap: meta_work[:area_without_overlap],
