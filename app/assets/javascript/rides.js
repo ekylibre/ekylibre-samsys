@@ -118,7 +118,8 @@
 
     E.onDomReady(function () {
       button = document.querySelector('#intervention-request');
-      button.addEventListener('click', function (event) {
+      if (button !== null){
+        button.addEventLitener('click', function (event) {
           const title = this.dataset.modalTitle;
           event.preventDefault();
           E.Dialog.open(this.href, {
@@ -127,7 +128,8 @@
                   eval(response.data);
               },
           });
-      });
+        });
+      }
     });
 
   
