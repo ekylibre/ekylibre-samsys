@@ -117,9 +117,9 @@
 
 
     E.onDomReady(function () {
-      button = document.querySelector('#intervention-request');
+      const button = document.querySelector('#intervention-request');
       if (button !== null){
-        button.addEventLitener('click', function (event) {
+        button.addEventListener('click', function (event) {
           const title = this.dataset.modalTitle;
           event.preventDefault();
           E.Dialog.open(this.href, {
