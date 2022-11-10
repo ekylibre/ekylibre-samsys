@@ -32,23 +32,27 @@ module Samsys
             post_equipment_at_samsys(equipment, to_machine_type[equipment.variant.reference_name])
 
           elsif equipment.variant.reference_name.nil? && equipment.variant.nature.reference_name
-            here = Pathname.new(__FILE__).dirname
-
-            to_machine_type = {}.with_indifferent_access
-            CSV.foreach(here.join(EKYLIBRE_PRODUCT_NATURE_TO_SAMSYS_MACHINE_TYPES), headers: true) do |row|
-              to_machine_type[row[0].to_s] = row[1].to_s
-            end
-
-            samsys_machine_type = to_machine_type[equipment.variant.nature.reference_name]
+            samsys_machine_type = find_samsys_machine_type(equipment.variant.nature.reference_name, EKYLIBRE_PRODUCT_NATURE_TO_SAMSYS_MACHINE_TYPES)
             # Create equipment at samsys only if samsys_machine_type is present
             if samsys_machine_type
               post_equipment_at_samsys(equipment, samsys_machine_type)
             end
           else
-            # If there are no reference_name in variant or product_nature skip equipment
-            next
+            samsys_machine_type = find_samsys_machine_type('tractor', EKYLIBRE_PRODUCT_NATURE_TO_SAMSYS_MACHINE_TYPES)
+            post_equipment_at_samsys(equipment, samsys_machine_type)
           end
         end
+      end
+
+      def find_samsys_machine_type(equipment_product_nature, csv_file)
+        here = Pathname.new(__FILE__).dirname
+
+        to_machine_type = {}.with_indifferent_access
+        CSV.foreach(here.join(csv_file), headers: true) do |row|
+          to_machine_type[row[0].to_s] = row[1].to_s
+        end
+
+        to_machine_type[equipment_product_nature]
       end
 
       def post_equipment_at_samsys(equipment, machine_type)
