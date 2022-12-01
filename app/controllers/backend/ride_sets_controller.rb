@@ -28,7 +28,7 @@ line_class: 'RECORD.state'.c) do |t|
       t.column :duration, label_method: :decorated_duration
       t.column :sleep_count, class: 'center'
       t.column :sleep_duration, label_method: :decorated_sleep_duration
-      t.column :equipment_name, url: { controller: 'backend/equipments', id: 'RECORD.product_id'.c }
+      t.column :equipment, url: { controller: 'backend/equipments', id: 'RECORD.product_id'.c }
       t.column :provider_vendor, label_method: :provider_vendor
     end
 
