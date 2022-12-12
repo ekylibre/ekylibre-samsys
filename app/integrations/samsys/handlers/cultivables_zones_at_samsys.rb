@@ -5,7 +5,7 @@ module Samsys
     class CultivablesZonesAtSamsys
 
       def create_cultivables_zones_at_samsys
-        cultivables_zones_to_create_at_samsys = CultivableZone.where.not(id: synchronized_cultivables_zones_ids.uniq)
+        cultivables_zones_to_create_at_samsys = CultivableZone.where.not(id: synchronized_cultivables_zones_ids.uniq.flatten)
         cultivables_zones_to_create_at_samsys.each do |cultivable_zone|
           ::Samsys::SamsysIntegration.post_parcels(
             samsys_current_user[:id],
