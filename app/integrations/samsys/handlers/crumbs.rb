@@ -57,7 +57,7 @@ module Samsys
             read_at: work_geolocation[:properties][:t],
             ride_id: @ride_id,
             provider: { vendor: VENDOR, name: 'samsys_crumb',
-  data: { id: work_geolocation[:id_data], speed: work_geolocation[:properties][:speed] } },
+  data: { id: work_geolocation[:id_data], speed: work_geolocation[:properties][:speed], aux_count: work_geolocation[:properties][:aux_count], aux_count_2: work_geolocation[:properties][:aux_count_2]} },
           )
         end
 

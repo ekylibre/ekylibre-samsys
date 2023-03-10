@@ -13,10 +13,9 @@ module Samsys
       def bulk_find_or_create
         fetch_all_machines.each do |machine|
           next if get_machine_activities(machine[:id]).empty?
-
           machine_equipment = find_or_create_machine_equipment(machine)
-
-          find_or_create_ride_set(machine[:id], machine_equipment)
+          # Find or create ride_set only if doesn't have tag bluetooth
+          find_or_create_ride_set(machine[:id], machine_equipment) if machine[:tag_ble][:id].nil?
         end
       end
 
@@ -38,6 +37,7 @@ module Samsys
         end
 
         def find_or_create_machine_equipment(machine)
+          # Unlinked if machine had counter before ????
           if machine[:associations].any?
             sensor_equipment = Equipment.of_provider_vendor(VENDOR).of_provider_data(:id, machine[:associations].first[:counter].to_s).first
           end
@@ -63,7 +63,7 @@ module Samsys
             ride.bulk_find_or_create
           end
         end
-
+ 
         def create_ride_set(machine_activity, machine_equipment)
           ride_set = RideSet.create!(
             started_at: machine_activity[:start_date],
@@ -80,6 +80,8 @@ module Samsys
             provider: { vendor: VENDOR, name: 'samsys_ride_set', data: { id: machine_activity[:id] } }
           )
 
+          create_association_beetween_product_equipments_and_rideset(ride_set, machine_activity[:machines], machine_equipment)
+  
           ride = ::Samsys::Handlers::Rides.new(ride_sets: [ride_set], machine_equipment: machine_equipment)
           ride.bulk_find_or_create
 
@@ -87,6 +89,43 @@ module Samsys
           ride_set.update!(shape: shape_line_with_buffer)
         end
 
+        def create_association_beetween_product_equipments_and_rideset(ride_set, machines, machine_equipment)
+          machines.each do |machine|
+            equipment = Equipment.of_provider_vendor(VENDOR).of_provider_data(:id, machine[:id]).first
+            equipment_nature = (equipment === machine_equipment) ? 'main' : 'additional'
+            # Store in provider the machine counter association or tag_ble
+            provider = samsys_machine_counter_association_or_tag(machine[:id])
+
+            ride_set_equipment = RideSetEquipment.new(
+              ride_set: ride_set,
+              product: equipment,
+              nature: equipment_nature,
+              provider: provider
+            )
+            ride_set_equipment.save
+          end
+        end
+
+        def samsys_machine_counter_association_or_tag(samsys_machine_id)
+          samsys_machine = ::Samsys::Data::Machine.new(samsys_machine_id).get_machine
+          if samsys_machine[:tag_ble][:id].present?
+            { vendor: VENDOR, name: 'tag_ble', data: { 
+                id: samsys_machine[:tag_ble][:id], 
+                id_tag: samsys_machine[:tag_ble][:id_tag], 
+                start_date: samsys_machine[:tag_ble][:start_date], 
+                end_date: samsys_machine[:tag_ble][:end_date] } 
+            }
+          elsif samsys_machine[:associations].present?
+            { vendor: VENDOR, name: 'counter_associations', data: { 
+                id: samsys_machine[:associations][:id], 
+                counter: samsys_machine[:associations][:counter], 
+                start_date: samsys_machine[:associations][:start_date], 
+                end_date: samsys_machine[:associations][:end_date] } 
+            }
+          else
+            { vendor: VENDOR }
+          end
+        end
     end
   end
 end
