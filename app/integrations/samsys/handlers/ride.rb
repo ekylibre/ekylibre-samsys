@@ -15,19 +15,11 @@ module Samsys
 
       def bulk_find_or_create
         return if find_existant_ride.present?
-
         create_ride
       end
 
       private
         attr_reader :ride_set, :meta_work, :machine_equipment, :field
-
-        def tool_width
-          equipment_width = machine_equipment.get(:application_width).in(:meter).to_f
-          return DEFAULT_TOOL_WIDTH if (equipment_width == 0.0 || equipment_width.nil?)
-
-          equipment_width
-        end
 
         def find_existant_ride
           ride = ::Ride.of_provider_vendor(VENDOR).of_provider_data(:id, meta_work[:id].to_s).first
@@ -50,13 +42,13 @@ module Samsys
         end
 
         def create_ride
+
           ride = ::Ride.create!(
             started_at: meta_work[:start_date],
             stopped_at: meta_work[:end_date],
             duration: meta_work[:duration].to_i.seconds,
             sleep_count: meta_work[:sleep_count],
             sleep_duration: meta_work[:sleep_duration].to_i.seconds,
-            equipment_name: machine_equipment.name,
             nature: meta_work[:type],
             distance_km: meta_work[:distance_km],
             area_without_overlap: meta_work[:area_without_overlap],
@@ -65,10 +57,8 @@ module Samsys
             gasoline: meta_work[:gasoline],
             product_id: machine_equipment.id,
             ride_set_id: ride_set.id,
-            provider: { vendor: VENDOR, name: 'samsys_ride',
-  data: { id: meta_work[:id], machine_equipment_tool_width: tool_width } },
+            provider: { vendor: VENDOR, name: 'samsys_ride', data: { id: meta_work[:id] } },
           )
-
           if cultivable_zone.present?
             ride.cultivable_zone = cultivable_zone
           end

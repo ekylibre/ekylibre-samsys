@@ -24,7 +24,7 @@ module Samsys
         end
 
         def desired_fields
-          %i[id name machine_type cluster brand model tool_width max_speed associations provider]
+          %i[id name machine_type cluster brand model tool_width max_speed aux_configurations associations tag_ble provider]
         end
 
     end

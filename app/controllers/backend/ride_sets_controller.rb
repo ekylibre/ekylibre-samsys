@@ -14,9 +14,12 @@ module Backend
       t.column :sleep_count, class: 'center'
       t.column :sleep_duration, label_method: :decorated_sleep_duration
       t.column :road, class: 'center'
-      t.column :equipment
+      t.column :main_equipment, url: { controller: 'backend/equipments', id: "RECORD.equipments.of_nature('main').first.product_id".c }
+      t.column :additional_tool_one, url: { controller: 'backend/equipments', id: "RECORD.equipments.of_nature('additional')[0].product_id".c }, hidden: :additional_tool_one.nil?
+      t.column :additional_tool_two, url: { controller: 'backend/equipments', id: "RECORD.equipments.of_nature('additional')[1].product_id".c }, hidden: :additional_tool_two.nil?
       t.column :provider_vendor
     end
+
 
     list(:rides, selectable: true, model: :ride, conditions: { ride_set_id: 'params[:id]'.c }, order: 'rides.started_at DESC',
 line_class: 'RECORD.state'.c) do |t|
@@ -28,8 +31,10 @@ line_class: 'RECORD.state'.c) do |t|
       t.column :duration, label_method: :decorated_duration
       t.column :sleep_count, class: 'center'
       t.column :sleep_duration, label_method: :decorated_sleep_duration
-      t.column :equipment_name, url: { controller: 'backend/equipments', id: 'RECORD.product_id'.c }
-      t.column :provider_vendor, label_method: :provider_vendor
+      t.column :main_equipment, url: { controller: 'backend/equipments', id: "RECORD.ride_set.equipments.of_nature('main').first.product_id".c }
+      t.column :additional_tool_one, url: { controller: 'backend/equipments', id: "RECORD.ride_set.equipments.of_nature('additional')[0].product_id".c }, hidden: :additional_tool_one.nil?
+      t.column :additional_tool_two, url: { controller: 'backend/equipments', id: "RECORD.ride_set.equipments.of_nature('additional')[1].product_id".c }, hidden: :additional_tool_two.nil?
+      t.column :provider_vendor, label_method: :provider_vendor 
     end
 
     def index
