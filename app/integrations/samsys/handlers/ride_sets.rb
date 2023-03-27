@@ -50,13 +50,16 @@ module Samsys
         def find_or_create_ride_set(machine_id, machine_equipment)
           get_machine_activities(machine_id).each do |machine_activity|
             next if find_existant_ride_set(machine_activity, machine_equipment).present?
-
             create_ride_set(machine_activity, machine_equipment)
           end
         end
 
         def find_existant_ride_set(machine_activity, machine_equipment)
-          ride_set = RideSet.of_provider_vendor(VENDOR).of_provider_data(:id, machine_activity[:id].to_s).first
+          start_date = Time.zone.parse(machine_activity[:start_date])
+          end_date = Time.zone.parse(machine_activity[:end_date])
+
+          ride_set = RideSet.of_provider_vendor(VENDOR).of_provider_data(:id, machine_activity[:id].to_s).first || 
+                     RideSet.of_provider_vendor(VENDOR).where(started_at: start_date, stopped_at: end_date)
 
           if ride_set.present?
             ride = ::Samsys::Handlers::Rides.new(ride_sets: [ride_set], machine_equipment: machine_equipment)
@@ -117,10 +120,10 @@ module Samsys
             }
           elsif samsys_machine[:associations].present?
             { vendor: VENDOR, name: 'counter_associations', data: { 
-                id: samsys_machine[:associations][:id], 
-                counter: samsys_machine[:associations][:counter], 
-                start_date: samsys_machine[:associations][:start_date], 
-                end_date: samsys_machine[:associations][:end_date] } 
+                id: samsys_machine[:associations].first[:id], 
+                counter: samsys_machine[:associations].first[:counter], 
+                start_date: samsys_machine[:associations].first[:start_date], 
+                end_date: samsys_machine[:associations].first[:end_date] } 
             }
           else
             { vendor: VENDOR }
