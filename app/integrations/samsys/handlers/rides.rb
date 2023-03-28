@@ -9,8 +9,8 @@ module Samsys
       end
 
       def bulk_find_or_create
-        ride_sets.each do |ride_set|
-          ::Samsys::Data::MetaWorks.new(activity_id: ride_set.provider[:data]['id']).result.each do |meta_work|
+        ride_sets.flatten.each do |ride_set|
+          ::Samsys::Data::MetaWorks.new(activity_id: ride_set.provider_data[:id]).result.each do |meta_work|
             if (field_id = meta_work[:field])
               field = Samsys::Data::Fields.new(call: ::Samsys::SamsysIntegration.fetch_field(field_id)).result
             end

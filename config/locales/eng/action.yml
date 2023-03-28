@@ -28,7 +28,7 @@ To synchronize your geolocated trips with your connected sensors, please configu
     resume: "CV"
     ride: "Ride"
     road: "Total distance"
-    samsys_synchronisation: Samsys synchronisation
+    samsys_synchronisation: "Synchronize ride sets from the last 48 hours"
     scan: "Scan"
     sleep_duration: "Sleep duration"
     start: "Start"
