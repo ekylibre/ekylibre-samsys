@@ -26,7 +26,7 @@ fra:
     resume: "CV"
     ride: "Trajet"
     road: "Distance totale en km"
-    samsys_synchronisation: Synchronisation Samsys
+    samsys_synchronisation: "Synchroniser les trajets des dernières 48h"
     scan: "Balayage"
     sleep_duration: "Temps de pause"
     start: "Démarrer"
