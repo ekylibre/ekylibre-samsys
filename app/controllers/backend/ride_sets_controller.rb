@@ -5,7 +5,6 @@ module Backend
     unroll
 
     list(order: { started_at: :desc }) do |t|
-      t.action :destroy, if: :destroyable?
       t.column :number, url: true
       t.column :nature
       t.column :state, label_method: :decorated_state
