@@ -20,6 +20,7 @@ To synchronize your geolocated trips with your connected sensors, please configu
     samsys_short_description: Equipment geotracking sensors
     samsys_long_description:  Samsys provides geotracking sensors for equipment monitoring
     samsys_url: https://samsys.fr/
+    equipments_name: "Equipment(s)"
     hard_start: "Hard start"
     hard_stop: "Hard stop"
     partially_converted: "Partially converted"
