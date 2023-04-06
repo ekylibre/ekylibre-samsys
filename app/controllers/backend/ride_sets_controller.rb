@@ -9,6 +9,7 @@ module Backend
       t.column :number, url: true
       t.column :nature
       t.column :state, label_method: :decorated_state
+      t.column :created_at
       t.column :started_at
       t.column :stopped_at
       t.column :duration, label_method: :decorated_duration

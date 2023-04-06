@@ -55,11 +55,7 @@ module Samsys
         end
 
         def find_existant_ride_set(machine_activity, machine_equipment)
-          start_date = Time.zone.parse(machine_activity[:start_date])
-          end_date = Time.zone.parse(machine_activity[:end_date])
-
-          ride_set = RideSet.of_provider_vendor(VENDOR).of_provider_data(:id, machine_activity[:id].to_s).first || 
-                     RideSet.of_provider_vendor(VENDOR).where(started_at: start_date, stopped_at: end_date)
+          ride_set = RideSet.of_provider_vendor(VENDOR).of_provider_data(:id, machine_activity[:id].to_s).first
 
           if ride_set.present?
             ride = ::Samsys::Handlers::Rides.new(ride_sets: [ride_set], machine_equipment: machine_equipment)
