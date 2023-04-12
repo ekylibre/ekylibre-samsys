@@ -44,3 +44,7 @@ To synchronize your geolocated trips with your connected sensors, please configu
     ride_set_to_ride_information: "Click on a geolocated ride to view it on a map, then select its different sections to convert it into an intervention"
     road: "Total distance in km"
     to_convert: "To convert"
+    delete_ride_set_processing: "Ride sets are being deleted, you will be notified when they are deleted"
+    samsys_delete_selected_ride_sets: "Delete selected ride sets"
+    success_samsys_destroying_ride_sets: "Selected ride sets have been deleted"
+    failed_destroying_ride_sets: "An error occurred while deleting ride sets"

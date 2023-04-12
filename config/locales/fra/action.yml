@@ -44,3 +44,7 @@ fra:
     correct_samsys_fetch_params: "La synchronisation Samsys est terminée, les %{count} nouveaux trajets sont disponibles dans Ekylibre"
     failed_samsys_fetch_params: "Une erreur s'est produite lors de la synchronisation Samsys\_: %{message}"
     success_destroying_equipment: "L'équipement a été supprimé chez Samsys"
+    delete_ride_set_processing: "Les trajets sont en cours de suppression, vous serez notifié lorsque ces derniers seront supprimés"
+    samsys_delete_selected_ride_sets: "Supprimer les trajets sélectionnés"
+    success_samsys_destroying_ride_sets: "Les trajets sélectionnés ont été supprimés"
+    failed_destroying_ride_sets: "Une erreur s'est produite lors de la suppression des trajets"
