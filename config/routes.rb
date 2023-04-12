@@ -20,6 +20,7 @@ Rails.application.routes.draw do
       resource :rides_visualizations, only: :show
     end
     get :samsys_synchro, to: 'ride_sets#synchronize'
+    get :samsys_delete_selected_ride_sets, to: 'ride_sets#delete_selected_ride_sets'
   end
 
 end
